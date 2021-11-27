@@ -1,0 +1,89 @@
+#include "dictionary\config.cpp"
+#include "outlw_magRepack\MagRepack_Config.hpp"
+
+class Params
+{
+	class Faction
+	{
+		title = "Faction";
+		values[] = {0,1,2,3};
+		texts[] = {"Random","BLUFOR","OPFOR","INDEPENDENT"};
+		default = 0;
+	};
+	class Daytime
+	{
+		title = "Time";
+		texts[] = {"Morning","Day","Evening","Night"};
+		values[] = {6,12,18,0};
+		default = 12;
+		function = "BIS_fnc_paramDaytime"; // Function called when player joins
+		isGlobal = 1; // Function locally for every player who joins
+	};
+};
+
+class CfgRadio
+{
+	sounds[] = {};
+	
+	class RescueStart
+	{
+		name = "";
+		sound[] = {};
+		title = "Proceed to the rescue marker on your map.";
+	};
+	
+	class RescueMissionEnroute
+	{
+		name = "";
+		sound[] = {};
+		title = "Rescue transports are on the way.";
+	};
+	
+	class RescueMissionDestroyed
+	{
+		name = "";
+		sound[] = {};
+		title = "Rescue transports were destroyed.";
+	};
+};
+
+// (Depends on CBA)
+/* Upon creation, adds the revive eject event handler to all
+ * vehicle classes that need it.
+ */
+class Extended_InitPost_EventHandlers
+{
+	class CManBase
+	{
+		init = "_this execVM 'src\fnc\civilianEventAssigner.sqf'";
+	};
+    class Car_F
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+	
+	class Tank_F
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+	
+	class Boat_F
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+	
+	class StaticWeapon
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+	
+	class Plane_Base_F
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+	
+	class Helicopter_Base_F
+	{
+		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
+	};
+};
