@@ -27,6 +27,97 @@ class Params
 		function = "BIS_fnc_paramDaytime"; // Function called when player joins
 		isGlobal = 1; // Function locally for every player who joins
 	};
+	class IncludeHelicopters
+	{
+        title = "Include Helicopters DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeMarksmen
+	{
+        title = "Include Marksman DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeApex
+	{
+        title = "Include Apex DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeJets
+	{
+        title = "Include Jets DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeOrange
+	{
+        title = "Include Laws of War DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeTanks
+	{
+        title = "Include Tanks DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeContact
+	{
+        title = "Include Contact DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeNato
+	{
+		title = "Include NATO for BluFor";
+		texts[] = {"Yes"/*,"No",*/,"Yes & use map camouflage"};
+		values[] = {1/*,0*/,2};
+		default = 1;
+	};
+	class IncludeIranian
+	{
+		title = "Include Iranian CSAT for OpFor";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeChinese
+	{
+		title = "Include Chinese CSAT for OpFor (requires Apex DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeSpetsnaz
+	{
+		title = "Include Spetsnaz for OpFor (requires Contact DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeAaf
+	{
+		title = "Include AAF for Independent";
+		texts[] = {"Yes","No"};
+		values[] = {1,0};
+		default = 1;
+	};
+	class IncludeLdf
+	{
+		title = "Include LDF for Independent (requires Contact DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
 };
 
 class CfgRadio
