@@ -27,6 +27,8 @@ _comp =
 		  this addItemCargoGlobal ['Toolkit', 1];
 		  this addBackpackCargoGlobal ['B_AssaultPack_rgr', 1];
 		  this addBackpackCargoGlobal ['B_UAV_01_backpack_F', 1];
+		  this addBackpackCargoGlobal ['B_UAV_06_backpack_F', 1];
+          this addBackpackCargoGlobal ['B_UAV_06_medical_backpack_F', 1];
 		  this addBackpackCargoGlobal ['B_UGV_02_Demining_backpack_F', 1];
 		 ",true,false]
 	],
