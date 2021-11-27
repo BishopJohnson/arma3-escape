@@ -10,8 +10,6 @@ private ["_comp", "_terminal", "_veh", "_uav"];
 
 if (!isServer) exitWith {};
 
-_terminal = [] call compile preProcessFile "src\fnc\randomCargo\playerUavTerminal.sqf";
-
 _comp =
 [
 	[
@@ -25,10 +23,12 @@ _comp =
 		  clearWeaponCargoGlobal this;
 		  clearMagazineCargoGlobal this;
 		  
-		  this addItemCargoGlobal ['" + _terminal + "', 1];
+		  this addItemCargoGlobal ['B_UavTerminal', 4];
 		  this addItemCargoGlobal ['Toolkit', 1];
 		  this addBackpackCargoGlobal ['B_AssaultPack_rgr', 1];
 		  this addBackpackCargoGlobal ['B_UAV_01_backpack_F', 1];
+		  this addBackpackCargoGlobal ['B_UAV_06_backpack_F', 1];
+          this addBackpackCargoGlobal ['B_UAV_06_medical_backpack_F', 1];
 		  this addBackpackCargoGlobal ['B_UGV_02_Demining_backpack_F', 1];
 		 ",true,false]
 	],

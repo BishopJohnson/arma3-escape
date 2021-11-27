@@ -33,6 +33,8 @@ if (!isServer) exitWith {};
 */
 
 {
+    [] execVM "src\fnc\actions\hackUavBackpack.sqf";
+    [] execVM "src\fnc\actions\hackUavTerminal.sqf";
 	[] execVM "src\fnc\rescue\rescueInit.sqf";
 	[] execVM "src\fnc\revive\reviveInit.sqf";
 } remoteExec ["bis_fnc_call"];
