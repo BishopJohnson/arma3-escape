@@ -8,9 +8,8 @@
 
 START_KEY = "start"; // Key for start location
 
-/* The values for each key are multidimensional arrays formatted as
- * [position, radius, side, comp] where comp is the array returned by the
- * a given base file.
+/* The values for each key are multidimensional arrays formatted as [position, radius, side, comp] where comp is the
+ * array returned by the a given base file.
  */
 COMPOSITIONS = call DICT_fnc_create;
 [COMPOSITIONS, COMPS_KEY, []] call DICT_fnc_set;
@@ -37,5 +36,7 @@ switch ("Faction" call BIS_fnc_getParamValue) do
 
 playerGroup = createGroup PLAYER_FACTION;
 (call BIS_fnc_listPlayers) joinSilent playerGroup;
+
+call compile preprocessFile "src\lists\listsInit.sqf";
 
 [] execVM "src\main.sqf";
