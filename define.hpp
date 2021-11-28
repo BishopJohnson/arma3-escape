@@ -8,7 +8,6 @@
 #define TANKS_KEY "Tanks"
 #define CONTACT_KEY "Contact"
 
-// TODO: Add FIA, Gendarmerie, Syndikat, and Looters factions
 // Faction Keys
 #define NATO_KEY "NATO" // Core
 #define CSAT_KEY "CSAT" //
@@ -37,8 +36,6 @@
 #define LYNX_KEY "lynx"
 #define MAAWS_KEY "maaws"
 #define MAR_10_KEY "mar10"
-#define MK_14_KEY "mk14"
-#define MK_20_KEY "mk20"
 #define MK_200_KEY "mk200"
 #define MKI_EMR_KEY "mkiEmr"
 #define P_07_KEY "p07"

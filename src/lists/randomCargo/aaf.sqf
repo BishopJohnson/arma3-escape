@@ -20,10 +20,10 @@ _uncommon = [Escape_Random_Cargo_Basic, RAND_CARGO_UNCOMMON_KEY] call DICT_fnc_g
 _rare = [Escape_Random_Cargo_Basic, RAND_CARGO_RARE_KEY] call DICT_fnc_get;
 
 // Mk20
-if ([_uncommon, MK_20_KEY] call DICT_fnc_exists) then { /* No unique values that could be ommitted */ }
+if ([_uncommon, "mk20"] call DICT_fnc_exists) then { /* No unique values that could be ommitted */ }
 else
 {
-    [_uncommon, MK_20_KEY, [
+    [_uncommon, "mk20", [
         ["arifle_Mk20_F", "arifle_Mk20_GL_F", "arifle_Mk20C_F"],
         ["30Rnd_556x45_Stanag", "30Rnd_556x45_Stanag_Tracer_Yellow"]
     ]] call DICT_fnc_set;

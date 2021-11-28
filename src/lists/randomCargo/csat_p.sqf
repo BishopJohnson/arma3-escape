@@ -129,7 +129,7 @@ else
     ]] call DICT_fnc_set;
 };
 
-// STING
+// Sting
 if ([_rare, STING_KEY] call DICT_fnc_exists) then { /* No unique values that could be ommitted */ }
 else
 {
