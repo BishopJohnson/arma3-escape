@@ -9,55 +9,63 @@
 		Number (Optional) - 
 */
 
-#define DEFAULT_WEAPONS 5
-#define DEFAULT_AMMO 8
+#include "..\..\..\define.hpp"
 
-params ["_box", "_type"];
+#define DEFAULT_WEAPON_COUNT 5
+#define DEFAULT_AMMO_COUNT 8
 
-private ["_weaponCount", "_ammoCount", "_weapon", "_i", "_j"];
+params
+[
+    "_box",
+    "_type",
+    ["_weaponCount", DEFAULT_WEAPON_COUNT, [0]],
+    ["_ammoCount", DEFAULT_AMMO_COUNT, [0]]
+];
 
 if (!isServer) exitWith {};
 
-_weaponCount = DEFAULT_WEAPONS;
-_ammoCount = DEFAULT_AMMO;
-
-if (count _this > 2) then {_weaponCount = _this select 2;};
-if (count _this > 3) then {_ammoCount = _this select 3;};
-
+private "_map";
 switch (_type) do
 {
     case "BASIC":
 	{
-	    _type = "src\fnc\randomCargo\basicWeapons.sqf";
+	    _map = Escape_Random_Cargo_Basic;
 	};
 	case "SPECIAL":
 	{
-	    _type = "src\fnc\randomCargo\specialWeapons.sqf";
+	    _map = Escape_Random_Cargo_Special;
 	};
 	case "LAUNCHER":
 	{
-	    _type = "src\fnc\randomCargo\launcherWeapons.sqf";
+	    _map = Escape_Random_Cargo_Launcher;
 	};
 	case "START":
 	{
-	    _type = "src\fnc\randomCargo\startWeapons.sqf";
+	    _map = Escape_Random_Cargo_Prison;
 	};
 	default
 	{
-	    _type = nil;
+	    _map = nil;
 	};
 };
 
-/*if (isNil _type) exitWith {hint "is nil";};*/
+if (isNil "_map") exitWith { hint format ["Recieved invalid random cargo type '%1'", _type] };
 
-for [{_i = 0}, {_i < _weaponCount}, {_i = _i + 1}] do
+for [{ private _i = 0 }, { _i < _weaponCount }, { _i = _i + 1 }] do
 {
-    _weapon = [] call compile preprocessFile _type;
-	
-	_box addWeaponCargoGlobal [_weapon select 0, 1];
-	
-	for [{_j = 0}, {_j < (count (_weapon select 1))}, {_j = _j + 1}] do
+    private _rarity = selectRandomWeighted
+    [/* commonality key          weight */
+        RAND_CARGO_COMMON_KEY,   0.5,
+        RAND_CARGO_UNCOMMON_KEY, 0.35,
+        RAND_CARGO_RARE_KEY,     0.15
+    ];
+
+    private _weaponGroupKeys = [_map, _rarity] call DICT_fnc_get call DICT_fnc_keys;
+    private _weaponGroup = [_map, _rarity, selectRandom _weaponGroupKeys] call DICT_fnc_get;
+
+	_box addWeaponCargoGlobal [selectRandom (_weaponGroup select 0), 1];
+
 	{
-	    _box addMagazineCargoGlobal [(_weapon select 1) select _j, _ammoCount];
-	};
+	    _box addMagazineCargoGlobal [_x, _ammoCount];
+	} forEach _weaponGroup select 1;
 };
