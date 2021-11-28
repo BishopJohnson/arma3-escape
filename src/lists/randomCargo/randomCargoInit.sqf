@@ -34,3 +34,4 @@ call compile preprocessFile "src\lists\randomCargo\aaf.sqf";
 call compile preprocessFile "src\lists\randomCargo\csat_p.sqf";
 call compile preprocessFile "src\lists\randomCargo\spetsnaz.sqf";
 call compile preprocessFile "src\lists\randomCargo\ldf.sqf";
+call compile preprocessFile "src\lists\randomCargo\misc.sqf";
