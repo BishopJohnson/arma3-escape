@@ -146,6 +146,196 @@ class CfgRadio
 	};
 };
 
+class CfgVehicleTemplates
+{
+    // NATO
+    class Escape_Marshall_Default
+    {
+        animationList[] =
+        {
+            "showBags",0,
+            "showCamonetHull",0,
+            "showCamonetTurret",0,
+            "showSLATHull",0,
+            "showSLATTurret",0
+        };
+    };
+
+    class Escape_Marshall_Cage
+    {
+        animationList[] =
+        {
+            "showBags",0,
+            "showCamonetHull",0,
+            "showCamonetTurret",0,
+            "showSLATHull",1,
+            "showSLATTurret",0
+        };
+    };
+
+    class Escape_Marshall_Net
+    {
+        animationList[] =
+        {
+            "showBags",0,
+            "showCamonetHull",1,
+            "showCamonetTurret",1,
+            "showSLATHull",0,
+            "showSLATTurret",0
+        };
+    };
+
+    class Escape_Panther_Default
+    {
+        animationList[] =
+        {
+            "showCamonetHull",0,
+            "showBags",0
+        };
+    };
+
+    class Escape_Panther_Net
+    {
+        animationList[] =
+        {
+            "showCamonetHull",1,
+            "showBags",0
+        };
+    };
+
+    class Escape_Bobcat_Default
+    {
+        animationList[] =
+        {
+            "showAmmobox",1,
+            "showWheels",1,
+            "showCamonetHull",0,
+            "showBags",0
+        };
+    };
+
+    class Escape_Bobcat_Net
+    {
+        animationList[] =
+        {
+            "showAmmobox",1,
+            "showWheels",1,
+            "showCamonetHull",1,
+            "showBags",0
+        };
+    };
+
+    class Escape_Slammer_Default
+    {
+        animationList[] =
+        {
+            "showBags",0,
+            "showCamonetTurret",0,
+            "showCamonetHull",0
+        };
+    };
+
+    class Escape_Slammer_Net
+    {
+        animationList[] =
+        {
+            "showBags",0,
+            "showCamonetTurret",1,
+            "showCamonetHull",1
+        };
+    };
+
+    class Escape_Rhino_Default
+    {
+        animationList[] =
+        {
+            "showCamonetHull",0,
+            "showCamonetTurret",0,
+            "showSLATHull",0
+        };
+    };
+
+    class Escape_Rhino_Cage
+    {
+        animationList[] =
+        {
+            "showCamonetHull",0,
+            "showCamonetTurret",0,
+            "showSLATHull",1
+        };
+    };
+
+    class Escape_Rhino_Net
+    {
+        animationList[] =
+        {
+            "showCamonetHull",1,
+            "showCamonetTurret",1,
+            "showSLATHull",0
+        };
+    };
+
+    class Escape_Scrocher_Default
+    {
+        animationList[] =
+        {
+            "showCanisters",1,
+            "showCamonetTurret",0,
+            "showAmmobox",1,
+            "showCamonetHull",0
+        };
+    };
+
+    class Escape_Scrocher_Net
+    {
+        animationList[] =
+        {
+            "showCanisters",1,
+            "showCamonetTurret",1,
+            "showAmmobox",1,
+            "showCamonetHull",1
+        };
+    };
+
+    class Escape_Sandstorm_Default
+    {
+        animationList[] =
+        {
+            "showCamonetTurret",0,
+            "showCamonetHull",0
+        };
+    };
+
+    class Escape_Sandstorm_Net
+    {
+        animationList[] =
+        {
+            "showCamonetTurret",1,
+            "showCamonetHull",1
+        };
+    };
+
+    class Escape_Cheetah_Default
+    {
+        animationList[] =
+        {
+            "showCamonetTurret",0,
+            "showCamonetHull",0,
+            "showBags",0
+        };
+    };
+
+    class Escape_Cheetah_Net
+    {
+        animationList[] =
+        {
+            "showCamonetTurret",1,
+            "showCamonetHull",1,
+            "showBags",0
+        };
+    };
+};
+
 // (Depends on CBA)
 /* Upon creation, adds the revive eject event handler to all
  * vehicle classes that need it.
