@@ -139,7 +139,7 @@ switch (_side) do
 			};
 			case "Artillery":
 			{
-			    _vehicles = ["I_Truck_02_MRL_F", ""];
+			    _vehicles = ["I_Truck_02_MRL_F"];
 				_veh = selectRandom _vehicles;
 			};
 			default // Car
