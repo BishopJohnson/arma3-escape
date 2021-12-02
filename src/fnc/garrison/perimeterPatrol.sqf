@@ -26,7 +26,7 @@ _spawnedUnits = [];
 while {_size > 0} do
 {
 	_temp = (floor random (_size / 2)) + 1;
-	
+
 	// Checks if classes were given
 	if (isNil "_classes") then
 	{
@@ -44,7 +44,7 @@ while {_size > 0} do
 		    _group = [_side, _temp, _classes, _types] call compile preprocessFile "src\fnc\randomUnits\pickGroup.sqf";
 		};
 	};
-	
+
 	_group =
 	[
 	    [
@@ -58,13 +58,14 @@ while {_size > 0} do
 		[],
 		[0.5, 0.6, 0.8]
 	] call BIS_fnc_spawnGroup;
-	
+
 	_group setBehaviour "SAFE";
 	_group setSpeedMode "LIMITED";
 	_group enableDynamicSimulation true;
-	
+	removeFromRemainsCollector units _group;
+
 	{ _x triggerDynamicSimulation false; } forEach units _group;
-	
+
 	if (random 1 > 0.5) then
 	{
 	    _group addWaypoint [[_position select 0, (_position select 1) - _maxRadius, _position select 2],0];
@@ -81,13 +82,13 @@ while {_size > 0} do
 		_wp = _group addWaypoint [[(_position select 0) - _maxRadius, _position select 1, _position select 2],0];
 	    _wp setWaypointType "CYCLE";
 	};
-	
+
 	// Runs code on each group member
 	{
 	    _this = _x;
 	    call compile _init;
 	} forEach units _group;
-	
+
 	_size = _size - _temp;
 	_spawnedUnits append units _group;
 };

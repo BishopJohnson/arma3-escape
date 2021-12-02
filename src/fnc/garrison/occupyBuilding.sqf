@@ -76,9 +76,9 @@ while {count _paramsArray > _finalCnt} do {
 if (_finalCnt > 0) then {
 	_newGrp = createGroup [([east, west, independent] select (getNumber (configFile >> "CfgFactionClasses" >> _side >> "side"))), true];
 	if (isNull _newGrp) exitWith {};
-    
+
 	_currentDude = nil;
-	
+
 	{
 		_pos = _x;
 		([_side, _units select floor random (count _units)] call compile preprocessFile "src\fnc\randomUnits\pickUnit.sqf") createUnit [_pos, _newGrp, "_currentDude = this"];
@@ -91,10 +91,11 @@ if (_finalCnt > 0) then {
 		_currentDude doWatch _watchPos;
 		_currentDude setDir _dir;
 	} forEach _paramsArray;
-    
+
 	_newGrp selectLeader _currentDude;
 	_newGrp deleteGroupWhenEmpty true;
 	_newGrp enableDynamicSimulation true;
-	
+	removeFromRemainsCollector units _newGrp;
+
 	{ _x triggerDynamicSimulation false; } forEach units _newGrp;
 };

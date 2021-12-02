@@ -1,6 +1,14 @@
 #include "dictionary\config.cpp"
 #include "outlw_magRepack\MagRepack_Config.hpp"
 
+// Garbage collector
+corpseManagerMode = 1;
+corpseLimit = 0;
+corpseRemovalMinTime = 60;
+corpseRemovalMaxTime = 60;
+wreckManagerMode = 0;
+minPlayerDistance = 2000;
+
 class Params
 {
 	class Faction
