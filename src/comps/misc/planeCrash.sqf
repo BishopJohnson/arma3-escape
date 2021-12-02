@@ -48,10 +48,16 @@ _veh =
 	["Box_NATO_Support_F",[1.57959,6.76953,-4.76837e-007],0.000226324,1,0,[0,0],"","",true,false],        // (6) support
 	["Box_NATO_Equip_F",[0.763916,3.28223,0],360,1,0,[0,-0],"","",true,false],                            // (7) equipment
 	["Box_NATO_Uniforms_F",[0.432861,-6.86523,-4.76837e-007],359.999,1,0,[-0,0],"","",true,false],        // (8) uniforms
-	
-	// Pilots (damage set to 100%)
-	["Sign_Arrow_Blue_F",[-2.27979,1.31299,0],random 360,1,1,[0,0],"","",true,false], // (9)  pilot #1
-	["Sign_Arrow_Blue_F",[-2.3606,-1.5498,0],random 360,1,1,[0,0],"","",true,false]   // (10) pilot #2
+
+	// Deceased pilots
+	["Sign_Arrow_Blue_F",[-2.27979,1.31299,0],random 360,1,1,[0,0],"",
+	 "removeFromRemainsCollector [this];
+	  this triggerDynamicSimulation false;",
+	 true,false], // (9)  pilot #1
+	["Sign_Arrow_Blue_F",[-2.3606,-1.5498,0],random 360,1,1,[0,0],"",
+	 "removeFromRemainsCollector [this];
+	  this triggerDynamicSimulation false;",
+	 true,false]   // (10) pilot #2
 ];
 
 switch (PLAYER_FACTION) do
@@ -67,7 +73,7 @@ switch (PLAYER_FACTION) do
 		_veh select 6 set [0, "Box_East_Support_F"];
 		_veh select 7 set [0, "Box_CSAT_Equip_F"];
 		_veh select 8 set [0, "Box_CSAT_Uniforms_F"];
-		
+
 		_veh select 9 set [0, "O_helipilot_F"];
 		_veh select 10 set [0, "O_helipilot_F"];
 	};
