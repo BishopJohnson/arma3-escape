@@ -63,9 +63,18 @@ for [{ private _i = 0 }, { _i < _weaponCount }, { _i = _i + 1 }] do
     private _weaponGroupKeys = [_map, _rarity] call DICT_fnc_get call DICT_fnc_keys;
     private _weaponGroup = [_map, _rarity, selectRandom _weaponGroupKeys] call DICT_fnc_get;
 
-	_box addWeaponCargoGlobal [selectRandom (_weaponGroup select 0), 1];
+    private _weapons = _weaponGroup select 0;
+    private _ammo = _weaponGroup select 1;
+    if (typeName (_weapons select 0) == "ARRAY") then
+    {
+        private _idx = [0, count _weapons - 1] call BIS_fnc_randomInt;
+        _weapons = _weapons select _idx;
+        _ammo = _ammo select _idx;
+    };
+
+	_box addWeaponCargoGlobal [selectRandom _weapons, 1];
 
 	{
 	    _box addMagazineCargoGlobal [_x, _ammoCount];
-	} forEach _weaponGroup select 1;
+	} forEach _ammo;
 };

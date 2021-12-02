@@ -26,41 +26,68 @@ _rare = [Escape_Random_Cargo_Basic, RAND_CARGO_RARE_KEY] call DICT_fnc_get;
 // Promet
 if (_useMapCamo) then
 {
-    _weapons = ["arifle_MSBS65_F", "arifle_MSBS65_GL_F", "arifle_MSBS65_UBS_F"];
+    _weapons = ["arifle_MSBS65_F"];
+}
+else
+{
+    _weapons = ["arifle_MSBS65_F", "arifle_MSBS65_black_F", "arifle_MSBS65_camo_F", "arifle_MSBS65_sand_F"];
+};
+
+[_common, "promet", [
+    _weapons,
+    ["30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer"]
+]] call DICT_fnc_set;
+
+// Promet GL
+if (_useMapCamo) then
+{
+    _weapons =
+    [
+        ["arifle_MSBS65_GL_F"],
+        ["arifle_MSBS65_UBS_F"]
+    ];
 }
 else
 {
     _weapons =
     [
-        "arifle_MSBS65_F", "arifle_MSBS65_black_F", "arifle_MSBS65_camo_F", "arifle_MSBS65_sand_F",
-        "arifle_MSBS65_GL_F", "arifle_MSBS65_GL_black_F", "arifle_MSBS65_GL_camo_F", "arifle_MSBS65_GL_sand_F",
-        "arifle_MSBS65_UBS_F", "arifle_MSBS65_UBS_black_F", "arifle_MSBS65_UBS_camo_F", "arifle_MSBS65_UBS_sand_F"
+        ["arifle_MSBS65_GL_F", "arifle_MSBS65_GL_black_F", "arifle_MSBS65_GL_camo_F", "arifle_MSBS65_GL_sand_F"],
+        ["arifle_MSBS65_UBS_F", "arifle_MSBS65_UBS_black_F", "arifle_MSBS65_UBS_camo_F", "arifle_MSBS65_UBS_sand_F"]
     ];
 };
 
-[_common, "promet", [
+[_common, "prometGl", [
     _weapons,
-    ["30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer", "6Rnd_12Gauge_Pellets", "6Rnd_12Gauge_Slug"]
+    [
+        [
+            "30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer",
+            "1Rnd_HE_Grenade_shell", "1Rnd_Smoke_Grenade_shell", "1Rnd_SmokeBlue_Grenade_shell"
+        ],
+        [
+            "30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer",
+            "6Rnd_12Gauge_Pellets", "6Rnd_12Gauge_Slug"
+        ]
+    ]
 ]] call DICT_fnc_set;
 
 // Mk200
+_weapons = ["LMG_Mk200_black_F"];
+_ammo = ["200Rnd_65x39_cased_Box", "200Rnd_65x39_cased_Box_Tracer"];
+
 if ([_uncommon, MK_200_KEY] call DICT_fnc_exists) then
 {
     _temp = [_uncommon, MK_200_KEY] call DICT_fnc_get;
     {
         _temp select 0 pushBackUnique _x;
-    } forEach (["LMG_Mk200_black_F"]);
+    } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
-    } forEach (["200Rnd_65x39_cased_Box", "200Rnd_65x39_cased_Box_Tracer"]);
+    } forEach (_ammo);
     [_rare, MK_200_KEY, _temp] call DICT_fnc_set;
 }
 else
 {
-    [_uncommon, MK_200_KEY, [
-        ["LMG_Mk200_black_F"],
-        ["200Rnd_65x39_cased_Box", "200Rnd_65x39_cased_Box_Tracer"]
-    ]] call DICT_fnc_set;
+    [_uncommon, MK_200_KEY, [_weapons, _ammo]] call DICT_fnc_set;
 };
 
 // P90
@@ -85,23 +112,23 @@ _rare = [Escape_Random_Cargo_Launcher, RAND_CARGO_RARE_KEY] call DICT_fnc_get;
 // MAAWS
 if (_usingTanks) then
 {
+    _weapons = ["launch_MRAWS_green_F", "launch_MRAWS_green_rail_F"];
+    _ammo = ["MRAWS_HEAT_F", "MRAWS_HE_F"];
+
     if ([_common, MAAWS_KEY] call DICT_fnc_exists) then
     {
         _temp = [_common, MAAWS_KEY] call DICT_fnc_get;
         {
             _temp select 0 pushBackUnique _x;
-        } forEach (["launch_MRAWS_green_F", "launch_MRAWS_green_rail_F"]);
+        } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
-        } forEach (["MRAWS_HEAT_F", "MRAWS_HE_F"]);
+        } forEach (_ammo);
         [_common, MAAWS_KEY, _temp] call DICT_fnc_set;
     }
     else
     {
-        [_common, MAAWS_KEY, [
-            ["launch_MRAWS_green_F", "launch_MRAWS_green_rail_F"],
-            ["MRAWS_HEAT_F", "MRAWS_HE_F"]
-        ]] call DICT_fnc_set;
+        [_common, MAAWS_KEY, [_weapons, _ammo]] call DICT_fnc_set;
     };
 };
 
@@ -109,50 +136,47 @@ if (_usingTanks) then
 if ([_uncommon, PCML_KEY] call DICT_fnc_exists) then { /* No unique values that could be ommitted */ }
 else
 {
-    [_uncommon, PCML_KEY, [
-        ["launch_NLAW_F"],
-        ["NLAW_F"]
-    ]] call DICT_fnc_set;
+    [_uncommon, PCML_KEY, [["launch_NLAW_F"], ["NLAW_F"]]] call DICT_fnc_set;
 };
 
 // Titan AA
+_weapons = ["launch_I_Titan_eaf_F"];
+_ammo = ["Titan_AA"];
+
 if ([_rare, TITAN_AA_KEY] call DICT_fnc_exists) then
 {
     _temp = [_rare, TITAN_AA_KEY] call DICT_fnc_get;
     {
         _temp select 0 pushBackUnique _x;
-    } forEach (["launch_I_Titan_eaf_F"]);
+    } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
-    } forEach (["Titan_AA"]);
+    } forEach (_ammo);
     [_rare, TITAN_AA_KEY, _temp] call DICT_fnc_set;
 }
 else
 {
-    [_rare, TITAN_AA_KEY, [
-        ["launch_I_Titan_eaf_F"],
-        ["Titan_AA"]
-    ]] call DICT_fnc_set;
+    [_rare, TITAN_AA_KEY, [_weapons, _ammo]] call DICT_fnc_set;
 };
 
 // Titan AT
+_weapons = ["launch_I_Titan_short_F"];
+_ammo = ["Titan_AT", "Titan_AP"];
+
 if ([_rare, TITAN_AT_KEY] call DICT_fnc_exists) then
 {
     _temp = [_rare, TITAN_AT_KEY] call DICT_fnc_get;
     {
         _temp select 0 pushBackUnique _x;
-    } forEach (["launch_I_Titan_short_F"]);
+    } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
-    } forEach (["Titan_AT", "Titan_AP"]);
+    } forEach (_ammo);
     [_rare, TITAN_AT_KEY, _temp] call DICT_fnc_set;
 }
 else
 {
-    [_rare, TITAN_AT_KEY, [
-        ["launch_I_Titan_short_F"],
-        ["Titan_AT", "Titan_AP"]
-    ]] call DICT_fnc_set;
+    [_rare, TITAN_AT_KEY, [_weapons, _ammo]] call DICT_fnc_set;
 };
 
 [Escape_Random_Cargo_Launcher, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
@@ -182,90 +206,90 @@ else
 // MkI EMR
 if (_usingMarksmen) then
 {
+    _weapons = ["srifle_DMR_03_F"];
+    _ammo = ["20Rnd_762x51_Mag"];
+
     if ([_common, MKI_EMR_KEY] call DICT_fnc_exists) then
     {
         _temp = [_common, MKI_EMR_KEY] call DICT_fnc_get;
         {
             _temp select 0 pushBackUnique _x;
-        } forEach (["srifle_DMR_03_F"]);
+        } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
-        } forEach (["20Rnd_762x51_Mag"]);
+        } forEach (_ammo);
         [_common, MKI_EMR_KEY, _temp] call DICT_fnc_set;
     }
     else
     {
-        [_common, MKI_EMR_KEY, [
-            ["srifle_DMR_03_F"],
-            ["20Rnd_762x51_Mag"]
-        ]] call DICT_fnc_set;
+        [_common, MKI_EMR_KEY, [_weapons, _ammo]] call DICT_fnc_set;
     };
 };
 
 // SPMG
 if (_usingMarksmen) then
 {
+    _weapons = ["MMG_02_black_F"];
+    _ammo = ["200Rnd_338_Mag"];
+
     if ([_uncommon, SPMG_KEY] call DICT_fnc_exists) then
     {
         _temp = [_uncommon, SPMG_KEY] call DICT_fnc_get;
         {
             _temp select 0 pushBackUnique _x;
-        } forEach (["MMG_02_black_F"]);
+        } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
-        } forEach (["200Rnd_338_Mag"]);
+        } forEach (_ammo);
         [_uncommon, SPMG_KEY, _temp] call DICT_fnc_set;
     }
     else
     {
-        [_uncommon, SPMG_KEY, [
-            ["MMG_02_black_F"],
-            ["200Rnd_338_Mag"]
-        ]] call DICT_fnc_set;
+        [_uncommon, SPMG_KEY, [_weapons, _ammo]] call DICT_fnc_set;
     };
 };
 
 // MAR-10
 if (_usingMarksmen) then
 {
+    _weapons = ["srifle_DMR_02_F"];
+    _ammo = ["10Rnd_338_Mag"];
+
     if ([_uncommon, MAR_10_KEY] call DICT_fnc_exists) then
     {
         _temp = [_uncommon, MAR_10_KEY] call DICT_fnc_get;
         {
             _temp select 0 pushBackUnique _x;
-        } forEach (["srifle_DMR_02_F"]);
+        } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
-        } forEach (["10Rnd_338_Mag"]);
+        } forEach (_ammo);
         [_uncommon, MAR_10_KEY, _temp] call DICT_fnc_set;
     }
     else
     {
-        [_uncommon, MAR_10_KEY, [
-            ["srifle_DMR_02_F"],
-            ["10Rnd_338_Mag"]
-        ]] call DICT_fnc_set;
+        [_uncommon, MAR_10_KEY, [_weapons, _ammo]] call DICT_fnc_set;
     };
 };
 
 // LRR
+_weapons = ["srifle_LRR_F"];
+_ammo = ["7Rnd_408_Mag"];
+
 if ([_rare, LRR_KEY] call DICT_fnc_exists) then
 {
     _temp = [_rare, LRR_KEY] call DICT_fnc_get;
     {
         _temp select 0 pushBackUnique _x;
-    } forEach (["srifle_LRR_F"]);
+    } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
-    } forEach (["7Rnd_408_Mag"]);
+    } forEach (_ammo);
     [_rare, LRR_KEY, _temp] call DICT_fnc_set;
 }
 else
 {
-    [_rare, LRR_KEY, [
-        ["srifle_LRR_F"],
-        ["7Rnd_408_Mag"]
-    ]] call DICT_fnc_set;
+    [_rare, LRR_KEY, [_weapons, _ammo]] call DICT_fnc_set;
 };
 
 [Escape_Random_Cargo_Special, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
@@ -277,23 +301,23 @@ _uncommon = [Escape_Random_Cargo_Prison, RAND_CARGO_UNCOMMON_KEY] call DICT_fnc_
 _rare = [Escape_Random_Cargo_Prison, RAND_CARGO_RARE_KEY] call DICT_fnc_get;
 
 // 4Five
+_weapons = ["hgun_Pistol_heavy_01_green_F"];
+_ammo = ["11Rnd_45ACP_Mag"];
+
 if ([_uncommon, FOUR_FIVE_KEY] call DICT_fnc_exists) then
 {
     _temp = [_uncommon, FOUR_FIVE_KEY] call DICT_fnc_get;
     {
         _temp select 0 pushBackUnique _x;
-    } forEach (["hgun_Pistol_heavy_01_green_F"]);
+    } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
-    } forEach (["11Rnd_45ACP_Mag"]);
+    } forEach (_ammo);
     [_uncommon, FOUR_FIVE_KEY, _temp] call DICT_fnc_set;
 }
 else
 {
-    [_uncommon, FOUR_FIVE_KEY, [
-        ["hgun_Pistol_heavy_01_green_F"],
-        ["11Rnd_45ACP_Mag"]
-    ]] call DICT_fnc_set;
+    [_uncommon, FOUR_FIVE_KEY, [_weapons, _ammo]] call DICT_fnc_set;
 };
 
 // P90

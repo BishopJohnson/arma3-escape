@@ -46,8 +46,14 @@ private _weaponGroupKeys = [Escape_Random_Cargo_Prison, _rarity] call DICT_fnc_g
 private _weaponGroup = [Escape_Random_Cargo_Prison, _rarity, selectRandom _weaponGroupKeys] call DICT_fnc_get;
 
 // Selects the weapon and magazine types
-private _weapon = selectRandom (_weaponGroup select 0);
-private _magazine = selectRandom (_weaponGroup select 1);
+private _weapons = _weaponGroup select 0;
+private _ammo = _weaponGroup select 1;
+if (typeName (_weapons select 0) == "ARRAY") then
+{
+    private _idx = [0, count _weapons - 1] call BIS_fnc_randomInt;
+    _weapons = _weapons select _idx;
+    _ammo = _ammo select _idx;
+};
 
-player addMagazines [_magazine, MAGAZINE_COUNT];
-player addWeapon _weapon;
+player addMagazines [selectRandom _ammo, MAGAZINE_COUNT];
+player addWeapon selectRandom _weapons;

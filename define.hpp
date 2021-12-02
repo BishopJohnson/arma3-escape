@@ -29,6 +29,7 @@
 
 // Item Keys
 #define AK_12_KEY "ak12"
+#define AK_12_GL_KEY "ak12Gl"
 #define ASP_1_KEY "asp1"
 #define Cyrus_KEY "cyrus"
 #define FOUR_FIVE_KEY "4Five"
