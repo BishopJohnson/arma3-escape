@@ -18,6 +18,7 @@
 //#defina US_KEY "US"   // RHS
 //#define RU_KEY "RU"   //
 //#define CDF_KEY "CDF" //
+#define CIVILIAN_KEY "Civilian"
 
 // Map Keys
 #define ALTIS_KEY "Altis"

@@ -19,3 +19,4 @@ call compile preprocessFile "src\lists\randomVehicles\csat.sqf";
 call compile preprocessFile "src\lists\randomVehicles\aaf.sqf";
 call compile preprocessFile "src\lists\randomVehicles\csat_p.sqf";
 call compile preprocessFile "src\lists\randomVehicles\ldf.sqf";
+call compile preprocessFile "src\lists\randomVehicles\civilian.sqf";
