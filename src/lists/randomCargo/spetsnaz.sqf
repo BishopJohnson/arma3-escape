@@ -19,8 +19,8 @@ private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
 private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
 
 // Basic weapons
-_common = [Escape_Random_Cargo_Basic, RAND_CARGO_COMMON_KEY] call DICT_fnc_get;
-_uncommon = [Escape_Random_Cargo_Basic, RAND_CARGO_UNCOMMON_KEY] call DICT_fnc_get;
+_common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
+_uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 
 // AK-12
 if (_useMapCamo) then
@@ -60,9 +60,9 @@ else
     };
 };
 
-if ([_common, AK_12_KEY] call DICT_fnc_exists) then
+if (AK_12_KEY in _common) then
 {
-    _temp = [_uncommon, AK_12_KEY] call DICT_fnc_get;
+    _temp = _common get AK_12_KEY;
     {
         _temp select 0 pushBackUnique _x;
     } forEach (_weapons);
@@ -73,7 +73,7 @@ if ([_common, AK_12_KEY] call DICT_fnc_exists) then
 }
 else
 {
-    [_common, AK_12_KEY, [_weapons, _ammo]] call DICT_fnc_set;
+    _common set [AK_12_KEY, [_weapons, _ammo]];
 };
 
 // AK-12 GL
@@ -120,20 +120,20 @@ else
     } forEach _ammo;
 };
 
-if ([_common, AK_12_GL_KEY] call DICT_fnc_exists) then
+if (AK_12_GL_KEY in _common) then
 {
-    _temp = [_uncommon, AK_12_GL_KEY] call DICT_fnc_get;
+    _temp = _common get AK_12_GL_KEY;
     {
         _temp select 0 pushBackUnique _x;
     } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
     } forEach (_ammo);
-    [_common, AK_12_GL_KEY, _temp] call DICT_fnc_set;
+    _common set [AK_12_GL_KEY, _temp];
 }
 else
 {
-    [_common, AK_12_GL_KEY, [_weapons, _ammo]] call DICT_fnc_set;
+    _common set [AK_12_GL_KEY, [_weapons, _ammo]];
 };
 
 // RPK
@@ -170,38 +170,38 @@ else
     ];
 };
 
-[_uncommon, "rpk", [_weapons, _ammo]] call DICT_fnc_set;
+_uncommon set ["rpk", [_weapons, _ammo]];
 
-[Escape_Random_Cargo_Basic, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
-[Escape_Random_Cargo_Basic, RAND_CARGO_UNCOMMON_KEY, _uncommon] call DICT_fnc_set;
+Escape_Random_Cargo_Basic set [RAND_CARGO_COMMON_KEY, _common];
+Escape_Random_Cargo_Basic set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
 
 // Launchers
-_common = [Escape_Random_Cargo_Launcher, RAND_CARGO_COMMON_KEY] call DICT_fnc_get;
+_common = Escape_Random_Cargo_Launcher get RAND_CARGO_COMMON_KEY;
 
 // RPG-42
-if ([_common, RPG_42_KEY] call DICT_fnc_exists) then
+if (RPG_42_KEY in _common) then
 {
     _weapons = ["launch_RPG32_green_F"];
     _ammo = ["RPG32_F", "RPG32_HE_F"];
 
-    _temp = [_common, RPG_42_KEY] call DICT_fnc_get;
+    _temp = _common get RPG_42_KEY;
     {
         _temp select 0 pushBackUnique _x;
     } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
     } forEach (_ammo);
-    [_common, RPG_42_KEY, _temp] call DICT_fnc_set;
+    _common set [RPG_42_KEY, _temp];
 }
 else
 {
-    [_common, RPG_42_KEY, [_weapons, _ammo]] call DICT_fnc_set;
+    _common set [RPG_42_KEY, [_weapons, _ammo]];
 };
 
-[Escape_Random_Cargo_Launcher, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
+Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, _common];
 
 // Special weapons
-_common = [Escape_Random_Cargo_Special, RAND_CARGO_COMMON_KEY] call DICT_fnc_get;
+_common = Escape_Random_Cargo_Special get RAND_CARGO_COMMON_KEY;
 
 // ASP-1
 if (_usingMarksmen) then
@@ -209,33 +209,33 @@ if (_usingMarksmen) then
     _weapons = ["srifle_DMR_04_F"];
     _ammo = ["10Rnd_127x54_Mag"];
 
-    if ([_common, ASP_1_KEY] call DICT_fnc_exists) then
+    if (ASP_1_KEY in _common) then
     {
-        _temp = [_common, ASP_1_KEY] call DICT_fnc_get;
+        _temp = _common get ASP_1_KEY;
         {
             _temp select 0 pushBackUnique _x;
         } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
         } forEach (_ammo);
-        [_common, ASP_1_KEY, _temp] call DICT_fnc_set;
+        _common set [ASP_1_KEY, _temp];
     }
     else
     {
-        [_common, ASP_1_KEY, [_weapons, _ammo]] call DICT_fnc_set;
+        _common set [ASP_1_KEY, [_weapons, _ammo]];
     };
 };
 
-[Escape_Random_Cargo_Special, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
+Escape_Random_Cargo_Special set [RAND_CARGO_COMMON_KEY, _common];
 
 // Prison start weapons
-_common = [Escape_Random_Cargo_Prison, RAND_CARGO_COMMON_KEY] call DICT_fnc_get;
+_common = Escape_Random_Cargo_Prison get RAND_CARGO_COMMON_KEY;
 
 // Rook
-if ([_common, ROOK_KEY] call DICT_fnc_exists) then { /* No unique values that could be ommitted */ }
+if (ROOK_KEY in _common) then { /* No unique values that could be ommitted */ }
 else
 {
-    [_common, ROOK_KEY, [["hgun_Rook40_F", "hgun_Rook40_snds_F"], ["16Rnd_9x21_Mag"]]] call DICT_fnc_set;
+    _common set [ROOK_KEY, [["hgun_Rook40_F", "hgun_Rook40_snds_F"], ["16Rnd_9x21_Mag"]]];
 };
 
-[Escape_Random_Cargo_Prison, RAND_CARGO_COMMON_KEY, _common] call DICT_fnc_set;
+Escape_Random_Cargo_Prison set [RAND_CARGO_COMMON_KEY, _common];

@@ -1,12 +1,12 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Object - 
-		String - 
-		Number (Optional) - 
-		Number (Optional) - 
+	    Object -
+		String -
+		Number (Optional) -
+		Number (Optional) -
 */
 
 #include "..\..\..\define.hpp"
@@ -60,8 +60,9 @@ for [{ private _i = 0 }, { _i < _weaponCount }, { _i = _i + 1 }] do
         RAND_CARGO_RARE_KEY,     0.15
     ];
 
-    private _weaponGroupKeys = [_map, _rarity] call DICT_fnc_get call DICT_fnc_keys;
-    private _weaponGroup = [_map, _rarity, selectRandom _weaponGroupKeys] call DICT_fnc_get;
+    private _weaponMap = _map get _rarity;
+    private _weaponGroupKey = selectRandom keys _weaponMap;
+    private _weaponGroup = _weaponMap get _weaponGroupKey;
 
     private _weapons = _weaponGroup select 0;
     private _ammo = _weaponGroup select 1;

@@ -8,25 +8,25 @@
 
 if (!isServer) exitWith {};
 
-Escape_Random_Cargo_Basic = call DICT_fnc_create;
-[Escape_Random_Cargo_Basic, RAND_CARGO_COMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Basic, RAND_CARGO_UNCOMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Basic, RAND_CARGO_RARE_KEY, call DICT_fnc_create] call DICT_fnc_set;
+Escape_Random_Cargo_Basic = createHashMap;
+Escape_Random_Cargo_Basic set [RAND_CARGO_COMMON_KEY, createHashMap];
+Escape_Random_Cargo_Basic set [RAND_CARGO_UNCOMMON_KEY, createHashMap];
+Escape_Random_Cargo_Basic set [RAND_CARGO_RARE_KEY, createHashMap];
 
-Escape_Random_Cargo_Launcher = call DICT_fnc_create;
-[Escape_Random_Cargo_Launcher, RAND_CARGO_COMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Launcher, RAND_CARGO_UNCOMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Launcher, RAND_CARGO_RARE_KEY, call DICT_fnc_create] call DICT_fnc_set;
+Escape_Random_Cargo_Launcher = createHashMap;
+Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, createHashMap];
+Escape_Random_Cargo_Launcher set [RAND_CARGO_UNCOMMON_KEY, createHashMap];
+Escape_Random_Cargo_Launcher set [RAND_CARGO_RARE_KEY, createHashMap];
 
-Escape_Random_Cargo_Special = call DICT_fnc_create;
-[Escape_Random_Cargo_Special, RAND_CARGO_COMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Special, RAND_CARGO_UNCOMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Special, RAND_CARGO_RARE_KEY, call DICT_fnc_create] call DICT_fnc_set;
+Escape_Random_Cargo_Special = createHashMap;
+Escape_Random_Cargo_Special set [RAND_CARGO_COMMON_KEY, createHashMap];
+Escape_Random_Cargo_Special set [RAND_CARGO_UNCOMMON_KEY, createHashMap];
+Escape_Random_Cargo_Special set [RAND_CARGO_RARE_KEY, createHashMap];
 
-Escape_Random_Cargo_Prison = call DICT_fnc_create;
-[Escape_Random_Cargo_Prison, RAND_CARGO_COMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Prison, RAND_CARGO_UNCOMMON_KEY, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Cargo_Prison, RAND_CARGO_RARE_KEY, call DICT_fnc_create] call DICT_fnc_set;
+Escape_Random_Cargo_Prison = createHashMap;
+Escape_Random_Cargo_Prison set [RAND_CARGO_COMMON_KEY, createHashMap];
+Escape_Random_Cargo_Prison set [RAND_CARGO_UNCOMMON_KEY, createHashMap];
+Escape_Random_Cargo_Prison set [RAND_CARGO_RARE_KEY, createHashMap];
 
 call compile preprocessFile "src\lists\randomCargo\nato.sqf";
 call compile preprocessFile "src\lists\randomCargo\csat.sqf";
@@ -35,3 +35,5 @@ call compile preprocessFile "src\lists\randomCargo\csat_p.sqf";
 call compile preprocessFile "src\lists\randomCargo\spetsnaz.sqf";
 call compile preprocessFile "src\lists\randomCargo\ldf.sqf";
 call compile preprocessFile "src\lists\randomCargo\misc.sqf";
+
+publicVariable "Escape_Random_Cargo_Prison";

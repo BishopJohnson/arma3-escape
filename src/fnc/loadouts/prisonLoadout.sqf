@@ -42,8 +42,9 @@ private _rarity = selectRandomWeighted
 ];
 
 // Gets the weapon group to give the player
-private _weaponGroupKeys = [Escape_Random_Cargo_Prison, _rarity] call DICT_fnc_get call DICT_fnc_keys;
-private _weaponGroup = [Escape_Random_Cargo_Prison, _rarity, selectRandom _weaponGroupKeys] call DICT_fnc_get;
+private _weaponDict = Escape_Random_Cargo_Prison get _rarity;
+private _weaponGroupKey = selectRandom keys _weaponDict;
+private _weaponGroup = _weaponDict get _weaponGroupKey;
 
 // Selects the weapon and magazine types
 private _weapons = _weaponGroup select 0;
