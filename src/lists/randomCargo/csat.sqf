@@ -352,20 +352,20 @@ if (_usingMarksmen) then
         _weapons = ["srifle_DMR_05_blk_F", "srifle_DMR_05_hex_F", "srifle_DMR_05_tan_f"];
     };
 
-    if (Cyrus_KEY in _uncommon) then
+    if (CYRUS_KEY in _uncommon) then
     {
-        _temp = _uncommon get Cyrus_KEY;
+        _temp = _uncommon get CYRUS_KEY;
         {
             _temp select 0 pushBackUnique _x;
         } forEach (_weapons);
         {
             _temp select 1 pushBackUnique _x;
         } forEach (_ammo);
-        _uncommon set [Cyrus_KEY, _temp];
+        _uncommon set [CYRUS_KEY, _temp];
     }
     else
     {
-        _uncommon set [Cyrus_KEY, [_weapons, _ammo]];
+        _uncommon set [CYRUS_KEY, [_weapons, _ammo]];
     };
 };
 
