@@ -31,27 +31,6 @@ if (typeName _loadout == "Array") then
 
 private _vehGroup = [_pos, random 360, _veh, _side] call BIS_fnc_spawnVehicle;
 [_vehGroup select 0, _variant, _loadout] call BIS_fnc_initVehicle;
-
-{
-    switch (typeOf _x) do
-    {
-        case "B_Soldier_F";
-        case "B_T_Soldier_F";
-        case "B_W_Soldier_F":
-        {
-            [_x] execVM "src\lists\units\nato\rifleman.sqf";
-        };
-        case "B_Crew_F";
-        case "B_T_Crew_F";
-        case "B_W_Crew_F":
-        {
-            [_x] execVM "src\lists\units\nato\crewman.sqf";
-        };
-        default
-        {
-            // TODO: Log unhandled unit type.
-        };
-    };
-} forEach (_vehGroup select 1);
+[_vehGroup select 1] execVM "src\fnc\loadouts\setCrewLoadoutNato.sqf";
 
 _vehGroup
