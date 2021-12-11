@@ -43,7 +43,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_Quadbike_01_F"];
-    if (_usingApex) then { _veh append ["O_T_Quadbike_01_ghex_F"] };
 };
 
 _vehicles set ["quadbike", [_veh, true, true]];
@@ -59,10 +58,6 @@ if (_usingApex) then
             {
                 _variants = ["GreenHex"];
             };
-            case LIVONIA_KEY:
-            {
-                _variants = ["Black"];
-            };
             default
             {
                 _variants = ["Arid"];
@@ -71,7 +66,7 @@ if (_usingApex) then
     }
     else
     {
-        _variants = ["Arid", "Black", "GreenHex"];
+        _variants = ["Arid", "Black"];
     };
 
     _vehicles set ["qilin", [["O_LSV_02_unarmed_F"], _variants, true]];
@@ -95,7 +90,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_Truck_02_transport_F", "O_Truck_02_covered_F"];
-    if (_usingApex) then { _veh append ["O_T_Truck_02_transport_F", "O_T_Truck_02_covered_F"]; };
 };
 
 _vehicles set ["zamak", [_veh, true, true]];
@@ -118,10 +112,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_Truck_03_transport_F", "O_Truck_03_covered_F", "O_Truck_03_device_F"];
-    if (_usingApex) then
-    {
-        _veh append ["O_T_Truck_03_transport_ghex_F", "O_T_Truck_03_covered_ghex_F", "O_T_Truck_03_device_ghex_F"];
-    };
 };
 
 _vehicles set ["tempest", [_veh, true, true]];
@@ -142,10 +132,6 @@ if (_usingApex) then
             {
                 _variants = ["GreenHex"];
             };
-            case LIVONIA_KEY:
-            {
-                _variants = ["Black"];
-            };
             default
             {
                 _variants = ["Arid"];
@@ -154,7 +140,7 @@ if (_usingApex) then
     }
     else
     {
-        _variants = ["Arid", "Black", "GreenHex"];
+        _variants = ["Arid", "Black"];
     };
 
     _vehicles set ["qilin", [["O_LSV_02_armed_F", "O_LSV_02_AT_F"], _variants, true]];
@@ -194,24 +180,7 @@ if (_useMapCamo) then
 }
 else
 {
-    _veh =
-    [
-        "O_Truck_02_box_F",
-        "O_Truck_02_Ammo_F",
-        "O_Truck_02_fuel_F",
-        "O_Truck_02_medical_F"
-    ];
-
-    if (_usingApex) then
-    {
-        _veh append
-        [
-            "O_T_Truck_02_box_F",
-            "O_T_Truck_02_Ammo_F",
-            "O_T_Truck_02_fuel_F",
-            "O_T_Truck_02_medical_F"
-        ]
-    };
+    _veh = ["O_Truck_02_box_F", "O_Truck_02_Ammo_F", "O_Truck_02_fuel_F", "O_Truck_02_medical_F"];
 };
 
 _vehicles set ["zamak", [_veh, true, true]];
@@ -245,24 +214,7 @@ if (_useMapCamo) then
 }
 else
 {
-    _veh =
-    [
-        "O_Truck_03_ammo_F",
-        "O_Truck_03_fuel_F",
-        "O_Truck_03_medical_F",
-        "O_Truck_03_repair_F"
-    ];
-
-    if (_usingApex) then
-    {
-        _veh append
-        [
-            "O_T_Truck_03_ammo_ghex_F",
-            "O_T_Truck_03_fuel_ghex_F",
-            "O_T_Truck_03_medical_ghex_F",
-            "O_T_Truck_03_repair_ghex_F"
-        ]
-    };
+    _veh = ["O_Truck_03_ammo_F", "O_Truck_03_fuel_F", "O_Truck_03_medical_F", "O_Truck_03_repair_F"];
 };
 
 _vehicles set ["tempest", [_veh, true, true]];
@@ -290,7 +242,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_MRAP_02_F"];
-    if (_usingApex) then { _veh append ["O_T_MRAP_02_ghex_F"] };
 };
 
 _vehicles set ["ifrit", [_veh, true, true]];
@@ -318,7 +269,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"];
-    if (_usingApex) then { _veh append ["O_T_MRAP_02_hmg_ghex_F", "O_T_MRAP_02_gmg_ghex_F"] };
 };
 
 _vehicles set ["ifrit", [_veh, true, true]];
@@ -346,7 +296,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_APC_Wheeled_02_rcws_v2_F"];
-    if (_usingApex) then { _veh append ["O_T_APC_Wheeled_02_rcws_v2_ghex_F"] };
 };
 
 _vehicles set ["marid", [
@@ -378,7 +327,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_APC_Tracked_02_cannon_F"];
-    if (_usingApex) then { _veh append ["O_T_APC_Tracked_02_cannon_ghex_F"] };
 };
 
 _vehicles set ["kamysh", [
@@ -410,7 +358,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_MBT_02_cannon_F"];
-    if (_usingApex) then { _veh append ["O_T_MBT_02_cannon_ghex_F"] };
 };
 
 _vehicles set ["t100", [_veh, true, ["Escape_T100_Default", "Escape_T100_Net"]]];
@@ -426,10 +373,6 @@ if (_usingTanks) then
             {
                 _variants = ["GreenHex"];
             };
-            case LIVONIA_KEY:
-            {
-                _variants = ["Grey"];
-            };
             default
             {
                 _variants = ["Hex"];
@@ -438,7 +381,7 @@ if (_usingTanks) then
     }
     else
     {
-        _variants = ["Hex", "Grey", "GreenHex", "Jungle"];
+        _variants = ["Hex", "Grey", "Jungle"];
     };
 
     _vehicles set ["t140", [
@@ -471,7 +414,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_MBT_02_arty_F"];
-    if (_usingApex) then { _veh append ["O_T_MBT_02_arty_ghex_F"] };
 };
 
 _vehicles set ["sochor", [
@@ -503,7 +445,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["O_APC_Tracked_02_AA_F"];
-    if (_usingApex) then { _veh append ["O_T_APC_Tracked_02_AA_ghex_F"] };
 };
 
 _vehicles set ["tigris", [
@@ -694,7 +635,7 @@ if (_usingApex) then
     }
     else
     {
-        _variants = ["Hex", "Grey", "GreenHex"];
+        _variants = ["Hex", "Grey"];
     };
 
     _vehicles set ["xian", [["O_T_VTOL_02_infantry_dynamicLoadout_F"], _variants, true]];

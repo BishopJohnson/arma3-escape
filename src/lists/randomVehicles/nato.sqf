@@ -28,7 +28,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_Quadbike_01_F"];
         };
@@ -41,7 +42,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_Quadbike_01_F"];
-    if (_usingApex) then { _veh append ["B_T_Quadbike_01_F"] };
 };
 
 _vehicles set ["quadbike", [_veh, true, true]];
@@ -55,7 +55,8 @@ if (_usingApex) then
     {
         switch (_map) do
         {
-            case TANOA_KEY:
+            case TANOA_KEY;
+            case LIVONIA_KEY:
             {
                 _variants = ["Olive"];
             };
@@ -67,7 +68,7 @@ if (_usingApex) then
     }
     else
     {
-        _variants = ["Black", "Olive", "Sand"];
+        _variants = ["Black", "Sand"];
     };
 
     _vehicles set ["prowler", [_veh, _variants, true]];
@@ -78,7 +79,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh =
             [
@@ -112,18 +114,6 @@ else
         "B_Truck_01_covered_F",
         "B_Truck_01_box_F"
     ];
-
-    if (_usingApex) then
-    {
-        _veh append
-        [
-            "B_T_Truck_01_mover_F",
-            "B_T_Truck_01_cargo_F",
-            "B_T_Truck_01_transport_F",
-            "B_T_Truck_01_covered_F",
-            "B_T_Truck_01_box_F"
-        ]
-    };
 };
 
 _vehicles set ["hemtt", [_veh, true, true]];
@@ -142,7 +132,8 @@ if (_usingApex) then
     {
         switch (_map) do
         {
-            case TANOA_KEY:
+            case TANOA_KEY;
+            case LIVONIA_KEY:
             {
                 _variants = ["Olive"];
             };
@@ -154,7 +145,7 @@ if (_usingApex) then
     }
     else
     {
-        _variants = ["Black", "Olive", "Sand"];
+        _variants = ["Black", "Sand"];
     };
 
     _vehicles set ["prowler", [_veh, _variants, true]];
@@ -170,7 +161,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh =
             [
@@ -204,18 +196,6 @@ else
         "B_Truck_01_medical_F",
         "B_Truck_01_Repair_F"
     ];
-
-    if (_usingApex) then
-    {
-        _veh append
-        [
-            "B_T_Truck_01_flatbed_F",
-            "B_T_Truck_01_ammo_F",
-            "B_T_Truck_01_fuel_F",
-            "B_T_Truck_01_medical_F",
-            "B_T_Truck_01_Repair_F"
-        ]
-    };
 };
 
 _vehicles set ["hemtt", [_veh, true, true]];
@@ -230,7 +210,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_MRAP_01_F"];
         };
@@ -243,7 +224,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_MRAP_01_F"];
-    if (_usingApex) then { _veh append ["B_T_MRAP_01_F"] };
 };
 
 _vehicles set ["hunter", [_veh, true, true]];
@@ -258,7 +238,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"];
         };
@@ -271,7 +252,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"];
-    if (_usingApex) then { _veh append ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"] };
 };
 
 _vehicles set ["hunter", [_veh, true, true]];
@@ -286,7 +266,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_APC_Wheeled_01_cannon_F"];
         };
@@ -299,7 +280,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_APC_Wheeled_01_cannon_F"];
-    if (_usingApex) then { _veh append ["B_T_APC_Wheeled_01_cannon_F"] };
 };
 
 _vehicles set ["marshall", [
@@ -318,7 +298,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_APC_Tracked_01_rcws_F"];
         };
@@ -331,7 +312,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_APC_Tracked_01_rcws_F"];
-    if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_rcws_F"] };
 };
 
 _vehicles set ["panther", [
@@ -345,7 +325,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_APC_Tracked_01_CRV_F"];
         };
@@ -358,7 +339,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_APC_Tracked_01_CRV_F"];
-    if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_CRV_F"] };
 };
 
 _vehicles set ["bobcat", [
@@ -377,7 +357,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_MBT_01_cannon_F", "B_T_MBT_01_TUSK_F"];
         };
@@ -390,7 +371,6 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"];
-    if (_usingApex) then { _veh append ["B_T_MBT_01_cannon_F", "B_T_MBT_01_TUSK_F"] };
 };
 
 _vehicles set ["slammer", [
@@ -406,9 +386,10 @@ if (_usingTanks) then
     {
         switch (_map) do
         {
-            case TANOA_KEY:
+            case TANOA_KEY;
+            case LIVONIA_KEY:
             {
-                _variants = ["Olive"];
+                _variants = ["Green"];
             };
             default
             {
@@ -418,7 +399,7 @@ if (_usingTanks) then
     }
     else
     {
-        _variants = ["Olive", "Sand"];
+        _variants = ["Green", "Sand"];
     };
 
     _vehicles set ["rhino", [
@@ -438,7 +419,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_MBT_01_arty_F"];
         };
@@ -465,7 +447,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_MBT_01_mlrs_F"];
         };
@@ -492,12 +475,13 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Anti-Air
 _vehicles = createHashMap;
 
-// Sandstorm
+// Cheetah
 if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_APC_Tracked_01_AA_F"];
         };
@@ -655,7 +639,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_Static_AA_F"];
         };
@@ -678,7 +663,8 @@ if (_useMapCamo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
         {
             _veh = ["B_T_Static_AT_F"];
         };
