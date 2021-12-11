@@ -8,11 +8,11 @@
 
 if (!isServer) exitWith {};
 
-Escape_Random_Vehicles = call DICT_fnc_create;
-[Escape_Random_Vehicles, str west, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Vehicles, str east, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Vehicles, str independent, call DICT_fnc_create] call DICT_fnc_set;
-[Escape_Random_Vehicles, str civilian, call DICT_fnc_create] call DICT_fnc_set;
+Escape_Random_Vehicles = createHashMap;
+Escape_Random_Vehicles set [str west, createHashMap];
+Escape_Random_Vehicles set [str east, createHashMap];
+Escape_Random_Vehicles set [str independent, createHashMap];
+Escape_Random_Vehicles set [str civilian, createHashMap];
 
 call compile preprocessFile "src\lists\randomVehicles\nato.sqf";
 call compile preprocessFile "src\lists\randomVehicles\csat.sqf";

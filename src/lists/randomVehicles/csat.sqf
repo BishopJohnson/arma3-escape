@@ -10,10 +10,10 @@ private ["_vehicles", "_veh", "_variants"];
 
 if (!isServer) exitWith {};
 
-private _include = "IncludeCsat" call BIS_fnc_getParamValue;
+private _include = "IncludeIranian" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
-private _dict = call DICT_fnc_create;
+private _dict = createHashMap;
 
 private _map = worldName;
 private _useMapCamo = _include == 2;
@@ -23,7 +23,7 @@ private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
 private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Quadbike
 if (_useMapCamo) then
@@ -46,7 +46,7 @@ else
     if (_usingApex) then { _veh append ["O_T_Quadbike_01_ghex_F"] };
 };
 
-[_vehicles, "quadbike", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["quadbike", [_veh, true, true]];
 
 // Qilin
 if (_usingApex) then
@@ -74,7 +74,7 @@ if (_usingApex) then
         _variants = ["Arid", "Black", "GreenHex"];
     };
 
-    [_vehicles, "qilin", [["O_LSV_02_unarmed_F"], _variants, true]] call DICT_fnc_set;
+    _vehicles set ["qilin", [["O_LSV_02_unarmed_F"], _variants, true]];
 };
 
 // Zamak
@@ -98,7 +98,7 @@ else
     if (_usingApex) then { _veh append ["O_T_Truck_02_transport_F", "O_T_Truck_02_covered_F"]; };
 };
 
-[_vehicles, "zamak", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["zamak", [_veh, true, true]];
 
 // Tempest
 if (_useMapCamo) then
@@ -124,12 +124,12 @@ else
     };
 };
 
-[_vehicles, "tempest", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["tempest", [_veh, true, true]];
 
-[_dict, RAND_VEH_CAR_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Qilin
 if (_usingApex) then
@@ -157,13 +157,13 @@ if (_usingApex) then
         _variants = ["Arid", "Black", "GreenHex"];
     };
 
-    [_vehicles, "qilin", [["O_LSV_02_armed_F", "O_LSV_02_AT_F"], _variants, true]] call DICT_fnc_set;
+    _vehicles set ["qilin", [["O_LSV_02_armed_F", "O_LSV_02_AT_F"], _variants, true]];
 };
 
-[_dict, RAND_VEH_CAR_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Zamak
 if (_useMapCamo) then
@@ -214,7 +214,7 @@ else
     };
 };
 
-[_vehicles, "zamak", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["zamak", [_veh, true, true]];
 
 // Tempest
 if (_useMapCamo) then
@@ -265,12 +265,12 @@ else
     };
 };
 
-[_vehicles, "tempest", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["tempest", [_veh, true, true]];
 
-[_dict, RAND_VEH_UTIL_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_UTIL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs unarmed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Ifrit
 if (_useMapCamo) then
@@ -293,12 +293,12 @@ else
     if (_usingApex) then { _veh append ["O_T_MRAP_02_ghex_F"] };
 };
 
-[_vehicles, "ifrit", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["ifrit", [_veh, true, true]];
 
-[_dict, RAND_VEH_MRAP_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs armed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Ifrit
 if (_useMapCamo) then
@@ -321,12 +321,12 @@ else
     if (_usingApex) then { _veh append ["O_T_MRAP_02_hmg_ghex_F", "O_T_MRAP_02_gmg_ghex_F"] };
 };
 
-[_vehicles, "ifrit", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["ifrit", [_veh, true, true]];
 
-[_dict, RAND_VEH_MRAP_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Marid
 if (_useMapCamo) then
@@ -349,16 +349,16 @@ else
     if (_usingApex) then { _veh append ["O_T_APC_Wheeled_02_rcws_v2_ghex_F"] };
 };
 
-[_vehicles, "marid", [
+_vehicles set ["marid", [
     _veh,
     true,
     ["Escape_Marid_Default", "Escape_Marid_Cage", "Escape_Marid_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_IFV_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_IFV_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// APCs
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Kamysh
 if (_useMapCamo) then
@@ -381,16 +381,16 @@ else
     if (_usingApex) then { _veh append ["O_T_APC_Tracked_02_cannon_ghex_F"] };
 };
 
-[_vehicles, "kamysh", [
+_vehicles set ["kamysh", [
     _veh,
     true,
     ["Escape_Kamysh_Default", "Escape_Kamysh_Cage", "Escape_Kamysh_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_APC_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_APC_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Tanks
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // T-100
 if (_useMapCamo) then
@@ -413,7 +413,7 @@ else
     if (_usingApex) then { _veh append ["O_T_MBT_02_cannon_ghex_F"] };
 };
 
-[_vehicles, "t100", [_veh, true, ["Escape_T100_Default", "Escape_T100_Net"]]] call DICT_fnc_set;
+_vehicles set ["t100", [_veh, true, ["Escape_T100_Default", "Escape_T100_Net"]]];
 
 // T-140
 if (_usingTanks) then
@@ -441,17 +441,17 @@ if (_usingTanks) then
         _variants = ["Hex", "Grey", "GreenHex", "Jungle"];
     };
 
-    [_vehicles, "t140", [
+    _vehicles set ["t140", [
         ["O_MBT_04_cannon_F", "O_MBT_04_command_F"],
         _variants,
         ["Escape_T140_Default", "Escape_T140_Net"]
-    ]] call DICT_fnc_set;
+    ]];
 };
 
-[_dict, RAND_VEH_TANK_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TANK_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Sochor
 if (_useMapCamo) then
@@ -474,16 +474,16 @@ else
     if (_usingApex) then { _veh append ["O_T_MBT_02_arty_ghex_F"] };
 };
 
-[_vehicles, "sochor", [
+_vehicles set ["sochor", [
     _veh,
     true,
     ["Escape_Sochor_Default", "Escape_Sochor_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_ARTY_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_ARTY_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Anti-Air
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Tigris
 if (_useMapCamo) then
@@ -506,16 +506,16 @@ else
     if (_usingApex) then { _veh append ["O_T_APC_Tracked_02_AA_ghex_F"] };
 };
 
-[_vehicles, "tigris", [
+_vehicles set ["tigris", [
     _veh,
     true,
     ["Escape_Tigris_Default", "Escape_Tigris_Cage", "Escape_Tigris_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_AA_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_AA_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter transport
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Orca
 if (_useMapCamo) then
@@ -538,7 +538,7 @@ else
     _variants = ["Opfor", "Black", "Blackcustom"];
 };
 
-[_vehicles, "orca", [["O_Heli_Light_02_unarmed_F"], _variants, true]] call DICT_fnc_set;
+_vehicles set ["orca", [["O_Heli_Light_02_unarmed_F"], _variants, true]];
 
 // Taru
 if (_usingHeli) then
@@ -563,17 +563,17 @@ if (_usingHeli) then
         _variants = ["Opfor", "Black"];
     };
 
-    [_vehicles, "taru", [
+    _vehicles set ["taru", [
         ["O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"],
         _variants,
         true
-    ]] call DICT_fnc_set;
+    ]];
 };
 
-[_dict, RAND_VEH_HELI_T_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter light
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Orca
 if (_useMapCamo) then
@@ -596,16 +596,16 @@ else
     _variants = ["Opfor", "Black", "Blackcustom"];
 };
 
-[_vehicles, "orca", [
+_vehicles set ["orca", [
     ["O_Heli_Light_02_dynamicLoadout_F", "O_Heli_Light_02_v2_F"],
     _variants,
     true
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_HELI_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter heavy
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Kajman
 if (_useMapCamo) then
@@ -628,17 +628,17 @@ else
     _variants = ["Opfor", "Black"];
 };
 
-[_vehicles, "kajman", [["O_Heli_Attack_02_dynamicLoadout_F"], _variants, true]] call DICT_fnc_set;
+_vehicles set ["kajman", [["O_Heli_Attack_02_dynamicLoadout_F"], _variants, true]];
 
-[_dict, RAND_VEH_HELI_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Neophron
 if (!_useMapCamo || _map != TANOA_KEY) then
 {
-    [_vehicles, "neophron", [["O_Plane_CAS_02_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+    _vehicles set ["neophron", [["O_Plane_CAS_02_dynamicLoadout_F"], true, true]];
 };
 
 // Shikra
@@ -664,11 +664,11 @@ if (_usingJets) then
         _variants = ["CamoAridHex", "CamoGreyHex", "CamoBlue"];
     };
 
-    [_vehicles, "shikra", [
+    _vehicles set ["shikra", [
         ["O_Plane_Fighter_02_F", "O_Plane_Fighter_02_Stealth_F"],
         _variants,
         true
-    ]] call DICT_fnc_set;
+    ]];
 };
 
 // Xi'an
@@ -697,47 +697,47 @@ if (_usingApex) then
         _variants = ["Hex", "Grey", "GreenHex"];
     };
 
-    [_vehicles, "xian", [["O_T_VTOL_02_infantry_dynamicLoadout_F"], _variants, true]] call DICT_fnc_set;
+    _vehicles set ["xian", [["O_T_VTOL_02_infantry_dynamicLoadout_F"], _variants, true]];
 };
 
-[_dict, RAND_VEH_PLANE_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_PLANE_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane UAV
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Ababil
-[_vehicles, "ababil", [["O_UAV_02_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["ababil", [["O_UAV_02_dynamicLoadout_F"], true, true]];
 
-[_dict, RAND_VEH_PLANE_UAV_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["O_HMG_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["O_HMG_01_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["O_GMG_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["O_GMG_01_F"], true, true]];
 
-[_dict, RAND_VEH_TURRET_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["O_HMG_01_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["O_HMG_01_high_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["O_GMG_01_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["O_GMG_01_high_F"], true, true]];
 
 // Titan AA
-[_vehicles, "titanAa", [["O_static_AA_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["titanAa", [["O_static_AA_F"], true, true]];
 
 // Titan AA
-[_vehicles, "titanAt", [["O_static_AT_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["titanAt", [["O_static_AT_F"], true, true]];
 
-[_dict, RAND_VEH_TURRET_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = [Escape_Random_Vehicles, str east] call DICT_fnc_get;
-[_sideDict, CSAT_KEY, _dict] call DICT_fnc_set;
-[Escape_Random_Vehicles, str east, _sideDict] call DICT_fnc_set;
+private _sideDict = Escape_Random_Vehicles get str east;
+_sideDict set [CSAT_KEY, _dict];
+Escape_Random_Vehicles set [str east, _sideDict];

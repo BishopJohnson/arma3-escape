@@ -10,7 +10,7 @@ private ["_vehicles", "_veh", "_variants"];
 
 if (!isServer) exitWith {};
 
-private _dict = call DICT_fnc_create;
+private _dict = createHashMap;
 
 private _map = worldName;
 private _useMapCamo = "IncludeNato" call BIS_fnc_getParamValue == 2;
@@ -21,7 +21,7 @@ private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
 private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Quadbike
 if (_useMapCamo) then
@@ -44,7 +44,7 @@ else
     if (_usingApex) then { _veh append ["B_T_Quadbike_01_F"] };
 };
 
-[_vehicles, "quadbike", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["quadbike", [_veh, true, true]];
 
 // Prowler
 if (_usingApex) then
@@ -70,7 +70,7 @@ if (_usingApex) then
         _variants = ["Black", "Olive", "Sand"];
     };
 
-    [_vehicles, "prowler", [_veh, _variants, true]] call DICT_fnc_set;
+    _vehicles set ["prowler", [_veh, _variants, true]];
 };
 
 // HEMTT
@@ -126,10 +126,12 @@ else
     };
 };
 
-[_dict, RAND_VEH_CAR_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_vehicles set ["hemtt", [_veh, true, true]];
+
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Prowler
 if (_usingApex) then
@@ -155,13 +157,13 @@ if (_usingApex) then
         _variants = ["Black", "Olive", "Sand"];
     };
 
-    [_vehicles, "prowler", [_veh, _variants, true]] call DICT_fnc_set;
+    _vehicles set ["prowler", [_veh, _variants, true]];
 };
 
-[_dict, RAND_VEH_CAR_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HEMTT
 if (_useMapCamo) then
@@ -216,12 +218,12 @@ else
     };
 };
 
-[_vehicles, "hemtt", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["hemtt", [_veh, true, true]];
 
-[_dict, RAND_VEH_UTIL_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_UTIL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs unarmed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Hunter
 if (_useMapCamo) then
@@ -244,12 +246,12 @@ else
     if (_usingApex) then { _veh append ["B_T_MRAP_01_F"] };
 };
 
-[_vehicles, "hunter", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["hunter", [_veh, true, true]];
 
-[_dict, RAND_VEH_MRAP_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs armed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Hunter
 if (_useMapCamo) then
@@ -272,12 +274,12 @@ else
     if (_usingApex) then { _veh append ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"] };
 };
 
-[_vehicles, "hunter", [_veh, true, true]] call DICT_fnc_set;
+_vehicles set ["hunter", [_veh, true, true]];
 
-[_dict, RAND_VEH_MRAP_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Marshall
 if (_useMapCamo) then
@@ -300,16 +302,16 @@ else
     if (_usingApex) then { _veh append ["B_T_APC_Wheeled_01_cannon_F"] };
 };
 
-[_vehicles, "marshall", [
+_vehicles set ["marshall", [
     _veh,
     true,
     ["Escape_Marshall_Default", "Escape_Marshall_Cage", "Escape_Marshall_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_IFV_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_IFV_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// APCs
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Panther
 if (_useMapCamo) then
@@ -332,11 +334,11 @@ else
     if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_rcws_F"] };
 };
 
-[_vehicles, "panther", [
+_vehicles set ["panther", [
     _veh,
     true,
     ["Escape_Panther_Default", "Escape_Panther_Net"]
-]] call DICT_fnc_set;
+]];
 
 // Bobcat
 if (_useMapCamo) then
@@ -359,16 +361,16 @@ else
     if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_CRV_F"] };
 };
 
-[_vehicles, "bobcat", [
+_vehicles set ["bobcat", [
     _veh,
     true,
     ["Escape_Bobcat_Default", "Escape_Bobcat_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_APC_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_APC_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Tanks
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Slammer
 if (_useMapCamo) then
@@ -391,11 +393,11 @@ else
     if (_usingApex) then { _veh append ["B_T_MBT_01_cannon_F", "B_T_MBT_01_TUSK_F"] };
 };
 
-[_vehicles, "slammer", [
+_vehicles set ["slammer", [
     _veh,
     true,
     ["Escape_Slammer_Default", "Escape_Slammer_Net"]
-]] call DICT_fnc_set;
+]];
 
 // Rhino
 if (_usingTanks) then
@@ -419,17 +421,17 @@ if (_usingTanks) then
         _variants = ["Olive", "Sand"];
     };
 
-    [_vehicles, "rhino", [
+    _vehicles set ["rhino", [
         ["B_AFV_Wheeled_01_cannon_F", "B_AFV_Wheeled_01_up_cannon_F"],
         _variants,
         ["Escape_Rhino_Default", "Escape_Rhino_Cage", "Escape_Rhino_Net"]
-    ]] call DICT_fnc_set;
+    ]];
 };
 
-[_dict, RAND_VEH_TANK_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TANK_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Scorcher
 if (_useMapCamo) then
@@ -452,11 +454,11 @@ else
     if (_usingApex) then { _veh append ["B_T_MBT_01_arty_F"] };
 };
 
-[_vehicles, "scorcher", [
+_vehicles set ["scorcher", [
     _veh,
     true,
     ["Escape_Scrocher_Default", "Escape_Scrocher_Net"]
-]] call DICT_fnc_set;
+]];
 
 // Sandstorm
 if (_useMapCamo) then
@@ -479,16 +481,16 @@ else
     if (_usingApex) then { _veh append ["B_T_MBT_01_mlrs_F"] };
 };
 
-[_vehicles, "sandstorm", [
+_vehicles set ["sandstorm", [
     _veh,
     true,
     ["Escape_Sandstorm_Default", "Escape_Sandstorm_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_ARTY_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_ARTY_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Anti-Air
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Sandstorm
 if (_useMapCamo) then
@@ -511,16 +513,16 @@ else
     if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_AA_F"] };
 };
 
-[_vehicles, "cheetah", [
+_vehicles set ["cheetah", [
     _veh,
     true,
     ["Escape_Cheetah_Default", "Escape_Cheetah_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_AA_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_AA_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter transport
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Ghost Hawk
 if (_useMapCamo) then
@@ -546,16 +548,16 @@ if (_usingHeli) then
         _variants = ["Green", "Black"];
     };
 
-    [_vehicles, "huron", [["B_Heli_Transport_03_F"], true, _variants]] call DICT_fnc_set;
+    _vehicles set ["huron", [["B_Heli_Transport_03_F"], true, _variants]];
 };
 
-[_dict, RAND_VEH_HELI_T_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter light
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Pawnee
-[_vehicles, "pawnee", [["B_Heli_Light_01_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["pawnee", [["B_Heli_Light_01_dynamicLoadout_F"], true, true]];
 
 // Ghost Hawk
 if (_useMapCamo) then
@@ -567,7 +569,7 @@ else
     _variants = ["Green", "Black"];
 };
 
-[_vehicles, "ghostHawk", [["B_Heli_Transport_01_F"], true, _variants]] call DICT_fnc_set;
+_vehicles set ["ghostHawk", [["B_Heli_Transport_01_F"], true, _variants]];
 
 // Huron
 if (_usingHeli) then
@@ -581,72 +583,72 @@ if (_usingHeli) then
         _variants = ["Green", "Black"];
     };
 
-    [_vehicles, "huron", [["B_Heli_Transport_03_F"], true, _variants]] call DICT_fnc_set;
+    _vehicles set ["huron", [["B_Heli_Transport_03_F"], true, _variants]];
 };
 
-[_dict, RAND_VEH_HELI_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter heavy
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Blackfoot
-[_vehicles, "blackfoot", [["B_Heli_Attack_01_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["blackfoot", [["B_Heli_Attack_01_dynamicLoadout_F"], true, true]];
 
-[_dict, RAND_VEH_HELI_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Wipeout
-[_vehicles, "wipeout", [["B_Plane_CAS_01_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["wipeout", [["B_Plane_CAS_01_dynamicLoadout_F"], true, true]];
 
 // F/A-181
 if (_usingJets) then
 {
-    [_vehicles, "fa181", [["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Stealth_F"], true, true]] call DICT_fnc_set;
+    _vehicles set ["fa181", [["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Stealth_F"], true, true]];
 };
 
-[_dict, RAND_VEH_PLANE_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_PLANE_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane UAV
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Falcon
 if (_usingApex) then
 {
-    [_vehicles, "falcon", [["B_T_UAV_03_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+    _vehicles set ["falcon", [["B_T_UAV_03_dynamicLoadout_F"], true, true]];
 };
 
 // Greyhawk
-[_vehicles, "greyhawk", [["B_UAV_02_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["greyhawk", [["B_UAV_02_dynamicLoadout_F"], true, true]];
 
 // Sentinal
 if (_usingJets) then
 {
-    [_vehicles, "sentinal", [["B_UAV_05_F"], true, true]] call DICT_fnc_set;
+    _vehicles set ["sentinal", [["B_UAV_05_F"], true, true]];
 };
 
-[_dict, RAND_VEH_PLANE_UAV_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["B_HMG_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["B_HMG_01_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["B_GMG_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["B_GMG_01_F"], true, true]];
 
-[_dict, RAND_VEH_TURRET_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["B_HMG_01_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["B_HMG_01_high_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["B_GMG_01_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["B_GMG_01_high_F"], true, true]];
 
 // Titan AA
 if (_useMapCamo) then
@@ -655,21 +657,21 @@ if (_useMapCamo) then
     {
         case (_map == TANOA_KEY && _usingApex):
         {
-            _vehicles = ["B_T_Static_AA_F"];
+            _veh = ["B_T_Static_AA_F"];
         };
         default
         {
-            _vehicles = ["B_static_AA_F"];
+            _veh = ["B_static_AA_F"];
         };
     };
 }
 else
 {
-    _vehicles = ["B_static_AA_F"];
-    if (_usingApex) then { _vehicles append ["B_T_Static_AA_F"] };
+    _veh = ["B_static_AA_F"];
+    if (_usingApex) then { _veh append ["B_T_Static_AA_F"] };
 };
 
-[_vehicles, "titanAa", [_vehicles, true, true]] call DICT_fnc_set;
+_vehicles set ["titanAa", [_veh, true, true]];
 
 // Titan AT
 if (_useMapCamo) then
@@ -678,24 +680,24 @@ if (_useMapCamo) then
     {
         case (_map == TANOA_KEY && _usingApex):
         {
-            _vehicles = ["B_T_Static_AT_F"];
+            _veh = ["B_T_Static_AT_F"];
         };
         default
         {
-            _vehicles = ["B_static_AT_F"];
+            _veh = ["B_static_AT_F"];
         };
     };
 }
 else
 {
-    _vehicles = ["B_static_AT_F"];
-    if (_usingApex) then { _vehicles append ["B_T_Static_AT_F"] };
+    _veh = ["B_static_AT_F"];
+    if (_usingApex) then { _veh append ["B_T_Static_AT_F"] };
 };
 
-[_vehicles, "titanAt", [_vehicles, true, true]] call DICT_fnc_set;
+_vehicles set ["titanAt", [_veh, true, true]];
 
-[_dict, RAND_VEH_TURRET_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = [Escape_Random_Vehicles, str west] call DICT_fnc_get;
-[_sideDict, NATO_KEY, _dict] call DICT_fnc_set;
-[Escape_Random_Vehicles, str west, _sideDict] call DICT_fnc_set;
+private _sideDict = Escape_Random_Vehicles get str west;
+_sideDict set [NATO_KEY, _dict];
+Escape_Random_Vehicles set [str west, _sideDict];

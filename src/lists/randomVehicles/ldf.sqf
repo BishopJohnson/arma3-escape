@@ -13,156 +13,156 @@ if (!isServer) exitWith {};
 private _include = "IncludeLdf" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
-private _dict = call DICT_fnc_create;
+private _dict = createHashMap;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Quadbike
-[_vehicles, "quadbike", [["I_E_Quadbike_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["quadbike", [["I_E_Quadbike_01_F"], true, true]];
 
 // Offroad
-[_vehicles, "offroad", [
+_vehicles set ["offroad", [
     ["I_E_Offroad_01_covered_F"],
     ["EAF"],
     ["Escape_Offroad_Default", "Escape_Offroad_Comms"]
-]] call DICT_fnc_set;
+]];
 
 // Van
-[_vehicles, "van", [["I_E_Van_02_vehicle_F", "I_E_Van_02_transport_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["van", [["I_E_Van_02_vehicle_F", "I_E_Van_02_transport_F"], true, true]];
 
 // Zamak
-[_vehicles, "zamak", [["I_E_Truck_02_transport_F", "I_E_Truck_02_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["zamak", [["I_E_Truck_02_transport_F", "I_E_Truck_02_F"], true, true]];
 
-[_dict, RAND_VEH_CAR_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_CAR_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Van
-[_vehicles, "van", [
+_vehicles set ["van", [
     ["I_E_Van_02_medevac_F"],
     true,
     true
-]] call DICT_fnc_set;
+]];
 
 // Zamak
-[_vehicles, "zamak", [
+_vehicles set ["zamak", [
     ["I_E_Truck_02_box_F", "I_E_Truck_02_Ammo_F", "I_E_Truck_02_fuel_F", "I_E_Truck_02_medical_F"],
     true,
     true
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_UTIL_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_UTIL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs unarmed
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_MRAP_UNARMED_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs armed
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_MRAP_ARMED_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_IFV_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_IFV_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// APCs
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Odyniec (Mora)
-[_vehicles, "odyniec", [
+_vehicles set ["odyniec", [
     ["I_E_APC_tracked_03_cannon_F"],
     true,
     ["Escape_Odyniec_Default", "Escape_Odyniec_Cage", "Escape_Odyniec_Net"]
-]] call DICT_fnc_set;
+]];
 
-[_dict, RAND_VEH_APC_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_APC_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Tanks
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_TANK_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TANK_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Zamak MLR
-[_vehicles, "zamak", [["I_E_Truck_02_MRL_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["zamak", [["I_E_Truck_02_MRL_F"], true, true]];
 
-[_dict, RAND_VEH_ARTY_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_ARTY_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Anti-Air
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_AA_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_AA_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter transport
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Czapla (Hellcat)
-[_vehicles, "czapla", [["I_E_Heli_light_03_unarmed_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["czapla", [["I_E_Heli_light_03_unarmed_F"], true, true]];
 
-[_dict, RAND_VEH_HELI_T_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter light
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Czapla (Hellcat)
-[_vehicles, "czapla", [["I_E_Heli_light_03_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["czapla", [["I_E_Heli_light_03_dynamicLoadout_F"], true, true]];
 
-[_dict, RAND_VEH_HELI_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter heavy
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Czapla (Hellcat)
-[_vehicles, "czapla", [["I_E_Heli_light_03_dynamicLoadout_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["czapla", [["I_E_Heli_light_03_dynamicLoadout_F"], true, true]];
 
-[_dict, RAND_VEH_HELI_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // Gryphon
-[_vehicles, "gryphon", [["I_Plane_Fighter_04_F"], ["CamoGrey"], true]] call DICT_fnc_set;
+_vehicles set ["gryphon", [["I_Plane_Fighter_04_F"], ["CamoGrey"], true]];
 
-[_dict, RAND_VEH_PLANE_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_PLANE_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane UAV
-_vehicles = call DICT_fnc_create;
-[_dict, RAND_VEH_PLANE_UAV_KEY, _vehicles] call DICT_fnc_set;
+_vehicles = createHashMap;
+_dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["I_E_HMG_01_F", "I_E_HMG_02_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["I_E_HMG_01_F", "I_E_HMG_02_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["I_E_GMG_01_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["I_E_GMG_01_F"], true, true]];
 
-[_dict, RAND_VEH_TURRET_L_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
-_vehicles = call DICT_fnc_create;
+_vehicles = createHashMap;
 
 // HMG
-[_vehicles, "hmg", [["I_E_HMG_01_high_F", "I_E_HMG_02_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["hmg", [["I_E_HMG_01_high_F", "I_E_HMG_02_high_F"], true, true]];
 
 // GMG
-[_vehicles, "gmg", [["I_E_GMG_01_high_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["gmg", [["I_E_GMG_01_high_F"], true, true]];
 
 // Titan AA
-[_vehicles, "titanAa", [["I_E_static_AA_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["titanAa", [["I_E_static_AA_F"], true, true]];
 
 // Titan AA
-[_vehicles, "titanAt", [["I_E_static_AT_F"], true, true]] call DICT_fnc_set;
+_vehicles set ["titanAt", [["I_E_static_AT_F"], true, true]];
 
-[_dict, RAND_VEH_TURRET_H_KEY, _vehicles] call DICT_fnc_set;
+_dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = [Escape_Random_Vehicles, str independent] call DICT_fnc_get;
-[_sideDict, LDF_KEY, _dict] call DICT_fnc_set;
-[Escape_Random_Vehicles, str independent, _sideDict] call DICT_fnc_set;
+private _sideDict = Escape_Random_Vehicles get str independent;
+_sideDict set [LDF_KEY, _dict];
+Escape_Random_Vehicles set [str independent, _sideDict];
