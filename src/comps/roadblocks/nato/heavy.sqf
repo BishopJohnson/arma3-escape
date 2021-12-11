@@ -1,18 +1,18 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Returns:
-	    Array - 
+	    Array -
 */
 
-private ["_comp", "_veh", "_car", "_turrent"];
+#include "..\..\..\..\define.hpp"
 
 if (!isServer) exitWith {};
 
-_comp =
+private _comp =
 [
-	[ 
+	[
 		["Land_BagBunker_Tower_F",[-5.98059,8.01709,0],90,1,0,[0,-0],"","",true,false],
 		["Land_WaterTank_F",[8.5,-6.2002,1.85966e-005],90,1,0,[0.000909986,0.00110097],"","",true,false],
 		["Land_Cargo_House_V1_F",[7,-8.97852,0],180,1,0,[0,0],"","",true,false],
@@ -37,7 +37,7 @@ _comp =
 		["Land_HBarrier_3_F",[15.577,17.6138,0],90,1,0,[0,-0],"","",true,false],
 		["Land_ConcreteHedgehog_01_F",[8,23,0.011991],0.00033154,1,0,[-0.000604933,0.000148268],"","",true,false],
 		["Land_ConcreteHedgehog_01_F",[12.6,21,0.0119934],359.999,1,0,[-1.87472e-006,1.86989e-005],"","",true,false],
-		
+
 		// Item crates
 		["Box_NATO_Ammo_F",[-8.69995,9,0],0,1,0,[0,0],"","",true,false],
 		["Box_NATO_WpsLaunch_F",[-3.4054,7.38184,0],90,1,0,[0,0],"","[this, 'LAUNCHER', 1, 2] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
@@ -46,7 +46,7 @@ _comp =
 		  clearBackpackCargoGlobal this;
 		  clearWeaponCargoGlobal this;
 		  clearMagazineCargoGlobal this;
-		  
+
 		  this addItemCargoGlobal ['FirstAidKit', 10];
 		  this addItemCargoGlobal ['Medikit', 1];
 		  this addItemCargoGlobal ['Toolkit', 1];
@@ -54,29 +54,70 @@ _comp =
 		  this addItemCargoGlobal ['ItemMap', 2];
 		 ",true,false]
 	],
-	30 // Radius of composition area
+	30, // Radius of composition area
+	NATO_KEY
 ];
 
-_veh =
+// Setup cars
+private _carEntries =
+[
+	west,
+	NATO_KEY,
+	[RAND_VEH_MRAP_ARMED_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["B_MRAP_01_hmg_F",[-7.00012,-10.0093,0],270,random [0.2, 0.4, 0.6],0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],
+	["B_MRAP_01_hmg_F",[-7.00012,-10.0093,0],270,random [0.2, 0.4, 0.6],0,[0,0],"",
+	 "if (random 1 > 0.3) then { deleteVehicle this };
+	  this setVehicleAmmo random [0.2, 0.5, 1];
+	 ",true,false]
+];
+for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
+{
+	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_cars select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_cars set [_i, _arr];
+};
+
+// Setup turrets
+private _turretEntries =
+[
+	west,
+	NATO_KEY,
+	[RAND_VEH_TURRET_H_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _turrets =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
 	["B_HMG_01_high_F",[-7.59998,8.7998,2.78],270,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
 ];
+for  [{ private _i = 0 }, { _i < count _turrets }, { _i = _i + 1 }] do
+{
+	(selectRandom _turretEntries) params ["_veh", "_variant", "_loadout"];
 
-// The vehicles that may spawn as the parked vehicle
-_car = ["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"];
+	private _arr =
+	[
+		_turrets select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
 
-// The turrents that may spawn in the different fortifications
-_turrent = ["B_HMG_01_high_F", "B_GMG_01_high_F", "B_static_AT_F", "B_static_AA_F"];
-
-// Selects a car and turrent
-_veh select 0 set [0, selectRandom _car];
-_veh select 1 set [0, selectRandom _turrent];
-
-if (random 1 > 0.3) then { _veh deleteAt 0 }; // Deletes car if condition is met
+	_turrets set [_i, _arr];
+};
 
 // Adds the vehicles to the composition
-_comp = [(_comp select 0) + _veh, _comp select 1];
+_comp = [(_comp select 0) + _cars + _turrets, _comp select 1];
 
 _comp
