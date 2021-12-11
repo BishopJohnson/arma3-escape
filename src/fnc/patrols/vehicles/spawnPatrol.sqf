@@ -1,14 +1,14 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-		Side - 
-		Number - 
-		Number - 
-	
+		Side -
+		Number -
+		Number -
+
 	Returns:
-	    Group - 
+	    Group -
 */
 
 #define MIN_SAFE_DISTANCE 50
@@ -17,20 +17,17 @@
 
 params ["_side", "_maxRadius", "_minRadius"];
 
-private ["_tempPos", "_road", "_veh"];
-
 if (!isServer) exitWith {};
 
-private _type = [_side] call compile preprocessFile "src\fnc\patrols\vehicles\vehicleTypes.sqf";
-
-private _size = count units group player;
+private _players = call BIS_fnc_listPlayers;
+private _size = count _players;
 private _startIdx = floor random _size;
 
 // Chooses a location near a player
 private _position =
 [
-    [[position ((units group player) select _startIdx), _maxRadius]],
-	["water", [position ((units group player) select _startIdx), _minRadius]]
+    [[position (_players select _startIdx), _maxRadius]],
+	["water", [position (_players select _startIdx), _minRadius]]
 ] call BIS_fnc_randomPos;
 
 // Places vehicle on road and/or away from other vehicles if possible
@@ -38,10 +35,17 @@ private _result = false;
 private _attemptCount = 0;
 while {!_result && _attemptCount < SAFE_SPAWN_ATTEMPTS} do
 {
-	_road = [_position, ROAD_RADIUS, []] call BIS_fnc_nearestRoad;
+	private _road = [_position, ROAD_RADIUS, []] call BIS_fnc_nearestRoad;
 
-	if (!isNull _road) then { _tempPos = getPosASL _road; }
-	else { _tempPos = _position; };
+    private "_tempPos";
+	if (!isNull _road) then
+    {
+        _tempPos = getPosASL _road;
+    }
+	else
+    {
+        _tempPos = _position;
+    };
 
 	_result = true; // Assume a valid position was choosen
 
@@ -55,8 +59,7 @@ while {!_result && _attemptCount < SAFE_SPAWN_ATTEMPTS} do
 
 		while {_result && _j < count _groups} do
 		{
-			_veh = vehicle (leader (_groups select _j));
-
+			private _veh = vehicle (leader (_groups select _j));
 			if (_veh distance2D _tempPos < MIN_SAFE_DISTANCE) then
 			{
 				_result = false;
@@ -68,7 +71,10 @@ while {!_result && _attemptCount < SAFE_SPAWN_ATTEMPTS} do
 		_i = _i + 1;
 	};
 
-	if (_result) then { _position = _tempPos; };
+	if (_result) then
+    {
+        _position = _tempPos;
+    };
 
 	_attemptCount = _attemptCount + 1;
 };
@@ -88,16 +94,21 @@ for [{ private _i = _startIdx + 1 }, { _i mod _size != _startIdx }, { _i = _i + 
 private _group = grpNull;
 if (_result) then
 {
-	// Spawns vehicle with crew
-	_veh =
-	[
-		_position,
-		random 360,
-		[_side, _type] call compile preprocessFile "src\fnc\patrols\vehicles\vehicles.sqf",
-		_side
-	] call BIS_fnc_spawnVehicle;
+	// Spawn vehicle with crew
+    private _vehGroup = [_position, _side] call compile preprocessFile "src\fnc\units\spawnVehicle.sqf";
+    if (isNil "_vehGroup") exitWith { _group };
 
-	_group = _veh select 2;
+    private _veh = _vehGroup select 0;
+	_group = _vehGroup select 2;
+
+    // Randomize hull damage and ammo (exclude civilian vehicles).
+    if (_side != civilian) then
+    {
+        // TODO: Set hull health in range of [60%, 100%] skewed towards 100%.
+        _veh setVehicleAmmo (0.4 + random 0.6); // Set ammo in range of [40%, 100%)
+    };
+
+    _veh setFuel (0.05 + random 0.65); // Set fuel in range of [5%, 71%)
 
 	_group setBehaviour "SAFE";
 	_group setSpeedMode "LIMITED";
@@ -110,7 +121,8 @@ if (_result) then
 	    _x setSkill ['aimingShake', 0.25];
 	} forEach units _group;
 
-	[_group, ROAD_RADIUS, _type in ["Car", "MRAP", "Technical"]] execVM "src\fnc\patrols\vehicles\nextWaypoint.sqf";
+    private _followRoads = _veh isKindOf "Car";
+	[_group, ROAD_RADIUS, _followRoads] execVM "src\fnc\patrols\vehicles\nextWaypoint.sqf";
 };
 
 _group

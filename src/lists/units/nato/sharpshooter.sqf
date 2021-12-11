@@ -4,9 +4,13 @@
     returns: nothing
 */
 
-private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
+#include "..\..\..\..\define.hpp"
 
-if (!local this) exitWith {};
+params ["_unit"];
+
+if (!local _unit) exitWith {};
+
+private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
@@ -61,45 +65,45 @@ else
 };
 
 // Remove existing items
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
 
 comment "Add weapons";
-this addWeapon _weaponP;
-this addPrimaryWeaponItem "acc_pointer_IR";
-this addPrimaryWeaponItem _optic;
-this addPrimaryWeaponItem "20Rnd_762x51_Mag";
-this addPrimaryWeaponItem _bipod;
-this addWeapon _weaponS;
-this addHandgunItem "16Rnd_9x21_Mag";
+_unit addWeapon _weaponP;
+_unit addPrimaryWeaponItem "acc_pointer_IR";
+_unit addPrimaryWeaponItem _optic;
+_unit addPrimaryWeaponItem "20Rnd_762x51_Mag";
+_unit addPrimaryWeaponItem _bipod;
+_unit addWeapon _weaponS;
+_unit addHandgunItem "16Rnd_9x21_Mag";
 
 comment "Add containers";
-this forceAddUniform _uniform;
-this addVest _vest;
+_unit forceAddUniform _uniform;
+_unit addVest _vest;
 
 comment "Add binoculars";
-this addWeapon "Binocular";
+_unit addWeapon "Binocular";
 
 comment "Add items to containers";
-this addItemToUniform "FirstAidKit";
-this addItemToUniform "20Rnd_762x51_Mag";
-this addItemToUniform "Chemlight_green";
-for "_i" from 1 to 6 do {this addItemToVest "20Rnd_762x51_Mag";};
-for "_i" from 1 to 2 do {this addItemToVest "16Rnd_9x21_Mag";};
-this addItemToVest "SmokeShell";
-this addItemToVest "SmokeShellGreen";
-this addItemToVest "Chemlight_green";
-for "_i" from 1 to 2 do {this addItemToVest "HandGrenade";};
-this addHeadgear _helmet;
+_unit addItemToUniform "FirstAidKit";
+_unit addItemToUniform "20Rnd_762x51_Mag";
+_unit addItemToUniform "Chemlight_green";
+for "_i" from 1 to 6 do {_unit addItemToVest "20Rnd_762x51_Mag";};
+for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
+_unit addItemToVest "SmokeShell";
+_unit addItemToVest "SmokeShellGreen";
+_unit addItemToVest "Chemlight_green";
+for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+_unit addHeadgear _helmet;
 
 comment "Add items";
-this linkItem "ItemMap";
-this linkItem "ItemCompass";
-this linkItem "ItemWatch";
-this linkItem "ItemRadio";
-this linkItem _nvg;
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem _nvg;

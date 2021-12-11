@@ -4,9 +4,13 @@
     returns: nothing
 */
 
-private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
+#include "..\..\..\..\define.hpp"
 
-if (!local this) exitWith {};
+params ["_unit"];
+
+if (!local _unit) exitWith {};
+
+private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
@@ -41,10 +45,10 @@ else
 };
 
 // Remove existing items
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;

@@ -4,9 +4,13 @@
     returns: nothing
 */
 
-private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
+#include "..\..\..\..\define.hpp"
 
-if (!local this) exitWith {};
+params ["_unit"];
+
+if (!local _unit) exitWith {};
+
+private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
@@ -41,37 +45,37 @@ else
 };
 
 // Remove existing items
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
 
 comment "Add weapons";
-this addWeapon _weaponP;
-this addPrimaryWeaponItem _optic;
-this addPrimaryWeaponItem _mag;
+_unit addWeapon _weaponP;
+_unit addPrimaryWeaponItem _optic;
+_unit addPrimaryWeaponItem _mag;
 
 comment "Add containers";
-this forceAddUniform "U_B_HeliPilotCoveralls";
-this addVest "V_TacVest_blk";
+_unit forceAddUniform "U_B_HeliPilotCoveralls";
+_unit addVest "V_TacVest_blk";
 
 comment "Add items to containers";
-this addItemToUniform "FirstAidKit";
-for "_i" from 1 to 2 do {this addItemToUniform _mag;};
-this addItemToUniform "Chemlight_green";
-this addItemToVest _mag;
-this addItemToVest "SmokeShellGreen";
-this addItemToVest "SmokeShellBlue";
-this addItemToVest "SmokeShellOrange";
-this addItemToVest "Chemlight_green";
-this addHeadgear "H_CrewHelmetHeli_B";
+_unit addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
+_unit addItemToUniform "Chemlight_green";
+_unit addItemToVest _mag;
+_unit addItemToVest "SmokeShellGreen";
+_unit addItemToVest "SmokeShellBlue";
+_unit addItemToVest "SmokeShellOrange";
+_unit addItemToVest "Chemlight_green";
+_unit addHeadgear "H_CrewHelmetHeli_B";
 
 comment "Add items";
-this linkItem "ItemMap";
-this linkItem "ItemCompass";
-this linkItem "ItemWatch";
-this linkItem "ItemRadio";
-this linkItem "NVGoggles";
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem "NVGoggles";

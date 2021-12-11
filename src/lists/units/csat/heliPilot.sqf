@@ -4,9 +4,13 @@
     returns: nothing
 */
 
-private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
+#include "..\..\..\..\define.hpp"
 
-if (!local this) exitWith {};
+params ["_unit"];
+
+if (!local _unit) exitWith {};
+
+private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
 if (Escape_Csat_Use_Camo) then
@@ -32,42 +36,42 @@ else
 };
 
 // Remove existing items
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
 
 comment "Add weapons";
-this addWeapon "SMG_02_F";
-this addPrimaryWeaponItem "optic_ACO_grn_smg";
-this addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02_Tracer_Green";
+_unit addWeapon "SMG_02_F";
+_unit addPrimaryWeaponItem "optic_ACO_grn_smg";
+_unit addPrimaryWeaponItem "30Rnd_9x21_Mag_SMG_02_Tracer_Green";
 
 comment "Add containers";
-this forceAddUniform "U_O_PilotCoveralls";
-this addVest _vest;
+_unit forceAddUniform "U_O_PilotCoveralls";
+_unit addVest _vest;
 
 comment "Add items to containers";
-this addItemToUniform "FirstAidKit";
-for "_i" from 1 to 3 do {this addItemToUniform "30Rnd_9x21_Mag_SMG_02_Tracer_Green";};
-this addItemToUniform "SmokeShellRed";
-this addItemToUniform "SmokeShellOrange";
-this addItemToUniform "SmokeShellYellow";
-for "_i" from 1 to 2 do {this addItemToVest "Chemlight_red";};
-this addHeadgear "H_PilotHelmetHeli_O";
+_unit addItemToUniform "FirstAidKit";
+for "_i" from 1 to 3 do {_unit addItemToUniform "30Rnd_9x21_Mag_SMG_02_Tracer_Green";};
+_unit addItemToUniform "SmokeShellRed";
+_unit addItemToUniform "SmokeShellOrange";
+_unit addItemToUniform "SmokeShellYellow";
+for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_red";};
+_unit addHeadgear "H_PilotHelmetHeli_O";
 
 comment "Add items";
-this linkItem "ItemMap";
-this linkItem "ItemCompass";
-this linkItem "ItemWatch";
-this linkItem "ItemRadio";
-this linkItem _nvg;
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem _nvg;
 
 comment "Set identity";
 [
-    this,
+    _unit,
     selectRandom ["PersianHead_A3_01", "PersianHead_A3_02", "PersianHead_A3_03"],
     selectRandom ["male01per", "male02per", "male03per"]
 ] call BIS_fnc_setIdentity;

@@ -4,9 +4,13 @@
     returns: nothing
 */
 
-private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
+#include "..\..\..\..\define.hpp"
 
-if (!local this) exitWith {};
+params ["_unit"];
+
+if (!local _unit) exitWith {};
+
+private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
 if (Escape_Csat_Use_Camo) then
@@ -38,48 +42,48 @@ else
 };
 
 // Remove existing items
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
 
 comment "Add weapons";
-this addWeapon "arifle_Katiba_F";
-this addPrimaryWeaponItem "acc_pointer_IR";
-this addPrimaryWeaponItem "optic_ACO_grn";
-this addPrimaryWeaponItem "30Rnd_65x39_caseless_green";
-this addWeapon "hgun_Rook40_F";
-this addHandgunItem "16Rnd_9x21_Mag";
+_unit addWeapon "arifle_Katiba_F";
+_unit addPrimaryWeaponItem "acc_pointer_IR";
+_unit addPrimaryWeaponItem "optic_ACO_grn";
+_unit addPrimaryWeaponItem "30Rnd_65x39_caseless_green";
+_unit addWeapon "hgun_Rook40_F";
+_unit addHandgunItem "16Rnd_9x21_Mag";
 
 comment "Add containers";
-this forceAddUniform _uniform;
-this addVest _vest;
+_unit forceAddUniform _uniform;
+_unit addVest _vest;
 
 comment "Add items to containers";
-this addItemToUniform "FirstAidKit";
-for "_i" from 1 to 2 do {this addItemToUniform "30Rnd_65x39_caseless_green";};
-this addItemToUniform "Chemlight_red";
-for "_i" from 1 to 7 do {this addItemToVest "30Rnd_65x39_caseless_green";};
-for "_i" from 1 to 2 do {this addItemToVest "16Rnd_9x21_Mag";};
-for "_i" from 1 to 2 do {this addItemToVest "HandGrenade";};
-this addItemToVest "SmokeShell";
-this addItemToVest "SmokeShellRed";
-this addItemToVest "Chemlight_red";
-this addHeadgear _helmet;
+_unit addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {_unit addItemToUniform "30Rnd_65x39_caseless_green";};
+_unit addItemToUniform "Chemlight_red";
+for "_i" from 1 to 7 do {_unit addItemToVest "30Rnd_65x39_caseless_green";};
+for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
+for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+_unit addItemToVest "SmokeShell";
+_unit addItemToVest "SmokeShellRed";
+_unit addItemToVest "Chemlight_red";
+_unit addHeadgear _helmet;
 
 comment "Add items";
-this linkItem "ItemMap";
-this linkItem "ItemCompass";
-this linkItem "ItemWatch";
-this linkItem "ItemRadio";
-this linkItem _nvg;
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem _nvg;
 
 comment "Set identity";
 [
-    this,
+    _unit,
     selectRandom ["PersianHead_A3_01", "PersianHead_A3_02", "PersianHead_A3_03"],
     selectRandom ["male01per", "male02per", "male03per"]
 ] call BIS_fnc_setIdentity;
