@@ -15,11 +15,16 @@ if (_include == 0) exitWith {};
 
 private _dict = createHashMap;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
 // Quadbike
 _vehicles set ["quadbike", [["I_E_Quadbike_01_F"], true, true]];
+
+_dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+_vehicles = createHashMap;
 
 // Offroad
 _vehicles set ["offroad", [
@@ -31,14 +36,23 @@ _vehicles set ["offroad", [
 // Van
 _vehicles set ["van", [["I_E_Van_02_vehicle_F", "I_E_Van_02_transport_F"], true, true]];
 
-// Zamak
-_vehicles set ["zamak", [["I_E_Truck_02_transport_F", "I_E_Truck_02_F"], true, true]];
-
 _dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
 _vehicles = createHashMap;
 _dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks unarmed
+_vehicles = createHashMap;
+
+// Zamak
+_vehicles set ["zamak", [["I_E_Truck_02_transport_F", "I_E_Truck_02_F"], true, true]];
+
+_dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks armed
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
 _vehicles = createHashMap;
@@ -67,6 +81,22 @@ _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 _dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV unarmed
+_vehicles = createHashMap;
+
+// Stomper
+_vehicles set ["stomper", [["I_E_UGV_01_F"], true, true]];
+
+_dict set [RAND_VEH_UGV_UNARMED_KEY, _vehicles];
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV armed
+_vehicles = createHashMap;
+
+// Stomper
+_vehicles set ["stomper", [["I_E_UGV_01_rcws_F"], true, true]];
+
+_dict set [RAND_VEH_UGV_ARMED_KEY, _vehicles];
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
 _vehicles = createHashMap;
 _dict set [RAND_VEH_IFV_KEY, _vehicles];
@@ -86,6 +116,10 @@ _dict set [RAND_VEH_APC_KEY, _vehicles];
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Tanks
 _vehicles = createHashMap;
 _dict set [RAND_VEH_TANK_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Tank special
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
 _vehicles = createHashMap;
@@ -123,6 +157,10 @@ _vehicles set ["czapla", [["I_E_Heli_light_03_dynamicLoadout_F"], true, true]];
 
 _dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter UAV
+_vehicles = createHashMap;
+_dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
 _vehicles = createHashMap;
 
@@ -146,6 +184,17 @@ _vehicles set ["gmg", [["I_E_GMG_01_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
+_vehicles = createHashMap;
+
+// Titan AA
+_vehicles set ["titanAa", [["I_E_static_AA_F"], true, true]];
+
+// Titan AA
+_vehicles set ["titanAt", [["I_E_static_AT_F"], true, true]];
+
+_dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
 _vehicles = createHashMap;
 
@@ -154,12 +203,6 @@ _vehicles set ["hmg", [["I_E_HMG_01_high_F", "I_E_HMG_02_high_F"], true, true]];
 
 // GMG
 _vehicles set ["gmg", [["I_E_GMG_01_high_F"], true, true]];
-
-// Titan AA
-_vehicles set ["titanAa", [["I_E_static_AA_F"], true, true]];
-
-// Titan AA
-_vehicles set ["titanAt", [["I_E_static_AT_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 

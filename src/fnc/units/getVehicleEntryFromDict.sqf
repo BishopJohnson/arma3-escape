@@ -13,10 +13,15 @@ params
     [
         "_typeWeights",
         [
-            // Car (total = 30%)
-            RAND_VEH_CAR_UNARMED_KEY,   0.1,
-            RAND_VEH_CAR_ARMED_KEY,     0.1,
-            RAND_VEH_UTIL_KEY,          0.1,
+            // Quadbike (total = 2%)
+            RAND_VEH_QUADBIKE_KEY,      0.02,
+
+            // Car (total = 28%)
+            RAND_VEH_CAR_UNARMED_KEY,   0.08,
+            RAND_VEH_CAR_ARMED_KEY,     0.08,
+            RAND_VEH_TRUCK_UNARMED_KEY, 0.02,
+            RAND_VEH_TRUCK_ARMED_KEY,   0.02,
+            RAND_VEH_UTIL_KEY,          0.08,
 
             // MRAP (total = 45%)
             RAND_VEH_MRAP_UNARMED_KEY,  0.225,
@@ -26,8 +31,11 @@ params
             RAND_VEH_IFV_KEY,           0.075,
             RAND_VEH_APC_KEY,           0.075,
 
-            // Tank (total = 8%)
+            // Tank (total = 6%)
             RAND_VEH_TANK_KEY,          0.08,
+
+            // Tank special (total = 2%)
+            RAND_VEH_TANK_KEY,          0.02,
 
             // AA (total = 1.8%)
             RAND_VEH_AA_KEY,            0.018,
@@ -49,6 +57,8 @@ while {isNil "_vehEntry" && _attempt < 5} do
 
     private _type = selectRandomWeighted _typeWeights;
     private _typeDict = ((Escape_Random_Vehicles get str _side) get _faction) get _type;
+    if (isNil "_typeDict") then { continue };
+
     private _typeKeys = keys _typeDict;
     if (count _typeKeys > 0) then
     {

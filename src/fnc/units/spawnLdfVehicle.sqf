@@ -17,9 +17,13 @@ private _vehEntry =
     _side,
     LDF_KEY,
     [
-        // Car (total = 75%)
-        RAND_VEH_CAR_UNARMED_KEY,   0.375,
-        RAND_VEH_UTIL_KEY,          0.375,
+        // Quadbike (total = 2%)
+        RAND_VEH_QUADBIKE_KEY,      0.02,
+
+        // Car/Truck (total = 73%)
+        RAND_VEH_CAR_UNARMED_KEY,   0.243,
+        RAND_VEH_TRUCK_UNARMED_KEY, 0.243,
+        RAND_VEH_UTIL_KEY,          0.243,
 
         // APC (total = 23%)
         RAND_VEH_APC_KEY,           0.248,

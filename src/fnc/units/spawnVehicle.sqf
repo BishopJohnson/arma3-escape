@@ -62,4 +62,6 @@ switch (_side) do
     };
 };
 
+if (isNil "_vehGroup") exitWith {};
+
 _vehGroup

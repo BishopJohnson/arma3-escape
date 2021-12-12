@@ -20,6 +20,14 @@ private _usingOrange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
 _vehicles = createHashMap;
 
+// Quadbike
+_vehicles set ["quadbike", [["C_Quadbike_01_F"], ["Black", "Blue", "Red", "White"], true]];
+
+_dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+_vehicles = createHashMap;
+
 // Hatchback
 _vehicles set ["hatchback", [
     ["C_Hatchback_01_F"],
@@ -57,9 +65,6 @@ if (_usingContact) then
     _vehicles set ["offroadCovered", [["C_Offroad_01_covered_F"], ["Black", "Green"], true]];
 };
 
-// Quadbike
-_vehicles set ["quadbike", [["C_Quadbike_01_F"], ["Black", "Blue", "Red", "White"], true]];
-
 // SUV
 _vehicles set ["suv", [["C_SUV_01_F"], ["Black", "Grey", "Orange", "Red"], true]];
 
@@ -69,9 +74,6 @@ if (_usingContact) then
     _vehicles set ["tractor", [["C_Tractor_01_F"], ["Blue", "Green", "Red"], true]];
 };
 
-// Truck
-_vehicles set ["truck", [["C_Van_01_transport_F", "C_Van_01_box_F"], ["Black", "Red", "White"], true]];
-
 // Van
 if (_usingOrange) then
 {
@@ -80,6 +82,14 @@ if (_usingOrange) then
 
     _vehicles set ["van", [["C_Van_02_vehicle_F", "C_Van_02_transport_F"], _variants, true]];
 };
+
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks unarmed
+_vehicles = createHashMap;
+
+// Truck
+_vehicles set ["truck", [["C_Van_01_transport_F", "C_Van_01_box_F"], ["Black", "Red", "White"], true]];
 
 // Zamak
 _vehicles set ["zamak", [["C_Truck_02_transport_F"], ["Blue", "Orange"], true]];
@@ -91,7 +101,7 @@ _vehicles set ["zamakCovered", [
     true
 ]];
 
-_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+_dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
 _vehicles = createHashMap;

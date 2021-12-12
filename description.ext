@@ -123,21 +123,21 @@ class Params
 class CfgRadio
 {
 	sounds[] = {};
-	
+
 	class RescueStart
 	{
 		name = "";
 		sound[] = {};
 		title = "Proceed to the rescue marker on your map.";
 	};
-	
+
 	class RescueMissionEnroute
 	{
 		name = "";
 		sound[] = {};
 		title = "Rescue transports are on the way.";
 	};
-	
+
 	class RescueMissionDestroyed
 	{
 		name = "";
@@ -209,12 +209,12 @@ class CfgVehicleTemplates
         animationList[] = { "showCamonetHull",1,"showCamonetTurret",1 };
     };
 
-    class Escape_Scrocher_Default
+    class Escape_Scorcher_Default
     {
         animationList[] = { "showCanisters",1,"showAmmobox",1, };
     };
 
-    class Escape_Scrocher_Net
+    class Escape_Scorcher_Net
     {
         animationList[] = { "showCanisters",1,"showCamonetTurret",1,"showAmmobox",1,"showCamonetHull",1 };
     };
@@ -430,27 +430,27 @@ class Extended_InitPost_EventHandlers
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Tank_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Boat_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class StaticWeapon
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Plane_Base_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Helicopter_Base_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";

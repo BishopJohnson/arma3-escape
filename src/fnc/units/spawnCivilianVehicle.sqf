@@ -17,9 +17,13 @@ private _vehEntry =
     _side,
     CIVILIAN_KEY,
     [
-        // Car (total = 100%)
-        RAND_VEH_CAR_UNARMED_KEY,   0.8,
-        RAND_VEH_UTIL_KEY,          0.2
+        // Quadbike (total = 10%)
+        RAND_VEH_QUADBIKE_KEY,      0.1,
+
+        // Car/Truck (total = 80%)
+        RAND_VEH_CAR_UNARMED_KEY,   0.5,
+        RAND_VEH_TRUCK_UNARMED_KEY, 0.3,
+        RAND_VEH_UTIL_KEY,          0.1
     ]
 ] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf";
 

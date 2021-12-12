@@ -8,8 +8,8 @@ params
 [
     "_arr",
     "_veh",
-    ["_variant", true, [true]],
-    ["_loadout", true, [true]]
+    ["_variant", true, [true, []]],
+    ["_loadout", true, [true, []]]
 ];
 
 if (typeName _variant == "Array") then
@@ -22,7 +22,7 @@ if (typeName _loadout == "Array") then
     _loadout = selectRandom _loadout;
 };
 
-private _init = (_arr select 7) + format ["[this, %1, %2] call BIS_fnc_initVehicle;", _variant, _loadout];
+private _init = (_arr select 7) + format ["[this, %1, '%2'] call BIS_fnc_initVehicle;", _variant, _loadout];
 
 _arr set [0, selectRandom _veh];
 _arr set [7, _init];

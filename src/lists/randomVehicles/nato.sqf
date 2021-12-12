@@ -20,7 +20,7 @@ private _usingHeli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
 private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
 private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
 // Quadbike
@@ -45,6 +45,11 @@ else
 };
 
 _vehicles set ["quadbike", [_veh, true, true]];
+
+_dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+_vehicles = createHashMap;
 
 // Prowler
 if (_usingApex) then
@@ -73,6 +78,44 @@ if (_usingApex) then
 
     _vehicles set ["prowler", [_veh, _variants, true]];
 };
+
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
+_vehicles = createHashMap;
+
+// Prowler
+if (_usingApex) then
+{
+    _veh = ["B_LSV_01_armed_F", "B_LSV_01_AT_F"];
+
+    if (_useMapCamo) then
+    {
+        switch (_map) do
+        {
+            case TANOA_KEY;
+            case LIVONIA_KEY:
+            {
+                _variants = ["Olive"];
+            };
+            default
+            {
+                _variants = ["Sand"];
+            };
+        };
+    }
+    else
+    {
+        _variants = ["Black", "Sand"];
+    };
+
+    _vehicles set ["prowler", [_veh, _variants, true]];
+};
+
+_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks unarmed
+_vehicles = createHashMap;
 
 // HEMTT
 if (_useMapCamo) then
@@ -118,40 +161,11 @@ else
 
 _vehicles set ["hemtt", [_veh, true, true]];
 
-_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+_dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks armed
 _vehicles = createHashMap;
-
-// Prowler
-if (_usingApex) then
-{
-    _veh = ["B_LSV_01_armed_F", "B_LSV_01_AT_F"];
-
-    if (_useMapCamo) then
-    {
-        switch (_map) do
-        {
-            case TANOA_KEY;
-            case LIVONIA_KEY:
-            {
-                _variants = ["Olive"];
-            };
-            default
-            {
-                _variants = ["Sand"];
-            };
-        };
-    }
-    else
-    {
-        _variants = ["Black", "Sand"];
-    };
-
-    _vehicles set ["prowler", [_veh, _variants, true]];
-};
-
-_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
+_dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
 _vehicles = createHashMap;
@@ -257,6 +271,62 @@ else
 _vehicles set ["hunter", [_veh, true, true]];
 
 _dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV unarmed
+_vehicles = createHashMap;
+
+// Stomper
+if (_useMapCamo) then
+{
+    switch true do
+    {
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
+        {
+            _veh = ["B_T_UGV_01_F"];
+        };
+        default
+        {
+            _veh = ["B_UGV_01_F"];
+        };
+    };
+}
+else
+{
+    _veh = ["B_UGV_01_F"];
+};
+
+_vehicles set ["stomper", [_veh, true, true]];
+
+_dict set [RAND_VEH_UGV_UNARMED_KEY, _vehicles];
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV armed
+_vehicles = createHashMap;
+
+// Stomper
+if (_useMapCamo) then
+{
+    switch true do
+    {
+        case (_map == TANOA_KEY && _usingApex);
+        case (_map == LIVONIA_KEY && _usingApex):
+        {
+            _veh = ["B_T_UGV_01_rcws_F"];
+        };
+        default
+        {
+            _veh = ["B_UGV_01_rcws_F"];
+        };
+    };
+}
+else
+{
+    _veh = ["B_UGV_01_rcws_F"];
+};
+
+_vehicles set ["stomper", [_veh, true, true]];
+
+_dict set [RAND_VEH_UGV_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
 _vehicles = createHashMap;
@@ -379,6 +449,11 @@ _vehicles set ["slammer", [
     ["Escape_Slammer_Default", "Escape_Slammer_Net"]
 ]];
 
+_dict set [RAND_VEH_TANK_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Tank special
+_vehicles = createHashMap;
+
 // Rhino
 if (_usingTanks) then
 {
@@ -409,7 +484,7 @@ if (_usingTanks) then
     ]];
 };
 
-_dict set [RAND_VEH_TANK_KEY, _vehicles];
+_dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
 _vehicles = createHashMap;
@@ -439,7 +514,7 @@ else
 _vehicles set ["scorcher", [
     _veh,
     true,
-    ["Escape_Scrocher_Default", "Escape_Scrocher_Net"]
+    ["Escape_Scorcher_Default", "Escape_Scorcher_Net"]
 ]];
 
 // Sandstorm
@@ -580,6 +655,17 @@ _vehicles set ["blackfoot", [["B_Heli_Attack_01_dynamicLoadout_F"], true, true]]
 
 _dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter UAV
+_vehicles = createHashMap;
+
+// Falcon
+if (_usingApex) then
+{
+    _vehicles set ["falcon", [["B_T_UAV_03_dynamicLoadout_F"], true, true]];
+};
+
+_dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
 _vehicles = createHashMap;
 
@@ -596,12 +682,6 @@ _dict set [RAND_VEH_PLANE_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane UAV
 _vehicles = createHashMap;
-
-// Falcon
-if (_usingApex) then
-{
-    _vehicles set ["falcon", [["B_T_UAV_03_dynamicLoadout_F"], true, true]];
-};
 
 // Greyhawk
 _vehicles set ["greyhawk", [["B_UAV_02_dynamicLoadout_F"], true, true]];
@@ -625,14 +705,8 @@ _vehicles set ["gmg", [["B_GMG_01_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
+///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
 _vehicles = createHashMap;
-
-// HMG
-_vehicles set ["hmg", [["B_HMG_01_high_F"], true, true]];
-
-// GMG
-_vehicles set ["gmg", [["B_GMG_01_high_F"], true, true]];
 
 // Titan AA
 if (_useMapCamo) then
@@ -681,6 +755,17 @@ else
 };
 
 _vehicles set ["titanAt", [_veh, true, true]];
+
+_dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
+_vehicles = createHashMap;
+
+// HMG
+_vehicles set ["hmg", [["B_HMG_01_high_F"], true, true]];
+
+// GMG
+_vehicles set ["gmg", [["B_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 

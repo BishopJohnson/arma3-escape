@@ -22,7 +22,7 @@ private _usingHeli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
 private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
 private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
 // Quadbike
@@ -46,6 +46,11 @@ else
 };
 
 _vehicles set ["quadbike", [_veh, true, true]];
+
+_dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
+_vehicles = createHashMap;
 
 // Qilin
 if (_usingApex) then
@@ -71,6 +76,41 @@ if (_usingApex) then
 
     _vehicles set ["qilin", [["O_LSV_02_unarmed_F"], _variants, true]];
 };
+
+_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
+_vehicles = createHashMap;
+
+// Qilin
+if (_usingApex) then
+{
+    if (_useMapCamo) then
+    {
+        switch (_map) do
+        {
+            case TANOA_KEY:
+            {
+                _variants = ["GreenHex"];
+            };
+            default
+            {
+                _variants = ["Arid"];
+            };
+        };
+    }
+    else
+    {
+        _variants = ["Arid", "Black"];
+    };
+
+    _vehicles set ["qilin", [["O_LSV_02_armed_F", "O_LSV_02_AT_F"], _variants, true]];
+};
+
+_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks unarmed
+_vehicles = createHashMap;
 
 // Zamak
 if (_useMapCamo) then
@@ -116,37 +156,11 @@ else
 
 _vehicles set ["tempest", [_veh, true, true]];
 
-_dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
+_dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars armed
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Trucks armed
 _vehicles = createHashMap;
-
-// Qilin
-if (_usingApex) then
-{
-    if (_useMapCamo) then
-    {
-        switch (_map) do
-        {
-            case TANOA_KEY:
-            {
-                _variants = ["GreenHex"];
-            };
-            default
-            {
-                _variants = ["Arid"];
-            };
-        };
-    }
-    else
-    {
-        _variants = ["Arid", "Black"];
-    };
-
-    _vehicles set ["qilin", [["O_LSV_02_armed_F", "O_LSV_02_AT_F"], _variants, true]];
-};
-
-_dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
+_dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Utility cars
 _vehicles = createHashMap;
@@ -275,6 +289,60 @@ _vehicles set ["ifrit", [_veh, true, true]];
 
 _dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV unarmed
+_vehicles = createHashMap;
+
+// Stomper
+if (_useMapCamo) then
+{
+    switch true do
+    {
+        case (_map == TANOA_KEY && _usingApex):
+        {
+            _veh = ["O_T_UGV_01_ghex_F"];
+        };
+        default
+        {
+            _veh = ["O_UGV_01_F"];
+        };
+    };
+}
+else
+{
+    _veh = ["O_UGV_01_F"];
+};
+
+_vehicles set ["stomper", [_veh, true, true]];
+
+_dict set [RAND_VEH_UGV_UNARMED_KEY, _vehicles];
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// UGV armed
+_vehicles = createHashMap;
+
+// Stomper
+if (_useMapCamo) then
+{
+    switch true do
+    {
+        case (_map == TANOA_KEY && _usingApex):
+        {
+            _veh = ["O_T_UGV_01_rcws_ghex_F"];
+        };
+        default
+        {
+            _veh = ["O_UGV_01_rcws_F"];
+        };
+    };
+}
+else
+{
+    _veh = ["O_UGV_01_rcws_F"];
+};
+
+_vehicles set ["stomper", [_veh, true, true]];
+
+_dict set [RAND_VEH_UGV_ARMED_KEY, _vehicles];
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IFVs
 _vehicles = createHashMap;
 
@@ -392,6 +460,10 @@ if (_usingTanks) then
 };
 
 _dict set [RAND_VEH_TANK_KEY, _vehicles];
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// Tank special
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Artillery
 _vehicles = createHashMap;
@@ -573,6 +645,10 @@ _vehicles set ["kajman", [["O_Heli_Attack_02_dynamicLoadout_F"], _variants, true
 
 _dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Helicopter UAV
+_vehicles = createHashMap;
+_dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Plane
 _vehicles = createHashMap;
 
@@ -662,6 +738,17 @@ _vehicles set ["gmg", [["O_GMG_01_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
+_vehicles = createHashMap;
+
+// Titan AA
+_vehicles set ["titanAa", [["O_static_AA_F"], true, true]];
+
+// Titan AA
+_vehicles set ["titanAt", [["O_static_AT_F"], true, true]];
+
+_dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
 _vehicles = createHashMap;
 
@@ -670,12 +757,6 @@ _vehicles set ["hmg", [["O_HMG_01_high_F"], true, true]];
 
 // GMG
 _vehicles set ["gmg", [["O_GMG_01_high_F"], true, true]];
-
-// Titan AA
-_vehicles set ["titanAa", [["O_static_AA_F"], true, true]];
-
-// Titan AA
-_vehicles set ["titanAt", [["O_static_AT_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
