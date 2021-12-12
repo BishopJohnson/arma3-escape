@@ -1,16 +1,16 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Returns:
-	    Array - 
+	    Array -
 */
 
-private ["_comp", "_veh", "_util", "_port1", "_port2"];
+#include "..\..\..\..\define.hpp"
 
 if (!isServer) exitWith {};
 
-_comp =
+private _comp =
 [
 	[
 		["Land_HBarrier_5_F",[0.641113,-10.9683,0],45,1,0,[0,0],"","",true,false],
@@ -103,29 +103,128 @@ _comp =
 	],
     "o_armor", // Marker type
 	60,        // Radius of composition area
-	100        // Radius of patrol
+	100,       // Radius of patrol
+	CSAT_KEY
 ];
 
-_veh =
+// Setup cars
+private _carEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_MRAP_UNARMED_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_MRAP_02_F",[-8.85913,-8.58496,0],360,random [0.15, 0.4, 0.7],0,[0,-0],"","",true,false],                                                                              // Car
-	["O_APC_Wheeled_02_rcws_v2_F",[21.3601,27.7646,-0],180,random [0.15, 0.4, 0.7],random [0, 0.1, 0.3],[0,-0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],    // Port 1
-	["O_APC_Tracked_02_cannon_F",[-21.3003,27.0278,-0],180,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[0,-0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false], // Port 2
-	["O_MBT_02_cannon_F",[0.045166,30.4321,-0],180,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[-0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]          // Port 3
+	["O_MRAP_02_F",[-8.85913,-8.58496,0],360,random [0.15, 0.4, 0.7],0,[0,-0],"","",true,false]
 ];
 
-// The vehicles that may spawn in the different car ports
-_port1 = ["O_APC_Wheeled_02_rcws_v2_F", "O_APC_Tracked_02_cannon_F"];
-_port2 = ["O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_MBT_04_cannon_F", "O_MBT_04_command_F"];
-_port3 = ["O_MBT_02_cannon_F", "O_MBT_04_cannon_F", "O_MBT_04_command_F", "O_APC_Tracked_02_AA_F", "O_MBT_02_arty_F"];
+for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
+{
+	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
 
-// Selects a vehicle for each car port
-_veh select 1 set [0, selectRandom _port1];
-_veh select 2 set [0, selectRandom _port2];
-_veh select 3 set [0, selectRandom _port3];
+	private _arr =
+	[
+		_cars select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
 
-// Adds the vehicles to the composition
-_comp = [(_comp select 0) + _veh, _comp select 1, _comp select 2, _comp select 3];
+	_cars set [_i, _arr];
+};
+(_comp select 0) append _cars;
+
+// Setup vehicle port 1
+private _vehEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_IFV_KEY, RAND_VEH_APC_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _vehPort1 =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["O_APC_Wheeled_02_rcws_v2_F",[21.3601,27.7646,-0],180,random [0.15, 0.4, 0.7],random [0, 0.1, 0.3],[0,-0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+];
+
+for  [{ private _i = 0 }, { _i < count _vehPort1 }, { _i = _i + 1 }] do
+{
+	(selectRandom _vehEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_vehPort1 select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_vehPort1 set [_i, _arr];
+};
+(_comp select 0) append _vehPort1;
+
+// Setup vehicle port 2
+private _vehEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_APC_KEY, RAND_VEH_TANK_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _vehPort2 =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["O_APC_Tracked_02_cannon_F",[-21.3003,27.0278,-0],180,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[0,-0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+];
+
+for  [{ private _i = 0 }, { _i < count _vehPort2 }, { _i = _i + 1 }] do
+{
+	(selectRandom _vehEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_vehPort2 select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_vehPort2 set [_i, _arr];
+};
+(_comp select 0) append _vehPort2;
+
+// Setup vehicle port 3
+private _vehEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_TANK_KEY, RAND_VEH_ARTY_KEY, RAND_VEH_AA_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _vehPort3 =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["O_MBT_02_cannon_F",[0.045166,30.4321,-0],180,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[-0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+];
+
+for  [{ private _i = 0 }, { _i < count _vehPort3 }, { _i = _i + 1 }] do
+{
+	(selectRandom _vehEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_vehPort3 select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_vehPort3 set [_i, _arr];
+};
+(_comp select 0) append _vehPort3;
 
 _comp

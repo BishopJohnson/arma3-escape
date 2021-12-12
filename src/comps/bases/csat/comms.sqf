@@ -1,18 +1,18 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Returns:
-	    Array - 
+	    Array -
 */
 
-private ["_comp", "_veh", "_car", "_turrent"];
+#include "..\..\..\..\define.hpp"
 
 if (!isServer) exitWith {};
 
-_comp =
+private _comp =
 [
-	[ 
+	[
 		["Land_TTowerSmall_1_F",[-4.4502,-4.01172,0],180,1,0,[0,0],"","",true,false],
 		["Land_Cargo20_sand_F",[4.22705,14.3662,0],231.1,1,0,[0,0],"","",true,false],
 		["Land_Cargo_HQ_V3_F",[-7.13281,-13.0391,0],90,1,0,[0,-0],"","",true,false],
@@ -68,43 +68,105 @@ _comp =
 		["Land_BagFence_Round_F",[-23.4624,26.6841,-0.00130129],135.003,1,0,[0,-0],"","",true,false],
 		["Land_BagFence_Round_F",[23.949,-27.1313,-0.00130129],313.964,1,0,[0,0],"","",true,false],
 		["Flag_CSAT_F",[-12.0425,-6.10303,0],270,1,0,[0,0],"","",true,false],
-		
+
 		// Data terminal
-		["Land_DataTerminal_01_F",[-2.87866,-5.92285,0],270,1,0,[0,0],"","this execVM ""src\fnc\rescue\rescueCommAction.sqf"";",true,false]
+		["Land_DataTerminal_01_F",[-2.87866,-5.92285,0],270,1,0,[0,0],"","this execVM 'src\fnc\rescue\rescueCommAction.sqf';",true,false]
 	],
 	"o_hq", // Marker type
 	40,     // Radius of composition area
-	80      // Radius of patrol
+	80,     // Radius of patrol
+	CSAT_KEY
 ];
 
-_veh =
+// Setup cars
+private _carEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_CAR_UNARMED_KEY, RAND_VEH_CAR_ARMED_KEY, RAND_VEH_TRUCK_UNARMED_KEY, RAND_VEH_MRAP_UNARMED_KEY, RAND_VEH_MRAP_ARMED_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-    ["O_Truck_03_covered_F",[-11.314,14.666,-0.00593853],90,random [0.2, 0.5, 1],0,[-0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],
-	["O_HMG_01_high_F",[17.7551,-9.41895,2.280],90.0022,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false], // Tower static weapon
+	["O_Truck_03_covered_F",[-11.314,14.666,-0.00593853],90,random [0.2, 0.5, 1],0,[-0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+];
+
+for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
+{
+	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_cars select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_cars set [_i, _arr];
+};
+(_comp select 0) append _cars;
+
+// Setup corner turrets
+private _turretEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cornerTurrets =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
 	["O_HMG_01_high_F",[22.6924,-26.2065,-0.0871181],132.913,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],
 	["O_HMG_01_high_F",[-22.2229,25.7373,-0.0871181],313.952,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],
 	["O_HMG_01_high_F",[-21.78,-25.7319,-0.0871172],226.664,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false],
 	["O_HMG_01_high_F",[18.0879,26.3809,-0.0871177],39.203,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
 ];
+for  [{ private _i = 0 }, { _i < count _cornerTurrets }, { _i = _i + 1 }] do
+{
+	(selectRandom _turretEntries) params ["_veh", "_variant", "_loadout"];
 
-// The vehicles that may spawn as the parked vehicle
-_car = ["O_MRAP_02_F", "O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F", "O_LSV_02_unarmed_F", "O_LSV_02_armed_F", "O_LSV_02_AT_F", "O_Truck_03_transport_F", "O_Truck_03_covered_F"];
+	private _arr =
+	[
+		_cornerTurrets select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
 
-// The turrents that may spawn in the different fortifications
-_turrent = ["O_HMG_01_high_F", "O_GMG_01_high_F", "O_static_AT_F", "O_static_AA_F"];
+	_cornerTurrets set [_i, _arr];
+};
+(_comp select 0) append _cornerTurrets;
 
-// Selects a vehicle to be parked
-_veh select 0 set [0, selectRandom _car];
+// Setup tower turrets
+private _turretEntries =
+[
+	east,
+	CSAT_KEY,
+	[RAND_VEH_TURRET_H_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
 
-// Selects a turrent for each fortification
-_veh select 1 set [0, selectRandom ["O_HMG_01_high_F", "O_GMG_01_high_F"]];
-_veh select 2 set [0, selectRandom _turrent];
-_veh select 3 set [0, selectRandom _turrent];
-_veh select 4 set [0, selectRandom _turrent];
-_veh select 5 set [0, selectRandom _turrent];
+private _towerTurrets =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["O_HMG_01_high_F",[17.7551,-9.41895,2.280],90.0022,1,0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+];
+for  [{ private _i = 0 }, { _i < count _towerTurrets }, { _i = _i + 1 }] do
+{
+	(selectRandom _turretEntries) params ["_veh", "_variant", "_loadout"];
 
-// Adds the vehicles to the composition
-_comp = [(_comp select 0) + _veh, _comp select 1, _comp select 2, _comp select 3];
+	private _arr =
+	[
+		_towerTurrets select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_towerTurrets set [_i, _arr];
+};
+(_comp select 0) append _towerTurrets;
 
 _comp

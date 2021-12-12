@@ -29,8 +29,6 @@ private _comp =
 		["Land_HBarrier_3_F",[8.401,22.7715,0],45,1,0,[0,0],"","",true,false],
 		["Land_HBarrier_3_F",[1.09106,24.9771,0],0,1,0,[0,0],"","",true,false],
 
-		["I_Quadbike_01_F",[2.20496,12,0.200709],270,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false],
-
 		// Item crates
 		["Box_IND_Wps_F",[2.20496,18,0],90,1,0,[0,-0],"","[this, 'BASIC', 1, 4] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
 		["Box_IND_Ammo_F",[2.20496,16,0],0,1,0,[0,0],"","",true,false]
@@ -39,12 +37,41 @@ private _comp =
 	AAF_KEY
 ];
 
+// Setup cars
+private _carEntries =
+[
+	independent,
+	AAF_KEY,
+	[RAND_VEH_QUADBIKE_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cars =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["I_Quadbike_01_F",[2.20496,12,0.200709],270,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false]
+];
+for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
+{
+	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_cars select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_cars set [_i, _arr];
+};
+(_comp select 0) append _cars;
+
 // Setup turrets
 private _turretEntries =
 [
 	independent,
 	AAF_KEY,
-	[RAND_VEH_TURRET_H_KEY]
+	[RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _turrets =
@@ -66,8 +93,6 @@ for  [{ private _i = 0 }, { _i < count _turrets }, { _i = _i + 1 }] do
 
 	_turrets set [_i, _arr];
 };
-
-// Adds the vehicles to the composition
-_comp = [(_comp select 0) + _turrets, _comp select 1];
+(_comp select 0) append _turrets;
 
 _comp

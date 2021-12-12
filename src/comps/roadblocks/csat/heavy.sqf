@@ -84,13 +84,14 @@ for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 
 	_cars set [_i, _arr];
 };
+(_comp select 0) append _cars;
 
 // Setup turrets
 private _turretEntries =
 [
 	east,
 	CSAT_KEY,
-	[RAND_VEH_TURRET_H_KEY]
+	[RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _turrets =
@@ -112,8 +113,6 @@ for  [{ private _i = 0 }, { _i < count _turrets }, { _i = _i + 1 }] do
 
 	_turrets set [_i, _arr];
 };
-
-// Adds the vehicles to the composition
-_comp = [(_comp select 0) + _cars + _turrets, _comp select 1];
+(_comp select 0) append _cars;
 
 _comp

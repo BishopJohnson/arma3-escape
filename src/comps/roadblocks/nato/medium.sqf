@@ -37,8 +37,6 @@ private _comp =
 		["Land_CzechHedgehog_01_new_F",[19.9996,-12.9995,0],0,1,0,[0,0],"","",true,false],
 		["Land_HBarrier_5_F",[13.5509,19.9966,0],0,1,0,[0,0],"","",true,false],
 
-		["B_Quadbike_01_F",[1.99963,13.0005,0.200709],180,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false],
-
 		// Item crate
 		["Box_NATO_Wps_F",[7.99963,13.0005,0],0,1,0,[0,0],"","[this, 'BASIC', 1, 4] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
 		["Box_NATO_Ammo_F",[5.99963,13.0005,0],90,1,0,[0,-0],"","",true,false]
@@ -47,12 +45,41 @@ private _comp =
 	NATO_KEY
 ];
 
+// Setup cars
+private _carEntries =
+[
+	west,
+	NATO_KEY,
+	[RAND_VEH_QUADBIKE_KEY]
+] call compile preprocessFile "src\comps\getVehicles.sqf";
+
+private _cars =
+[
+/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
+	["B_Quadbike_01_F",[1.99963,13.0005,0.200709],180,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false]
+];
+for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
+{
+	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
+
+	private _arr =
+	[
+		_cars select _i,
+		_veh,
+		_variant,
+		_loadout
+	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
+
+	_cars set [_i, _arr];
+};
+(_comp select 0) append _cars;
+
 // Setup turrets
 private _turretEntries =
 [
 	west,
 	NATO_KEY,
-	[RAND_VEH_TURRET_H_KEY]
+	[RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _turrets =
@@ -75,8 +102,6 @@ for  [{ private _i = 0 }, { _i < count _turrets }, { _i = _i + 1 }] do
 
 	_turrets set [_i, _arr];
 };
-
-// Adds the vehicles to the composition
-_comp = [(_comp select 0) + _turrets, _comp select 1];
+(_comp select 0) append _turrets;
 
 _comp
