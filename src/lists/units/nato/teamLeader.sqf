@@ -15,9 +15,9 @@ private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_trace
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
 {
-    switch (worldName) do
+    switch true do
     {
-        case TANOA_KEY:
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weaponP = "arifle_MX_GL_khk_F";
             _weaponS = "hgun_P07_khk_F";
@@ -29,7 +29,7 @@ if (Escape_Nato_Use_Camo) then
             _helmet = "H_HelmetB_Enh_tna_F";
             _nvg = "NVGoggles_tna_F";
         };
-        case LIVONIA_KEY:
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _weaponP = "arifle_MX_GL_Black_F";
             _weaponS = "hgun_P07_khk_F";
