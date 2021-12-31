@@ -85,3 +85,16 @@
 #define RAND_VEH_TURRET_L_KEY "turretLow"
 #define RAND_VEH_TURRET_M_KEY "turretMid"
 #define RAND_VEH_TURRET_H_KEY "turretHigh"
+
+// Unit classes
+#define UNIT_CLASS_LEADER "leader"
+#define UNIT_CLASS_RIFLEMEN "riflemen"
+#define UNIT_CLASS_AT "at"
+#define UNIT_CLASS_AA "aa"
+#define UNIT_CLASS_AUTORIFLEMEN "autoriflemen"
+#define UNIT_CLASS_MARKSMEN "marksmen"
+#define UNIT_CLASS_HEAVY_GUNNER "heavyGunner"
+#define UNIT_CLASS_AMMO "ammo"
+#define UNIT_CLASS_SUPPORT "support"
+#define UNIT_CLASS_FIELD_WEAPON "fieldWeapon"
+#define UNIT_CLASS_UAV "uav"

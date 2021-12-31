@@ -8,12 +8,13 @@
 
 params ["_unit"];
 
-if (!local _unit) exitWith {};
+//if (!local _unit) exitWith {};
 
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
-private _map = worldName;
-if (Escape_Nato_Use_Camo) then
+//private _map = worldName;
+private _map = TANOA_KEY;
+if (true/*Escape_Nato_Use_Camo*/) then
 {
     switch true do
     {
@@ -61,46 +62,46 @@ else
 };
 
 comment "Remove existing items";
-removeAllWeapons this;
-removeAllItems this;
-removeAllAssignedItems this;
-removeUniform this;
-removeVest this;
-removeBackpack this;
-removeHeadgear this;
+removeAllWeapons _unit;
+removeAllItems _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
 
 comment "Add weapons";
-this addWeapon _weaponP;
-this addPrimaryWeaponItem "optic_Aco";
-this addPrimaryWeaponItem _mag;
-this addWeapon _weaponS;
-this addHandgunItem "16Rnd_9x21_Mag";
+_unit addWeapon _weaponP;
+_unit addPrimaryWeaponItem "optic_Aco";
+_unit addPrimaryWeaponItem _mag;
+_unit addWeapon _weaponS;
+_unit addHandgunItem "16Rnd_9x21_Mag";
 
 comment "Add containers";
-this forceAddUniform _uniform;
-this addVest _vest;
+_unit forceAddUniform _uniform;
+_unit addVest _vest;
 
 comment "Add items to containers";
-this addItemToUniform "FirstAidKit";
-for "_i" from 1 to 2 do {this addItemToUniform _mag;};
-this addItemToUniform "Chemlight_green";
-for "_i" from 1 to 3 do {this addItemToVest _mag;};
-for "_i" from 1 to 2 do {this addItemToVest "16Rnd_9x21_Mag";};
-for "_i" from 1 to 5 do {this addItemToVest "1Rnd_HE_Grenade_shell";};
-for "_i" from 1 to 2 do {this addItemToVest "HandGrenade";};
-for "_i" from 1 to 2 do {this addItemToVest "MiniGrenade";};
-this addItemToVest "SmokeShell";
-this addItemToVest "SmokeShellGreen";
-this addItemToVest "Chemlight_green";
-for "_i" from 1 to 2 do {this addItemToVest "1Rnd_Smoke_Grenade_shell";};
-this addItemToVest "1Rnd_SmokeBlue_Grenade_shell";
-this addItemToVest "1Rnd_SmokeGreen_Grenade_shell";
-this addItemToVest "1Rnd_SmokeOrange_Grenade_shell";
-this addHeadgear _helmet;
+_unit addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
+_unit addItemToUniform "Chemlight_green";
+for "_i" from 1 to 3 do {_unit addItemToVest _mag;};
+for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
+for "_i" from 1 to 5 do {_unit addItemToVest "1Rnd_HE_Grenade_shell";};
+for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+for "_i" from 1 to 2 do {_unit addItemToVest "MiniGrenade";};
+_unit addItemToVest "SmokeShell";
+_unit addItemToVest "SmokeShellGreen";
+_unit addItemToVest "Chemlight_green";
+for "_i" from 1 to 2 do {_unit addItemToVest "1Rnd_Smoke_Grenade_shell";};
+_unit addItemToVest "1Rnd_SmokeBlue_Grenade_shell";
+_unit addItemToVest "1Rnd_SmokeGreen_Grenade_shell";
+_unit addItemToVest "1Rnd_SmokeOrange_Grenade_shell";
+_unit addHeadgear _helmet;
 
 comment "Add items";
-this linkItem "ItemMap";
-this linkItem "ItemCompass";
-this linkItem "ItemWatch";
-this linkItem "ItemRadio";
-this linkItem _nvg;
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem _nvg;
