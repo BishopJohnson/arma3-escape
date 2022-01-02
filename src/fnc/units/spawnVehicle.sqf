@@ -6,7 +6,12 @@
 
 #include "..\..\..\define.hpp"
 
-params ["_pos", "_side"];
+params
+[
+    "_pos",
+    "_side",
+    ["_faction", nil, [""]]
+];
 
 if (!isServer) exitWith {};
 
@@ -24,9 +29,13 @@ switch (_side) do
     };
     case str east:
     {
-        private _factionDict = Escape_Random_Vehicles get _side;
-        private _factionKeys = keys _factionDict;
-        private _faction = selectRandom _factionKeys;
+        if (isNil "_faction") then
+        {
+            private _factionDict = Escape_Random_Vehicles get _side;
+            private _factionKeys = keys _factionDict;
+            _faction = selectRandom _factionKeys;
+        };
+
         switch (_faction) do
         {
             case CSAT_KEY:
@@ -41,9 +50,13 @@ switch (_side) do
     };
     case str independent:
     {
-        private _factionDict = Escape_Random_Vehicles get _side;
-        private _factionKeys = keys _factionDict;
-        private _faction = selectRandom _factionKeys;
+        if (isNil "_faction") then
+        {
+            private _factionDict = Escape_Random_Vehicles get _side;
+            private _factionKeys = keys _factionDict;
+            _faction = selectRandom _factionKeys;
+        };
+
         switch (_faction) do
         {
             case AAF_KEY:

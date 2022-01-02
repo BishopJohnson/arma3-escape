@@ -12,8 +12,6 @@ if (!local _unit) exitWith {};
 
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
-private _usingOrange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
-
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
 {
@@ -108,13 +106,8 @@ _unit addItemToBackpack "MineDetector";
 for "_i" from 1 to 2 do {_unit addItemToBackpack "APERSMine_Range_Mag";};
 for "_i" from 1 to 2 do {_unit addItemToBackpack "APERSBoundingMine_Range_Mag";};
 for "_i" from 1 to 2 do {_unit addItemToBackpack "APERSTripMine_Wire_Mag";};
+for "_i" from 1 to 2 do {_unit addItemToBackpack "APERSMineDispenser_Mag";};
 _unit addHeadgear _helmet;
-
-comment "Laws of War DLC items";
-if (_usingOrange) then
-{
-    for "_i" from 1 to 2 do {_unit addItemToBackpack "APERSMineDispenser_Mag";};
-};
 
 comment "Add items";
 _unit linkItem "ItemMap";

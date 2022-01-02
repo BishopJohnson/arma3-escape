@@ -12,6 +12,11 @@ if (!isServer) exitWith {};
 
 private _dict = createHashMap;
 
+private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
+private _usingOrange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
+private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
+private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Leaders
 _units = createHashMap;
 
@@ -34,8 +39,12 @@ _dict set [UNIT_CLASS_RIFLEMEN, _units];
 _units = createHashMap;
 
 _units set ["heavyAt", ["B_soldier_LAT_F", compile preprocessFile "src\lists\units\nato\riflemanAt.sqf"]];
-_units set ["lightAt", ["B_soldier_LAT2_F", compile preprocessFile "src\lists\units\nato\riflemanAtLight.sqf"]];
 _units set ["titanAt", ["B_soldier_AT_F", compile preprocessFile "src\lists\units\nato\missileSpcAt.sqf"]];
+
+if (_usingTanks) then
+{
+    _units set ["lightAt", ["B_soldier_LAT2_F", compile preprocessFile "src\lists\units\nato\riflemanAtLight.sqf"]];
+};
 
 _dict set [UNIT_CLASS_AT, _units];
 
@@ -57,14 +66,21 @@ _dict set [UNIT_CLASS_AUTORIFLEMEN, _units];
 _units = createHashMap;
 
 _units set ["marksman", ["B_soldier_M_F", compile preprocessFile "src\lists\units\nato\marksman.sqf"]];
-_units set ["sharpshooter", ["B_Sharpshooter_F", compile preprocessFile "src\lists\units\nato\sharpshooter.sqf"]];
+
+if (_usingMarksmen) then
+{
+    _units set ["sharpshooter", ["B_Sharpshooter_F", compile preprocessFile "src\lists\units\nato\sharpshooter.sqf"]];
+};
 
 _dict set [UNIT_CLASS_MARKSMEN, _units];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Heavy gunner
 _units = createHashMap;
 
-_units set ["heavyGunner", ["B_HeavyGunner_F", compile preprocessFile "src\lists\units\nato\heavyGunner.sqf"]];
+if (_usingMarksmen) then
+{
+    _units set ["heavyGunner", ["B_HeavyGunner_F", compile preprocessFile "src\lists\units\nato\heavyGunner.sqf"]];
+};
 
 _dict set [UNIT_CLASS_HEAVY_GUNNER, _units];
 
@@ -84,8 +100,12 @@ _units = createHashMap;
 _units set ["medic", ["B_medic_F", compile preprocessFile "src\lists\units\nato\cls.sqf"]];
 _units set ["engineer", ["B_engineer_F", compile preprocessFile "src\lists\units\nato\engineer.sqf"]];
 _units set ["exp", ["B_soldier_exp_F", compile preprocessFile "src\lists\units\nato\explosiveSpc.sqf"]];
-_units set ["mine", ["B_soldier_mine_F", compile preprocessFile "src\lists\units\nato\mineSpc.sqf"]];
 _units set ["repair", ["B_soldier_repair_F", compile preprocessFile "src\lists\units\nato\repairSpc.sqf"]];
+
+if (_usingOrange) then
+{
+    _units set ["mine", ["B_soldier_mine_F", compile preprocessFile "src\lists\units\nato\mineSpc.sqf"]];
+};
 
 _dict set [UNIT_CLASS_SUPPORT, _units];
 
@@ -104,9 +124,17 @@ _dict set [UNIT_CLASS_FIELD_WEAPON, _units];
 _units = createHashMap;
 
 _units set ["uav", ["B_soldier_UAV_F", compile preprocessFile "src\lists\units\nato\uavDarter.sqf"]];
-_units set ["uavPackage", ["B_soldier_UAV_06_F", compile preprocessFile "src\lists\units\nato\uavPelican.sqf"]];
-_units set ["uavMedical", ["B_soldier_UAV_06_medical_F", compile preprocessFile "src\lists\units\nato\uavPelicanMed.sqf"]];
-_units set ["uavDemining", ["B_soldier_UGV_02_Demining_F", compile preprocessFile "src\lists\units\nato\uavDemining.sqf"]];
+
+if (_usingOrange) then
+{
+    _units set ["uavPackage", ["B_soldier_UAV_06_F", compile preprocessFile "src\lists\units\nato\uavPelican.sqf"]];
+    _units set ["uavMedical", ["B_soldier_UAV_06_medical_F", compile preprocessFile "src\lists\units\nato\uavPelicanMed.sqf"]];
+};
+
+if (_usingContact) then
+{
+    _units set ["uavDemining", ["B_soldier_UGV_02_Demining_F", compile preprocessFile "src\lists\units\nato\uavDemining.sqf"]];
+};
 
 _dict set [UNIT_CLASS_UAV, _units];
 

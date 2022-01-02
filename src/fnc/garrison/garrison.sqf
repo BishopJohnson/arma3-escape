@@ -117,7 +117,7 @@ for [{ private _i = 0 }, { _i < count _objects }, { _i = _i + 1 }] do
 
 // Garrisons buildings
 {
-    [_x, _side /*, 0.2*/] execVM "src\fnc\garrison\occupyBuilding.sqf";
+    [_x, _side] execVM "src\fnc\garrison\occupyBuilding.sqf";
 } forEach _objects;
 
 // Removes elements from the list that are not whitelisted turrents (or MRAPS if _vehBool is true)

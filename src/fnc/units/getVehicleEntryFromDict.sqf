@@ -56,14 +56,16 @@ while {isNil "_vehEntry" && _attempt < 5} do
     _attempts = _attempt + 1;
 
     private _type = selectRandomWeighted _typeWeights;
-    private _typeDict = ((Escape_Random_Vehicles get str _side) get _faction) get _type;
+    private _typeDict = Escape_Random_Vehicles get str _side get _faction get _type;
     if (isNil "_typeDict") then { continue };
 
     private _typeKeys = keys _typeDict;
     if (count _typeKeys > 0) then
     {
-        _vehEntry = _typeDict get (selectRandom _typeKeys);
+        _vehEntry = _typeDict get selectRandom _typeKeys;
     };
 };
+
+if (isNil "_vehEntry") exitWith {};
 
 _vehEntry
