@@ -1,75 +1,81 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Side - 
-		Array (Optional) - 
+	    Side -
+		Array (Optional) -
 */
+
+#include "..\..\..\define.hpp"
 
 #define GUARD_COUNT 4
 
 params ["_side"];
 
-private ["_comp", "_position", "_radius", "_azimuth", "_i", "_player", "_marker", "_guardClasses", "_guards"];
-
 if (!isServer) exitWith {};
 
 prisonEscapeStared = false;
+private _players = call BIS_fnc_listPlayers;
 
 if (isNil "COMPOSITIONS") then
 {
 	COMPOSITIONS = call DICT_fnc_create;
 };
 
-_comp = [_side] call compile preprocessFile "src\comps\prisons\prison1.sqf"; // TODO: Replace with a general script for other prisons
-_radius = _comp select 2; // Radius of composition's area
+private _fnc = compile preprocessFile "src\comps\prisons\prison1.sqf"; // TODO: Replace with a general script for other prisons
+private _comp = [_side] call _fnc;
+private _buildings = _comp select 0;
+private _maxRadius = _comp select 1;
+private _minRadius = _comp select 2;
+private _isRect = _comp select 3;
+private _spawnObjects = _comp select 4;
+private _triggerObjects = _comp select 5;
+private _normalizeTiltObjects = _comp select 6;
+private _azimuth = random 360;
 
 // Selects prison position
-_position = [] call BIS_fnc_randomPos;
-while {!([_position, _radius] call compile preprocessFile "src\fnc\checkSlope.sqf")} do
+private _pos = [] call BIS_fnc_randomPos;
+while {!([_pos, _maxRadius] call compile preprocessFile "src\fnc\checkSlope.sqf")} do
 {
-    _position = [] call BIS_fnc_randomPos;
+    _pos = [] call BIS_fnc_randomPos;
 };
 
-[COMPOSITIONS, START_KEY, [_position, _radius]] call DICT_fnc_set;
+[COMPOSITIONS, START_KEY, [_pos, _maxRadius]] call DICT_fnc_set;
 
 // Clears all nearby terrain objects
 {
     _x hideObjectGlobal true;
 	_x enableSimulationGlobal false;
-} forEach nearestTerrainObjects [_position, [], _radius];
-
-_azimuth = random 360;
+} forEach nearestTerrainObjects [_pos, [], _maxRadius];
 
 // Spawns the composition
-[_position, _azimuth, _comp select 0] call BIS_fnc_ObjectsMapper;
+[_pos, _azimuth, _buildings] call BIS_fnc_ObjectsMapper;
 
 // Normalizes tilt
-[nearestObjects [_position, _comp select 7, _radius], []] execVM "src\fnc\normalizeTilt\normalizeTilt.sqf";
+[nearestObjects [_pos, _normalizeTiltObjects, _maxRadius], []] execVM "src\fnc\normalizeTilt\normalizeTilt.sqf";
 
 // Places players inside start area
-_i = 0;
+private _i = 0;
 {
     // Checks if there are more players
-	if (_i < count ([] call BIS_fnc_listPlayers)) then
+	if (_i < count _players) then
 	{
-		_player = ([] call BIS_fnc_listPlayers) select _i;
+		private _player = _players select _i;
 	    _player setPosATL position _x;
 		_player setDir direction _x;
-		
+
 		_i = _i + 1;
 	};
-	
-	deleteVehicle _x; // Deletes spawn marker
-} forEach nearestObjects [_position, _comp select 5, _radius];
+
+	deleteVehicle _x; // Delete spawn marker
+} forEach nearestObjects [_pos, _spawnObjects, _maxRadius];
 
 // Assign player loadouts
 {
 	player setCaptive true;
-	
 	[PLAYER_FACTION] execVM "src\fnc\loadouts\prisonLoadout.sqf";
-} remoteExec ["bis_fnc_call", (call BIS_fnc_listPlayers)];
+} remoteExec ["bis_fnc_call", _players];
 
 {
 	_x addEventHandler
@@ -79,10 +85,9 @@ _i = 0;
 			[] execVM 'src\fnc\starts\prisonEscapeStarted.sqf';
 		}
 	];
-} forEach (call BIS_fnc_listPlayers);
+} forEach _players;
 
 // Places triggers around start area
-_i = 0;
 {
 	_trg = createTrigger ["EmptyDetector", position _x];
 	_trg setTriggerArea [1, 10, getDir _x, true];
@@ -93,12 +98,12 @@ _i = 0;
 		"[] execVM 'src\fnc\starts\prisonEscapeStarted.sqf';",
 		""
 	];
-	
-	deleteVehicle _x; // Deletes trigger marker
-} forEach nearestObjects [_position, _comp select 6, _radius];
+
+	deleteVehicle _x; // Delete trigger marker
+} forEach nearestObjects [_pos, _triggerObjects, _maxRadius];
 
 // The prison's map marker
-_marker = createMarker ["start", _position];
+private _marker = createMarker ["start", _pos];
 _marker setMarkerType "hd_start";
 
 switch (PLAYER_FACTION) do
@@ -108,26 +113,29 @@ switch (PLAYER_FACTION) do
 	case independent:	{ _marker setMarkerColor "ColorGUER" };
 };
 
-// Spawn guards
-_guards = [
-	_side,
+// Spawn prison guards
+prisonGuards = [
+	_pos,
+	_maxRadius,
+	_minRadius,
 	GUARD_COUNT,
-	_comp select 1,
-	nil,
-	_position,
-	_radius, // Max radius
-	_comp select 3, // Min radius
+	_side,
+	"",
+	[
+		UNIT_CLASS_RIFLEMEN,		0.33,
+		UNIT_CLASS_AT,				0.33,
+		UNIT_CLASS_AUTORIFLEMEN,	0.33
+	],
+	_isRect,
 	_azimuth,
-	_comp select 4, // Is rectangle
 	"_this unlinkItem 'ItemMap';"
 ] call compile preprocessFile "src\fnc\garrison\perimeterPatrol.sqf";
 
 // Set search chopper to arrive when all guards are dead
-prisonGuards = _guards;
-_trg = createTrigger ["EmptyDetector", _position];
+_trg = createTrigger ["EmptyDetector", _pos];
 _trg setTriggerStatements
 [
 	"{alive _x} count prisonGuards == 0",
-	"['" + format ["%1", _side] + "'] execVM 'src\fnc\starts\spawnSearchHelicopter.sqf'",
+	format ["[%1] execVM 'src\fnc\starts\spawnSearchHelicopter.sqf'", _side],
 	""
 ];
