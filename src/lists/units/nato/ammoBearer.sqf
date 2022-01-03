@@ -8,8 +8,6 @@
 
 params ["_unit"];
 
-if (!local _unit) exitWith {};
-
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_mag1", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;

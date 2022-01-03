@@ -20,7 +20,7 @@ params
 	"_maxRadius",
 	"_minRadius",
 	"_side",
-	["_faction", nil, [""]],
+	["_faction", "", [""]],
 	["_vehBool", false, [true]],
 	["_patrolSize", -1, [0]]
 ];
@@ -130,24 +130,5 @@ for [{ private _i = 0 }, { _i < count _vehicles }, { _i = _i + 1 }] do
 	_i = _i - 1;
 };
 
-[
-    _side,
-    _patrolSize,
-	nil,
-	nil,
-	_position,
-	_maxRadius,
-	_minRadius,
-	0,
-	false,
-	""
-] execVM "src\fnc\garrison\perimeterPatrol.sqf";
-
-if (isNil "_faction") then
-{
-	[_vehicles] execVM "src\fnc\garrison\populateCrew.sqf";
-}
-else
-{
-	[_vehicles, _faction] execVM "src\fnc\garrison\populateCrew.sqf";
-};
+[_position, _maxRadius, _minRadius, _patrolSize, _side, _faction] execVM "src\fnc\garrison\perimeterPatrol.sqf";
+[_vehicles, _faction] execVM "src\fnc\garrison\populateCrew.sqf";
