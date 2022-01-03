@@ -81,7 +81,6 @@ _unit addVest _vest;
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
-_unit addItemToUniform "Chemlight_green";
 for "_i" from 1 to 3 do {_unit addItemToVest _mag;};
 for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
 for "_i" from 1 to 5 do {_unit addItemToVest "1Rnd_HE_Grenade_shell";};
@@ -89,7 +88,6 @@ for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
 for "_i" from 1 to 2 do {_unit addItemToVest "MiniGrenade";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellGreen";
-_unit addItemToVest "Chemlight_green";
 for "_i" from 1 to 2 do {_unit addItemToVest "1Rnd_Smoke_Grenade_shell";};
 _unit addItemToVest "1Rnd_SmokeBlue_Grenade_shell";
 _unit addItemToVest "1Rnd_SmokeGreen_Grenade_shell";
@@ -101,4 +99,13 @@ _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
-_unit linkItem _nvg;
+
+comment "Night time operation items";
+private _dayTime = dayTime;
+if (_dayTime < 5 || _dayTime > 19) then
+{
+    _unit addPrimaryWeaponItem "acc_pointer_IR";
+    _unit addItemToUniform "Chemlight_green";
+    _unit addItemToVest "Chemlight_green";
+    _unit linkItem _nvg;
+};

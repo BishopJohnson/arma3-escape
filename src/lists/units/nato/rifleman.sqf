@@ -69,7 +69,6 @@ removeHeadgear _unit;
 
 // Add weapons
 _unit addWeapon _weaponP;
-_unit addPrimaryWeaponItem "acc_pointer_IR";
 _unit addPrimaryWeaponItem "optic_Aco";
 _unit addPrimaryWeaponItem _mag;
 _unit addWeapon _weaponS;
@@ -82,12 +81,10 @@ _unit addVest _vest;
 // Add items to containers
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
-_unit addItemToUniform "Chemlight_green";
 for "_i" from 1 to 7 do {_unit addItemToVest _mag;};
 for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellGreen";
-_unit addItemToVest "Chemlight_green";
 for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
 _unit addHeadgear _helmet;
 
@@ -96,4 +93,13 @@ _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
-_unit linkItem _nvg;
+
+comment "Night time operation items";
+private _dayTime = dayTime;
+if (_dayTime < 5 || _dayTime > 19) then
+{
+    _unit addPrimaryWeaponItem "acc_pointer_IR";
+    _unit addItemToUniform "Chemlight_green";
+    _unit addItemToVest "Chemlight_green";
+    _unit linkItem _nvg;
+};

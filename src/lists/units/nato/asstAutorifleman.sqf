@@ -87,7 +87,6 @@ removeHeadgear _unit;
 
 comment "Add weapons";
 _unit addWeapon _weaponP;
-_unit addPrimaryWeaponItem "acc_pointer_IR";
 _unit addPrimaryWeaponItem "optic_Aco";
 _unit addPrimaryWeaponItem _mag;
 _unit addWeapon _weaponS;
@@ -104,14 +103,12 @@ _unit addWeapon "Rangefinder";
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
-_unit addItemToUniform "Chemlight_green";
 for "_i" from 1 to 5 do {_unit addItemToVest _mag;};
 for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
 for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
 for "_i" from 1 to 2 do {_unit addItemToVest "B_IR_Grenade";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellGreen";
-_unit addItemToVest "Chemlight_green";
 _unit addItemToBackpack "optic_tws_mg";
 _unit addItemToBackpack _bipod;
 _unit addItemToBackpack _muzzle2;
@@ -119,16 +116,25 @@ for "_i" from 1 to 2 do {_unit addItemToBackpack _mag1;};
 for "_i" from 1 to 2 do {_unit addItemToBackpack _mag2;};
 _unit addHeadgear _helmet;
 
+comment "Add items";
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+
+comment "Night time operation items";
+private _dayTime = dayTime;
+if (_dayTime < 5 || _dayTime > 19) then
+{
+    _unit addPrimaryWeaponItem "acc_pointer_IR";
+    _unit addItemToUniform "Chemlight_green";
+    _unit addItemToVest "Chemlight_green";
+    _unit linkItem _nvg;
+};
+
 comment "Marksmen DLC items";
 if (_usingMarksmen) then
 {
     _unit addItemToBackpack _muzzle1;
     for "_i" from 1 to 2 do {_unit addItemToBackpack "130Rnd_338_Mag";};
 };
-
-comment "Add items";
-_unit linkItem "ItemMap";
-_unit linkItem "ItemCompass";
-_unit linkItem "ItemWatch";
-_unit linkItem "ItemRadio";
-_unit linkItem _nvg;

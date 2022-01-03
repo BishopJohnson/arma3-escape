@@ -70,7 +70,6 @@ for "_i" from 1 to 2 do {_unit addItemToVest "16Rnd_9x21_Mag";};
 for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellRed";
-for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_red";};
 _unit addHeadgear _helmet;
 
 comment "Add items";
@@ -78,7 +77,14 @@ _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
-_unit linkItem _nvg;
+
+comment "Night time operation items";
+private _dayTime = dayTime;
+if (_dayTime < 5 || _dayTime > 19) then
+{
+    for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_red";};
+    _unit linkItem _nvg;
+};
 
 [
     _unit,

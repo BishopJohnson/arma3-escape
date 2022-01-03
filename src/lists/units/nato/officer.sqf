@@ -70,12 +70,10 @@ _unit addVest "V_BandollierB_rgr";
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform _mag;};
-_unit addItemToUniform "Chemlight_green";
 _unit addItemToVest _mag;
 for "_i" from 1 to 2 do {_unit addItemToVest "11Rnd_45ACP_Mag";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellGreen";
-_unit addItemToVest "Chemlight_green";
 _unit addHeadgear _helmet;
 
 comment "Add items";
@@ -84,3 +82,11 @@ _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
+
+comment "Night time operation items";
+private _dayTime = dayTime;
+if (_dayTime < 5 || _dayTime > 19) then
+{
+    _unit addItemToUniform "Chemlight_green";
+    _unit addItemToVest "Chemlight_green";
+};
