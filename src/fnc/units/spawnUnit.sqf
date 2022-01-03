@@ -6,12 +6,11 @@
 
 #include "..\..\..\define.hpp"
 
-// TODO: Add parameter to filter unit types.
 params
 [
     "_pos",
     "_side",
-    ["_faction", nil, [""]],
+    ["_faction", "", [""]],
     ["_group", nil],
     ["_typeWeight", nil, [[]]]
 ];
@@ -23,22 +22,22 @@ if (typeName _side == "Side") then
     _side = str _side;
 };
 
+private "_fnc";
 private "_groupSide";
-private "_unitEntry";
 switch (_side) do
 {
     case str west:
     {
         _groupSide = west;
-        _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getNatoUnitEntry.sqf";
+        _fnc = compile preprocessFile "src\fnc\units\getNatoUnitEntry.sqf";
     };
     case str east:
     {
         _groupSide = east;
 
-        if (isNil "_faction") then
+        if (count _faction == 0) then
         {
-            private _factionDict = Escape_Random_Vehicles get _side;
+            private _factionDict = Escape_Units get _side;
             private _factionKeys = keys _factionDict;
             _faction = selectRandom _factionKeys;
         };
@@ -47,15 +46,15 @@ switch (_side) do
         {
             case CSAT_KEY:
             {
-                _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getCsatUnitEntry.sqf";
+                _fnc = compile preprocessFile "src\fnc\units\getCsatUnitEntry.sqf";
             };
             case CSAT_P_KEY:
             {
-                _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getCsatPacificUnitEntry.sqf";
+                _fnc = compile preprocessFile "src\fnc\units\getCsatPacificUnitEntry.sqf";
             };
             case SPETSNAZ_KEY:
             {
-                _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getSpetsnazUnitEntry.sqf";
+                _fnc = compile preprocessFile "src\fnc\units\getSpetsnazUnitEntry.sqf";
             };
         };
     };
@@ -63,9 +62,9 @@ switch (_side) do
     {
         _groupSide = independent;
 
-        if (isNil "_faction") then
+        if (count _faction == 0) then
         {
-            private _factionDict = Escape_Random_Vehicles get _side;
+            private _factionDict = Escape_Units get _side;
             private _factionKeys = keys _factionDict;
             _faction = selectRandom _factionKeys;
         };
@@ -74,24 +73,32 @@ switch (_side) do
         {
             case AAF_KEY:
             {
-                _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getAafUnitEntry.sqf";
+                _fnc = compile preprocessFile "src\fnc\units\getAafUnitEntry.sqf";
             };
             case LDF_KEY:
             {
-                _unitEntry = [_typeWeight] call compile preprocessFile "src\fnc\units\getLdfUnitEntry.sqf";
+                _fnc = compile preprocessFile "src\fnc\units\getLdfUnitEntry.sqf";
             };
         };
     };
 };
 
-if (isNil "_unitEntry") exitWith {};
+private "_unitEntry";
+if (isNil "_typeWeight") then
+{
+    _unitEntry = [] call _fnc;
+}
+else
+{
+    _unitEntry = [_typeWeight] call _fnc;
+};
 
 if (isNil "_group") then
 {
     _group = createGroup _groupSide;
 };
 
-if (_group == grpNull) exitWith {};
+if (isNull _group) exitWith { hint "Cannot create anymore groups to spawn units in" };
 
 private _unitType = _unitEntry select 0;
 if (typeName _unitType == "Array") then
@@ -99,7 +106,18 @@ if (typeName _unitType == "Array") then
     _unitType = selectRandom _unitType;
 };
 
-private _unit = _unitType createUnit [_pos, _group];
+private _unit = _group createUnit [_unitType, _pos, [], 0, "NONE"];
+
+if (side _unit != PLAYER_FACTION) then
+{
+    _unit setSkill ['aimingShake', 0.25];
+
+    // Removes maps
+    if (random 1 > 0.9) then
+    {
+        _unit unlinkItem "ItemMap";
+    };
+};
 
 private _unitLoadout = _unitEntry select 1;
 if (typeName _unitLoadout == "Code") then

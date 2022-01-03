@@ -10,7 +10,7 @@
 params
 [
     "_veh",
-    ["_faction", nil, [""]]
+    ["_faction", "", [""]]
 ];
 
 if (!isServer) exitWith {};
@@ -22,7 +22,7 @@ if (!isServer) exitWith {};
 
 	{ _x triggerDynamicSimulation false; } forEach units _group;
 
-    if (!isNil "_faction") then
+    if (count _faction > 0) then
     {
         [units _group, side _group, _faction] execVM "src\fnc\loadouts\setCrewLoadout.sqf";
     };
