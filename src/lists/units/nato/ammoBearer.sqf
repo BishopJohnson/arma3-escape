@@ -10,8 +10,6 @@ params ["_unit"];
 
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_mag1", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-
 private _map = worldName;
 if (Escape_Nato_Use_Camo) then
 {
@@ -124,7 +122,7 @@ if (_dayTime < 5 || _dayTime > 19) then
 };
 
 comment "Marksmen DLC items";
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     for "_i" from 1 to 2 do {_unit addItemToBackpack "10Rnd_338_Mag";};
     for "_i" from 1 to 2 do {_unit addItemToBackpack "20Rnd_762x51_Mag";};

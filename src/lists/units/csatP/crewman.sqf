@@ -30,7 +30,7 @@ if (Escape_Csat_Pacific_Use_Camo) then
             _uniform = "U_O_SpecopsUniform_ocamo";
             _vest = "V_BandollierB_khk";
             _helmet = "H_HelmetCrew_O";
-            _nvg = "NVGoggles_OPFOR";
+            _nvg = "O_NVGoggles_hex_F";
         };
     };
 }

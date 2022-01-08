@@ -24,7 +24,7 @@ if (Escape_Csat_Pacific_Use_Camo) then
         default
         {
             _vest = "V_TacVest_khk";
-            _nvg = "NVGoggles_OPFOR";
+            _nvg = "O_NVGoggles_hex_F";
         };
     };
 }

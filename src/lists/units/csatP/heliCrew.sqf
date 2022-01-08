@@ -26,7 +26,7 @@ if (Escape_Csat_Pacific_Use_Camo) then
         {
             _weaponP = "arifle_CTAR_hex_F";
             _vest = "V_TacVest_khk";
-            _nvg = "NVGoggles_OPFOR";
+            _nvg = "O_NVGoggles_hex_F";
         };
     };
 }

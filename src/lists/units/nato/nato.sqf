@@ -12,11 +12,6 @@ if (!isServer) exitWith {};
 
 private _dict = createHashMap;
 
-private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-private _usingOrange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Leaders
 _units = createHashMap;
 
@@ -41,7 +36,7 @@ _units = createHashMap;
 _units set ["heavyAt", ["B_soldier_LAT_F", compile preprocessFile "src\lists\units\nato\riflemanAt.sqf"]];
 _units set ["titanAt", ["B_soldier_AT_F", compile preprocessFile "src\lists\units\nato\missileSpcAt.sqf"]];
 
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _units set ["lightAt", ["B_soldier_LAT2_F", compile preprocessFile "src\lists\units\nato\riflemanAtLight.sqf"]];
 };
@@ -67,7 +62,7 @@ _units = createHashMap;
 
 _units set ["marksman", ["B_soldier_M_F", compile preprocessFile "src\lists\units\nato\marksman.sqf"]];
 
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _units set ["sharpshooter", ["B_Sharpshooter_F", compile preprocessFile "src\lists\units\nato\sharpshooter.sqf"]];
 };
@@ -77,7 +72,7 @@ _dict set [UNIT_CLASS_MARKSMEN, _units];
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Heavy gunner
 _units = createHashMap;
 
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _units set ["heavyGunner", ["B_HeavyGunner_F", compile preprocessFile "src\lists\units\nato\heavyGunner.sqf"]];
 };
@@ -102,7 +97,7 @@ _units set ["engineer", ["B_engineer_F", compile preprocessFile "src\lists\units
 _units set ["exp", ["B_soldier_exp_F", compile preprocessFile "src\lists\units\nato\explosiveSpc.sqf"]];
 _units set ["repair", ["B_soldier_repair_F", compile preprocessFile "src\lists\units\nato\repairSpc.sqf"]];
 
-if (_usingOrange) then
+if (Escape_Using_Orange) then
 {
     _units set ["mine", ["B_soldier_mine_F", compile preprocessFile "src\lists\units\nato\mineSpc.sqf"]];
 };
@@ -125,13 +120,13 @@ _units = createHashMap;
 
 _units set ["uav", ["B_soldier_UAV_F", compile preprocessFile "src\lists\units\nato\uavDarter.sqf"]];
 
-if (_usingOrange) then
+if (Escape_Using_Orange) then
 {
     _units set ["uavPackage", ["B_soldier_UAV_06_F", compile preprocessFile "src\lists\units\nato\uavPelican.sqf"]];
     _units set ["uavMedical", ["B_soldier_UAV_06_medical_F", compile preprocessFile "src\lists\units\nato\uavPelicanMed.sqf"]];
 };
 
-if (_usingContact) then
+if (Escape_Using_Contact) then
 {
     _units set ["uavDemining", ["B_soldier_UGV_02_Demining_F", compile preprocessFile "src\lists\units\nato\uavDemining.sqf"]];
 };
