@@ -37,9 +37,9 @@ if (Escape_Nato_Use_Camo) then
         };
         default
         {
-            _weaponP = "MMG_02_sand_F";
+            _weaponP = "MMG_02_camo_F";
             _weaponS = "hgun_P07_F";
-            _bipod = "bipod_01_F_snd";
+            _bipod = "bipod_01_F_mtp";
             _uniform = "U_B_CombatUniform_mcam";
             _vest = "V_PlateCarrier1_rgr";
             _helmet = "H_HelmetB";

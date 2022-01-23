@@ -41,7 +41,7 @@ if (Escape_Nato_Use_Camo) then
             _weaponS = "hgun_P07_F";
             _mag = "30Rnd_65x39_caseless_mag";
             _uniform = "U_B_CombatUniform_mcam";
-            _vest = "V_PlateCarrierGL_rgr";
+            _vest = "V_PlateCarrierGL_mtp";
             _helmet = "H_HelmetSpecB_blk";
             _nvg = "NVGoggles";
         };
@@ -53,7 +53,7 @@ else
     _weaponS = "hgun_P07_F";
     _mag = "30Rnd_65x39_caseless_mag";
     _uniform = "U_B_CombatUniform_mcam";
-    _vest = "V_PlateCarrierGL_rgr";
+    _vest = selectRandom ["V_PlateCarrierGL_rgr", "V_PlateCarrierGL_mtp"];
     _helmet = "H_HelmetSpecB_blk";
     _nvg = "NVGoggles";
 };
