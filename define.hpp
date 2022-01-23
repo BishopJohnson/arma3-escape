@@ -54,6 +54,17 @@
 #define VORONA_KEY "vorona"
 #define ZUBR_KEY "zubr"
 
+// Static Cargo Keys
+#define CARGO_AMMO_KEY "ammo"
+#define CARGO_BASIC_WEAPONS_KEY "basicWeapons"
+#define CARGO_SPECIAL_WEAPONS_KEY "specialWeapons"
+#define CARGO_LAUNCHERS_KEY "launchers"
+#define CARGO_GRENADES_KEY "grenades"
+#define CARGO_EXPLOSIVES_KEY "explosives"
+#define CARGO_SUPPORT_KEY "support"
+#define CARGO_EQUIPMENT_KEY "equipment"
+#define CARGO_UNIFORMS_KEY "uniforms"
+
 // Random Cargo Keys
 #define RAND_CARGO_COMMON_KEY "common"
 #define RAND_CARGO_UNCOMMON_KEY "uncommon"
