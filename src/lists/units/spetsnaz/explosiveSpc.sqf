@@ -11,7 +11,7 @@ params ["_unit"];
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_muzzle", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
 private _map = worldName;
-if (Escape_Nato_Use_Camo) then
+if (Escape_Spetsnaz_Use_Camo) then
 {
     removeGoggles _unit;
 
