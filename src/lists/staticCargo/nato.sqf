@@ -12,7 +12,6 @@ if (!isServer) exitWith {};
 
 private _faction = NATO_KEY;
 private _map = worldName;
-private _useMapCamo = "IncludeNato" call BIS_fnc_getParamValue == 2;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Ammo box
 _weapons = [];
@@ -28,8 +27,9 @@ _mags =
     ["NLAW_F", 1]
 ];
 _items = [];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -57,14 +57,15 @@ if (Escape_Using_Marksmen) then
     _mags append [["20Rnd_762x51_Mag", 6]];
 };
 
-(Escape_Static_Cargo get CARGO_AMMO_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_AMMO_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////// Basic weapons box
 _weapons = [["hgun_Pistol_heavy_01_F", 1], ["SMG_01_F", 1]];
 _mags = [["11Rnd_45ACP_Mag", 1], ["16Rnd_9x21_Mag", 1], ["30Rnd_45ACP_Mag_SMG_01", 1]];
 _items = [];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -119,7 +120,7 @@ else
     _mags append [["100Rnd_65x39_caseless_Black_mag", 2], ["30Rnd_65x39_caseless_Black_mag", 8]];
 };
 
-(Escape_Static_Cargo get CARGO_BASIC_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_BASIC_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////// Special weapons box
 _weapons = [["arifle_SDAR_F", 1]];
@@ -134,8 +135,9 @@ _items =
     ["optic_TWS", 1],
     ["optic_TWS_MG", 1]
 ];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -200,14 +202,15 @@ else
     };
 };
 
-(Escape_Static_Cargo get CARGO_SPECIAL_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_SPECIAL_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Launchers box
 _weapons = [["launch_NLAW_F", 1]];
 _mags = [["NLAW_F", 3], ["Titan_AA", 3], ["Titan_AP", 3], ["Titan_AT", 3]];
 _items = [];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -215,6 +218,7 @@ if (_useMapCamo) then
         case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons append [["launch_B_Titan_tna_F", 1], ["launch_B_Titan_short_tna_F", 1]];
+            _backpacks append [["B_Kitbag_rgr", 3]];
 
             if (Escape_Using_Tanks) then
             {
@@ -225,6 +229,7 @@ if (_useMapCamo) then
         default
         {
             _weapons append [["launch_B_Titan_F", 1], ["launch_B_Titan_short_F", 1]];
+            _backpacks append [["B_Kitbag_mcamo", 3]];
 
             if (Escape_Using_Tanks) then
             {
@@ -236,6 +241,9 @@ if (_useMapCamo) then
 }
 else
 {
+    _weapons append [["launch_B_Titan_F", 1], ["launch_B_Titan_short_F", 1]];
+    _backpacks append [["B_Kitbag_rgr", 3]];
+
     if (Escape_Using_Tanks) then
     {
         _weapons append [["launch_MRAWS_sand_F", 1]];
@@ -243,7 +251,7 @@ else
     };
 };
 
-(Escape_Static_Cargo get CARGO_LAUNCHERS_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_LAUNCHERS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Grenades box
 _weapons = [];
@@ -272,8 +280,9 @@ _mags =
     ["UGL_FlareWhite_F", 2]
 ];
 _items = [];
+_backpacks = [];
 
-(Escape_Static_Cargo get CARGO_GRENADES_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_GRENADES_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// Explosives box
 _weapons = [];
@@ -289,13 +298,14 @@ _mags =
     ["SLAMDirectionalMine_Wire_Mag", 5]
 ];
 _items = [];
+_backpacks = [];
 
 if (Escape_Using_Orange) then
 {
     _mags append [["APERSMineDispenser_Mag", 5]];
 };
 
-(Escape_Static_Cargo get CARGO_EXPLOSIVES_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_EXPLOSIVES_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Support box
 _weapons = [];
@@ -314,8 +324,9 @@ _items =
     ["Rangefinder", 1],
     ["ToolKit", 1]
 ];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -329,7 +340,7 @@ if (_useMapCamo) then
                 ["NVGoggles_INDEP", 4]
             ];
 
-            if (Escape_Using_Apex) then { _items append [["NVGogglesB_blk_F", 6]] };
+            if (Escape_Using_Apex) then { _items append [["NVGogglesB_blk_F", 2]] };
             if (Escape_Using_Marksmen) then
             {
                 _items append [["muzzle_snds_338_black", 6], ["muzzle_snds_b", 5]];
@@ -344,7 +355,7 @@ if (_useMapCamo) then
                 ["Laserdesignator_01_khk_F", 1],
                 ["muzzle_snds_H_khk_F", 10],
                 ["NVGoggles_tna_F", 4],
-                ["NVGogglesB_grn_F", 6]
+                ["NVGogglesB_grn_F", 2]
             ];
 
             if (Escape_Using_Marksmen) then
@@ -363,7 +374,7 @@ if (_useMapCamo) then
                 ["NVGoggles", 4]
             ];
 
-            if (Escape_Using_Apex) then { _items append [["NVGogglesB_gry_F", 6]] };
+            if (Escape_Using_Apex) then { _items append [["NVGogglesB_gry_F", 2]] };
             if (Escape_Using_Marksmen) then { _items append [["muzzle_snds_338_sand", 6], ["muzzle_snds_b_snd_F", 5]] };
         };
     };
@@ -386,7 +397,7 @@ else
     };
 };
 
-(Escape_Static_Cargo get CARGO_SUPPORT_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_SUPPORT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Equipment box
 _weapons = [];
@@ -411,8 +422,9 @@ _items =
     ["H_PilotHelmetHeli_B", 2],
     ["H_PilotHelmetFighter_B", 2]
 ];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -528,7 +540,7 @@ else
     if (Escape_Using_Apex) then { _items append [["V_TacChestrig_grn_F", 2], ["H_HelmetB_TI_arid_F", 2]] };
 };
 
-(Escape_Static_Cargo get CARGO_EQUIPMENT_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_EQUIPMENT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Uniforms box
 _weapons = [];
@@ -542,8 +554,9 @@ _items =
     ["U_B_PilotCoveralls", 4],
     ["U_B_Wetsuit", 4]
 ];
+_backpacks = [];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -642,4 +655,4 @@ if (Escape_Using_Apex) then
     ];
 };
 
-(Escape_Static_Cargo get CARGO_UNIFORMS_KEY) set [_faction, [_weapons, _mags, _items]];
+(Escape_Static_Cargo get CARGO_UNIFORMS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];

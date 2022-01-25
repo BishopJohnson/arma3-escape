@@ -13,6 +13,7 @@ if (!isServer) exitWith {};
 clearWeaponCargoGlobal _box;
 clearMagazineCargoGlobal _box;
 clearItemCargoGlobal _box;
+clearBackpackCargoGlobal _box;
 
 if (!(_type in Escape_Static_Cargo)) exitWith {};
 
@@ -23,6 +24,8 @@ private _cargo = _dict get _faction;
 private _weapons = _cargo select 0;
 private _mags = _cargo select 1;
 private _items = _cargo select 2;
+private _backpacks = _cargo select 3;
 { _box addWeaponCargoGlobal [_x select 0, _x select 1] } forEach _weapons;
 { _box addMagazineCargoGlobal [_x select 0, _x select 1] } forEach _mags;
 { _box addItemCargoGlobal [_x select 0, _x select 1] } forEach _items;
+{ _box addBackpackCargoGlobal [_x select 0, _x select 1] } forEach _backpacks;
