@@ -20,3 +20,4 @@ Escape_Static_Cargo set [CARGO_EQUIPMENT_KEY, createHashMap];
 Escape_Static_Cargo set [CARGO_UNIFORMS_KEY, createHashMap];
 
 call compile preprocessFile "src\lists\staticCargo\nato.sqf";
+call compile preprocessFile "src\lists\staticCargo\csat.sqf";

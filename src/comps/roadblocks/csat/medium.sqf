@@ -10,6 +10,18 @@
 
 if (!isServer) exitWith {};
 
+private _side = east;
+private _faction = CSAT_KEY;
+
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _randCargoPath = "src\fnc\randomCargo\randomCargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _basicBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'BASIC'] execVM '%4';",
+	CARGO_BASIC_WEAPONS_KEY, _faction, _cargoPath, _randCargoPath
+];
+
 private _comp =
 [
 	[
@@ -35,18 +47,18 @@ private _comp =
 		["Land_HBarrier_3_F",[13.8857,-19.0234,0],0,1,0,[0,0],"","",true,false],
 
 		// Item crates
-		["Box_East_Wps_F",[1.99963,-11.0005,0],0,1,0,[0,0],"","[this, 'BASIC', 1, 4] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
-		["Box_East_Ammo_F",[3.99963,-11.0005,0],90,1,0,[0,-0],"","",true,false]
+		["Box_East_Wps_F",[1.99963,-11.0005,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
+		["Box_East_Ammo_F",[3.99963,-11.0005,0],90,1,0,[0,-0],"",_ammoBoxInit,true,false]
 	],
 	30, // Radius of composition area
-	CSAT_KEY
+	_faction
 ];
 
 // Setup cars
 private _carEntries =
 [
-	east,
-	CSAT_KEY,
+	_side,
+	_faction,
 	[RAND_VEH_QUADBIKE_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
@@ -74,8 +86,8 @@ for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 // Setup turrets
 private _turretEntries =
 [
-	east,
-	CSAT_KEY,
+	_side,
+	_faction,
 	[RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
