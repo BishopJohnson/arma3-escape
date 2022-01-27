@@ -8,8 +8,6 @@
 
 #define MAGAZINE_COUNT 3
 
-params ["_side"];
-
 if (!hasInterface) exitWith {};
 
 // Removes all player gear
@@ -27,12 +25,84 @@ player linkItem "ItemWatch";
 player linkItem "ItemCompass";
 player linkItem "ItemRadio";
 
-switch (_side) do
+private _map = worldName;
+private "_uniform";
+switch (PLAYER_FACTION) do
 {
-    case west:        { player forceAddUniform "U_B_CombatUniform_mcam" };
-    case east:        { player forceAddUniform "U_O_SpecopsUniform_ocamo" };
-    case independent: { player forceAddUniform "U_I_CombatUniform" };
+    case NATO_KEY:
+    {
+        if (Escape_Nato_Use_Camo) then
+        {
+            switch true do
+            {
+                case (_map == LIVONIA_KEY && Escape_Using_Contact):
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_CombatUniform_mcam_wdl_f",
+                        "U_B_CombatUniform_tshirt_mcam_wdL_f",
+                        "U_B_CombatUniform_vest_mcam_wdl_f"
+                    ];
+                };
+                case (_map == TANOA_KEY && Escape_Using_Apex):
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_T_Soldier_F",
+                        "U_B_T_Soldier_AR_F",
+                        "U_B_T_Soldier_SL_F"
+                    ];
+                };
+                default
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_CombatUniform_mcam",
+                        "U_B_CombatUniform_mcam_tshirt",
+                        "U_B_CombatUniform_mcam_vest"
+                    ];
+                };
+            };
+        }
+        else
+        {
+            _uniform = selectRandom
+            [
+                "U_B_CombatUniform_mcam",
+                "U_B_CombatUniform_mcam_tshirt",
+                "U_B_CombatUniform_mcam_vest"
+            ];
+        };
+    };
+    case CSAT_KEY:
+    {
+        if (Escape_Csat_Use_Camo) then
+        {
+            switch true do
+            {
+                case (_map == LIVONIA_KEY && Escape_Using_Apex);
+                case (_map == TANOA_KEY && Escape_Using_Apex):
+                {
+                    _uniform = "U_O_T_Soldier_F";
+                };
+                default
+                {
+                    _uniform = "U_O_CombatUniform_ocamo";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "U_O_CombatUniform_ocamo";
+        };
+    };
+    case AAF_KEY:
+    {
+        _uniform = selectRandom ["U_I_CombatUniform", "U_I_CombatUniform_shortsleeve"];
+    };
 };
+
+player forceAddUniform _uniform;
 
 private _rarity = selectRandomWeighted
 [/* commonality key          weight */

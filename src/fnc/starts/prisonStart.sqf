@@ -74,7 +74,7 @@ private _i = 0;
 // Assign player loadouts
 {
 	player setCaptive true;
-	[PLAYER_SIDE] execVM "src\fnc\loadouts\prisonLoadout.sqf";
+	[] execVM "src\fnc\loadouts\prisonLoadout.sqf";
 } remoteExec ["bis_fnc_call", _players];
 
 {
