@@ -27,7 +27,7 @@ _count = DEFAULT_COUNT;
 
 //if (count _this > 0) then {_count = _this select 0;};
 
-_sides = [west, east, independent] - [PLAYER_FACTION];
+_sides = [west, east, independent] - [PLAYER_SIDE];
 
 for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 {

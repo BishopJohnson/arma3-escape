@@ -108,7 +108,7 @@ if (typeName _unitType == "Array") then
 
 private _unit = _group createUnit [_unitType, _pos, [], 0, "NONE"];
 
-if (side _unit != PLAYER_FACTION) then
+if (side _unit != PLAYER_SIDE) then
 {
     _unit setSkill ['aimingShake', 0.25];
 

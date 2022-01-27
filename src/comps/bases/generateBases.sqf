@@ -36,7 +36,7 @@ _count = some function of size and density
 */
 _count = 20;
 
-_sides = [west, east, independent] - [PLAYER_FACTION];
+_sides = [west, east, independent] - [PLAYER_SIDE];
 
 _typeWeights =
 [

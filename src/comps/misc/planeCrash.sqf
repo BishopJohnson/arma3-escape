@@ -2,19 +2,30 @@
 
 */
 
-#define RADIUS 25
+#include "..\..\..\define.hpp"
 
-private ["_comp", "_veh", "_position", "_marker"];
+#define RADIUS 25
 
 if (!isServer) exitWith {};
 
-/* TODO: Utilize COMPOSITION dictionary to store comp data to optimize
- *       spawning later.
- */
+private _side = PLAYER_SIDE;
+private _faction = PLAYER_FACTION;
+
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _basicBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_BASIC_WEAPONS_KEY, _faction, _cargoPath];
+private _specialBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_SPECIAL_WEAPONS_KEY, _faction, _cargoPath];
+private _launcherBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_LAUNCHERS_KEY, _faction, _cargoPath];
+private _grenadeBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_GRENADES_KEY, _faction, _cargoPath];
+private _explosiveBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_EXPLOSIVES_KEY, _faction, _cargoPath];
+private _supportBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_SUPPORT_KEY, _faction, _cargoPath];
+private _equipmentBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_EQUIPMENT_KEY, _faction, _cargoPath];
+private _uniformBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_UNIFORMS_KEY, _faction, _cargoPath];
 
 // Selects base position
-_position = [] call BIS_fnc_randomPos;
-while {!([_position, RADIUS] call compile preprocessFile "src\fnc\checkSlope.sqf")} do
+private _slopeFnc = compile preprocessFile "src\fnc\checkSlope.sqf";
+private _position = [] call BIS_fnc_randomPos;
+while { !([_position, RADIUS] call _slopeFnc) } do
 {
 	_position = [] call BIS_fnc_randomPos;
 };
@@ -25,7 +36,7 @@ while {!([_position, RADIUS] call compile preprocessFile "src\fnc\checkSlope.sqf
 	_x enableSimulationGlobal false;
 } forEach nearestTerrainObjects [_position, [], RADIUS];
 
-_comp =
+private _comp =
 [
 	["Land_Wreck_Plane_Transport_01_F",[5.6333,0.661133,0],0,1,0,[0,0],"","",true,false],
 	["test_EmptyObjectForSmoke",[5.6333,0.661133,0],0,1,0,[0,0],"","",true,false],
@@ -35,19 +46,19 @@ _comp =
 	["CraterLong_small",[6.31836,14.6982,0],0,1,0,[0,0],"","",true,false]
 ];
 
-_veh =
+private _veh =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
 	// Item crates
-	["Box_NATO_Wps_F",[0.258057,0.185547,-4.76837e-007],0.000161979,1,0,[0,-0],"","",true,false],         // (0) basic weapons
-	["Box_NATO_WpsLaunch_F",[0.0986328,8.46729,-9.53674e-007],360,1,0,[0,-0],"","",true,false],           // (1) launchers
-	["Box_NATO_WpsSpecial_F",[-0.152588,-10.1152,-1.43051e-006],0.000128465,1,0,[0,-0],"","",true,false], // (2) special weapons
-	["Box_NATO_Ammo_F",[-0.604004,4.99902,-9.53674e-007],2.59403e-005,1,0,[0,0],"","",true,false],        // (3) basic ammo
-	["Box_NATO_AmmoOrd_F",[1.13647,10.4121,-1.43051e-006],359.994,1,0,[-0,-0],"","",true,false],          // (4) explosives
-	["Box_NATO_Grenades_F",[-0.258789,-2.79053,-1.43051e-006],359.995,1,0,[-0,0],"","",true,false],       // (5) grenades
-	["Box_NATO_Support_F",[1.57959,6.76953,-4.76837e-007],0.000226324,1,0,[0,0],"","",true,false],        // (6) support
-	["Box_NATO_Equip_F",[0.763916,3.28223,0],360,1,0,[0,-0],"","",true,false],                            // (7) equipment
-	["Box_NATO_Uniforms_F",[0.432861,-6.86523,-4.76837e-007],359.999,1,0,[-0,0],"","",true,false],        // (8) uniforms
+	["Box_NATO_Wps_F",[0.258057,0.185547,-4.76837e-007],0.000161979,1,0,[0,-0],"",_basicBoxInit,true,false],
+	["Box_NATO_WpsLaunch_F",[0.0986328,8.46729,-9.53674e-007],360,1,0,[0,-0],"",_launcherBoxInit,true,false],
+	["Box_NATO_WpsSpecial_F",[-0.152588,-10.1152,-1.43051e-006],0.000128465,1,0,[0,-0],"",_specialBoxInit,true,false],
+	["Box_NATO_Ammo_F",[-0.604004,4.99902,-9.53674e-007],2.59403e-005,1,0,[0,0],"",_ammoBoxInit,true,false],
+	["Box_NATO_AmmoOrd_F",[1.13647,10.4121,-1.43051e-006],359.994,1,0,[-0,-0],"",_explosiveBoxInit,true,false],
+	["Box_NATO_Grenades_F",[-0.258789,-2.79053,-1.43051e-006],359.995,1,0,[-0,0],"",_grenadeBoxInit,true,false],
+	["Box_NATO_Support_F",[1.57959,6.76953,-4.76837e-007],0.000226324,1,0,[0,0],"",_supportBoxInit,true,false],
+	["Box_NATO_Equip_F",[0.763916,3.28223,0],360,1,0,[0,-0],"",_equipmentBoxInit,true,false],
+	["Box_NATO_Uniforms_F",[0.432861,-6.86523,-4.76837e-007],359.999,1,0,[-0,0],"",_uniformBoxInit,true,false],
 
 	// Deceased pilots
 	["Sign_Arrow_Blue_F",[-2.27979,1.31299,0],random 360,1,1,[0,0],"",
@@ -57,10 +68,10 @@ _veh =
 	["Sign_Arrow_Blue_F",[-2.3606,-1.5498,0],random 360,1,1,[0,0],"",
 	 "removeFromRemainsCollector [this];
 	  this triggerDynamicSimulation false;",
-	 true,false]   // (10) pilot #2
+	 true,false] // (10) pilot #2
 ];
 
-switch (PLAYER_FACTION) do
+switch (_side) do
 {
 	case east:
 	{
@@ -88,7 +99,7 @@ switch (PLAYER_FACTION) do
 		_veh select 6 set [0, "Box_IND_Support_F"];
 		_veh select 7 set [0, "Box_AAF_Equip_F"];
 		_veh select 8 set [0, "Box_AAF_Uniforms_F"];
-		
+
 		_veh select 9 set [0, "I_helipilot_F"];
 		_veh select 10 set [0, "I_helipilot_F"];
 	};
@@ -105,7 +116,7 @@ _comp append _veh;
 
 /*
 // DEBUG CODE
-_marker = createMarker ["plane_crash", _position];
+private _marker = createMarker ["plane_crash", _position];
 _marker setMarkerType "hd_unknown";
 _marker setMarkerColor "ColorBlack";
 */

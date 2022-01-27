@@ -23,7 +23,7 @@ if (isNil "COMPOSITIONS") then
 	[COMPOSITIONS, KEY, []] call DICT_fnc_set;
 };
 */
-_sides = [west, east, independent] - [PLAYER_FACTION];
+_sides = [west, east, independent] - [PLAYER_SIDE];
 
 for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 {

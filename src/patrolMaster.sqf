@@ -117,7 +117,7 @@ private _infantrySpawnFnc = compile preprocessFile "src\fnc\patrols\infantry\spa
 		default { /* TODO: Stop this process. */ };
 	};
 
-	if (_side != PLAYER_FACTION) then
+	if (_side != PLAYER_SIDE) then
 	{
 		_groups = [infantryPatrols, _x] call DICT_fnc_get;
 
@@ -151,7 +151,7 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 		default { /* TODO: Stop this process. */ };
 	};
 
-	if (_side != PLAYER_FACTION) then
+	if (_side != PLAYER_SIDE) then
 	{
 		_groups = [vehiclePatrols, _x] call DICT_fnc_get;
 
@@ -178,7 +178,7 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 } forEach (vehiclePatrols call DICT_fnc_keys);
 
 // Schedules process to handle air patrols
-[PLAYER_FACTION, airPatrols] spawn
+[PLAYER_SIDE, airPatrols] spawn
 {
 	params ["_playerFaction", "_airPatrols"];
 

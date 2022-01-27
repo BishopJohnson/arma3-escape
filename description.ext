@@ -15,7 +15,7 @@ class Params
 	{
 		title = "Faction";
 		values[] = {0,1,2,3};
-		texts[] = {"Random","BLUFOR","OPFOR","INDEPENDENT"};
+		texts[] = {"Random","NATO","CSAT","AAF"};
 		default = 0;
 	};
 	class Daytime
@@ -107,8 +107,8 @@ class Params
 	class IncludeAaf
 	{
 		title = "Include AAF for Independent";
-		texts[] = {"Yes","No"};
-		values[] = {1,0};
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
 		default = 1;
 	};
 	class IncludeLdf

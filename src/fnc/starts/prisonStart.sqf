@@ -74,7 +74,7 @@ private _i = 0;
 // Assign player loadouts
 {
 	player setCaptive true;
-	[PLAYER_FACTION] execVM "src\fnc\loadouts\prisonLoadout.sqf";
+	[PLAYER_SIDE] execVM "src\fnc\loadouts\prisonLoadout.sqf";
 } remoteExec ["bis_fnc_call", _players];
 
 {
@@ -106,7 +106,7 @@ private _i = 0;
 private _marker = createMarker ["start", _pos];
 _marker setMarkerType "hd_start";
 
-switch (PLAYER_FACTION) do
+switch (PLAYER_SIDE) do
 {
 	case west:			{ _marker setMarkerColor "ColorWEST" };
 	case east:			{ _marker setMarkerColor "ColorEAST" };

@@ -11,7 +11,7 @@ if (!isServer) exitWith {};
 // Waits until mission starts
 waitUntil { time > 0 };
 
-_sides = [east, west, independent] - [PLAYER_FACTION];
+_sides = [east, west, independent] - [PLAYER_SIDE];
 
 _startTypes =
 [
