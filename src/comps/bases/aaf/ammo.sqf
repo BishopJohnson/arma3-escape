@@ -10,6 +10,31 @@
 
 if (!isServer) exitWith {};
 
+private _side = independent;
+private _faction = AAF_KEY;
+
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _randCargoPath = "src\fnc\randomCargo\randomCargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _basicBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'BASIC'] execVM '%4';",
+	CARGO_BASIC_WEAPONS_KEY, _faction, _cargoPath, _randCargoPath
+];
+private _specialBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'SPECIAL'] execVM '%4';",
+	CARGO_SPECIAL_WEAPONS_KEY, _faction, _cargoPath, _randCargoPath
+];
+private _launcherBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'LAUNCHER'] execVM '%4'",
+	CARGO_LAUNCHERS_KEY, _faction, _cargoPath, _randCargoPath
+];
+private _grenadeBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_GRENADES_KEY, _faction, _cargoPath];
+private _explosiveBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_EXPLOSIVES_KEY, _faction, _cargoPath];
+private _supportBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_SUPPORT_KEY, _faction, _cargoPath];
+
 private _comp =
 [
 	[
@@ -41,26 +66,26 @@ private _comp =
 		["Land_BagFence_End_F",[9.83008,4.50586,0],43.8052,1,0,[0,0],"","",true,false],
 
 		// Item crates
-		["Box_IND_AmmoOrd_F",[0.000244141,5.99951,0],90,1,0,[0,-0],"","",true,false],
-		["Box_IND_Grenades_F",[-1.99976,5.99951,0],90,1,0,[0,-0],"","",true,false],
-		["Box_IND_Ammo_F",[2.00024,5.99951,0],90,1,0,[0,-0],"","",true,false],
-		["Box_IND_Wps_F",[4.00024,5.99951,0],0,1,0,[0,0],"","[this, 'BASIC'] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
-		["Box_IND_Support_F",[-3.99976,5.99951,0],90,1,0,[0,-0],"","",true,false],
-		["Box_IND_AmmoVeh_F",[-8.32959,-1.93018,0],0,1,0,[0,0],"","",true,false],
-		["Box_IND_WpsLaunch_F",[-1.99976,3.99951,0],0,1,0,[0,0],"","[this, 'LAUNCHER'] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false],
-		["Box_IND_WpsSpecial_F",[2.00024,3.99951,0],0,1,0,[0,0],"","[this, 'SPECIAL'] execVM 'src\fnc\randomCargo\randomCargo.sqf';",true,false]
+		["Box_IND_Ammo_F",[2.00024,5.99951,0],90,1,0,[0,-0],"",_ammoBoxInit,true,false],
+		["Box_IND_Wps_F",[4.00024,5.99951,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
+		["Box_IND_WpsSpecial_F",[2.00024,3.99951,0],0,1,0,[0,0],"",_specialBoxInit,true,false],
+		["Box_IND_WpsLaunch_F",[-1.99976,3.99951,0],0,1,0,[0,0],"",_launcherBoxInit,true,false],
+		["Box_IND_Grenades_F",[-1.99976,5.99951,0],90,1,0,[0,-0],"",_grenadeBoxInit,true,false],
+		["Box_IND_AmmoOrd_F",[0.000244141,5.99951,0],90,1,0,[0,-0],"",_explosiveBoxInit,true,false],
+		["Box_IND_Support_F",[-3.99976,5.99951,0],90,1,0,[0,-0],"",_supportBoxInit,true,false],
+		["Box_IND_AmmoVeh_F",[-8.32959,-1.93018,0],0,1,0,[0,0],"","",true,false]
 	],
 	"n_Ordnance", // Marker type
 	20,           // Radius of composition area
 	35,           // Radius of patrol
-	AAF_KEY
+	_faction
 ];
 
 // Setup cars
 private _carEntries =
 [
-	independent,
-	AAF_KEY,
+	_side,
+	_faction,
 	[RAND_VEH_TRUCK_UNARMED_KEY, RAND_VEH_MRAP_UNARMED_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
@@ -88,8 +113,8 @@ for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 // Setup turrets
 private _turretEntries =
 [
-	independent,
-	AAF_KEY,
+	_side,
+	_faction,
 	[RAND_VEH_TURRET_L_KEY, RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 

@@ -217,10 +217,7 @@ _mags =
 _items = [];
 _backpacks = [];
 
-if (Escape_Using_Orange) then
-{
-    _mags append [["APERSMineDispenser_Mag", 5]];
-};
+if (Escape_Using_Orange) then { _mags append [["APERSMineDispenser_Mag", 5]] };
 
 (Escape_Static_Cargo get CARGO_EXPLOSIVES_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 

@@ -300,10 +300,7 @@ _mags =
 _items = [];
 _backpacks = [];
 
-if (Escape_Using_Orange) then
-{
-    _mags append [["APERSMineDispenser_Mag", 5]];
-};
+if (Escape_Using_Orange) then { _mags append [["APERSMineDispenser_Mag", 5]] };
 
 (Escape_Static_Cargo get CARGO_EXPLOSIVES_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
@@ -417,6 +414,7 @@ _items =
     ["V_BandollierB_blk", 2],
     ["V_Rangemaster_belt", 2],
     ["V_RebreatherB", 2],
+    ["H_Cap_khaki_specops_UK", 2],
     ["H_HelmetCrew_B", 2],
     ["H_CrewHelmetHeli_B", 2],
     ["H_PilotHelmetHeli_B", 2],
@@ -438,6 +436,7 @@ if (Escape_Nato_Use_Camo) then
                 ["V_PlateCarrierSpec_wdl", 2],
                 ["H_Booniehat_wdl", 4],
                 ["H_MilCap_wdl", 2],
+                ["H_Cap_usblack", 2],
                 ["H_HelmetB_plain_wdl", 7],
                 ["H_HelmetB_Light_wdl", 6],
                 ["H_HelmetSpecB_wdl", 6]
@@ -456,6 +455,7 @@ if (Escape_Nato_Use_Camo) then
                 ["V_TacChestrig_grn_F", 2],
                 ["H_Booniehat_tna_F", 4],
                 ["H_MilCap_tna_F", 2],
+                ["H_Cap_usblack", 2],
                 ["H_HelmetB_tna_F", 7],
                 ["H_HelmetB_Light_tna_F", 6],
                 ["H_HelmetB_Enh_tna_F", 6],
