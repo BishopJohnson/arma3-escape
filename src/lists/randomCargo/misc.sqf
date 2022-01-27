@@ -10,16 +10,12 @@ private ["_common", "_uncommon", "_rare", "_temp", "_weapons", "_ammo"];
 
 if (!isServer) exitWith {};
 
-private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-
 // Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // AKM
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _common set ["akm", [["arifle_AKM_F"], ["30Rnd_762x39_Mag_F", "30Rnd_762x39_Mag_Tracer_F"]]];
 };
@@ -34,25 +30,25 @@ _common set ["trgGl", [
 ]];
 
 // LIM
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _common set ["lim", [["LMG_03_F"], ["200Rnd_556x45_Box_F", "200Rnd_556x45_Box_Tracer_F"]]];
 };
 
 // AKS-74U
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _rare set ["aks", [["arifle_AKS_F"], ["30Rnd_545x39_Mag_F"]]];
 };
 
 // Protector
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _rare set ["protector", [["SMG_05_F"], ["30Rnd_9x21_Mag_SMG_02"]]];
 };
 
 // Kozlice
-if (_usingContact) then
+if (Escape_Using_Contact) then
 {
     _rare set ["kozlice", [
         ["sgun_HunterShotgun_01_F", "sgun_HunterShotgun_01_sawedoff_F"],
@@ -67,7 +63,7 @@ Escape_Random_Cargo_Basic set [RAND_CARGO_RARE_KEY, _rare];
 _common = Escape_Random_Cargo_Launcher get RAND_CARGO_COMMON_KEY;
 
 // RPG-7
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _common set ["rpg7", [["launch_RPG7_F"], ["RPG7_F"]]];
 };
@@ -78,7 +74,7 @@ Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, _common];
 _common = Escape_Random_Cargo_Special get RAND_CARGO_COMMON_KEY;
 
 // MK14
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _common set ["mk14", [
         ["srifle_DMR_06_camo_F", "srifle_DMR_06_olive_F", "srifle_DMR_06_hunter_F"],
@@ -93,19 +89,19 @@ _common = Escape_Random_Cargo_Prison get RAND_CARGO_COMMON_KEY;
 _rare = Escape_Random_Cargo_Prison get RAND_CARGO_RARE_KEY;
 
 // PM 9
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _common set ["pm9", [["hgun_Pistol_01_F"], ["10Rnd_9x21_Mag"]]];
 };
 
 // Protector
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _rare set ["protector", [["SMG_05_F"], ["30Rnd_9x21_Mag_SMG_02"]]];
 };
 
 // Kozlice
-if (_usingContact) then
+if (Escape_Using_Contact) then
 {
     _rare set ["kozlice", [
         ["sgun_HunterShotgun_01_F", "sgun_HunterShotgun_01_sawedoff_F"],

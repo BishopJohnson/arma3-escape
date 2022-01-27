@@ -14,9 +14,6 @@ private _include = "IncludeChinese" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
 private _map = worldName;
-private _useMapCamo = _include == 2;
-private _usingMarksmen = ["IncludeMarksmen", 0] call BIS_fnc_getParamValue == 1;
-private _usingTanks = ["IncludeTanks", 0] call BIS_fnc_getParamValue == 1;
 
 // Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
@@ -24,7 +21,7 @@ _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // CAR-95
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -50,7 +47,7 @@ _common set ["car95", [
 ]];
 
 // CAR-95 GL
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -79,7 +76,7 @@ _common set ["car95Gl", [
 ]];
 
 // CAR-95-1
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -117,7 +114,7 @@ _uncommon set ["car951", [_weapons, _ammo]];
 // Type 115
 _ammo = ["30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_green_mag_Tracer", "10Rnd_50BW_Mag_F"];
 
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -179,7 +176,7 @@ _rare = Escape_Random_Cargo_Launcher get RAND_CARGO_RARE_KEY;
 // RPG-42
 _ammo = ["RPG32_F", "RPG32_HE_F"];
 
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -216,11 +213,11 @@ else
 };
 
 // Vorona
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _ammo = ["Vorona_HEAT", "Vorona_HE"];
 
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         switch (_map) do
         {
@@ -260,7 +257,7 @@ if (_usingTanks) then
 // Titan AA
 _ammo = ["Titan_AA"];
 
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -299,7 +296,7 @@ else
 // Titan AT
 _ammo = ["Titan_AT", "Titan_AP"];
 
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -345,11 +342,11 @@ _uncommon = Escape_Random_Cargo_Special get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Special get RAND_CARGO_RARE_KEY;
 
 // ASP-1
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _ammo = ["10Rnd_127x54_Mag"];
 
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         _weapons = ["srifle_DMR_04_F"];
     }
@@ -376,11 +373,11 @@ if (_usingMarksmen) then
 };
 
 // Cyrus
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _ammo = ["10Rnd_93x64_DMR_05_Mag"];
 
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         switch (_map) do
         {
@@ -420,7 +417,7 @@ if (_usingMarksmen) then
 // Lynx
 _ammo = ["5Rnd_127x108_Mag", "5Rnd_127x108_APDS_Mag"];
 
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {

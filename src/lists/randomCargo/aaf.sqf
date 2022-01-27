@@ -13,8 +13,6 @@ if (!isServer) exitWith {};
 private _include = "IncludeAaf" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
-
 // Basic weapons
 _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
@@ -73,7 +71,7 @@ _uncommon = Escape_Random_Cargo_Launcher get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Launcher get RAND_CARGO_RARE_KEY;
 
 // MAAWS
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _weapons = ["launch_MRAWS_olive_F", "launch_MRAWS_olive_rail_F"];
     _ammo = ["MRAWS_HEAT_F", "MRAWS_HE_F"];

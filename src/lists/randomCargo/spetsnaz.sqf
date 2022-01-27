@@ -14,16 +14,13 @@ private _include = "IncludeSpetsnaz" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
 private _map = worldName;
-private _useMapCamo = _include == 2;
-private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
 
 // Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 
 // AK-12
-if (_useMapCamo) then
+if (Escape_Spetsnaz_Use_Camo) then
 {
     switch (_map) do
     {
@@ -53,7 +50,7 @@ else
         ["30rnd_762x39_AK12_Arid_Mag_F", "30rnd_762x39_AK12_Arid_Mag_Tracer_F"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_AK12_F", "arifle_AK12U_F"];
         _ammo pushBack ["30Rnd_762x39_AK12_Mag_F", "30Rnd_762x39_AK12_Mag_Tracer_F"];
@@ -77,7 +74,7 @@ else
 };
 
 // AK-12 GL
-if (_useMapCamo) then
+if (Escape_Spetsnaz_Use_Camo) then
 {
     switch (_map) do
     {
@@ -109,7 +106,7 @@ else
         ["30rnd_762x39_AK12_Arid_Mag_F", "30rnd_762x39_AK12_Arid_Mag_Tracer_F"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_AK12_GL_F"];
         _ammo pushBack ["30Rnd_762x39_AK12_Mag_F", "30Rnd_762x39_AK12_Mag_Tracer_F"];
@@ -137,7 +134,7 @@ else
 };
 
 // RPK
-if (_useMapCamo) then
+if (Escape_Spetsnaz_Use_Camo) then
 {
     switch (_map) do
     {
@@ -204,7 +201,7 @@ Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, _common];
 _common = Escape_Random_Cargo_Special get RAND_CARGO_COMMON_KEY;
 
 // ASP-1
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _weapons = ["srifle_DMR_04_F"];
     _ammo = ["10Rnd_127x54_Mag"];

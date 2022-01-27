@@ -11,11 +11,6 @@ private ["_common", "_uncommon", "_rare", "_temp", "_weapons", "_ammo"];
 if (!isServer) exitWith {};
 
 private _map = worldName;
-private _useMapCamo = "IncludeNato" call BIS_fnc_getParamValue == 2;
-private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 // Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
@@ -23,9 +18,9 @@ _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // SPAR-16
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -66,9 +61,9 @@ if (_usingApex) then
 };
 
 // SPAR-16 GL
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -115,7 +110,7 @@ if (_usingApex) then
 };
 
 // MX
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -124,7 +119,7 @@ if (_useMapCamo) then
             _weapons = ["arifle_MX_Black_F", "arifle_MXC_Black_F"];
             _ammo = ["30Rnd_65x39_caseless_black_mag", "30Rnd_65x39_caseless_black_mag_Tracer"];
         };
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["arifle_MX_khk_F", "arifle_MXC_khk_F"];
             _ammo = ["30Rnd_65x39_caseless_khaki_mag", "30Rnd_65x39_caseless_khaki_mag_Tracer"];
@@ -149,7 +144,7 @@ else
         ["30Rnd_65x39_caseless_black_mag", "30Rnd_65x39_caseless_black_mag_Tracer"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_MX_khk_F", "arifle_MXC_khk_F"];
         _ammo pushBack ["30Rnd_65x39_caseless_khaki_mag", "30Rnd_65x39_caseless_khaki_mag_Tracer"];
@@ -159,7 +154,7 @@ else
 _uncommon set ["mx", [_weapons, _ammo]];
 
 // MX GL
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -168,7 +163,7 @@ if (_useMapCamo) then
             _weapons = ["arifle_MX_GL_Black_F"];
             _ammo = ["30Rnd_65x39_caseless_black_mag", "30Rnd_65x39_caseless_black_mag_Tracer"];
         };
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["arifle_MX_GL_khk_F"];
             _ammo = ["30Rnd_65x39_caseless_khaki_mag", "30Rnd_65x39_caseless_khaki_mag_Tracer"];
@@ -195,7 +190,7 @@ else
         ["30Rnd_65x39_caseless_black_mag", "30Rnd_65x39_caseless_black_mag_Tracer"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_MX_GL_khk_F"];
         _ammo pushBack ["30Rnd_65x39_caseless_khaki_mag", "30Rnd_65x39_caseless_khaki_mag_Tracer"];
@@ -209,7 +204,7 @@ else
 _uncommon set ["mxGl", [_weapons, _ammo]];
 
 // MX-SW
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -218,7 +213,7 @@ if (_useMapCamo) then
             _weapons = ["arifle_MX_SW_Black_F"];
             _ammo = ["100Rnd_65x39_caseless_black_mag", "100Rnd_65x39_caseless_black_mag_tracer"];
         };
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["arifle_MX_SW_khk_F"];
             _ammo = ["100Rnd_65x39_caseless_khaki_mag", "100Rnd_65x39_caseless_khaki_mag_tracer"];
@@ -243,7 +238,7 @@ else
         ["100Rnd_65x39_caseless_black_mag", "100Rnd_65x39_caseless_black_mag_tracer"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_MX_SW_khk_F"];
         _ammo pushBack ["100Rnd_65x39_caseless_khaki_mag", "100Rnd_65x39_caseless_khaki_mag_tracer"];
@@ -253,9 +248,9 @@ else
 _uncommon set ["mxsw", [_weapons, _ammo]];
 
 // SPAR-16S
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -325,11 +320,11 @@ _uncommon = Escape_Random_Cargo_Launcher get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Launcher get RAND_CARGO_RARE_KEY;
 
 // MAAWS
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _ammo = ["MRAWS_HEAT_F", "MRAWS_HE_F"];
 
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -380,12 +375,12 @@ else
 // Titan AA
 _ammo = ["Titan_AA"];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == LIVONIA_KEY && _usingContact);
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == LIVONIA_KEY && Escape_Using_Contact);
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["launch_B_Titan_tna_F"];
         };
@@ -398,7 +393,7 @@ if (_useMapCamo) then
 else
 {
     _weapons = ["launch_B_Titan_F"];
-    if (_usingApex || _usingContact) then { _weapons append ["launch_B_Titan_tna_F"] };
+    if (Escape_Using_Apex || Escape_Using_Contact) then { _weapons append ["launch_B_Titan_tna_F"] };
 };
 
 if (TITAN_AA_KEY in _rare) then
@@ -420,12 +415,12 @@ else
 // Titan AT
 _ammo = ["Titan_AT", "Titan_AP"];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == LIVONIA_KEY && _usingContact);
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == LIVONIA_KEY && Escape_Using_Contact);
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["launch_B_Titan_short_tna_F"];
         };
@@ -438,7 +433,7 @@ if (_useMapCamo) then
 else
 {
     _weapons = ["launch_B_Titan_short_F"];
-    if (_usingApex || _usingContact) then { _weapons append ["launch_B_Titan_short_tna_F"] };
+    if (Escape_Using_Apex || Escape_Using_Contact) then { _weapons append ["launch_B_Titan_short_tna_F"] };
 };
 
 if (TITAN_AT_KEY in _rare) then
@@ -467,9 +462,9 @@ _uncommon = Escape_Random_Cargo_Special get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Special get RAND_CARGO_RARE_KEY;
 
 // SPAR-17
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -496,9 +491,9 @@ if (_usingApex) then
 };
 
 // MkI EMR
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -539,11 +534,11 @@ if (_usingMarksmen) then
 };
 
 // SPMG
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _ammo = ["200Rnd_338_Mag"];
 
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -581,7 +576,7 @@ if (_usingMarksmen) then
 };
 
 // MXM
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -590,7 +585,7 @@ if (_useMapCamo) then
             _weapons = ["arifle_MXM_Black_F"];
             _ammo = ["30Rnd_65x39_caseless_black_mag"];
         };
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["arifle_MXM_khk_F"];
             _ammo = ["30Rnd_65x39_caseless_khaki_mag"];
@@ -615,7 +610,7 @@ else
         ["30Rnd_65x39_caseless_black_mag"]
     ];
 
-    if (_usingApex) then
+    if (Escape_Using_Apex) then
     {
         _weapons pushBack ["arifle_MXM_khk_F"];
         _ammo pushBack ["30Rnd_65x39_caseless_khaki_mag"];
@@ -625,11 +620,11 @@ else
 _uncommon set ["mxm", [_weapons, _ammo]];
 
 // MAR-10
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _ammo = ["10Rnd_338_Mag"];
 
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -672,7 +667,7 @@ if (_usingMarksmen) then
 // LRR
 _ammo = ["7Rnd_408_Mag"];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
@@ -680,7 +675,7 @@ if (_useMapCamo) then
         {
             _weapons = ["srifle_LRR_F"];
         };
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["srifle_LRR_tna_F"];
         };
@@ -693,7 +688,7 @@ if (_useMapCamo) then
 else
 {
     _weapons = ["srifle_LRR_F", "srifle_LRR_camo_F"];
-    if (_usingApex) then { _weapons append ["srifle_LRR_tna_F"] };
+    if (Escape_Using_Apex) then { _weapons append ["srifle_LRR_tna_F"] };
 };
 
 if (LRR_KEY in _rare) then
@@ -724,11 +719,11 @@ _rare = Escape_Random_Cargo_Prison get RAND_CARGO_RARE_KEY;
 // PO7
 _ammo = ["16Rnd_9x21_Mag"];
 
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weapons = ["hgun_P07_khk_F", "hgun_P07_khk_Snds_F"];
         };
@@ -741,7 +736,7 @@ if (_useMapCamo) then
 else
 {
     _weapons = ["hgun_P07_F", "hgun_P07_snds_F"];
-    if (_usingApex) then { _weapons append ["hgun_P07_khk_F", "hgun_P07_khk_Snds_F"] };
+    if (Escape_Using_Apex) then { _weapons append ["hgun_P07_khk_F", "hgun_P07_khk_Snds_F"] };
 };
 
 if (P_07_KEY in _common) then

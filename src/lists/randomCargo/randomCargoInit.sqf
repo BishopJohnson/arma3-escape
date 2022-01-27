@@ -31,7 +31,7 @@ Escape_Random_Cargo_Prison set [RAND_CARGO_RARE_KEY, createHashMap];
 call compile preprocessFile "src\lists\randomCargo\nato.sqf";
 call compile preprocessFile "src\lists\randomCargo\csat.sqf";
 call compile preprocessFile "src\lists\randomCargo\aaf.sqf";
-call compile preprocessFile "src\lists\randomCargo\csat_p.sqf";
+call compile preprocessFile "src\lists\randomCargo\csatP.sqf";
 call compile preprocessFile "src\lists\randomCargo\spetsnaz.sqf";
 call compile preprocessFile "src\lists\randomCargo\ldf.sqf";
 call compile preprocessFile "src\lists\randomCargo\misc.sqf";

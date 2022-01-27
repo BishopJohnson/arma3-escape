@@ -14,9 +14,6 @@ private _include = "IncludeLdf" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
 private _map = worldName;
-private _useMapCamo = _include == 2;
-private _usingMarksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 // Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
@@ -24,7 +21,7 @@ _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // Promet
-if (_useMapCamo) then
+if (Escape_Ldf_Use_Camo) then
 {
     _weapons = ["arifle_MSBS65_F"];
 }
@@ -36,7 +33,7 @@ else
 _common set ["promet", [_weapons, ["30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer"]]];
 
 // Promet GL
-if (_useMapCamo) then
+if (Escape_Ldf_Use_Camo) then
 {
     _weapons =
     [
@@ -107,7 +104,7 @@ _uncommon = Escape_Random_Cargo_Launcher get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Launcher get RAND_CARGO_RARE_KEY;
 
 // MAAWS
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _weapons = ["launch_MRAWS_green_F", "launch_MRAWS_green_rail_F"];
     _ammo = ["MRAWS_HEAT_F", "MRAWS_HE_F"];
@@ -186,7 +183,7 @@ _uncommon = Escape_Random_Cargo_Special get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Special get RAND_CARGO_RARE_KEY;
 
 // Promet MR
-if (_useMapCamo) then
+if (Escape_Ldf_Use_Camo) then
 {
     _weapons = ["arifle_MSBS65_Mark_F"];
 }
@@ -198,7 +195,7 @@ else
 _common set ["prometMr", [_weapons, ["30Rnd_65x39_caseless_msbs_mag", "30Rnd_65x39_caseless_msbs_mag_Tracer"]]];
 
 // MkI EMR
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _weapons = ["srifle_DMR_03_F"];
     _ammo = ["20Rnd_762x51_Mag"];
@@ -221,7 +218,7 @@ if (_usingMarksmen) then
 };
 
 // SPMG
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _weapons = ["MMG_02_black_F"];
     _ammo = ["200Rnd_338_Mag"];
@@ -244,7 +241,7 @@ if (_usingMarksmen) then
 };
 
 // MAR-10
-if (_usingMarksmen) then
+if (Escape_Using_Marksmen) then
 {
     _weapons = ["srifle_DMR_02_F"];
     _ammo = ["10Rnd_338_Mag"];
