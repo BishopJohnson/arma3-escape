@@ -23,10 +23,7 @@ switch (_side) do
     };
     case east:
     {
-        if (count _faction == 0) then
-        {
-            _faction = selectRandom [CSAT_KEY, CSAT_P_KEY];
-        };
+        if (count _faction == 0) then { _faction = selectRandom [CSAT_KEY, CSAT_P_KEY] };
 
         switch (_faction) do
         {
@@ -39,5 +36,9 @@ switch (_side) do
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCsatPacific.sqf";
             };
         };
+    };
+    case independent:
+    {
+        [_crew] execVM "src\fnc\loadouts\setCrewLoadoutAaf.sqf";
     };
 };
