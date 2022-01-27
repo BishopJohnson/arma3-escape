@@ -24,7 +24,7 @@ COMPOSITIONS = call DICT_fnc_create;
 
 switch ("Faction" call BIS_fnc_getParamValue) do
 {
-	case 1; { PLAYER_SIDE = west; PLAYER_FACTION = NATO_KEY; };
+	case 1: { PLAYER_SIDE = west; PLAYER_FACTION = NATO_KEY; };
 	case 2: { PLAYER_SIDE = east; PLAYER_FACTION = CSAT_KEY; };
 	case 3: { PLAYER_SIDE = independent; PLAYER_FACTION = AAF_KEY; };
 	default
