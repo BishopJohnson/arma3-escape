@@ -15,9 +15,6 @@ if (_include == 0) exitWith {};
 
 private _dict = createHashMap;
 
-private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
@@ -130,7 +127,7 @@ _dict set [RAND_VEH_TANK_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Nyx
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _vehicles set ["nyx", [
         ["I_LT_01_scout_F", "I_LT_01_cannon_F", "I_LT_01_AT_F"],
@@ -153,7 +150,7 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Nyx
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
     _vehicles set ["nyx", [
         ["I_LT_01_AA_F"],
@@ -202,7 +199,7 @@ _vehicles = createHashMap;
 _vehicles set ["buzzard", [["I_Plane_Fighter_03_dynamicLoadout_F"], true, true]];
 
 // Gryphon
-if (_usingJets) then
+if (Escape_Using_Jets) then
 {
     _vehicles set ["gryphon", [["I_Plane_Fighter_04_F"], ["DigitalCamoGreen"], true]];
 };
@@ -250,6 +247,7 @@ _vehicles set ["gmg", [["I_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = Escape_Random_Vehicles get str independent;
+private _side = str independent;
+private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [AAF_KEY, _dict];
-Escape_Random_Vehicles set [str independent, _sideDict];
+Escape_Random_Vehicles set [_side, _sideDict];

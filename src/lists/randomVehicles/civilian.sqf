@@ -11,11 +11,7 @@ private ["_vehicles", "_veh", "_variants"];
 if (!isServer) exitWith {};
 
 private _dict = createHashMap;
-
 private _map = worldName;
-private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-private _usingOrange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Cars unarmed
 _vehicles = createHashMap;
@@ -43,7 +39,7 @@ _vehicles set ["hatchbackSport", [
 ]];
 
 // MB 4WD
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _vehicles set ["4wd", [
         ["C_Offroad_02_unarmed_F"],
@@ -60,7 +56,7 @@ _vehicles set ["offroad", [
 ]];
 
 // Offroad Covered
-if (_usingContact) then
+if (Escape_Using_Contact) then
 {
     _vehicles set ["offroadCovered", [["C_Offroad_01_covered_F"], ["Black", "Green"], true]];
 };
@@ -69,13 +65,13 @@ if (_usingContact) then
 _vehicles set ["suv", [["C_SUV_01_F"], ["Black", "Grey", "Orange", "Red"], true]];
 
 // Tractor
-if (_usingContact) then
+if (Escape_Using_Contact) then
 {
     _vehicles set ["tractor", [["C_Tractor_01_F"], ["Blue", "Green", "Red"], true]];
 };
 
 // Van
-if (_usingOrange) then
+if (Escape_Using_Orange) then
 {
     _variants = ["BattleBus", "Black", "Blue", "Green", "Masked", "Orange", "Red", "Swifd", "Vrana", "White"];
     if (_map == TANOA_KEY) then { _variants append ["BluePearl", "Daltgreen"] };
@@ -117,7 +113,7 @@ _vehicles set ["fuelTruck", [
 _vehicles set ["offroad", [["C_Offroad_01_repair_F"], true, true]];
 
 // Van
-if (_usingOrange) then
+if (Escape_Using_Orange) then
 {
     _vehicles set ["van", [["C_Van_02_medevac_F", "C_Van_02_service_F"], true, true]];
 };
@@ -134,6 +130,7 @@ _vehicles set ["zamakRepair", [
 
 _dict set [RAND_VEH_UTIL_KEY, _vehicles];
 
-private _sideDict = Escape_Random_Vehicles get str civilian;
+private _side = str civilian;
+private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [CIVILIAN_KEY, _dict];
-Escape_Random_Vehicles set [str civilian, _sideDict];
+Escape_Random_Vehicles set [_side, _sideDict];

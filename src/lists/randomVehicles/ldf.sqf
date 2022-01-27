@@ -206,6 +206,7 @@ _vehicles set ["gmg", [["I_E_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = Escape_Random_Vehicles get str independent;
+private _side = str independent
+private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [LDF_KEY, _dict];
-Escape_Random_Vehicles set [str independent, _sideDict];
+Escape_Random_Vehicles set [_side, _sideDict];

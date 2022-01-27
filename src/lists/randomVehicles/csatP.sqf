@@ -14,18 +14,13 @@ private _include = "IncludeChinese" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
 private _dict = createHashMap;
-
 private _map = worldName;
-private _useMapCamo = _include == 2;
-private _usingHeli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
-private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
 // Quadbike
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -52,7 +47,7 @@ _dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Qilin
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -80,7 +75,7 @@ _dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Qilin
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -108,7 +103,7 @@ _dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Zamak
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -131,7 +126,7 @@ else
 _vehicles set ["zamak", [_veh, true, true]];
 
 // Tempest
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -163,7 +158,7 @@ _dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Zamak
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -198,7 +193,7 @@ else
 _vehicles set ["zamak", [_veh, true, true]];
 
 // Tempest
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -244,7 +239,7 @@ _dict set [RAND_VEH_UTIL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Ifrit
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -272,7 +267,7 @@ _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Ifrit
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -308,7 +303,7 @@ _dict set [RAND_VEH_UGV_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Marid
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -340,7 +335,7 @@ _dict set [RAND_VEH_IFV_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Kamysh
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -372,7 +367,7 @@ _dict set [RAND_VEH_APC_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // T-100
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -395,9 +390,9 @@ else
 _vehicles set ["t100", [_veh, true, ["Escape_T100_Default", "Escape_T100_Net"]]];
 
 // T-140
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         switch (_map) do
         {
@@ -434,7 +429,7 @@ _dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Sochor
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -466,7 +461,7 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Tigris
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -498,7 +493,7 @@ _dict set [RAND_VEH_AA_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Orca
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -521,9 +516,9 @@ else
 _vehicles set ["orca", [["O_Heli_Light_02_unarmed_F"], _variants, true]];
 
 // Taru
-if (_usingHeli) then
+if (Escape_Using_Heli) then
 {
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         switch (_map) do
         {
@@ -556,7 +551,7 @@ _dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Orca
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -588,7 +583,7 @@ _dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Kajman
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -620,15 +615,15 @@ _dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Neophron
-if (!_useMapCamo || _map != TANOA_KEY && _map != LIVONIA_KEY) then
+if (!Escape_Csat_Pacific_Use_Camo || _map != TANOA_KEY && _map != LIVONIA_KEY) then
 {
     _vehicles set ["neophron", [["O_Plane_CAS_02_dynamicLoadout_F"], true, true]];
 };
 
 // Shikra
-if (_usingJets) then
+if (Escape_Using_Jets) then
 {
-    if (_useMapCamo) then
+    if (Escape_Csat_Pacific_Use_Camo) then
     {
         switch (_map) do
         {
@@ -656,7 +651,7 @@ if (_usingJets) then
 };
 
 // Xi'an
-if (_useMapCamo) then
+if (Escape_Csat_Pacific_Use_Camo) then
 {
     switch (_map) do
     {
@@ -721,6 +716,7 @@ _vehicles set ["gmg", [["O_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = Escape_Random_Vehicles get str east;
+private _side = str east;
+private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [CSAT_P_KEY, _dict];
-Escape_Random_Vehicles set [str east, _sideDict];
+Escape_Random_Vehicles set [_side, _sideDict];

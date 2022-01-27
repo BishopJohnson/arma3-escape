@@ -11,25 +11,18 @@ private ["_vehicles", "_veh", "_variants"];
 if (!isServer) exitWith {};
 
 private _dict = createHashMap;
-
 private _map = worldName;
-private _useMapCamo = "IncludeNato" call BIS_fnc_getParamValue == 2;
-private _usingApex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-private _usingContact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-private _usingHeli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
-private _usingJets = "IncludeJets" call BIS_fnc_getParamValue == 1;
-private _usingTanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Quadbike
 _vehicles = createHashMap;
 
 // Quadbike
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_Quadbike_01_F"];
         };
@@ -52,11 +45,11 @@ _dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Prowler
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _veh = ["B_LSV_01_unarmed_F"];
 
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -85,11 +78,11 @@ _dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Prowler
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _veh = ["B_LSV_01_armed_F", "B_LSV_01_AT_F"];
 
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -118,12 +111,12 @@ _dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // HEMTT
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh =
             [
@@ -171,12 +164,12 @@ _dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // HEMTT
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh =
             [
@@ -220,12 +213,12 @@ _dict set [RAND_VEH_UTIL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Hunter
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_MRAP_01_F"];
         };
@@ -248,12 +241,12 @@ _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Hunter
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_MRAP_01_hmg_F", "B_T_MRAP_01_gmg_F"];
         };
@@ -276,12 +269,12 @@ _dict set [RAND_VEH_MRAP_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Stomper
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_UGV_01_F"];
         };
@@ -304,12 +297,12 @@ _dict set [RAND_VEH_UGV_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Stomper
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_UGV_01_rcws_F"];
         };
@@ -332,12 +325,12 @@ _dict set [RAND_VEH_UGV_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Marshall
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_APC_Wheeled_01_cannon_F"];
         };
@@ -364,12 +357,12 @@ _dict set [RAND_VEH_IFV_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Panther
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_APC_Tracked_01_rcws_F"];
         };
@@ -391,12 +384,12 @@ _vehicles set ["panther", [
 ]];
 
 // Bobcat
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_APC_Tracked_01_CRV_F"];
         };
@@ -423,12 +416,12 @@ _dict set [RAND_VEH_APC_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Slammer
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_MBT_01_cannon_F", "B_T_MBT_01_TUSK_F"];
         };
@@ -455,9 +448,9 @@ _dict set [RAND_VEH_TANK_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Rhino
-if (_usingTanks) then
+if (Escape_Using_Tanks) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         switch (_map) do
         {
@@ -490,12 +483,12 @@ _dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Scorcher
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_MBT_01_arty_F"];
         };
@@ -508,7 +501,7 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_MBT_01_arty_F"];
-    if (_usingApex) then { _veh append ["B_T_MBT_01_arty_F"] };
+    if (Escape_Using_Apex) then { _veh append ["B_T_MBT_01_arty_F"] };
 };
 
 _vehicles set ["scorcher", [
@@ -518,12 +511,12 @@ _vehicles set ["scorcher", [
 ]];
 
 // Sandstorm
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_MBT_01_mlrs_F"];
         };
@@ -536,7 +529,7 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_MBT_01_mlrs_F"];
-    if (_usingApex) then { _veh append ["B_T_MBT_01_mlrs_F"] };
+    if (Escape_Using_Apex) then { _veh append ["B_T_MBT_01_mlrs_F"] };
 };
 
 _vehicles set ["sandstorm", [
@@ -551,12 +544,12 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Cheetah
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_APC_Tracked_01_AA_F"];
         };
@@ -569,7 +562,7 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_APC_Tracked_01_AA_F"];
-    if (_usingApex) then { _veh append ["B_T_APC_Tracked_01_AA_F"] };
+    if (Escape_Using_Apex) then { _veh append ["B_T_APC_Tracked_01_AA_F"] };
 };
 
 _vehicles set ["cheetah", [
@@ -584,7 +577,7 @@ _dict set [RAND_VEH_AA_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Ghost Hawk
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     _variants = ["Green"];
 }
@@ -596,9 +589,9 @@ else
 [_vehicles, "ghostHawk", [["B_Heli_Transport_01_F"], true, _variants]] call DICT_fnc_set;
 
 // Huron
-if (_usingHeli) then
+if (Escape_Using_Heli) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         _variants = ["Green"];
     }
@@ -619,7 +612,7 @@ _vehicles = createHashMap;
 _vehicles set ["pawnee", [["B_Heli_Light_01_dynamicLoadout_F"], true, true]];
 
 // Ghost Hawk
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     _variants = ["Green"];
 }
@@ -631,9 +624,9 @@ else
 _vehicles set ["ghostHawk", [["B_Heli_Transport_01_F"], true, _variants]];
 
 // Huron
-if (_usingHeli) then
+if (Escape_Using_Heli) then
 {
-    if (_useMapCamo) then
+    if (Escape_Nato_Use_Camo) then
     {
         _variants = ["Green"];
     }
@@ -659,7 +652,7 @@ _dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Falcon
-if (_usingApex) then
+if (Escape_Using_Apex) then
 {
     _vehicles set ["falcon", [["B_T_UAV_03_dynamicLoadout_F"], true, true]];
 };
@@ -673,7 +666,7 @@ _vehicles = createHashMap;
 _vehicles set ["wipeout", [["B_Plane_CAS_01_dynamicLoadout_F"], true, true]];
 
 // F/A-181
-if (_usingJets) then
+if (Escape_Using_Jets) then
 {
     _vehicles set ["fa181", [["B_Plane_Fighter_01_F", "B_Plane_Fighter_01_Stealth_F"], true, true]];
 };
@@ -687,7 +680,7 @@ _vehicles = createHashMap;
 _vehicles set ["greyhawk", [["B_UAV_02_dynamicLoadout_F"], true, true]];
 
 // Sentinal
-if (_usingJets) then
+if (Escape_Using_Jets) then
 {
     _vehicles set ["sentinal", [["B_UAV_05_F"], true, true]];
 };
@@ -709,12 +702,12 @@ _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Titan AA
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_Static_AA_F"];
         };
@@ -727,18 +720,18 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_static_AA_F"];
-    if (_usingApex) then { _veh append ["B_T_Static_AA_F"] };
+    if (Escape_Using_Apex) then { _veh append ["B_T_Static_AA_F"] };
 };
 
 _vehicles set ["titanAa", [_veh, true, true]];
 
 // Titan AT
-if (_useMapCamo) then
+if (Escape_Nato_Use_Camo) then
 {
     switch true do
     {
-        case (_map == TANOA_KEY && _usingApex);
-        case (_map == LIVONIA_KEY && _usingApex):
+        case (_map == TANOA_KEY && Escape_Using_Apex);
+        case (_map == LIVONIA_KEY && Escape_Using_Apex):
         {
             _veh = ["B_T_Static_AT_F"];
         };
@@ -751,7 +744,7 @@ if (_useMapCamo) then
 else
 {
     _veh = ["B_static_AT_F"];
-    if (_usingApex) then { _veh append ["B_T_Static_AT_F"] };
+    if (Escape_Using_Apex) then { _veh append ["B_T_Static_AT_F"] };
 };
 
 _vehicles set ["titanAt", [_veh, true, true]];
@@ -769,6 +762,7 @@ _vehicles set ["gmg", [["B_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
-private _sideDict = Escape_Random_Vehicles get str west;
+private _side = str west;
+private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [NATO_KEY, _dict];
-Escape_Random_Vehicles set [str west, _sideDict];
+Escape_Random_Vehicles set [_side, _sideDict];
