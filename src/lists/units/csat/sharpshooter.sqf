@@ -15,6 +15,7 @@ if (Escape_Csat_Use_Camo) then
 {
     switch true do
     {
+        case (_map == LIVONIA_KEY && Escape_Using_Apex);
         case (_map == TANOA_KEY && Escape_Using_Apex):
         {
             _weaponP = "srifle_DMR_05_blk_F";
