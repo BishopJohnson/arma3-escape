@@ -91,7 +91,7 @@ _unit addVest "V_SmershVest_01_F";
 
 comment "Add binoculars";
 _unit addMagazine "Laserbatteries";
-_unit addWeapon "Laserdesignator_02";
+_unit addWeapon "Laserdesignator_01_khk_F";
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
