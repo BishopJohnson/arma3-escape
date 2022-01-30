@@ -45,35 +45,46 @@ publicVariable "PLAYER_FACTION";
 playerGroup = createGroup PLAYER_SIDE;
 (call BIS_fnc_listPlayers) joinSilent playerGroup;
 
-// Store asset usages and broadcast to clients
-Escape_Using_Heli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
-Escape_Using_Marksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-Escape_Using_Apex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-Escape_Using_Jets = "IncludeJets" call BIS_fnc_getParamValue == 1;
-Escape_Using_Orange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
-Escape_Using_Tanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
-Escape_Using_Contact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-publicVariable "Escape_Using_Heli";
-publicVariable "Escape_Using_Marksmen";
-publicVariable "Escape_Using_Apex";
-publicVariable "Escape_Using_Jets";
-publicVariable "Escape_Using_Orange";
-publicVariable "Escape_Using_Tanks";
-publicVariable "Escape_Using_Contact";
+Escape_Use_Rhs = "UseRhs" call BIS_fnc_getParamValue == 1;
+publicVariable "Escape_Use_Rhs";
+if (Escape_Use_Rhs) then
+{
+	Escape_Us_Army_Use_Camo = "IncludeUsArmy" call BIS_fnc_getParamValue == 2;
+	Escape_Us_Marines_Use_Camo = "IncludeUsMarines" call BIS_fnc_getParamValue == 2;
+	Escape_Ru_Msv_Use_Camo = "IncludeRuMsv" call BIS_fnc_getParamValue == 2;
+}
+else
+{
+	// Store asset usages and broadcast to clients
+	Escape_Using_Heli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Marksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Apex = "IncludeApex" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Jets = "IncludeJets" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Orange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Tanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
+	Escape_Using_Contact = "IncludeContact" call BIS_fnc_getParamValue == 1;
+	publicVariable "Escape_Using_Heli";
+	publicVariable "Escape_Using_Marksmen";
+	publicVariable "Escape_Using_Apex";
+	publicVariable "Escape_Using_Jets";
+	publicVariable "Escape_Using_Orange";
+	publicVariable "Escape_Using_Tanks";
+	publicVariable "Escape_Using_Contact";
 
-// Store map camo constraints and broadcast to clients
-Escape_Nato_Use_Camo = "IncludeNato" call BIS_fnc_getParamValue == 2;
-Escape_Csat_Use_Camo = "IncludeIranian" call BIS_fnc_getParamValue == 2;
-Escape_Csat_Pacific_Use_Camo = "IncludeChinese" call BIS_fnc_getParamValue == 2;
-Escape_Spetsnaz_Use_Camo = "IncludeSpetsnaz" call BIS_fnc_getParamValue == 2;
-Escape_Aaf_Use_Camo = "IncludeAaf" call BIS_fnc_getParamValue == 2;
-Escape_Ldf_Use_Camo = "IncludeLdf" call BIS_fnc_getParamValue == 2;
-publicVariable "Escape_NATO_Use_Camo";
-publicVariable "Escape_CSAT_Use_Camo";
-publicVariable "Escape_CSAT_Pacific_Use_Camo";
-publicVariable "Escape_Spetsnaz_Use_Camo";
-publicVariable "Escape_Aaf_Use_Camo";
-publicVariable "Escape_Ldf_Use_Camo";
+	// Store map camo constraints and broadcast to clients
+	Escape_Nato_Use_Camo = "IncludeNato" call BIS_fnc_getParamValue == 2;
+	Escape_Csat_Use_Camo = "IncludeIranian" call BIS_fnc_getParamValue == 2;
+	Escape_Csat_Pacific_Use_Camo = "IncludeChinese" call BIS_fnc_getParamValue == 2;
+	Escape_Spetsnaz_Use_Camo = "IncludeSpetsnaz" call BIS_fnc_getParamValue == 2;
+	Escape_Aaf_Use_Camo = "IncludeAaf" call BIS_fnc_getParamValue == 2;
+	Escape_Ldf_Use_Camo = "IncludeLdf" call BIS_fnc_getParamValue == 2;
+	publicVariable "Escape_NATO_Use_Camo";
+	publicVariable "Escape_CSAT_Use_Camo";
+	publicVariable "Escape_CSAT_Pacific_Use_Camo";
+	publicVariable "Escape_Spetsnaz_Use_Camo";
+	publicVariable "Escape_Aaf_Use_Camo";
+	publicVariable "Escape_Ldf_Use_Camo";
+};
 
 call compile preprocessFile "src\lists\listsInit.sqf";
 

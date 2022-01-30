@@ -11,11 +11,28 @@ minPlayerDistance = 2000;
 
 class Params
 {
+	class UseRhs
+	{
+		title = "Use RHS Assets";
+		values[] = {0,1};
+		texts[] = {"No","Yes"};
+		default = 0;
+	};
 	class Faction
 	{
-		title = "Faction";
-		values[] = {0,1,2,3};
-		texts[] = {"Random","NATO","CSAT","AAF"};
+		title = "Player Faction";
+		values[] = {0,1,2,3,4,5,6,7};
+		texts[] =
+		{
+			"Random",						// 0
+			"NATO",							// 1
+			"CSAT",							// 2
+			"AAF",							// 3
+			"US Army (RHS)",				// 4
+			"US Marines (RHS)",				// 5
+			"Russian Ground Forces (RHS)",	// 6
+			"CDF (RHS)"						// 7
+		};
 		default = 0;
 	};
 	class Daytime
@@ -79,7 +96,7 @@ class Params
 	class IncludeNato
 	{
 		title = "Include NATO for BluFor";
-		texts[] = {"Yes"/*,"No",*/,"Yes & use map camouflage"};
+		texts[] = {"Yes"/*,"No"*/,"Yes & use map camouflage"};
 		values[] = {1/*,0*/,2};
 		default = 2;
 	};
@@ -116,6 +133,27 @@ class Params
 		title = "Include LDF for Independent (requires Contact DLC)";
 		texts[] = {"Yes","No","Yes & use map camouflage"};
 		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeUsArmy
+	{
+		title = "Include US Army for BluFor (requires RHS content)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeUsMarines
+	{
+		title = "Include US Marines for BluFor (requires RHS content)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeRuMsv
+	{
+		title = "Include Russian Ground Forces for OpFor (requires RHS content)";
+		texts[] = {"Yes"/*,"No"*/,"Yes & use map camouflage"};
+		values[] = {1/*,0*/,2};
 		default = 1;
 	};
 };
