@@ -1,9 +1,9 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Number - 
+	    Number -
 */
 
 #define KEY "comps"
@@ -21,7 +21,7 @@ if (isNil "COMPOSITIONS") then
 	 */
 	COMPOSITIONS = call DICT_fnc_create;
 	[COMPOSITIONS, KEY, []] call DICT_fnc_set;
-	
+
 	hint "nil in bases";
 };
 
@@ -36,26 +36,16 @@ _count = some function of size and density
 */
 _count = 20;
 
-_sides = [west, east, independent] - [PLAYER_FACTION];
+_sides = [west, east, independent] - [PLAYER_SIDE];
 
-_types =
+_typeWeights =
 [
-	"COMMS",
-	"HVEHICLE",
-    "LVEHICLE",
-	"AMMO",
-	"MORTAR",
-	"UAV"
-];
-
-_weights =
-[
-	0.1, // Comms Station
-	0.1, // Heavy Vehicle Depot
-	0.3, // Light Vehicle Depot
-	0.3, // Ammo Depot
-	0.1, // Mortar
-	0.1  // UAV Station
+	"COMMS",	0.1,
+	"HVEHICLE",	0.1,
+    "LVEHICLE",	0.3,
+	"AMMO",		0.3,
+	"MORTAR",	0.1,
+	"UAV",		0.1
 ];
 
 for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
@@ -64,14 +54,14 @@ for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
     if (_i >= count _sides) then
 	{
 	    _side = selectRandom _sides;
-	    _type = _types selectRandomWeighted _weights;
+	    _type = selectRandomWeighted _typeWeights;
 	}
 	else
 	{
 	    _side = _sides select _i;
 		_type = "COMMS";
 	};
-	
+
 	// Gets the composition
 	_comp = [_side, _type] call compile preprocessFile "src\comps\bases\bases.sqf";
 	_radius = _comp select 2;
@@ -82,7 +72,7 @@ for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 	{
 		_position = [] call BIS_fnc_randomPos;
 	};
-	
+
 	// Adds the comp data to the dictionary
 	_array = [COMPOSITIONS, KEY] call DICT_fnc_get;
 	_array append [[_position, _radius, _side, _comp]];

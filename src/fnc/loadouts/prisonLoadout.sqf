@@ -1,13 +1,16 @@
 /*
-
+	author: Bishop
+	description: none
+	returns: nothing
 */
 
-params ["_side"];
+#include "..\..\..\define.hpp"
 
-private ["_weaponData", "_weapon", "_magazine"];
+#define MAGAZINE_COUNT 3
 
 if (!hasInterface) exitWith {};
 
+// Removes all player gear
 removeAllWeapons player;
 removeAllItems player;
 removeAllAssignedItems player;
@@ -17,36 +20,111 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
+// Readds basic items
 player linkItem "ItemWatch";
 player linkItem "ItemCompass";
 player linkItem "ItemRadio";
 
-switch (_side) do
+private _map = worldName;
+private "_uniform";
+switch (PLAYER_FACTION) do
 {
-	case west:			{ player forceAddUniform "U_B_CombatUniform_mcam" };
-	case east: 			{ player forceAddUniform "U_O_SpecopsUniform_ocamo" };
-	case independent:	{ player forceAddUniform "U_I_CombatUniform" };
+    case NATO_KEY:
+    {
+        if (Escape_Nato_Use_Camo) then
+        {
+            switch true do
+            {
+                case (_map == LIVONIA_KEY && Escape_Using_Contact):
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_CombatUniform_mcam_wdl_f",
+                        "U_B_CombatUniform_tshirt_mcam_wdL_f",
+                        "U_B_CombatUniform_vest_mcam_wdl_f"
+                    ];
+                };
+                case (_map == TANOA_KEY && Escape_Using_Apex):
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_T_Soldier_F",
+                        "U_B_T_Soldier_AR_F",
+                        "U_B_T_Soldier_SL_F"
+                    ];
+                };
+                default
+                {
+                    _uniform = selectRandom
+                    [
+                        "U_B_CombatUniform_mcam",
+                        "U_B_CombatUniform_mcam_tshirt",
+                        "U_B_CombatUniform_mcam_vest"
+                    ];
+                };
+            };
+        }
+        else
+        {
+            _uniform = selectRandom
+            [
+                "U_B_CombatUniform_mcam",
+                "U_B_CombatUniform_mcam_tshirt",
+                "U_B_CombatUniform_mcam_vest"
+            ];
+        };
+    };
+    case CSAT_KEY:
+    {
+        if (Escape_Csat_Use_Camo) then
+        {
+            switch true do
+            {
+                case (_map == LIVONIA_KEY && Escape_Using_Apex);
+                case (_map == TANOA_KEY && Escape_Using_Apex):
+                {
+                    _uniform = "U_O_T_Soldier_F";
+                };
+                default
+                {
+                    _uniform = "U_O_CombatUniform_ocamo";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "U_O_CombatUniform_ocamo";
+        };
+    };
+    case AAF_KEY:
+    {
+        _uniform = selectRandom ["U_I_CombatUniform", "U_I_CombatUniform_shortsleeve"];
+    };
 };
 
-_weaponData = selectRandomWeighted
-[/*  weapons                                                                        ammo                        weight */
-	[["hgun_P07_F", "hgun_P07_snds_F", "hgun_P07_khk_F", "hgun_P07_khk_Snds_F"],	"16Rnd_9x21_Mag"],			4.0, // P07
-	[["hgun_Rook40_F", "hgun_Rook40_snds_F"],										"16Rnd_9x21_Mag"],			4.0, // Rook
-	[["hgun_ACPC2_F", "hgun_ACPC2_snds_F"],											"9Rnd_45ACP_Mag"],			3.5, // ACP
-	[["hgun_Pistol_01_F"],															"10Rnd_9x21_Mag"],			1.0, // PM9
-	[["hgun_Pistol_heavy_01_F", "hgun_Pistol_heavy_01_snds_F"],						"11Rnd_45ACP_Mag"],			2.0, // 4-Five
-	[["hgun_Pistol_heavy_02_F"],													"6Rnd_45ACP_Cylinder"],		2.0, // Zubr
-	[["hgun_PDW2000_F", "hgun_PDW2000_snds_F"],										"30Rnd_9x21_Mag"],			1.0, // PDW
-	[["SMG_03_black", "SMG_03_TR_black", "SMG_03C_black", "SMG_03C_TR_black"],		"50Rnd_570x28_SMG_03"],		0.5, // ADR
-	[["SMG_01_F"],																	"30Rnd_45ACP_Mag_SMG_01"],	0.8, // Vermin
-	[["SMG_02_F", "SMG_05_F"],														"30Rnd_9x21_Mag_SMG_02"],	0.8  // Sting and Protector
+player forceAddUniform _uniform;
+
+private _rarity = selectRandomWeighted
+[/* commonality key          weight */
+    RAND_CARGO_COMMON_KEY,   0.5,
+    RAND_CARGO_UNCOMMON_KEY, 0.35,
+    RAND_CARGO_RARE_KEY,     0.15
 ];
 
-_weapon   = selectRandom (_weaponData select 0);
-_magazine = _weaponData select 1;
+// Gets the weapon group to give the player
+private _weaponDict = Escape_Random_Cargo_Prison get _rarity;
+private _weaponGroupKey = selectRandom keys _weaponDict;
+private _weaponGroup = _weaponDict get _weaponGroupKey;
 
-for [{private _i = 0}, {_i < 3}, {_i = _i + 1}] do
+// Selects the weapon and magazine types
+private _weapons = _weaponGroup select 0;
+private _ammo = _weaponGroup select 1;
+if (typeName (_weapons select 0) == "ARRAY") then
 {
-	player addMagazine _magazine;
+    private _idx = [0, count _weapons - 1] call BIS_fnc_randomInt;
+    _weapons = _weapons select _idx;
+    _ammo = _ammo select _idx;
 };
-player addWeapon _weapon;
+
+player addMagazines [selectRandom _ammo, MAGAZINE_COUNT];
+player addWeapon selectRandom _weapons;

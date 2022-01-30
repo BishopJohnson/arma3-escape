@@ -1,36 +1,45 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Array - 
-		Number - 
-		Number - 
-		Side - 
-		Bool (Optional) - 
-		Number (Optional) - 
+	    Array -
+		Number -
+		Number -
+		Side -
+		String (Optional) -
+		Bool (Optional) -
+		Number (Optional) -
 */
 
-params ["_position", "_maxRadius", "_minRadius", "_side"];
+#include "..\..\..\define.hpp"
 
-private ["_vehBool", "_patrolSize", "_buildings", "_vehicles", "_turrent", "_car", "_objects", "_object", "_length", "_i"];
+params
+[
+	"_position",
+	"_maxRadius",
+	"_minRadius",
+	"_side",
+	["_faction", "", [""]],
+	["_vehBool", false, [true]],
+	["_patrolSize", -1, [0]]
+];
 
 if (!isServer) exitWith {};
 
-_vehBool = false;
-_patrolSize = floor random [4, 7, 9];
-
-if (count _this > 4) then {_vehBool = _this select 4;};
-if (count _this > 5) then {_patrolSize = _this select 5;};
+if (_patrolSize < 0) then
+{
+	_patrolSize = floor random [4, 7, 9];
+};
 
 switch (_side) do
 {
-	case "WEST": {_side = west;};
-	case "EAST": {_side = east;};
-	case "GUER": {_side = independent;};
+	case "WEST": { _side = west };
+	case "EAST": { _side = east };
+	case "GUER": { _side = independent };
 };
 
-_buildings =
+private _buildings =
 [
 	"Land_Cargo_HQ_V1_F",
 	"Land_Cargo_HQ_V2_F",
@@ -52,91 +61,74 @@ _buildings =
 	"Land_BagBunker_Small_F"
 ];
 
-// Whitelisted turrents
-_turrent =
-[
-	"B_HMG_01_high_F",
-	"B_GMG_01_high_F",
-	"B_HMG_01_F",
-	"B_GMG_01_F",
-	"B_static_AT_F",
-	"B_static_AA_F",
-	"B_Mortar_01_F",
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_HMG_01_F",
-	"O_GMG_01_F",
-	"O_static_AT_F",
-	"O_static_AA_F",
-	"O_Mortar_01_F",
-	"I_HMG_01_high_F",
-	"I_GMG_01_high_F",
-	"I_HMG_01_F",
-	"I_GMG_01_F",
-	"I_static_AT_F",
-	"I_static_AA_F",
-	"I_Mortar_01_F"
-];
+private _whitelistedTurrentTypes = [RAND_VEH_TURRET_L_KEY, RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY];
+private _whitelistedVehicleTypes = [RAND_VEH_CAR_ARMED_KEY, RAND_VEH_MRAP_ARMED_KEY];
+private _turrents = [];
+private _cars = [];
+{
+	if (_x == str civilian) then { continue };
 
-// Whitelisted cars
-_car =
-[
-    "B_MRAP_01_hmg_F",
-	"B_MRAP_01_gmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_gmg_F"
-];
+	private _sideDict = _y;
+	{
+		private _factionDict = _y;
+		{
+			private _type = _x;
+			private _typeDict = _y;
 
-_objects = nearestObjects [_position, ["house", "tank", "car", "staticweapon"], _maxRadius]; // Finds all nearby objects
-_vehicles = +_objects;
+			if (_type in _whitelistedTurrentTypes) then
+			{
+				{
+					private _vehEntry = _y;
+					{
+						_turrents pushBackUnique _x;
+					} forEach (_vehEntry select 0);
+				} forEach _typeDict;
+
+				continue;
+			};
+
+			if (_vehBool && _type in _whitelistedVehicleTypes) then
+			{
+				{
+					private _vehEntry = _y;
+					{
+						_cars pushBackUnique _x;
+					} forEach (_vehEntry select 0);
+				} forEach _typeDict;
+
+				continue;
+			};
+		} forEach _factionDict;
+	} forEach _sideDict;
+} forEach Escape_Random_Vehicles;
+
+private _objects = nearestObjects [_position, ["house", "car", "staticweapon"], _maxRadius]; // Finds all nearby objects
+private _vehicles = +_objects;
 
 // Removes elements from the list that are not whitelisted buildings
-_length = count _objects;
-for [{_i = 0}, {_i < _length}, {_i = _i + 1}] do
+for [{ private _i = 0 }, { _i < count _objects }, { _i = _i + 1 }] do
 {
-    _object = _objects select _i;
-    if (!(typeOf _object in _buildings)) then
-	{
-	    _objects deleteAt _i;
-		_i = _i - 1;
-		_length = _length - 1;
-	};
+    private _object = _objects select _i;
+	if (typeOf _object in _buildings) then { continue };
+
+	_objects deleteAt _i;
+	_i = _i - 1;
 };
 
 // Garrisons buildings
 {
-    [_x, _side /*, 0.2*/] execVM "src\fnc\garrison\occupyBuilding.sqf";
+    [_x, _side] execVM "src\fnc\garrison\occupyBuilding.sqf";
 } forEach _objects;
 
 // Removes elements from the list that are not whitelisted turrents (or MRAPS if _vehBool is true)
-_length = count _vehicles;
-for [{_i = 0}, {_i < _length}, {_i = _i + 1}] do
+for [{ private _i = 0 }, { _i < count _vehicles }, { _i = _i + 1 }] do
 {
-    _object = _vehicles select _i;
-    if (!(typeOf _object in _turrent)) then
-	{
-	    if (!_vehBool || !(typeOf _object in _car)) then
-		{
-	        _vehicles deleteAt _i;
-	        _i = _i - 1;
-	        _length = _length - 1;
-		};
-	};
+    private _object = _vehicles select _i;
+	if (typeOf _object in _turrents || _vehBool && typeOf _object in _cars) then { continue };
+
+	_vehicles deleteAt _i;
+	_i = _i - 1;
 };
 
-[
-    _side,
-    _patrolSize,
-	nil,
-	nil,
-	_position,
-	_maxRadius,
-	_minRadius,
-	0,
-	false,
-	""
-] execVM "src\fnc\garrison\perimeterPatrol.sqf"; // Spawns perimeter patrol
-
-[_vehicles] execVM "src\fnc\garrison\populateCrew.sqf"; // Garrisons vehicles
+[_position, _maxRadius, _minRadius, _patrolSize, _side, _faction] execVM "src\fnc\garrison\perimeterPatrol.sqf";
+[_vehicles, _faction] execVM "src\fnc\garrison\populateCrew.sqf";

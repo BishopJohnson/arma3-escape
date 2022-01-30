@@ -1,67 +1,77 @@
 /*
-    Author:
-	    Bishop Johnson
-	
+    Author: Bishop Johnson
+
 	Parameter(s):
-	    Side - 
-		Array or Config Path - 
+	    Side -
+        Number
 		Number -
 		Number -
-	
+        Array (Optional) -
+
 	Returns:
-	    Group - 
+	    Group -
 */
 
-params ["_side", "_group", "_maxRadius", "_minRadius"];
-
-private ["_position", "_result", "_wp"];
+params
+[
+    "_maxRadius",
+    "_minRadius",
+    "_size",
+    "_side",
+    ["_faction", "", [""]],
+    ["_typeWeight", nil, [[]]]
+];
 
 if (!isServer) exitWith {};
 
-private _size = count (call BIS_fnc_listPlayers);
-private _startIdx = floor random _size;
+private _players = call BIS_fnc_listPlayers;
+private _playerCount = count _players;
+private _startIdx = floor random _playerCount;
 
 // Chooses a location near a player
-_position =
+private _pos =
 [
-    [[position ((call BIS_fnc_listPlayers) select _startIdx), _maxRadius]],
-	["water", [position ((call BIS_fnc_listPlayers) select _startIdx), _minRadius]]
+    [[position (_players select _startIdx), _maxRadius]],
+	["water", [position (_players select _startIdx), _minRadius]]
 ] call BIS_fnc_randomPos;
 
 // Checks if location is too close to any players
-_result = true;
-for [{ private _i = _startIdx + 1 }, { _i mod _size != _startIdx }, { _i = _i + 1 }] do
+private _result = true;
+for [{ private _i = _startIdx + 1 }, { _i mod _playerCount != _startIdx }, { _i = _i + 1 }] do
 {
-    if (_position inArea [(call BIS_fnc_listPlayers) select (_i mod _size), _minRadius, _minRadius, 0, false]) then
+    if (_pos inArea [_players select (_i mod _playerCount), _minRadius, _minRadius, 0, false]) then
 	{
 	    _result = false;
 	};
 };
 
-private _patrolGrp = grpNull;
+private _group = grpNull;
 if (_result) then
 {
-	_position set [2, 0]; // Sets height to 0 in case that players are in the air
+    _pos set [2, 0]; // Sets height to 0 in case that players are in the air
 
-    _patrolGrp = [_position, _side, _group, [], [], [], [0.7, 0.8]] call BIS_fnc_spawnGroup;
-	_patrolGrp setBehaviour "SAFE";
-	_patrolGrp setSpeedMode "LIMITED";
-	_patrolGrp deleteGroupWhenEmpty true;
-	_patrolGrp enableDynamicSimulation true;
-	addToRemainsCollector units _patrolGrp;
+    private _fnc = compile preprocessFile "src\fnc\units\spawnGroup.sqf";
+    if (isNil "_typeWeight") then
+    {
+        _group = [_pos, _size, _side] call _fnc;
+    }
+    else
+    {
+        _group = [_pos, _size, _side, "", _typeWeight] call _fnc;
+    };
 
-    [_patrolGrp] execVM "src\fnc\patrols\infantry\nextWaypoint.sqf";
+	_group setBehaviour "SAFE";
+	_group setSpeedMode "LIMITED";
+	_group deleteGroupWhenEmpty true;
+	_group enableDynamicSimulation true;
+	addToRemainsCollector units _group;
 
-	{
+    {
+        _x setVehicleAmmo random [0.5, 0.6, 0.8];
 		_x triggerDynamicSimulation false;
-		_x setSkill ['aimingShake', 0.25];
+	} forEach units _group;
 
-		// Removes maps
-		if (random 1 > 0.9) then
-		{
-			_x unlinkItem "ItemMap";
-		};
-	} forEach units _patrolGrp;
+    [_group] execVM "src\fnc\patrols\infantry\nextWaypoint.sqf";
 };
 
-_patrolGrp
+_group

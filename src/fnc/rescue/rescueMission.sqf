@@ -31,7 +31,7 @@ _lzPos2 = [[[_position, MAX_RADIUS_2]], ["water", [_position, MIN_RADIUS_2]]] ca
 
 _transport = "";
 _attack = "";
-switch (PLAYER_FACTION) do
+switch (PLAYER_SIDE) do
 {
     case west:
 	{

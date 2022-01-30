@@ -1,7 +1,7 @@
 /*
     Author:
 	    Bishop Johnson
-    
+
     Parameter(s):
 	    Side -
 		String -
@@ -47,4 +47,4 @@ _handler = [_objects] execVM "src\fnc\normalizeTilt\normalizeTilt.sqf";
 
 waitUntil { scriptDone _handler };
 
-[_position, _radius + 20, _radius, _side, true, 4] execVM "src\fnc\garrison\garrison.sqf";
+[_position, _radius + 20, _radius, _side, _comp select 2, true, 4] execVM "src\fnc\garrison\garrison.sqf";

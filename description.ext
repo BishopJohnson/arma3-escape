@@ -15,7 +15,7 @@ class Params
 	{
 		title = "Faction";
 		values[] = {0,1,2,3};
-		texts[] = {"Random","BLUFOR","OPFOR","INDEPENDENT"};
+		texts[] = {"Random","NATO","CSAT","AAF"};
 		default = 0;
 	};
 	class Daytime
@@ -27,32 +27,392 @@ class Params
 		function = "BIS_fnc_paramDaytime"; // Function called when player joins
 		isGlobal = 1; // Function locally for every player who joins
 	};
+	class IncludeHelicopters
+	{
+        title = "Include Helicopters DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeMarksmen
+	{
+        title = "Include Marksman DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeApex
+	{
+        title = "Include Apex DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeJets
+	{
+        title = "Include Jets DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeOrange
+	{
+        title = "Include Laws of War DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeTanks
+	{
+        title = "Include Tanks DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeContact
+	{
+        title = "Include Contact DLC assets";
+        texts[] = {"Yes","No"};
+        values[] = {1,0};
+        default = 1;
+	};
+	class IncludeNato
+	{
+		title = "Include NATO for BluFor";
+		texts[] = {"Yes"/*,"No",*/,"Yes & use map camouflage"};
+		values[] = {1/*,0*/,2};
+		default = 2;
+	};
+	class IncludeIranian
+	{
+		title = "Include Iranian CSAT for OpFor";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeChinese
+	{
+		title = "Include Chinese CSAT for OpFor (requires Apex DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeSpetsnaz
+	{
+		title = "Include Spetsnaz for OpFor (requires Contact DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeAaf
+	{
+		title = "Include AAF for Independent";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeLdf
+	{
+		title = "Include LDF for Independent (requires Contact DLC)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
 };
 
 class CfgRadio
 {
 	sounds[] = {};
-	
+
 	class RescueStart
 	{
 		name = "";
 		sound[] = {};
 		title = "Proceed to the rescue marker on your map.";
 	};
-	
+
 	class RescueMissionEnroute
 	{
 		name = "";
 		sound[] = {};
 		title = "Rescue transports are on the way.";
 	};
-	
+
 	class RescueMissionDestroyed
 	{
 		name = "";
 		sound[] = {};
 		title = "Rescue transports were destroyed.";
 	};
+};
+
+class CfgVehicleTemplates
+{
+    // NATO
+    class Escape_Marshall_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Marshall_Cage
+    {
+        animationList[] = { "showSLATHull",1 };
+    };
+
+    class Escape_Marshall_Net
+    {
+        animationList[] = { "showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    class Escape_Panther_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Panther_Net
+    {
+        animationList[] = { "showCamonetHull",1 };
+    };
+
+    class Escape_Bobcat_Default
+    {
+        animationList[] = { "showAmmobox",1,"showWheels",1 };
+    };
+
+    class Escape_Bobcat_Net
+    {
+        animationList[] = { "showAmmobox",1,"showWheels",1,"showCamonetHull",1 };
+    };
+
+    class Escape_Slammer_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Slammer_Net
+    {
+        animationList[] = { "showCamonetTurret",1,"showCamonetHull",1 };
+    };
+
+    class Escape_Rhino_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Rhino_Cage
+    {
+        animationList[] = { "showSLATHull",1 };
+    };
+
+    class Escape_Rhino_Net
+    {
+        animationList[] = { "showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    class Escape_Scorcher_Default
+    {
+        animationList[] = { "showCanisters",1,"showAmmobox",1, };
+    };
+
+    class Escape_Scorcher_Net
+    {
+        animationList[] = { "showCanisters",1,"showCamonetTurret",1,"showAmmobox",1,"showCamonetHull",1 };
+    };
+
+    class Escape_Sandstorm_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Sandstorm_Net
+    {
+        animationList[] = { "showCamonetTurret",1,"showCamonetHull",1 };
+    };
+
+    class Escape_Cheetah_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Cheetah_Net
+    {
+        animationList[] = { "showCamonetTurret",1,"showCamonetHull",1 };
+    };
+
+    // CSAT
+    class Escape_Marid_Default
+    {
+        animationList[] = { "showCanisters",1,"showTools",1 };
+    };
+
+    class Escape_Marid_Cage
+    {
+        animationList[] = { "showCanisters",1,"showTools",1,"showSLATHull",1 };
+    };
+
+    class Escape_Marid_Net
+    {
+        animationList[] = { "showCanisters",1,"showCamonetHull",1 };
+    };
+
+    class Escape_Kamysh_Default
+    {
+        animationList[] = { "showTracks",1 };
+    };
+
+    class Escape_Kamysh_Cage
+    {
+        animationList[] = { "showTracks",1,"showSLATHull",1 };
+    };
+
+    class Escape_Kamysh_Net
+    {
+        animationList[] = { "showTracks",1,"showCamonetHull",1 };
+    };
+
+    class Escape_T100_Default
+    {
+        animationList[] = { "showLog",1 };
+    };
+
+    class Escape_T100_Net
+    {
+        animationList[] = { "showCamonetHull",1,"showCamonetTurret",1,"showLog",1 };
+    };
+
+    class Escape_T140_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_T140_Net
+    {
+        animationList[] = { "showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    class Escape_Sochor_Default
+    {
+        animationList[] = { "showAmmobox",1,"showCanisters",1,"showLog",1 };
+    };
+
+    class Escape_Sochor_Net
+    {
+        animationList[] = { "showAmmobox",1,"showCanisters",1,"showCamonetTurret",1,"showCamonetHull",1,"showLog",1 };
+    };
+
+    class Escape_Tigris_Default
+    {
+        animationList[] = { "showTracks",1 };
+    };
+
+    class Escape_Tigris_Cage
+    {
+        animationList[] = { "showTracks",1,"showSLATHull",1 };
+    };
+
+    class Escape_Tigris_Net
+    {
+        animationList[] = { "showTracks",1,"showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    // AAF
+    class Escape_Gorgon_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Gorgon_Cage
+    {
+        animationList[] = { "showSLATHull",1 };
+    };
+
+    class Escape_Gorgon_Net
+    {
+        animationList[] = { "showCamonetHull",1 };
+    };
+
+    class Escape_Mora_Default
+    {
+        animationList[] = { "showTools",1,"showBags2",1 };
+    };
+
+    class Escape_Mora_Cage
+    {
+        animationList[] = { "showTools",1,"showBags2",1,"showSLATHull",1 };
+    };
+
+    class Escape_Mora_Net
+    {
+        animationList[] = { "showTools",1,"showBags2",1,"showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    class Escape_Kuma_Default
+    {
+        animationList[] = { };
+    };
+
+    class Escape_Kuma_Net
+    {
+        animationList[] = { "showCamonetHull",1,"showCamonetTurret",1 };
+    };
+
+    class Escape_Nyx_Default
+    {
+        animationList[] = { "showTools",1 };
+    };
+
+    class Escape_Nyx_Cage
+    {
+        animationList[] = { "showTools",1,"showSLATHull",1 };
+    };
+
+    class Escape_Nyx_Net
+    {
+        animationList[] = { "showTools",1,"showCamonetHull",1 };
+    };
+
+    // LDF
+    class Escape_Offroad_Default
+    {
+        animationList[] =
+        {
+            "hidePolice",1,
+            "HideServices",1,
+            "HideRoofRack",1,
+            "HideLoudSpeakers",1,
+            "HideAntennas",1,
+            "HideBeacon",1,
+            "HideSpotlight",1,
+            "HideBackpacks",1,
+            "HideBumper1",1
+        };
+    };
+
+    class Escape_Offroad_Comms
+    {
+        animationList[] =
+        {
+            "hidePolice",1,
+            "HideServices",1,
+            "HideBackpacks",1,
+            "HideBumper1",1
+        };
+    };
+
+    class Escape_Odyniec_Default
+    {
+        animationList[] = { "showBags2",1,"showTools",1 };
+    };
+
+    class Escape_Odyniec_Cage
+    {
+        animationList[] = { "showBags2",1,"showTools",1,"showSLATHull",1,"showSLATTurret",1 };
+    };
+
+    class Escape_Odyniec_Net
+    {
+        animationList[] = { "showBags2",1,"showCamonetHull",1,"showCamonetTurret",1,"showTools",1 };
+    };
 };
 
 // (Depends on CBA)
@@ -65,31 +425,32 @@ class Extended_InitPost_EventHandlers
 	{
 		init = "_this execVM 'src\fnc\civilianEventAssigner.sqf'";
 	};
+
     class Car_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Tank_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Boat_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class StaticWeapon
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Plane_Base_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";
 	};
-	
+
 	class Helicopter_Base_F
 	{
 		init = "_this execVM 'src\fnc\revive\reviveAddEjectEvent.sqf'";

@@ -1,13 +1,13 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Side - 
-		String - 
-	
+	    Side -
+		String -
+
 	Returns:
-	    Array - 
+	    Array -
 */
 
 params ["_side", "_type"];
