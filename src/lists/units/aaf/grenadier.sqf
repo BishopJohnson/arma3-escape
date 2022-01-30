@@ -10,6 +10,15 @@ params ["_unit"];
 
 private ["_weaponP", "_weaponS", "_weaponL", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_helmet", "_backpack", "_nvg"];
 
+if (Escape_Aaf_Use_Camo) then
+{
+    _vest = "V_PlateCarrierIAGL_dgtl";
+}
+else
+{
+    _vest = selectRandom ["V_PlateCarrierIAGL_dgtl", "V_PlateCarrierIAGL_oli"];
+};
+
 // Remove existing items
 removeAllWeapons _unit;
 removeAllItems _unit;
@@ -28,7 +37,7 @@ _unit addHandgunItem "9Rnd_45ACP_Mag";
 
 comment "Add containers";
 _unit forceAddUniform "U_I_CombatUniform";
-_unit addVest "V_PlateCarrierIAGL_dgtl";
+_unit addVest _vest;
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
