@@ -267,7 +267,6 @@ Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Launcher set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
 Escape_Random_Cargo_Launcher set [RAND_CARGO_RARE_KEY, _rare];
 
-// TODO: Add CMR-76 variants
 // Special weapons
 _common = Escape_Random_Cargo_Special get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Special get RAND_CARGO_UNCOMMON_KEY;

@@ -25,28 +25,6 @@ while {true} do
 {
 	sleep random [MIN_WAIT_PERIOD, MID_WAIT_PERIOD, MAX_WAIT_PERIOD];
 	
-	/*
-	_groups = [];
-	
-	// TODO: Do not include playerGroup if all players are in escape vehicles.
-	_groups pushBack playerGroup;
-	_groups pushBack infantryPatrols; // From `patrolMaster`
-	
-	if (count _groups > 0) then
-	{
-		_group = _groups call BIS_fnc_selectRandom;
-		
-		_handler =
-		[
-			position leader _group,
-			RADIUS,
-			AMOUNT,
-			FREQUENCY
-		] execVM "src\fnc\ordnance\artilleryBarrage.sqf";
-		waitUntil { scriptDone _handler };
-	};
-	*/
-	
 	_handler =
 	[
 		[nil, ["water"]] call BIS_fnc_randomPos,
