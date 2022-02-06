@@ -29,7 +29,25 @@ switch (_side) do
     case str west:
     {
         _groupSide = west;
-        _fnc = compile preprocessFile "src\fnc\units\getNatoUnitEntry.sqf";
+
+        if (count _faction == 0) then
+        {
+            private _factionDict = Escape_Units get _side;
+            private _factionKeys = keys _factionDict;
+            _faction = selectRandom _factionKeys;
+        };
+
+        switch (_faction) do
+        {
+            case NATO_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getNatoUnitEntry.sqf";
+            };
+            case US_ARMY_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getUsArmyUnitEntry.sqf";
+            };
+        };
     };
     case str east:
     {
@@ -56,6 +74,10 @@ switch (_side) do
             {
                 _fnc = compile preprocessFile "src\fnc\units\getSpetsnazUnitEntry.sqf";
             };
+            case RU_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getRuUnitEntry.sqf";
+            };
         };
     };
     case str independent:
@@ -78,6 +100,10 @@ switch (_side) do
             case LDF_KEY:
             {
                 _fnc = compile preprocessFile "src\fnc\units\getLdfUnitEntry.sqf";
+            };
+            case CDF_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getCdfUnitEntry.sqf";
             };
         };
     };

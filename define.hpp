@@ -21,8 +21,9 @@
 // RHS
 #define US_ARMY_KEY "US Army"
 #define US_MARINES_KEY "US Marines"
-#define RU_MSV_KEY "RU MSV"
+#define RU_KEY "RU"
 #define CDF_KEY "CDF"
+#define SAF_KEY "SAF"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Map Keys
 // BIS

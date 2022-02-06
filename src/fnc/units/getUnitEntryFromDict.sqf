@@ -14,13 +14,13 @@ params
         "_typeWeight",
         [
             UNIT_CLASS_LEADER,          0.1,
-            UNIT_CLASS_RIFLEMEN,        0.3,
+            UNIT_CLASS_RIFLEMEN,        0.35,
             UNIT_CLASS_AT,              0.1,
             UNIT_CLASS_AA,              0.025,
-            UNIT_CLASS_AUTORIFLEMEN,    0.1,
+            UNIT_CLASS_AUTORIFLEMEN,    0.125,
             UNIT_CLASS_MARKSMEN,        0.05,
             UNIT_CLASS_HEAVY_GUNNER,    0.05,
-            UNIT_CLASS_AMMO,            0.025,
+            UNIT_CLASS_AMMO,            0.05,
             UNIT_CLASS_SUPPORT,         0.1,
             UNIT_CLASS_FIELD_WEAPON,    0.025,
             UNIT_CLASS_UAV,             0.025

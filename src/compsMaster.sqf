@@ -52,14 +52,14 @@ if ([COMPOSITIONS, START_KEY] call DICT_fnc_exists) then
 	{
 		_comp = _array select _i;
 		_compPos = _comp select 0;
-		
+
 		// Moves comps to priority if the are within the priority radius
 		if (_compPos distance2D _startPos < PRIORITY_DISTANCE) then
 		{
 			_priority append [_comp];
 			_array deleteAt _i;
 			_i = _i - 1;
-			
+
 			[COMPOSITIONS, COMPS_KEY, _array] call DICT_fnc_set;
 		};
 	};
@@ -76,14 +76,14 @@ if ([COMPOSITIONS, START_KEY] call DICT_fnc_exists) then
 	{
 		_comp = _array select _i;
 		_compPos = _comp select 0;
-		
+
 		// Moves comps to priority if the are within the priority radius
 		if (_compPos distance2D _startPos < PRIORITY_DISTANCE) then
 		{
 			_priority append [_comp];
 			_array deleteAt _i;
 			_i = _i - 1;
-			
+
 			[COMPOSITIONS, ROADBLOCK_KEY, _array] call DICT_fnc_set;
 		};
 	};

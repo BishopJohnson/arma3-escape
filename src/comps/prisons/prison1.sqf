@@ -9,7 +9,9 @@
 	    Array -
 */
 
-params ["_side"];
+#include "..\..\..\define.hpp"
+
+params ["_faction"];
 
 if (!isServer) exitWith {};
 
@@ -79,11 +81,15 @@ private _veh =
     ["Flag_White_F",[-9.83862,1.12061,0],178.998,1,0,[0,-0],"","",true,false]
 ];
 
-switch (_side) do
+switch (_faction) do
 {
-    case west:			{ _veh select 0 set [0, "Flag_NATO_F"] };
-	case east:			{ _veh select 0 set [0, "Flag_CSAT_F"] };
-	case independent:	{ _veh select 0 set [0, "Flag_AAF_F"] };
+    case NATO_KEY:			{ _veh select 0 set [0, "Flag_NATO_F"] };
+	case CSAT_KEY:			{ _veh select 0 set [0, "Flag_CSAT_F"] };
+	case AAF_KEY:			{ _veh select 0 set [0, "Flag_AAF_F"] };
+	case US_ARMY_KEY;
+	case US_MARINES_KEY:	{ _veh select 0 set [0, "Flag_US_F"] };
+	case RU_KEY:			{ _veh select 0 set [0, "rhs_Flag_Russia_F"] };
+	case CDF_KEY:			{ _veh select 0 set [0, "FlagCarrierCDF"] };
 };
 
 (_comp select 0) append _veh;

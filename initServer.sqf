@@ -22,40 +22,31 @@ COMPOSITIONS = call DICT_fnc_create;
 
 [COMPOSITIONS, START_KEY, [/* position, radius */]] call DICT_fnc_set;
 
-switch ("Faction" call BIS_fnc_getParamValue) do
-{
-	case 1: { PLAYER_SIDE = west; PLAYER_FACTION = NATO_KEY; };
-	case 2: { PLAYER_SIDE = east; PLAYER_FACTION = CSAT_KEY; };
-	case 3: { PLAYER_SIDE = independent; PLAYER_FACTION = AAF_KEY; };
-	default
-	{
-		PLAYER_SIDE = selectRandom [west, east, independent];
-		switch (PLAYER_SIDE) do
-		{
-			case west:			{ PLAYER_FACTION = NATO_KEY };
-			case east:			{ PLAYER_FACTION = CSAT_KEY };
-			case independent:	{ PLAYER_FACTION = AAF_KEY };
-		};
-	};
-};
-
-publicVariable "PLAYER_SIDE";
-publicVariable "PLAYER_FACTION";
-
-playerGroup = createGroup PLAYER_SIDE;
-(call BIS_fnc_listPlayers) joinSilent playerGroup;
-
 Escape_Use_Rhs = "UseRhs" call BIS_fnc_getParamValue == 1;
-publicVariable "Escape_Use_Rhs";
 if (Escape_Use_Rhs) then
 {
+	Escape_Using_Heli = false;
+	Escape_Using_Marksmen = false;
+	Escape_Using_Apex = false;
+	Escape_Using_Jets = false;
+	Escape_Using_Orange = false;
+	Escape_Using_Tanks = false;
+	Escape_Using_Contact = false;
+
+	Escape_Nato_Use_Camo = false;
+	Escape_Csat_Use_Camo = false;
+	Escape_Csat_Pacific_Use_Camo = false;
+	Escape_Spetsnaz_Use_Camo = false;
+	Escape_Aaf_Use_Camo = false;
+	Escape_Ldf_Use_Camo = false;
 	Escape_Us_Army_Use_Camo = "IncludeUsArmy" call BIS_fnc_getParamValue == 2;
 	Escape_Us_Marines_Use_Camo = "IncludeUsMarines" call BIS_fnc_getParamValue == 2;
-	Escape_Ru_Msv_Use_Camo = "IncludeRuMsv" call BIS_fnc_getParamValue == 2;
+	Escape_Ru_Use_Camo = "IncludeRu" call BIS_fnc_getParamValue == 2;
+	Escape_Cdf_Use_Camo = "IncludeCdf" call BIS_fnc_getParamValue == 2;
+	Escape_Saf_Use_Camo = "IncludeSaf" call BIS_fnc_getParamValue == 2;
 }
 else
 {
-	// Store asset usages and broadcast to clients
 	Escape_Using_Heli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
 	Escape_Using_Marksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
 	Escape_Using_Apex = "IncludeApex" call BIS_fnc_getParamValue == 1;
@@ -63,29 +54,201 @@ else
 	Escape_Using_Orange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
 	Escape_Using_Tanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
 	Escape_Using_Contact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-	publicVariable "Escape_Using_Heli";
-	publicVariable "Escape_Using_Marksmen";
-	publicVariable "Escape_Using_Apex";
-	publicVariable "Escape_Using_Jets";
-	publicVariable "Escape_Using_Orange";
-	publicVariable "Escape_Using_Tanks";
-	publicVariable "Escape_Using_Contact";
 
-	// Store map camo constraints and broadcast to clients
 	Escape_Nato_Use_Camo = "IncludeNato" call BIS_fnc_getParamValue == 2;
 	Escape_Csat_Use_Camo = "IncludeIranian" call BIS_fnc_getParamValue == 2;
 	Escape_Csat_Pacific_Use_Camo = "IncludeChinese" call BIS_fnc_getParamValue == 2;
 	Escape_Spetsnaz_Use_Camo = "IncludeSpetsnaz" call BIS_fnc_getParamValue == 2;
 	Escape_Aaf_Use_Camo = "IncludeAaf" call BIS_fnc_getParamValue == 2;
 	Escape_Ldf_Use_Camo = "IncludeLdf" call BIS_fnc_getParamValue == 2;
-	publicVariable "Escape_NATO_Use_Camo";
-	publicVariable "Escape_CSAT_Use_Camo";
-	publicVariable "Escape_CSAT_Pacific_Use_Camo";
-	publicVariable "Escape_Spetsnaz_Use_Camo";
-	publicVariable "Escape_Aaf_Use_Camo";
-	publicVariable "Escape_Ldf_Use_Camo";
+	Escape_Us_Army_Use_Camo = false;
+	Escape_Us_Marines_Use_Camo = false;
+	Escape_Ru_Use_Camo = false;
+	Escape_Cdf_Use_Camo = false;
+	Escape_Saf_Use_Camo = false;
 };
 
-call compile preprocessFile "src\lists\listsInit.sqf";
+publicVariable "Escape_Use_Rhs";
+
+publicVariable "Escape_Using_Heli";
+publicVariable "Escape_Using_Marksmen";
+publicVariable "Escape_Using_Apex";
+publicVariable "Escape_Using_Jets";
+publicVariable "Escape_Using_Orange";
+publicVariable "Escape_Using_Tanks";
+publicVariable "Escape_Using_Contact";
+
+publicVariable "Escape_NATO_Use_Camo";
+publicVariable "Escape_CSAT_Use_Camo";
+publicVariable "Escape_CSAT_Pacific_Use_Camo";
+publicVariable "Escape_Spetsnaz_Use_Camo";
+publicVariable "Escape_Aaf_Use_Camo";
+publicVariable "Escape_Ldf_Use_Camo";
+publicVariable "Escape_Us_Army_Use_Camo";
+publicVariable "Escape_Us_Marines_Use_Camo";
+publicVariable "Escape_Ru_Use_Camo";
+publicVariable "Escape_Cdf_Use_Camo";
+publicVariable "Escape_Saf_Use_Camo";
+
+private _factionVal = "Faction" call BIS_fnc_getParamValue;
+switch true do
+{
+	case (_factionVal == 1 && !Escape_Use_Rhs):	{ PLAYER_SIDE = west; PLAYER_FACTION = NATO_KEY; };       // Core
+	case (_factionVal == 2 && !Escape_Use_Rhs):	{ PLAYER_SIDE = east; PLAYER_FACTION = CSAT_KEY; };       //
+	case (_factionVal == 3 && !Escape_Use_Rhs):	{ PLAYER_SIDE = independent; PLAYER_FACTION = AAF_KEY; }; //
+	case (_factionVal == 4 && Escape_Use_Rhs):	{ PLAYER_SIDE = west; PLAYER_FACTION = US_ARMY_KEY; };    // RHS
+	case (_factionVal == 5 && Escape_Use_Rhs):	{ PLAYER_SIDE = west; PLAYER_FACTION = US_MARINES_KEY; }; //
+	case (_factionVal == 6 && Escape_Use_Rhs):	{ PLAYER_SIDE = east; PLAYER_FACTION = RU_KEY; };         //
+	case (_factionVal == 7 && Escape_Use_Rhs):	{ PLAYER_SIDE = independent; PLAYER_FACTION = CDF_KEY; }; //
+	default
+	{
+		PLAYER_SIDE = selectRandom [west, east, independent];
+		switch PLAYER_SIDE do
+		{
+			case west:
+			{
+				if (Escape_Use_Rhs) then { PLAYER_FACTION = selectRandom [US_ARMY_KEY, US_MARINES_KEY] }
+				else { PLAYER_FACTION = NATO_KEY };
+			};
+			case east:
+			{
+				if (Escape_Use_Rhs) then { PLAYER_FACTION = RU_KEY }
+				else { PLAYER_FACTION = CSAT_KEY };
+			};
+			case independent:
+			{
+				if (Escape_Use_Rhs) then { PLAYER_FACTION = CDF_KEY }
+				else { PLAYER_FACTION = AAF_KEY };
+			};
+		};
+	};
+};
+
+ENEMY_FACTIONS = createHashMap;
+
+if (Escape_Use_Rhs) then
+{
+	switch (PLAYER_SIDE) do
+	{
+		case west:
+		{
+			ENEMY_FACTIONS set [str west, []];
+			ENEMY_FACTIONS set [str east, [RU_KEY]];
+			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
+		};
+		case east:
+		{
+			ENEMY_FACTIONS set [str west, [US_ARMY_KEY]];
+			ENEMY_FACTIONS set [str east, []];
+			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
+		};
+		case independent:
+		{
+			ENEMY_FACTIONS set [str west, [US_ARMY_KEY]];
+			ENEMY_FACTIONS set [str east, [RU_KEY]];
+			ENEMY_FACTIONS set [str independent, []];
+		};
+	};
+}
+else
+{
+	switch (PLAYER_SIDE) do
+	{
+		case west:
+		{
+			ENEMY_FACTIONS set [str west, []];
+			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY]];
+			ENEMY_FACTIONS set [str independent, [AAF_KEY, LDF_KEY]];
+		};
+		case east:
+		{
+			ENEMY_FACTIONS set [str west, [NATO_KEY]];
+			ENEMY_FACTIONS set [str east, []];
+			ENEMY_FACTIONS set [str independent, [AAF_KEY, LDF_KEY]];
+		};
+		case independent:
+		{
+			ENEMY_FACTIONS set [str west, [NATO_KEY]];
+			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY]];
+			ENEMY_FACTIONS set [str independent, []];
+		};
+	};
+};
+
+Escape_fnc_GetFactionSide = {
+	params
+	[
+		["_faction", nil, [""]]
+	];
+
+	if (isNil "_faction") exitWith {};
+
+	private "_side";
+	switch (_faction) do
+	{
+		case NATO_KEY;
+		case US_ARMY_KEY;
+		case US_MARINES_KEY:
+		{
+			_side = west;
+		};
+		case CSAT_KEY;
+		case CSAT_P_KEY;
+		case SPETSNAZ_KEY;
+		case RU_KEY:
+		{
+			_side = east;
+		};
+		case AAF_KEY;
+		case LDF_KEY;
+		case CDF_KEY;
+		case SAF_KEY:
+		{
+			_side = independent;
+		};
+	};
+
+	if (isNil "_side") exitWith {};
+
+	_side;
+};
+
+Escape_fnc_GetRandomEnemySide = {
+	private _enemySide = selectRandom ([west, east, independent] - [PLAYER_SIDE]);
+
+	_enemySide;
+};
+
+Escape_fnc_GetRandomEnemyFactionOfSide = {
+	params ["_side"];
+	if (typeName _side == "Side") then
+	{
+		_side = str _side;
+	};
+
+	private _enemyFactions = ENEMY_FACTIONS get _side;
+	private _enemyFaction = selectRandom _enemyFactions;
+
+	_enemyFaction;
+};
+
+Escape_fnc_GetRandomEnemyFaction = {
+	private _enemySide = selectRandom ([west, east, independent] - [PLAYER_SIDE]);
+	private _enemyFaction = [_enemySide] call Escape_fnc_GetRandomEnemyFactionOfSide;
+
+	_enemyFaction;
+};
+
+publicVariable "PLAYER_SIDE";
+publicVariable "PLAYER_FACTION";
+publicVariable "ENEMY_FACTIONS";
+
+playerGroup = createGroup PLAYER_SIDE;
+(call BIS_fnc_listPlayers) joinSilent playerGroup;
+
+private _listsHandler = [] execVM "src\lists\listsInit.sqf";
+private _compsHandler = [] execVM "src\comps\compsInit.sqf";
+waitUntil { scriptDone _listsHandler };
+waitUntil { scriptDone _compsHandler };
 
 [] execVM "src\main.sqf";

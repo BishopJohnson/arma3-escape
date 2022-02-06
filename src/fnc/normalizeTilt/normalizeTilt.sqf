@@ -1,10 +1,10 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Array - 
-		Array (Optional) - 
+	    Array -
+		Array (Optional) -
 */
 
 params ["_objects"];
@@ -38,6 +38,9 @@ _blacklist =
 	"Flag_NATO_F",
 	"Flag_CSAT_F",
 	"Flag_AAF_F",
+    "Flag_US_F",
+	"rhs_Flag_Russia_F",
+	"FlagCarrierCDF",
 	"Land_SandbagBarricade_01_F",
 	"Land_SandbagBarricade_01_hole_F",
 	"Land_SandbagBarricade_01_half_F",

@@ -19,11 +19,19 @@ switch (_side) do
 {
     case west:
     {
-        [_crew] execVM "src\fnc\loadouts\setCrewLoadoutNato.sqf";
+        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
+
+        switch (_faction) do
+        {
+            case NATO_KEY:
+            {
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutNato.sqf";
+            };
+        };
     };
     case east:
     {
-        if (count _faction == 0) then { _faction = selectRandom [CSAT_KEY, CSAT_P_KEY] };
+        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
 
         switch (_faction) do
         {
@@ -39,6 +47,14 @@ switch (_side) do
     };
     case independent:
     {
-        [_crew] execVM "src\fnc\loadouts\setCrewLoadoutAaf.sqf";
+        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
+
+        switch (_faction) do
+        {
+            case AAF_KEY:
+            {
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutAaf.sqf";
+            };
+        };
     };
 };

@@ -1,12 +1,12 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
 	    Object -
-	
+
 	Returns:
-	
+
 */
 
 params ["_object"];
@@ -39,6 +39,9 @@ _blacklist =
 	"Flag_NATO_F",
 	"Flag_CSAT_F",
 	"Flag_AAF_F",
+    "Flag_US_F",
+	"rhs_Flag_Russia_F",
+	"FlagCarrierCDF",
 	"Land_SandbagBarricade_01_F",
 	"Land_SandbagBarricade_01_hole_F",
 	"Land_SandbagBarricade_01_half_F",
@@ -54,4 +57,4 @@ _result = true; //assumed object is not on the blacklist
     };
 } forEach _blacklist;
 
-_result 
+_result

@@ -25,7 +25,24 @@ switch (_side) do
 {
     case str west:
     {
-        _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnNatoVehicle.sqf";
+        if (isNil "_faction") then
+        {
+            private _factionDict = Escape_Random_Vehicles get _side;
+            private _factionKeys = keys _factionDict;
+            _faction = selectRandom _factionKeys;
+        };
+
+        switch (_faction) do
+        {
+            case NATO_KEY:
+            {
+                _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnNatoVehicle.sqf";
+            };
+            case US_ARMY_KEY:
+            {
+                _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnUsArmyVehicle.sqf";
+            };
+        };
     };
     case str east:
     {
@@ -45,6 +62,10 @@ switch (_side) do
             case CSAT_P_KEY:
             {
                 _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnCsatPacificVehicle.sqf";
+            };
+            case RU_KEY:
+            {
+                _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnRuVehicle.sqf";
             };
         };
     };
@@ -66,6 +87,10 @@ switch (_side) do
             case LDF_KEY:
             {
                 _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnLdfVehicle.sqf";
+            };
+            case CDF_KEY:
+            {
+                _vehGroup = [_pos] call compile preprocessFile "src\fnc\units\spawnCdfVehicle.sqf";
             };
         };
     };

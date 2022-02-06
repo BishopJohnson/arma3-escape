@@ -16,7 +16,7 @@ class Params
 		title = "Use RHS Assets";
 		values[] = {0,1};
 		texts[] = {"No","Yes"};
-		default = 0;
+		default = 1;
 	};
 	class Faction
 	{
@@ -30,7 +30,7 @@ class Params
 			"AAF",							// 3
 			"US Army (RHS)",				// 4
 			"US Marines (RHS)",				// 5
-			"Russian Ground Forces (RHS)",	// 6
+			"Russian Federation (RHS)",		// 6
 			"CDF (RHS)"						// 7
 		};
 		default = 0;
@@ -149,11 +149,25 @@ class Params
 		values[] = {1,0,2};
 		default = 1;
 	};
-	class IncludeRuMsv
+	class IncludeRu
 	{
-		title = "Include Russian Ground Forces for OpFor (requires RHS content)";
+		title = "Include Russian Federation for OpFor (requires RHS content)";
 		texts[] = {"Yes"/*,"No"*/,"Yes & use map camouflage"};
 		values[] = {1/*,0*/,2};
+		default = 1;
+	};
+	class IncludeCdf
+	{
+		title = "Include CDF for Inependent (requires RHS content)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
+		default = 1;
+	};
+	class IncludeSaf
+	{
+		title = "Include SAF for Inependent (requires RHS content)";
+		texts[] = {"Yes","No","Yes & use map camouflage"};
+		values[] = {1,0,2};
 		default = 1;
 	};
 };

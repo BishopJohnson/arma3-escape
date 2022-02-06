@@ -7,9 +7,12 @@
 */
 
 #define KEY "comps"
-#define DEFAULT_DENSITY 1
 
-private ["_density", "_sides", "_size", "_count", "_side", "_types", "_weights", "_type", "_comp", "_radius", "_position", "_array"];
+params
+[
+	["_count", 20, [0]],
+	["_minimumCommsCount", 2, [0]]
+];
 
 if (!isServer) exitWith {};
 
@@ -25,56 +28,62 @@ if (isNil "COMPOSITIONS") then
 	hint "nil in bases";
 };
 
-/*
-_density = DEFAULT_DENSITY;
-
-if (count _this > 0) then {_density = _this select 0;};
-
-_size = worldSize;
-
-_count = some function of size and density
-*/
-_count = 20;
-
-_sides = [west, east, independent] - [PLAYER_SIDE];
-
-_typeWeights =
-[
-	"COMMS",	0.1,
-	"HVEHICLE",	0.1,
-    "LVEHICLE",	0.3,
-	"AMMO",		0.3,
-	"MORTAR",	0.1,
-	"UAV",		0.1
-];
-
-for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
+private "_typeWeights";
+if (Escape_Use_Rhs) then
 {
-    // Ensures that a communication station spawns for each enemy faction
-    if (_i >= count _sides) then
+	_typeWeights =
+	[
+		"COMMS",	0.1,
+		"HVEHICLE",	0.1,
+	    "LVEHICLE",	0.35,
+		"AMMO",		0.35,
+		"MORTAR",	0.1
+	];
+}
+else
+{
+	_typeWeights =
+	[
+		"COMMS",	0.1,
+		"HVEHICLE",	0.1,
+	    "LVEHICLE",	0.3,
+		"AMMO",		0.3,
+		"MORTAR",	0.1,
+		"UAV",		0.1
+	];
+};
+
+for [{private _i = 0}, {_i < _count + _minimumCommsCount}, {_i = _i + 1}] do
+{
+	private _faction = call Escape_fnc_GetRandomEnemyFaction;
+	private _factionDict = Escape_Bases get _faction;
+
+	private "_type";
+    if (_i < _minimumCommsCount) then
 	{
-	    _side = selectRandom _sides;
-	    _type = selectRandomWeighted _typeWeights;
+		_type = "COMMS";
 	}
 	else
 	{
-	    _side = _sides select _i;
-		_type = "COMMS";
+	    _type = selectRandomWeighted _typeWeights;
 	};
 
+	private _baseFnc = _factionDict get _type;
+
 	// Gets the composition
-	_comp = [_side, _type] call compile preprocessFile "src\comps\bases\bases.sqf";
-	_radius = _comp select 2;
+	private _comp = call _baseFnc;
+	private _radius = _comp select 2;
 
 	// Selects base position
-	_position = [] call BIS_fnc_randomPos;
+	private _position = [] call BIS_fnc_randomPos;
 	while {!([_position, _radius] call compile preprocessFile "src\fnc\checkSlope.sqf")} do
 	{
 		_position = [] call BIS_fnc_randomPos;
 	};
 
 	// Adds the comp data to the dictionary
-	_array = [COMPOSITIONS, KEY] call DICT_fnc_get;
+	private _array = [COMPOSITIONS, KEY] call DICT_fnc_get;
+	private _side = [_faction] call Escape_fnc_GetFactionSide;
 	_array append [[_position, _radius, _side, _comp]];
 	[COMPOSITIONS, KEY, _array] call DICT_fnc_set;
 };

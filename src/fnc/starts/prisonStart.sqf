@@ -11,8 +11,6 @@
 
 #define GUARD_COUNT 4
 
-params ["_side"];
-
 if (!isServer) exitWith {};
 
 prisonEscapeStared = false;
@@ -23,8 +21,11 @@ if (isNil "COMPOSITIONS") then
 	COMPOSITIONS = call DICT_fnc_create;
 };
 
+private _enemySide = call Escape_fnc_GetRandomEnemySide;
+private _enemyFaction = [_enemySide] call Escape_fnc_GetRandomEnemyFactionOfSide;
+
 private _fnc = compile preprocessFile "src\comps\prisons\prison1.sqf"; // TODO: Replace with a general script for other prisons
-private _comp = [_side] call _fnc;
+private _comp = [_enemyFaction] call _fnc;
 private _buildings = _comp select 0;
 private _maxRadius = _comp select 1;
 private _minRadius = _comp select 2;
@@ -119,7 +120,7 @@ prisonGuards = [
 	_maxRadius,
 	_minRadius,
 	GUARD_COUNT,
-	_side,
+	_enemySide,
 	"",
 	[
 		UNIT_CLASS_RIFLEMEN,		0.33,

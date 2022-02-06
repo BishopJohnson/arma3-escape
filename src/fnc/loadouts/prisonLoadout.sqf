@@ -100,6 +100,22 @@ switch (PLAYER_FACTION) do
     {
         _uniform = selectRandom ["U_I_CombatUniform", "U_I_CombatUniform_shortsleeve"];
     };
+    case US_ARMY_KEY:
+    {
+        _uniform = "rhs_uniform_acu_ucp";
+    };
+    case US_MARINES_KEY:
+    {
+        _uniform = "rhs_uniform_FROG01_d";
+    };
+    case RU_KEY:
+    {
+        _uniform = "rhs_uniform_vkpo_gloves_alt";
+    };
+    case CDF_KEY:
+    {
+        _uniform = "rhsgref_uniform_ttsko_mountain";
+    };
 };
 
 player forceAddUniform _uniform;
