@@ -198,9 +198,6 @@ _vehicles set ["t90", [
     true
 ]];
 
-// T-14
-_vehicles set ["t14", ["rhs_t14_tv", true, true]];
-
 _dict set [RAND_VEH_TANK_KEY, _vehicles];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Tank special
