@@ -28,12 +28,19 @@ Escape_Random_Cargo_Prison set [RAND_CARGO_COMMON_KEY, createHashMap];
 Escape_Random_Cargo_Prison set [RAND_CARGO_UNCOMMON_KEY, createHashMap];
 Escape_Random_Cargo_Prison set [RAND_CARGO_RARE_KEY, createHashMap];
 
-call compile preprocessFile "src\lists\randomCargo\nato.sqf";
-call compile preprocessFile "src\lists\randomCargo\csat.sqf";
-call compile preprocessFile "src\lists\randomCargo\aaf.sqf";
-call compile preprocessFile "src\lists\randomCargo\csatP.sqf";
-call compile preprocessFile "src\lists\randomCargo\spetsnaz.sqf";
-call compile preprocessFile "src\lists\randomCargo\ldf.sqf";
-call compile preprocessFile "src\lists\randomCargo\misc.sqf";
+if (Escape_Use_Rhs) then
+{
+    call compile preprocessFile "src\lists\randomCargo\miscRhs.sqf";
+}
+else
+{
+    call compile preprocessFile "src\lists\randomCargo\nato.sqf";
+    call compile preprocessFile "src\lists\randomCargo\csat.sqf";
+    call compile preprocessFile "src\lists\randomCargo\aaf.sqf";
+    call compile preprocessFile "src\lists\randomCargo\csatP.sqf";
+    call compile preprocessFile "src\lists\randomCargo\spetsnaz.sqf";
+    call compile preprocessFile "src\lists\randomCargo\ldf.sqf";
+    call compile preprocessFile "src\lists\randomCargo\misc.sqf";
+};
 
 publicVariable "Escape_Random_Cargo_Prison";

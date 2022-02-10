@@ -19,6 +19,15 @@ Escape_Static_Cargo set [CARGO_SUPPORT_KEY, createHashMap];
 Escape_Static_Cargo set [CARGO_EQUIPMENT_KEY, createHashMap];
 Escape_Static_Cargo set [CARGO_UNIFORMS_KEY, createHashMap];
 
-call compile preprocessFile "src\lists\staticCargo\nato.sqf";
-call compile preprocessFile "src\lists\staticCargo\csat.sqf";
-call compile preprocessFile "src\lists\staticCargo\aaf.sqf";
+if (Escape_Use_Rhs) then
+{
+    call compile preprocessFile "src\lists\staticCargo\usArmy.sqf";
+    call compile preprocessFile "src\lists\staticCargo\ru.sqf";
+    call compile preprocessFile "src\lists\staticCargo\cdf.sqf";
+}
+else
+{
+    call compile preprocessFile "src\lists\staticCargo\nato.sqf";
+    call compile preprocessFile "src\lists\staticCargo\csat.sqf";
+    call compile preprocessFile "src\lists\staticCargo\aaf.sqf";
+};
