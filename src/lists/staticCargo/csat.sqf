@@ -62,7 +62,8 @@ _backpacks = [];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////// Special weapons box
 _weapons = [["arifle_SDAR_F", 1], ["srifle_DMR_01_F", 1]];
-_mags = [
+_mags =
+[
     ["20Rnd_556x45_UW_mag", 3],
     ["30Rnd_556x45_Stanag_green", 3],
     ["10Rnd_762x54_Mag", 8],

@@ -117,7 +117,7 @@ else
         ["arifle_MXC_F", 2],
         ["hgun_P07_F", 1]
     ];
-    _mags append [["100Rnd_65x39_caseless_Black_mag", 2], ["30Rnd_65x39_caseless_Black_mag", 8]];
+    _mags append [["100Rnd_65x39_caseless_mag", 2], ["30Rnd_65x39_caseless_mag", 8]];
 };
 
 (Escape_Static_Cargo get CARGO_BASIC_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
