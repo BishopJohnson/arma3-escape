@@ -1,28 +1,27 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Side - 
-	    String (Optional) - 
-		Bool (Optional) - 
-	
+	    Side -
+	    String (Optional) -
+		Bool (Optional) -
+
 	Returns:
-	    String - 
+	    String -
 */
 
 params
 [
 	"_side",
-	["_type", nil, [""]],
+	["_faction", "", [""]],
+	["_type", "None", [""]],
 	["_useWeights", false, [false]]
 ];
 
 private ["_types", "_randomTypes", "_veh", "_vehicles"];
 
 if (!isServer) exitWith {};
-
-if (isNil "_type") then {_type = "None"};
 
 _types = ["Plane", "Heli", "HeliHeavy", "HeliLight", "UAV"];
 _randomTypes = ["Plane", "HeliHeavy", "HeliLight", "UAV"];
@@ -35,7 +34,7 @@ if (!(_type in _types)) then
 		[
 			0.1,  // Plane
 			0.15, // HeliHeavy
-			0.6,  // HeliLight
+			0.6, // HeliLight
 			0.15 // UAV
 		];
 	}

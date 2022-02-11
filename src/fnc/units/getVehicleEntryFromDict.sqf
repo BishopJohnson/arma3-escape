@@ -49,6 +49,8 @@ params
 
 if (!isServer) exitWith {};
 
+if (typeName _side == "Side") then { _side = str _side };
+
 private "_vehEntry";
 private _attempt = 0;
 while {isNil "_vehEntry" && _attempt < 5} do
@@ -56,7 +58,7 @@ while {isNil "_vehEntry" && _attempt < 5} do
     _attempts = _attempt + 1;
 
     private _type = selectRandomWeighted _typeWeights;
-    private _typeDict = Escape_Random_Vehicles get str _side get _faction get _type;
+    private _typeDict = Escape_Random_Vehicles get _side get _faction get _type;
     if (isNil "_typeDict") then { continue };
 
     private _typeKeys = keys _typeDict;

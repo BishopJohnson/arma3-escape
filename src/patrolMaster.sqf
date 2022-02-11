@@ -80,7 +80,7 @@ airPatrols = call DICT_fnc_create;
 	private _newGroup = objNull;
 	while {isNull _newGroup} do
 	{
-		_newGroup = [_side, VEH_MAX_SPAWN_RADIUS, VEH_MIN_SPAWN_RADIUS] call _spawnFnc;
+		_newGroup = [VEH_MAX_SPAWN_RADIUS, VEH_MIN_SPAWN_RADIUS, _side] call _spawnFnc;
 	};
 
 	[_newGroup] execVM "src\fnc\patrols\vehicles\eventAssigner.sqf";
@@ -168,7 +168,7 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 		// Spawns vehicles for the side
 		while {count _groups < _maxSize} do
 		{
-			_group = [_side, VEH_INIT_MAX_SPAWN_RADIUS, VEH_INIT_MIN_SPAWN_RADIUS] call _vehicleSpawnFnc;
+			_group = [VEH_INIT_MAX_SPAWN_RADIUS, VEH_INIT_MIN_SPAWN_RADIUS, _side] call _vehicleSpawnFnc;
 			if (isNull _group) then { continue };
 
 			[_group] execVM "src\fnc\patrols\vehicles\eventAssigner.sqf";
@@ -178,9 +178,9 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 } forEach (vehiclePatrols call DICT_fnc_keys);
 
 // Schedules process to handle air patrols
-[PLAYER_SIDE, airPatrols] spawn
+[airPatrols] spawn
 {
-	params ["_playerFaction", "_airPatrols"];
+	params ["_airPatrols"];
 
 	private _spawnFnc = compile preprocessFile "src\fnc\patrols\air\spawnPatrol.sqf";
 
@@ -221,12 +221,16 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 			/* TODO: The faction with fewer air vehicles ought to have a higher
 			 *       chance of having one spawned.
 			 */
-			private _side =  selectRandom ([west, east, independent] - [_playerFaction]);
+			private _side = call Escape_fnc_GetRandomEnemySide;
 
 			_groups = [airPatrols, format ["%1", _side]] call DICT_fnc_get;
 
-			private _group = [_side, AIR_MAX_SPAWN_RADIUS, AIR_MIN_SPAWN_RADIUS] call _spawnFnc;
-			if (isNull _group) then { continue };
+			private _group = [AIR_MAX_SPAWN_RADIUS, AIR_MIN_SPAWN_RADIUS, _side] call _spawnFnc;
+			if (isNull _group) then
+			{
+				hint "Vehicle group is null.";
+				continue;
+			};
 
 			[_group] execVM "src\fnc\patrols\air\eventAssigner.sqf";
 			_groups append [_group];
@@ -328,7 +332,7 @@ private _vehicleSpawnFnc = compile preprocessFile "src\fnc\patrols\vehicles\spaw
 					private _newGroup = objNull;
 					while {isNull _newGroup} do
 					{
-						_newGroup = [_side, VEH_MAX_SPAWN_RADIUS, VEH_MIN_SPAWN_RADIUS] call _vehicleSpawnFnc;
+						_newGroup = [VEH_MAX_SPAWN_RADIUS, VEH_MIN_SPAWN_RADIUS, _side] call _vehicleSpawnFnc;
 					};
 
 					[_newGroup] execVM "src\fnc\patrols\vehicles\eventAssigner.sqf";

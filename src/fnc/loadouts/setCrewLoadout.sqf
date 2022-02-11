@@ -6,33 +6,30 @@
 
 #include "..\..\..\define.hpp"
 
-params
-[
-    "_crew",
-    "_side",
-    ["_faction", "", [""]]
-];
+params ["_crew", "_side", "_faction"];
 
 if (!isServer) exitWith {};
 
+if (typeName _side == "Side") then { _side = str _side };
+
 switch (_side) do
 {
-    case west:
+    case str west:
     {
-        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
-
         switch (_faction) do
         {
             case NATO_KEY:
             {
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutNato.sqf";
             };
+            case US_ARMY_KEY:
+            {
+                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutUsArmy.sqf"; */
+            };
         };
     };
-    case east:
+    case str east:
     {
-        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
-
         switch (_faction) do
         {
             case CSAT_KEY:
@@ -43,17 +40,27 @@ switch (_side) do
             {
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCsatPacific.sqf";
             };
+            case RU_KEY:
+            {
+                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutRu.sqf"; */
+            };
         };
     };
-    case independent:
+    case str independent:
     {
-        _faction = [_side] call Escape_fnc_GetRandomEnemyFactionOfSide;
-
         switch (_faction) do
         {
             case AAF_KEY:
             {
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutAaf.sqf";
+            };
+            case LDF_KEY:
+            {
+                // TODO: Execute for LDF.
+            };
+            case CDF_KEY:
+            {
+                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCdf.sqf"; */
             };
         };
     };

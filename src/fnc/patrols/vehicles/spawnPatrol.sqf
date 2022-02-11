@@ -15,7 +15,13 @@
 #define ROAD_RADIUS 1000
 #define SAFE_SPAWN_ATTEMPTS 5
 
-params ["_side", "_maxRadius", "_minRadius"];
+params
+[
+    "_maxRadius",
+    "_minRadius",
+    "_side",
+    ["_faction", nil, [""]]
+];
 
 if (!isServer) exitWith {};
 
@@ -79,7 +85,7 @@ while {!_result && _attemptCount < SAFE_SPAWN_ATTEMPTS} do
 	_attemptCount = _attemptCount + 1;
 };
 
-_position = [_position select 0, _position select 1, 2.0]; // Adjusts position for vehicles
+_position = [_position select 0, _position select 1, 0];
 
 // Checks if location is too close to any players
 _result = true;
@@ -94,8 +100,17 @@ for [{ private _i = _startIdx + 1 }, { _i mod _size != _startIdx }, { _i = _i + 
 private _group = grpNull;
 if (_result) then
 {
-	// Spawn vehicle with crew
-    private _vehGroup = [_position, _side] call compile preprocessFile "src\fnc\units\spawnVehicle.sqf";
+    // Spawn vehicle with crew
+    private "_vehGroup";
+    if (isNil "_faction") then
+    {
+        _vehGroup = [_position, _side] call compile preprocessFile "src\fnc\units\spawnVehicle.sqf";
+    }
+    else
+    {
+        _vehGroup = [_position, _side, _faction] call compile preprocessFile "src\fnc\units\spawnVehicle.sqf";
+    };
+
     if (isNil "_vehGroup") exitWith { _group };
 
     private _veh = _vehGroup select 0;
@@ -118,7 +133,6 @@ if (_result) then
 
 	{
 	    _x triggerDynamicSimulation false;
-	    _x setSkill ['aimingShake', 0.25];
 	} forEach units _group;
 
     private _followRoads = _veh isKindOf "Car";

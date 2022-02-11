@@ -1,19 +1,25 @@
 /*
     Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-		Side - 
-		Number - 
-		Number - 
-	
+		Side -
+		Number -
+		Number -
+
 	Returns:
-	    Group - 
+	    Group -
 */
 
 #define START_KEY "start"
 
-params ["_side", "_maxRadius", "_minRadius"];
+params
+[
+    "_maxRadius",
+    "_minRadius",
+    "_side",
+    ["_faction", nil, [""]]
+];
 
 if (!isServer) exitWith {};
 
@@ -41,18 +47,23 @@ for [{ private _i = _startIdx + 1 }, { _i mod _size != _startIdx }, { _i = _i + 
 private _group = grpNull;
 if (_result) then
 {
-	// Spawns vehicle with crew
-	private _veh =
-	[
-		_position,
-		random 360,
-		[_side, nil, true] call compile preprocessFile "src\fnc\patrols\air\airVehicles.sqf",
-		_side
-	] call BIS_fnc_spawnVehicle;
+    // Spawn vehicle with crew
+    private "_vehGroup";
+    if (isNil "_faction") then
+    {
+        _vehGroup = [_position, _side] call compile preprocessFile "src\fnc\units\spawnAirVehicle.sqf";
+    }
+    else
+    {
+        _vehGroup = [_position, _side, _faction] call compile preprocessFile "src\fnc\units\spawnAirVehicle.sqf";
+    };
 
-	_group = _veh select 2;
+    if (isNil "_vehGroup") exitWith { _group };
 
-	_group setBehaviour "AWARE";
+    private _veh = _vehGroup select 0;
+	_group = _vehGroup select 2;
+
+    _group setBehaviour "AWARE";
 	_group setSpeedMode "NORMAL";
 	_group deleteGroupWhenEmpty true;
 	_group enableDynamicSimulation false; // Not affected by dynamic simulation
@@ -61,7 +72,6 @@ if (_result) then
 	{
 		_x setSkill 1;
 		_x triggerDynamicSimulation false;
-		_x setSkill ['aimingShake', 0.25];
 	} forEach units _group;
 
 	[_group, _wpCenter, 0, false] execVM "src\fnc\patrols\air\nextWaypoint.sqf";
