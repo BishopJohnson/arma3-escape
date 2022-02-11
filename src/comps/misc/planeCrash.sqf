@@ -71,9 +71,14 @@ private _veh =
 	 true,false] // (10) pilot #2
 ];
 
-switch (_side) do
+switch (_faction) do
 {
-	case east:
+	case NATO_KEY:
+	{
+		_veh select 9 set [0, "B_Helipilot_F"];
+		_veh select 10 set [0, "B_Helipilot_F"];
+	};
+	case CSAT_KEY:
 	{
 		_veh select 0 set [0, "Box_East_Wps_F"];
 		_veh select 1 set [0, "Box_East_WpsLaunch_F"];
@@ -88,7 +93,7 @@ switch (_side) do
 		_veh select 9 set [0, "O_helipilot_F"];
 		_veh select 10 set [0, "O_helipilot_F"];
 	};
-	case independent:
+	case AAF_KEY:
 	{
 		_veh select 0 set [0, "Box_IND_Wps_F"];
 		_veh select 1 set [0, "Box_IND_WpsLaunch_F"];
@@ -103,10 +108,21 @@ switch (_side) do
 		_veh select 9 set [0, "I_helipilot_F"];
 		_veh select 10 set [0, "I_helipilot_F"];
 	};
-	default // West
+	case US_ARMY_KEY;
+	case US_MARINES_KEY:
 	{
-		_veh select 9 set [0, "B_Helipilot_F"];
-		_veh select 10 set [0, "B_Helipilot_F"];
+		_veh select 9 set [0, "rhsusf_airforce_pilot"];
+		_veh select 10 set [0, "rhsusf_airforce_pilot"];
+	};
+	case RU_KEY:
+	{
+		_veh select 9 set [0, "rhs_pilot"];
+		_veh select 10 set [0, "rhs_pilot"];
+	};
+	case CDF_KEY:
+	{
+		_veh select 9 set [0, "rhsgref_cdf_air_pilot"];
+		_veh select 10 set [0, "rhsgref_cdf_air_pilot"];
 	};
 };
 

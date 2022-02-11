@@ -14,7 +14,7 @@ params
 ];
 
 if (!isServer) exitWith {};
-if (_size < 1) exitWith { debugLog "Group size must be greater than 0" };
+if (_size < 1) exitWith { hint "Group size must be greater than 0" };
 
 private "_groupSide";
 if (typeName _side == "Side") then
@@ -33,7 +33,7 @@ else
 };
 
 private _group = createGroup _groupSide;
-if (isNull _group) exitWith { debugLog format ["Unable to create anymore groups for side %1", _side] };
+if (isNull _group) exitWith { hint format ["Unable to create anymore groups for side %1", _side] };
 
 private _fnc = compile preprocessFile "src\fnc\units\spawnUnit.sqf";
 for [{ private _i = 0 }, { _i < _size }, { _i = _i + 1 }] do
