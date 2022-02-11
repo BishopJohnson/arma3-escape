@@ -13,6 +13,15 @@ if (!isServer) exitWith {};
 private _side = independent;
 private _faction = CDF_KEY;
 
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _randCargoPath = "src\fnc\randomCargo\randomCargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _basicBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'BASIC'] execVM '%4';",
+	CARGO_BASIC_WEAPONS_KEY, _faction, _cargoPath, _randCargoPath
+];
+
 private _comp =
 [
 	[
@@ -33,8 +42,8 @@ private _comp =
 		["Land_HBarrier_3_F",[1.09106,24.9771,0],0,1,0,[0,0],"","",true,false],
 
 		// Item crates
-		["Box_IND_Wps_F",[2.20496,18,0],90,1,0,[0,-0],"","",true,false],
-		["Box_IND_Ammo_F",[2.20496,16,0],0,1,0,[0,0],"","",true,false]
+		["Box_IND_Wps_F",[2.20496,18,0],90,1,0,[0,-0],"",_basicBoxInit,true,false],
+		["Box_IND_Ammo_F",[2.20496,16,0],0,1,0,[0,0],"",_ammoBoxInit,true,false]
 	],
 	30, // Radius of composition area
 	_faction

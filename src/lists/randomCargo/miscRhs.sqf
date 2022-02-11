@@ -73,11 +73,15 @@ _common set ["tt33", [["rhs_weap_tt33"], ["rhs_mag_762x25_8"]]];
 // M1911
 _uncommon set ["m1911", [["rhsusf_weap_m1911a1"], ["rhsusf_mag_7x45acp_MHP"]]];
 
+// Scorpion
+if (SCORPION_KEY in _uncommon) then { /* No unique values that could be ommitted */ }
+else
+{
+    _uncommon set [SCORPION_KEY, [["rhs_weap_scorpion"], ["rhsgref_20rnd_765x17_vz61"]]];
+};
+
 // M3
 _rare set ["m3", [["rhs_weap_m3a1"], ["rhsgref_30rnd_1143x23_M1911B_SMG"]]];
-
-// Scorpian
-_rare set [SCORPION_KEY, [["rhs_weap_scorpion"], ["rhsgref_20rnd_765x17_vz61"]]];
 
 Escape_Random_Cargo_Prison set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Prison set [RAND_CARGO_UNCOMMON_KEY, _uncommon];

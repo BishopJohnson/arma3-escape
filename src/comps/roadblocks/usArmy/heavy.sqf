@@ -13,6 +13,15 @@ if (!isServer) exitWith {};
 private _side = west;
 private _faction = US_ARMY_KEY;
 
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _randCargoPath = "src\fnc\randomCargo\randomCargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _launcherBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'LAUNCHER'] execVM '%4'",
+	CARGO_LAUNCHERS_KEY, _faction, _cargoPath, _randCargoPath
+];
+
 private _comp =
 [
 	[
@@ -42,8 +51,8 @@ private _comp =
 		["Land_ConcreteHedgehog_01_F",[12.6,21,0.0119934],359.999,1,0,[-1.87472e-006,1.86989e-005],"","",true,false],
 
 		// Item crates
-		["Box_NATO_Ammo_F",[-8.69995,9,0],0,1,0,[0,0],"","",true,false],
-		["Box_NATO_WpsLaunch_F",[-3.4054,7.38184,0],90,1,0,[0,0],"","",true,false],
+		["Box_NATO_Ammo_F",[-8.69995,9,0],0,1,0,[0,0],"",_ammoBoxInit,true,false],
+		["Box_NATO_WpsLaunch_F",[-3.4054,7.38184,0],90,1,0,[0,0],"",_launcherBoxInit,true,false],
 		["Box_NATO_Support_F",[-3.5188,8.92139,0],360,1,0,[0,0],"",
 		 "clearItemCargoGlobal this;
 		  clearBackpackCargoGlobal this;

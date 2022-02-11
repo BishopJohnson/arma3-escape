@@ -13,6 +13,15 @@ if (!isServer) exitWith {};
 private _side = east;
 private _faction = RU_KEY;
 
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _randCargoPath = "src\fnc\randomCargo\randomCargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+private _launcherBoxInit = format
+[
+	"[this, '%1', '%2'] execVM '%3'; [this, 'LAUNCHER'] execVM '%4'",
+	CARGO_LAUNCHERS_KEY, _faction, _cargoPath, _randCargoPath
+];
+
 private _comp =
 [
 	[
@@ -38,8 +47,8 @@ private _comp =
 		["Land_HBarrier_Big_F",[18.9176,-12.9648,0],90,1,0,[0,-0],"","",true,false],
 
 		// Item crates
-		["Box_East_Ammo_F",[-9.20001,-10.5,0],0,1,0,[0,0],"","",true,false],
-		["Box_East_WpsLaunch_F",[-7.51282,-5.4834,0],0,1,0,[0,0],"","",true,false],
+		["Box_East_Ammo_F",[-9.20001,-10.5,0],0,1,0,[0,0],"",_ammoBoxInit,true,false],
+		["Box_East_WpsLaunch_F",[-7.51282,-5.4834,0],0,1,0,[0,0],"",_launcherBoxInit,true,false],
 		["Box_East_Support_F",[-9.04974,-5.53027,0],90,1,0,[0,0],"",
 		 "clearItemCargoGlobal this;
 		  clearBackpackCargoGlobal this;
