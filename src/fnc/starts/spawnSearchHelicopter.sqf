@@ -1,9 +1,9 @@
 /*
 	Author:
 	    Bishop Johnson
-	
+
 	Parameter(s):
-	    Side - 
+	    Side -
 */
 
 #define MAX_SPAWN_DISTANCE 1500
@@ -15,8 +15,6 @@ private ["_startLoc", "_position", "_veh", "_group", "_wp"];
 
 if (!isServer) exitWith {};
 
-sleep 120; // Wait 2 minutes before spawning helicopter
-
 _startLoc = ([COMPOSITIONS, START_KEY] call DICT_fnc_get) select 0;
 
 _position =
@@ -25,7 +23,7 @@ _position =
 	[[_startLoc, MIN_SPAWN_DISTANCE]]
 ] call BIS_fnc_randomPos;
 
-if (typename _side != "SIDE") then
+if (typeName _side != "SIDE") then
 {
 	switch (_side) do
 	{
