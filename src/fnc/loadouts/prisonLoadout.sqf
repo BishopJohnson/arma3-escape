@@ -102,7 +102,14 @@ switch (PLAYER_FACTION) do
     };
     case US_ARMY_KEY:
     {
-        _uniform = "rhs_uniform_acu_ucp";
+        if (Escape_Us_Army_Use_Ucp) then
+        {
+            _uniform = "rhs_uniform_acu_ucp2";
+        }
+        else
+        {
+            _uniform = "rhs_uniform_acu_oefcp";
+        };
     };
     case US_MARINES_KEY:
     {

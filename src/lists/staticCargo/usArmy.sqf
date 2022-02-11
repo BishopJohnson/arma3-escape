@@ -229,43 +229,72 @@ _weapons = [];
 _mags = [];
 _items =
 [
-    ["rhsusf_iotv_ucp", 2],
-    ["rhsusf_iotv_ucp_Rifleman", 2],
-    ["rhsusf_iotv_ucp_Grenadier", 2],
-    ["rhsusf_iotv_ucp_SAW", 2],
-    ["rhsusf_iotv_ucp_Teamleader", 2],
-    ["rhsusf_iotv_ucp_Squadleader", 2],
-    ["rhsusf_iotv_ucp_Medic", 2],
-    ["rhsusf_iotv_ucp_Repair", 2],
-    ["rhsusf_patrolcap_ucp", 2],
-    ["rhs_Booniehat_ucp", 2],
     ["H_Cap_headphones", 2],
-    ["rhsusf_ach_helmet_ucp", 2],
-    ["rhsusf_ach_helmet_ESS_ucp", 2],
-    ["rhsusf_ach_helmet_headset_ucp", 2],
-    ["rhsusf_ach_helmet_headset_ess_ucp", 2],
     ["rhsusf_cvc_green_ess", 2],
     ["rhsusf_hgu56p_mask", 2],
     ["rhsusf_hgu56p", 2],
     ["RHS_jetpilot_usaf", 2]
 ];
-_backpacks =
-[
-    ["rhsusf_assault_eagleaiii_ucp", 2],
-    ["rhsusf_falconii", 2]
-];
+_backpacks = [["rhsusf_falconii", 2]];
+
+if (Escape_Us_Army_Use_Ucp) then
+{
+    _items append
+    [
+        ["rhsusf_iotv_ucp", 2],
+        ["rhsusf_iotv_ucp_Rifleman", 2],
+        ["rhsusf_iotv_ucp_Grenadier", 2],
+        ["rhsusf_iotv_ucp_SAW", 2],
+        ["rhsusf_iotv_ucp_Teamleader", 2],
+        ["rhsusf_iotv_ucp_Squadleader", 2],
+        ["rhsusf_iotv_ucp_Medic", 2],
+        ["rhsusf_iotv_ucp_Repair", 2],
+        ["rhsusf_patrolcap_ucp", 2],
+        ["rhs_Booniehat_ucp", 2],
+        ["rhsusf_ach_helmet_ucp", 2],
+        ["rhsusf_ach_helmet_ESS_ucp", 2],
+        ["rhsusf_ach_helmet_headset_ucp", 2],
+        ["rhsusf_ach_helmet_headset_ess_ucp", 2]
+    ];
+    _backpacks append [["rhsusf_assault_eagleaiii_ucp", 2]];
+}
+else
+{
+    _items append
+    [
+        ["rhsusf_iotv_ocp", 2],
+        ["rhsusf_iotv_ocp_Rifleman", 2],
+        ["rhsusf_iotv_ocp_Grenadier", 2],
+        ["rhsusf_iotv_ocp_SAW", 2],
+        ["rhsusf_iotv_ocp_Teamleader", 2],
+        ["rhsusf_iotv_ocp_Squadleader", 2],
+        ["rhsusf_iotv_ocp_Medic", 2],
+        ["rhsusf_iotv_ocp_Repair", 2],
+        ["rhsusf_patrolcap_ocp", 2],
+        ["rhs_Booniehat_ocp", 2],
+        ["rhsusf_ach_helmet_ocp", 2],
+        ["rhsusf_ach_helmet_ESS_ocp", 2],
+        ["rhsusf_ach_helmet_headset_ocp", 2],
+        ["rhsusf_ach_helmet_headset_ess_ocp", 2]
+    ];
+    _backpacks append [["rhsusf_assault_eagleaiii_ocp", 2]];
+};
 
 (Escape_Static_Cargo get CARGO_EQUIPMENT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Uniforms box
 _weapons = [];
 _mags = [];
-_items =
-[
-    ["rhs_uniform_acu_ucp", 4],
-    ["rhs_uniform_acu_ucp2", 4],
-    ["U_B_HeliPilotCoveralls", 4]
-];
+_items = [["U_B_HeliPilotCoveralls", 4]];
 _backpacks = [];
+
+if (Escape_Us_Army_Use_Ucp) then
+{
+    _items append [["rhs_uniform_acu_ucp2", 4]];
+}
+else
+{
+    _items append [["rhs_uniform_acu_oefcp", 4]];
+};
 
 (Escape_Static_Cargo get CARGO_UNIFORMS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];

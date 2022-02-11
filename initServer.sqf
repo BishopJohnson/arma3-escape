@@ -23,53 +23,15 @@ COMPOSITIONS = call DICT_fnc_create;
 [COMPOSITIONS, START_KEY, [/* position, radius */]] call DICT_fnc_set;
 
 Escape_Use_Rhs = "UseRhs" call BIS_fnc_getParamValue == 1;
-if (Escape_Use_Rhs) then
-{
-	Escape_Using_Heli = false;
-	Escape_Using_Marksmen = false;
-	Escape_Using_Apex = false;
-	Escape_Using_Jets = false;
-	Escape_Using_Orange = false;
-	Escape_Using_Tanks = false;
-	Escape_Using_Contact = false;
-
-	Escape_Nato_Use_Camo = false;
-	Escape_Csat_Use_Camo = false;
-	Escape_Csat_Pacific_Use_Camo = false;
-	Escape_Spetsnaz_Use_Camo = false;
-	Escape_Aaf_Use_Camo = false;
-	Escape_Ldf_Use_Camo = false;
-	Escape_Us_Army_Use_Camo = "IncludeUsArmy" call BIS_fnc_getParamValue == 2;
-	Escape_Us_Marines_Use_Camo = "IncludeUsMarines" call BIS_fnc_getParamValue == 2;
-	Escape_Ru_Use_Camo = "IncludeRu" call BIS_fnc_getParamValue == 2;
-	Escape_Cdf_Use_Camo = "IncludeCdf" call BIS_fnc_getParamValue == 2;
-	Escape_Saf_Use_Camo = "IncludeSaf" call BIS_fnc_getParamValue == 2;
-}
-else
-{
-	Escape_Using_Heli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Marksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Apex = "IncludeApex" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Jets = "IncludeJets" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Orange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Tanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
-	Escape_Using_Contact = "IncludeContact" call BIS_fnc_getParamValue == 1;
-
-	Escape_Nato_Use_Camo = "IncludeNato" call BIS_fnc_getParamValue == 2;
-	Escape_Csat_Use_Camo = "IncludeIranian" call BIS_fnc_getParamValue == 2;
-	Escape_Csat_Pacific_Use_Camo = "IncludeChinese" call BIS_fnc_getParamValue == 2;
-	Escape_Spetsnaz_Use_Camo = "IncludeSpetsnaz" call BIS_fnc_getParamValue == 2;
-	Escape_Aaf_Use_Camo = "IncludeAaf" call BIS_fnc_getParamValue == 2;
-	Escape_Ldf_Use_Camo = "IncludeLdf" call BIS_fnc_getParamValue == 2;
-	Escape_Us_Army_Use_Camo = false;
-	Escape_Us_Marines_Use_Camo = false;
-	Escape_Ru_Use_Camo = false;
-	Escape_Cdf_Use_Camo = false;
-	Escape_Saf_Use_Camo = false;
-};
+Escape_Using_Heli = "IncludeHelicopters" call BIS_fnc_getParamValue == 1;
+Escape_Using_Marksmen = "IncludeMarksmen" call BIS_fnc_getParamValue == 1;
+Escape_Using_Apex = "IncludeApex" call BIS_fnc_getParamValue == 1;
+Escape_Using_Jets = "IncludeJets" call BIS_fnc_getParamValue == 1;
+Escape_Using_Orange = "IncludeOrange" call BIS_fnc_getParamValue == 1;
+Escape_Using_Tanks = "IncludeTanks" call BIS_fnc_getParamValue == 1;
+Escape_Using_Contact = "IncludeContact" call BIS_fnc_getParamValue == 1;
 
 publicVariable "Escape_Use_Rhs";
-
 publicVariable "Escape_Using_Heli";
 publicVariable "Escape_Using_Marksmen";
 publicVariable "Escape_Using_Apex";
@@ -78,6 +40,22 @@ publicVariable "Escape_Using_Orange";
 publicVariable "Escape_Using_Tanks";
 publicVariable "Escape_Using_Contact";
 
+Escape_Nato_Use_Camo = "IncludeNato" call BIS_fnc_getParamValue == 2;
+Escape_Csat_Use_Camo = "IncludeIranian" call BIS_fnc_getParamValue == 2;
+Escape_Csat_Pacific_Use_Camo = "IncludeChinese" call BIS_fnc_getParamValue == 2;
+Escape_Spetsnaz_Use_Camo = "IncludeSpetsnaz" call BIS_fnc_getParamValue == 2;
+Escape_Aaf_Use_Camo = "IncludeAaf" call BIS_fnc_getParamValue == 2;
+Escape_Ldf_Use_Camo = "IncludeLdf" call BIS_fnc_getParamValue == 2;
+
+private _usArmyVal = "IncludeUsArmy" call BIS_fnc_getParamValue;
+Escape_Us_Army_Use_Camo = _usArmyVal == 2 || _usArmyVal == 4;
+Escape_Us_Army_Use_Ucp = _usArmyVal == 3 || _usArmyVal == 4;
+
+Escape_Us_Marines_Use_Camo = "IncludeUsMarines" call BIS_fnc_getParamValue == 2;
+Escape_Ru_Use_Camo = "IncludeRu" call BIS_fnc_getParamValue == 2;
+Escape_Cdf_Use_Camo = "IncludeCdf" call BIS_fnc_getParamValue == 2;
+Escape_Saf_Use_Camo = "IncludeSaf" call BIS_fnc_getParamValue == 2;
+
 publicVariable "Escape_NATO_Use_Camo";
 publicVariable "Escape_CSAT_Use_Camo";
 publicVariable "Escape_CSAT_Pacific_Use_Camo";
@@ -85,6 +63,7 @@ publicVariable "Escape_Spetsnaz_Use_Camo";
 publicVariable "Escape_Aaf_Use_Camo";
 publicVariable "Escape_Ldf_Use_Camo";
 publicVariable "Escape_Us_Army_Use_Camo";
+publicVariable "Escape_Us_Army_Use_Ucp";
 publicVariable "Escape_Us_Marines_Use_Camo";
 publicVariable "Escape_Ru_Use_Camo";
 publicVariable "Escape_Cdf_Use_Camo";

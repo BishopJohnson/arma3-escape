@@ -138,8 +138,8 @@ class Params
 	class IncludeUsArmy
 	{
 		title = "Include US Army for BluFor (requires RHS content)";
-		texts[] = {"Yes","No","Yes & use map camouflage"};
-		values[] = {1,0,2};
+		texts[] = {"Yes","No","Yes & use map camouflage","Yes & use UCP","Yes & use UCP and map camouflage"};
+		values[] = {1,0,2,3,4};
 		default = 1;
 	};
 	class IncludeUsMarines
