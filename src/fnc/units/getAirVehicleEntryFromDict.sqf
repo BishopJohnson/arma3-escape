@@ -21,8 +21,8 @@ params
             RAND_VEH_PLANE_KEY,     0.1,
 
             // UAV (total = 15%)
-            RAND_VEH_HELI_UAV_KEY,  0.75,
-            RAND_VEH_PLANE_UAV_KEY, 0.75
+            RAND_VEH_HELI_UAV_KEY,  0.075,
+            RAND_VEH_PLANE_UAV_KEY, 0.075
         ],
         [[]]
     ]
@@ -39,7 +39,7 @@ while {isNil "_vehEntry" && _attempt < 5} do
     _attempts = _attempt + 1;
 
     private _type = selectRandomWeighted _typeWeights;
-    private _typeDict = Escape_Random_Vehicles get str _side get _faction get _type;
+    private _typeDict = Escape_Random_Vehicles get _side get _faction get _type;
     if (isNil "_typeDict") then { continue };
 
     private _typeKeys = keys _typeDict;

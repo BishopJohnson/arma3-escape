@@ -103,6 +103,7 @@ switch true do
 	};
 };
 
+FRIENDLY_FACTIONS = [];
 ENEMY_FACTIONS = createHashMap;
 
 if (Escape_Use_Rhs) then
@@ -111,18 +112,21 @@ if (Escape_Use_Rhs) then
 	{
 		case west:
 		{
+			FRIENDLY_FACTIONS append [US_ARMY_KEY, US_MARINES_KEY];
 			ENEMY_FACTIONS set [str west, []];
 			ENEMY_FACTIONS set [str east, [RU_KEY]];
 			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
 		};
 		case east:
 		{
+			FRIENDLY_FACTIONS append [RU_KEY];
 			ENEMY_FACTIONS set [str west, [US_ARMY_KEY]];
 			ENEMY_FACTIONS set [str east, []];
 			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
 		};
 		case independent:
 		{
+			FRIENDLY_FACTIONS append [CDF_KEY];
 			ENEMY_FACTIONS set [str west, [US_ARMY_KEY]];
 			ENEMY_FACTIONS set [str east, [RU_KEY]];
 			ENEMY_FACTIONS set [str independent, []];
@@ -135,20 +139,23 @@ else
 	{
 		case west:
 		{
+			FRIENDLY_FACTIONS append [NATO_KEY];
 			ENEMY_FACTIONS set [str west, []];
-			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY]];
+			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY, SPETSNAZ_KEY]];
 			ENEMY_FACTIONS set [str independent, [AAF_KEY, LDF_KEY]];
 		};
 		case east:
 		{
+			FRIENDLY_FACTIONS append [CSAT_KEY, CSAT_P_KEY, SPETSNAZ_KEY];
 			ENEMY_FACTIONS set [str west, [NATO_KEY]];
 			ENEMY_FACTIONS set [str east, []];
 			ENEMY_FACTIONS set [str independent, [AAF_KEY, LDF_KEY]];
 		};
 		case independent:
 		{
+			FRIENDLY_FACTIONS append [AAF_KEY, LDF_KEY];
 			ENEMY_FACTIONS set [str west, [NATO_KEY]];
-			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY]];
+			ENEMY_FACTIONS set [str east, [CSAT_KEY, CSAT_P_KEY, SPETSNAZ_KEY]];
 			ENEMY_FACTIONS set [str independent, []];
 		};
 	};
@@ -220,6 +227,7 @@ Escape_fnc_GetRandomEnemyFaction = {
 
 publicVariable "PLAYER_SIDE";
 publicVariable "PLAYER_FACTION";
+publicVariable "FRIENDLY_FACTIONS";
 publicVariable "ENEMY_FACTIONS";
 
 playerGroup = createGroup PLAYER_SIDE;

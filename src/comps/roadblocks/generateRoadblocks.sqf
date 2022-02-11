@@ -28,7 +28,7 @@ if (isNil "COMPOSITIONS") then
 for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 {
 	private _factionKeys = keys Escape_Roadblocks;
-	private _faction = selectRandom (_factionKeys - [PLAYER_FACTION]);
+	private _faction = selectRandom (_factionKeys - FRIENDLY_FACTIONS);
 	private _factionDict = Escape_Roadblocks get _faction;
 
 	private _typeKey = selectRandom keys _factionDict;

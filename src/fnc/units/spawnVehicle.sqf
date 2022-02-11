@@ -25,6 +25,8 @@ else
     _sideStr = _side;
 };
 
+private _fnc = compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf";
+
 private "_vehEntry";
 switch (_sideStr) do
 {
@@ -41,8 +43,8 @@ switch (_sideStr) do
 
         switch (_faction) do
         {
-            case NATO_KEY:      { _vehEntry = [_side, NATO_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
-            case US_ARMY_KEY:   { _vehEntry = [_side, US_ARMY_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
+            case NATO_KEY:      { _vehEntry = [_side, NATO_KEY] call _fnc };
+            case US_ARMY_KEY:   { _vehEntry = [_side, US_ARMY_KEY] call _fnc };
             default             { hint "No faction was selected for bluFor vehicle." };
         };
     };
@@ -59,9 +61,9 @@ switch (_sideStr) do
 
         switch (_faction) do
         {
-            case CSAT_KEY:      { _vehEntry = [_side, CSAT_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
-            case CSAT_P_KEY:    { _vehEntry = [_side, CSAT_P_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
-            case RU_KEY:        { _vehEntry = [_side, RU_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
+            case CSAT_KEY:      { _vehEntry = [_side, CSAT_KEY] call _fnc };
+            case CSAT_P_KEY:    { _vehEntry = [_side, CSAT_P_KEY] call _fnc };
+            case RU_KEY:        { _vehEntry = [_side, RU_KEY] call _fnc };
             default             { hint "No faction was selected for opFor vehicle." };
         };
     };
@@ -78,7 +80,7 @@ switch (_sideStr) do
 
         switch (_faction) do
         {
-            case AAF_KEY:   { _vehEntry = [_side, AAF_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
+            case AAF_KEY:   { _vehEntry = [_side, AAF_KEY] call _fnc };
             case LDF_KEY:
             {
                 _vehEntry = [_side, LDF_KEY,
@@ -96,9 +98,9 @@ switch (_sideStr) do
 
                     // Artillery (total = 0.2%)
                     RAND_VEH_ARTY_KEY,          0.002
-                ]] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf";
+                ]] call _fnc;
             };
-            case CDF_KEY:   { _vehEntry = [_side, CDF_KEY] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf" };
+            case CDF_KEY:   { _vehEntry = [_side, CDF_KEY] call _fnc };
             default         { hint "No faction was selected for independent vehicle." };
         };
     };
@@ -115,7 +117,7 @@ switch (_sideStr) do
             RAND_VEH_CAR_UNARMED_KEY,   0.5,
             RAND_VEH_TRUCK_UNARMED_KEY, 0.3,
             RAND_VEH_UTIL_KEY,          0.1
-        ]] call compile preprocessFile "src\fnc\units\getVehicleEntryFromDict.sqf";
+        ]] call _fnc;
     };
     default
     {

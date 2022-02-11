@@ -6,23 +6,25 @@
 	    Side -
 */
 
+#include "..\..\..\define.hpp"
+
 #define MAX_SPAWN_DISTANCE 1500
 #define MIN_SPAWN_DISTANCE 1000
 
-params ["_side"];
-
-private ["_startLoc", "_position", "_veh", "_group", "_wp"];
+params ["_faction"];
 
 if (!isServer) exitWith {};
 
-_startLoc = ([COMPOSITIONS, START_KEY] call DICT_fnc_get) select 0;
+private _side = [_faction] call Escape_fnc_GetFactionSide;
 
-_position =
+private _startLoc = ([COMPOSITIONS, START_KEY] call DICT_fnc_get) select 0;
+private _position =
 [
     [[_startLoc, MAX_SPAWN_DISTANCE]],
 	[[_startLoc, MIN_SPAWN_DISTANCE]]
 ] call BIS_fnc_randomPos;
 
+private "_sideStr";
 if (typeName _side != "SIDE") then
 {
 	switch (_side) do
@@ -33,16 +35,39 @@ if (typeName _side != "SIDE") then
 	};
 };
 
-// Spawns vehicle with crew
-_veh =
+private _vehEntry =
 [
-	_position,
-	random 360,
-	[_side, "HeliLight"] call compile preprocessFile "src\fnc\patrols\air\airVehicles.sqf",
-	_side
-] call BIS_fnc_spawnVehicle;
+    _side,
+    _faction,
+    [RAND_VEH_HELI_L_KEY, 1]
+] call compile preprocessFile "src\fnc\units\getAirVehicleEntryFromDict.sqf";
 
-_group = _veh select 2;
+private _veh = _vehEntry select 0;
+while { typeName _veh == "Array" } do
+{
+    _veh = selectRandom _veh;
+};
+
+private _variant = _vehEntry select 1;
+private _loadout = _vehEntry select 2;
+
+if (typeName _variant == "Array") then
+{
+    _variant = [selectRandom _variant, 1];
+};
+
+if (typeName _loadout == "Array") then
+{
+    _loadout = selectRandom _loadout;
+};
+
+private _vehGroup = [_position, random 360, _veh, _side] call BIS_fnc_spawnVehicle;
+if (isNil "_vehGroup") exitWith { hint "_vehGroup is nil." };
+
+[_vehGroup select 0, _variant, _loadout] call BIS_fnc_initVehicle;
+[_vehGroup select 1, _side, _faction] execVM "src\fnc\loadouts\setCrewLoadout.sqf";
+
+private _group = _vehGroup select 2;
 
 _group setBehaviour "AWARE";
 _group setSpeedMode "NORMAL"; // TODO: Set speed to fast.

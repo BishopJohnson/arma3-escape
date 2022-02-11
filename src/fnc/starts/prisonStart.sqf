@@ -137,7 +137,7 @@ _trg = createTrigger ["EmptyDetector", _pos];
 _trg setTriggerStatements
 [
 	"{alive _x} count prisonGuards == 0",
-	format ["['%1'] execVM 'src\fnc\starts\spawnSearchHelicopter.sqf'", _enemySide],
+	format ["['%1'] execVM 'src\fnc\starts\spawnSearchHelicopter.sqf'", _enemyFaction],
 	""
 ];
-_trg setTriggerTimeout [120, 120, 120, true];
+//_trg setTriggerTimeout [120, 120, 120, true];

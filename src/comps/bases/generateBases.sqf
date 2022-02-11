@@ -56,7 +56,7 @@ else
 for [{private _i = 0}, {_i < _count + _minimumCommsCount}, {_i = _i + 1}] do
 {
 	private _factionKeys = keys Escape_Bases;
-	private _faction = selectRandom (_factionKeys - [PLAYER_FACTION]);
+	private _faction = selectRandom (_factionKeys - FRIENDLY_FACTIONS);
 	private _factionDict = Escape_Bases get _faction;
 
 	private "_type";
