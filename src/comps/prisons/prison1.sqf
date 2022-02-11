@@ -84,8 +84,11 @@ private _veh =
 switch (_faction) do
 {
     case NATO_KEY:			{ _veh select 0 set [0, "Flag_NATO_F"] };
-	case CSAT_KEY:			{ _veh select 0 set [0, "Flag_CSAT_F"] };
+	case CSAT_KEY;
+	case CSAT_P_KEY;
+	case SPETSNAZ_KEY:		{ _veh select 0 set [0, "Flag_CSAT_F"] };
 	case AAF_KEY:			{ _veh select 0 set [0, "Flag_AAF_F"] };
+	case LDF_KEY:			{ _veh select 0 set [0, "Flag_EAF_F"] };
 	case US_ARMY_KEY;
 	case US_MARINES_KEY:	{ _veh select 0 set [0, "Flag_US_F"] };
 	case RU_KEY:			{ _veh select 0 set [0, "rhs_Flag_Russia_F"] };

@@ -8,8 +8,6 @@
 
 params ["_count"];
 
-private ["_sides", "_position", "_types"];
-
 if (!isServer) exitWith {};
 /*
 if (isNil "COMPOSITIONS") then
@@ -23,7 +21,6 @@ if (isNil "COMPOSITIONS") then
 	[COMPOSITIONS, KEY, []] call DICT_fnc_set;
 };
 */
-_sides = [west, east, independent] - [PLAYER_SIDE];
 
 for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 {
@@ -31,15 +28,16 @@ for [{private _i = 0}, {_i < _count}, {_i = _i + 1}] do
 	 *       (possibly extend this to towns too).
 	 */
 
-	_position = [nil, ["water"]] call BIS_fnc_randomPos;
-	_types = [] call compile preprocessFile "src\fnc\ordnance\mineTypes.sqf";
-	
+	private _position = [nil, ["water"]] call BIS_fnc_randomPos;
+	private _type = selectRandom (call compile preprocessFile "src\fnc\ordnance\mineTypes.sqf");
+	private _side = call Escape_fnc_GetRandomEnemySide;
+
 	[
-		selectRandom _types,
+		_type,
 		_position,
 		MAX_RADIUS,
 		MAX_MINES_PER_AREA,
-		selectRandom _sides
+		_side
 	] execVM "src\fnc\ordnance\spawnMinefield.sqf";
 	
 	/*
