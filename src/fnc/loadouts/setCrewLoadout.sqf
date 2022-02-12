@@ -24,7 +24,7 @@ switch (_side) do
             };
             case US_ARMY_KEY:
             {
-                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutUsArmy.sqf"; */
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutUsArmy.sqf";
             };
         };
     };
