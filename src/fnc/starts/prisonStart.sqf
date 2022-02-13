@@ -140,4 +140,4 @@ _trg setTriggerStatements
 	format ["['%1'] execVM 'src\fnc\starts\spawnSearchHelicopter.sqf'", _enemyFaction],
 	""
 ];
-//_trg setTriggerTimeout [120, 120, 120, true];
+_trg setTriggerTimeout [120, 120, 120, true];
