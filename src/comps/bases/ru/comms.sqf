@@ -13,70 +13,81 @@ if (!isServer) exitWith {};
 private _side = east;
 private _faction = RU_KEY;
 
+private _cargoPath = "src\fnc\cargo\cargo.sqf";
+private _ammoBoxInit = format ["[this, '%1', '%2'] execVM '%3';", CARGO_AMMO_KEY, _faction, _cargoPath];
+
 private _comp =
 [
 	[
-		["Land_TTowerSmall_1_F",[-4.4502,-4.01172,0],180,1,0,[0,0],"","",true,false],
-		["Land_Cargo20_sand_F",[4.22705,14.3662,0],231.1,1,0,[0,0],"","",true,false],
-		["Land_Cargo_HQ_V3_F",[-7.13281,-13.0391,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Cargo20_sand_F",[8.42285,-15.8081,4.76837e-007],29.0115,1,0,[0,0],"","",true,false],
-		["Land_Communication_F",[-4.44385,-5.98535,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierTower_F",[16.0115,-9.10059,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_3_F",[18.2808,-2.8584,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagBunker_Small_F",[-19.3062,1.78857,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[-18.5225,-4.65869,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-21.2922,-2.19824,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagBunker_Large_F",[18.77,11.6289,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall6_F",[2.46655,22.5815,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-18.3997,-9.66895,0],90,1,0,[0,-0],"","",true,false],
-		["Land_FieldToilet_F",[16.9431,-14.1294,6.67572e-006],89.9995,1,0,[-0,-0],"","",true,false],
-		["Land_WaterTank_F",[10.4954,19.6431,2.86102e-006],90,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-21.0747,-5.38281,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrierWall4_F",[4.70044,-21.877,0],180,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[-22.1851,5.06104,0],0.000317645,1,0,[-0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[-4.06201,22.7383,0],0,1,0,[0,0],"","",true,false],
-		["Land_WaterTank_F",[12.3635,19.6289,9.53674e-005],89.9995,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-5.40283,-23.4409,0],0,1,0,[0,0],"","",true,false],
-		["Land_FieldToilet_F",[16.9639,-16.6162,1.90735e-006],90.0052,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-18.9871,17.1997,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrierWall6_F",[-12.2166,22.2954,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[-21.1091,-11.9536,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[15.3411,21.2817,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[19.3479,-13.1807,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-11.1763,-23.4595,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-18.375,-15.4629,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[11.4233,22.8364,0],0,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[-22.1851,13.061,0],0.000317645,1,0,[-0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[11.7861,-22.9595,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[24.9436,6.97266,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[-20.8916,-15.1382,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrierWall_corner_F",[-17.7378,20.5093,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-16.9487,-23.4429,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall_corner_F",[18.01,-21.0034,0],90,1,0,[0,-0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[-26.1851,9.06104,0],0.000317645,1,0,[-0,-0],"","",true,false],
-		["Land_Razorwire_F",[25.1509,13.5195,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[-18.438,-21.2007,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[24.9333,16.7041,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-21.0989,-21.6851,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Round_F",[19.021,25.1895,-0.00130129],310.251,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[16.2832,27.5903,-0.00130129],130.251,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Round_F",[18.929,27.6943,-0.00130129],220.251,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-22.5505,-24.4297,-0.00130129],137.713,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Round_F",[-23.5779,24.0386,-0.00130129],45.0033,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-20.1477,-27.1655,-0.00130129],317.713,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-20.9583,26.5688,-0.00130129],225.003,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[24.0164,-24.4839,-0.00130129],223.964,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[21.4431,-27.0605,-0.00130129],43.9643,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-22.7847,-26.9253,-0.00130129],47.7126,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-23.4624,26.6841,-0.00130129],135.003,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Round_F",[23.949,-27.1313,-0.00130129],313.964,1,0,[0,0],"","",true,false],
-		["rhs_Flag_Russia_F",[-12.0425,-6.10303,0],270,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[-8.16162,-0.220215,0],180,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[9.17041,11.9614,0],90,1,0,[0,-0],"","",true,false],
+		["Land_TTowerSmall_2_F",[-10.5959,-4.51953,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[15.0503,7.62109,0],180,1,0,[0,0],"","",true,false],
+		["Land_Cargo20_sand_F",[-10.1816,12.771,-4.76837e-007],185.359,1,0,[4.7233e-005,5.29669e-006],"","",true,false],
+		["Land_FieldToilet_F",[0.597412,-18.2905,3.8147e-006],179.998,1,0,[0.000248885,-0.000466074],"","",true,false],
+		["Land_FieldToilet_F",[2.41553,-18.3008,-6.19888e-006],179.999,1,0,[0.000647716,0.000377164],"","",true,false],
+		["Land_Cargo_HQ_V3_F",[-13.1677,-13.0391,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[16.4197,11.895,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_Big_F",[-11.2922,16.1626,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[-20.2512,2.95654,0],90,1,0,[0,-0],"","",true,false],
+		["Land_Communication_F",[-10.4788,-5.98535,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_Big_F",[12.8667,-16.9668,0],1.93052,1,0,[0,0],"","",true,false],
+		["Land_Fort_Watchtower_EP1",[0.727051,21.5088,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrierWall_corridor_F",[2.08838,-22.1904,0],6.09044,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[20.9509,-9.46094,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrierWall_corner_F",[-3.57153,-23.2363,0],180,1,0,[0,0],"","",true,false],
+		["Land_HBarrierWall_corridor_F",[7.52612,-22.3301,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrierWall6_F",[9.9209,22.5229,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[-8.52173,23.1685,0],0,1,0,[0,0],"","",true,false],
+		["Land_BagBunker_Small_F",[-25.3411,1.78857,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_Big_F",[-24.5574,-4.65869,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[-11.4529,-23.4575,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrierWall_corridor_F",[-11.3281,22.521,0],90,1,0,[0,-0],"","",true,false],
+		["Land_WaterTank_F",[17.9185,19.6431,2.86102e-006],90,1,0,[0.00186963,0.00221576],"","",true,false],
+		["Land_HBarrier_5_F",[-24.4346,-9.66895,0],90,1,0,[0,-0],"","",true,false],
+		["Land_BagBunker_Small_F",[25.8765,-10.4668,0],270,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_1_F",[-27.3271,-2.19824,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrierWall6_F",[-18.2515,22.2954,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[26.9558,-5.55029,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[-17.2112,-23.4595,0],0,1,0,[0,0],"","",true,false],
+		["Land_WaterTank_F",[19.7866,19.6289,8.58307e-006],90,1,0,[0.00259054,0.00235264],"","",true,false],
+		["Land_Razorwire_F",[-27.1096,-5.38281,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+		["Land_BagBunker_Large_F",[26.1931,11.6289,0],270,1,0,[0,0],"","",true,false],
+		["Land_HBarrierWall_corridor_F",[12.6641,-25.7246,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[-25.022,17.1997,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[-27.144,-11.9536,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_Big_F",[18.8162,22.7925,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[22.7642,21.2817,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_Big_F",[19.1616,-22.9404,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[-24.4099,-15.4629,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[26.771,-13.1807,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[-22.9836,-23.4429,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrierWall_corner_F",[-23.7727,20.5093,0],270,1,0,[0,0],"","",true,false],
+		["Land_Razorwire_F",[-26.9265,-15.1382,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrierWall_corner_F",[25.4331,-21.0034,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_3_F",[-24.4729,-21.2007,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[32.3667,6.97266,0],90,1,0,[0,-0],"","",true,false],
+		["Land_Razorwire_F",[32.574,13.5195,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[-27.1338,-21.6851,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[32.3564,16.7041,0],90,1,0,[0,-0],"","",true,false],
+		["rhs_Flag_Russia_F",[-18.0771,-6.10303,0],270,1,0,[0,0],"","",true,false],
+
+		// Turrets
+		["rhs_Igla_AA_pod_msv",[12.4812,10.5928,-0.0749998],180,1,0,[-7.33041e-006,-1.10495e-005],"","",true,false],
+		["rhs_Kornet_9M133_2_msv",[-0.719971,22.041,2.78],359.99,1,0,[-0.000170214,0.000354742],"","",true,false],
+		["rhs_Metis_9k115_2_msv",[4.09375,21.9331,2.78],0.000543719,1,0,[-9.63567e-006,-0.000138597],"","",true,false],
+		["rhs_KORD_high_MSV",[-24.8081,1.98145,-0.0682845],270.001,1,0,[2.99077e-005,8.27437e-006],"","",true,false],
+		["rhs_KORD_high_MSV",[25.426,-10.707,-0.0682855],89.9955,1,0,[1.15435e-005,5.04634e-005],"","",true,false],
+
+		// Supply boxes
+		["Box_NATO_Ammo_F",[3.71777,21.3013,-1.43051e-006],359.994,1,0,[-0.000914786,0.00121226],"",_ammoBoxInit,true,false],
+		["Box_NATO_Ammo_F",[-6.92554,-0.223145,-2.86102e-006],359.996,1,0,[0.00068532,-0.00117371],"",_ammoBoxInit,true,false],
 
 		// Data terminal
-		["Land_DataTerminal_01_F",[-2.87866,-5.92285,0],270,1,0,[0,0],"","this execVM 'src\fnc\rescue\rescueCommAction.sqf';",true,false]
+		["Land_DataTerminal_01_F",[-8.91357,-5.92285,0],270,1,0,[0,0],"","this execVM 'src\fnc\rescue\rescueCommAction.sqf';",true,false]
 	],
 	"o_hq", // Marker type
-	40,     // Radius of composition area
+	50,     // Radius of composition area
 	80,     // Radius of patrol
 	_faction
 ];
@@ -86,13 +97,13 @@ private _carEntries =
 [
 	_side,
 	_faction,
-	[RAND_VEH_CAR_UNARMED_KEY, RAND_VEH_CAR_ARMED_KEY, RAND_VEH_TRUCK_UNARMED_KEY, RAND_VEH_MRAP_UNARMED_KEY, RAND_VEH_MRAP_ARMED_KEY]
+	[RAND_VEH_CAR_UNARMED_KEY, RAND_VEH_CAR_ARMED_KEY, RAND_VEH_TRUCK_UNARMED_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_Truck_03_covered_F",[-11.314,14.666,-0.00593853],90,random [0.2, 0.5, 1],0,[-0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+	["RHS_Ural_VDV_01",[12.9851,-10.5537,0],90,random [0.2, 0.5, 1],0,[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
 ];
 
 for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
