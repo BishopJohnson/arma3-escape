@@ -186,6 +186,7 @@
 #define RAND_VEH_TURRET_L_KEY "turretLow"
 #define RAND_VEH_TURRET_M_KEY "turretMid"
 #define RAND_VEH_TURRET_H_KEY "turretHigh"
+#define RAND_VEH_TURRET_S_KEY "turretSpecial"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Unit classes
 #define UNIT_CLASS_LEADER "leader"

@@ -61,7 +61,7 @@ private _buildings =
 	"Land_BagBunker_Small_F"
 ];
 
-private _whitelistedTurrentTypes = [RAND_VEH_TURRET_L_KEY, RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY];
+private _whitelistedTurrentTypes = [RAND_VEH_TURRET_L_KEY, RAND_VEH_TURRET_M_KEY, RAND_VEH_TURRET_H_KEY]; // Exclude special turrets
 private _whitelistedVehicleTypes = [RAND_VEH_CAR_ARMED_KEY, RAND_VEH_MRAP_ARMED_KEY];
 private _turrents = [];
 private _cars = [];

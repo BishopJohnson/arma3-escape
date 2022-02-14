@@ -289,6 +289,16 @@ _dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
 _vehicles = createHashMap;
+
+// Browning
+_vehicles set ["browning", [["RHS_M2StaticMG_MiniTripod_D"], true, true]];
+
+// Mk19
+_vehicles set ["browning", [["RHS_MK19_TriPod_D"], true, true]];
+
+// TOW
+_vehicles set ["browning", [["RHS_TOW_TriPod_D"], true, true]];
+
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
@@ -297,7 +307,19 @@ _dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
 _vehicles = createHashMap;
+
+// Browning
+_vehicles set ["browning", [["RHS_M2StaticMG_D"], true, true]];
+
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Turret special
+_vehicles = createHashMap;
+
+// Stinger
+_vehicles set ["stinger", [["RHS_Stinger_AA_pod_D"], true, true]];
+
+_dict set [RAND_VEH_TURRET_S_KEY, _vehicles];
 
 private _side = str west;
 private _sideDict = Escape_Random_Vehicles get _side;

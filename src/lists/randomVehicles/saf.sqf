@@ -113,6 +113,10 @@ _dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
 _vehicles = createHashMap;
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Turret special
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TURRET_S_KEY, _vehicles];
+
 private _side = str independent;
 private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [SAF_KEY, _dict];

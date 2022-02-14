@@ -247,6 +247,10 @@ _vehicles set ["gmg", [["I_GMG_01_high_F"], true, true]];
 
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Turret special
+_vehicles = createHashMap;
+_dict set [RAND_VEH_TURRET_S_KEY, _vehicles];
+
 private _side = str independent;
 private _sideDict = Escape_Random_Vehicles get _side;
 _sideDict set [AAF_KEY, _dict];

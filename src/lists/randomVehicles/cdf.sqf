@@ -256,6 +256,19 @@ _dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
 _vehicles = createHashMap;
+
+// DSHkM
+_vehicles set ["dshkm", [["rhsgref_cdf_DSHKM_Mini_TriPod"], true, true]];
+
+// NSV
+_vehicles set ["nsv", [["rhsgref_cdf_NSV_TriPod"], true, true]];
+
+// AGS-30
+_vehicles set ["ags30", [["rhsgref_cdf_AGS30_TriPod"], true, true]];
+
+// SPG-9
+_vehicles set ["spg9", [["rhsgref_cdf_SPG9M"], true, true]];
+
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
@@ -264,7 +277,22 @@ _dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
 _vehicles = createHashMap;
+
+// DSHkM
+_vehicles set ["dshkm", [["rhsgref_cdf_DSHKM"], true, true]];
+
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Turret special
+_vehicles = createHashMap;
+
+// Igla
+_vehicles set ["igla", [["rhsgref_cdf_Igla_AA_pod"], true, true]];
+
+// ZU-23
+_vehicles set ["zu23", [["RHSgref_cdf_ZU23"], true, true]];
+
+_dict set [RAND_VEH_TURRET_S_KEY, _vehicles];
 
 private _side = str independent;
 private _sideDict = Escape_Random_Vehicles get _side;

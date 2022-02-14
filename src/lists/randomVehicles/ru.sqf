@@ -302,15 +302,50 @@ _dict set [RAND_VEH_PLANE_UAV_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret low
 _vehicles = createHashMap;
+
+// NSV
+_vehicles set ["nsv", [["RHS_NSV_TriPod_MSV"], true, true]];
+
+// KORD
+_vehicles set ["kord", [["rhs_KORD_MSV"], true, true]];
+
+// AGS-30
+_vehicles set ["ags30", [["RHS_AGS30_TriPod_MSV"], true, true]];
+
+// Metis
+_vehicles set ["metis", [["rhs_Metis_9k115_2_msv"], true, true]];
+
+// SPG9
+_vehicles set ["spg9", [["rhs_SPG9M_MSV"], true, true]];
+
 _dict set [RAND_VEH_TURRET_L_KEY, _vehicles];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret mid
 _vehicles = createHashMap;
+
+// Kornet
+_vehicles set ["kornet", [["rhs_Kornet_9M133_2_msv"], true, true]];
+
 _dict set [RAND_VEH_TURRET_M_KEY, _vehicles];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// Turret high
 _vehicles = createHashMap;
+
+// KORD
+_vehicles set ["kord", [["rhs_KORD_high_MSV"], true, true]];
+
 _dict set [RAND_VEH_TURRET_H_KEY, _vehicles];
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// Turret special
+_vehicles = createHashMap;
+
+// Igla
+_vehicles set ["igla", [["rhs_Igla_AA_pod_msv"], true, true]];
+
+// Zu-23
+_vehicles set ["zu23", [["RHS_ZU23_MSV"], true, true]];
+
+_dict set [RAND_VEH_TURRET_S_KEY, _vehicles];
 
 private _side = str east;
 private _sideDict = Escape_Random_Vehicles get _side;
