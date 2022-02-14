@@ -10,6 +10,8 @@ params ["_unit"];
 
 private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_cap", "_helmet", "_nvg"];
 
+private _primaryLoudout = selectRandomWeighted [true, 0.8, false, 0.2];
+
 private _map = worldName;
 if (Escape_Us_Army_Use_Camo) then
 {
@@ -21,20 +23,50 @@ if (Escape_Us_Army_Use_Camo) then
         case LIVONIA_KEY;
         case TANOA_KEY:
         {
-            _weaponP = "rhs_weap_XM2010_wd";
-            _optic = "rhsusf_acc_LEUPOLDMK4_2";
+            if (_primaryLoudout) then
+            {
+                _weaponP = "rhs_weap_XM2010_wd";
+                _optic = "rhsusf_acc_LEUPOLDMK4_2";
+                _mag = "rhsusf_5Rnd_300winmag_xm2010";
+            }
+            else
+            {
+                _weaponP = "rhs_weap_m24sws_wd";
+                _optic = "rhsusf_acc_LEUPOLDMK4_wd";
+                _mag = "rhsusf_5Rnd_762x51_m993_Mag";
+            };
         };
         default
         {
-            _weaponP = "rhs_weap_XM2010_d";
-            _optic = "rhsusf_acc_LEUPOLDMK4_2_d";
+            if (_primaryLoudout) then
+            {
+                _weaponP = "rhs_weap_XM2010_d";
+                _optic = "rhsusf_acc_LEUPOLDMK4_2_d";
+                _mag = "rhsusf_5Rnd_300winmag_xm2010";
+            }
+            else
+            {
+                _weaponP = "rhs_weap_m24sws_d";
+                _optic = "rhsusf_acc_LEUPOLDMK4_d";
+                _mag = "rhsusf_5Rnd_762x51_m993_Mag";
+            };
         };
     };
 }
 else
 {
-    _weaponP = "rhs_weap_XM2010";
-    _optic = "rhsusf_acc_LEUPOLDMK4_2";
+    if (_primaryLoudout) then
+    {
+        _weaponP = "rhs_weap_XM2010";
+        _optic = "rhsusf_acc_LEUPOLDMK4_2";
+        _mag = "rhsusf_5Rnd_300winmag_xm2010";
+    }
+    else
+    {
+        _weaponP = "rhs_weap_m24sws";
+        _optic = "rhsusf_acc_LEUPOLDMK4";
+        _mag = "rhsusf_5Rnd_762x51_m993_Mag";
+    };
 };
 
 if (Escape_Us_Army_Use_Ucp) then
@@ -64,7 +96,7 @@ removeHeadgear _unit;
 comment "Add weapons";
 _unit addWeapon _weaponP;
 _unit addPrimaryWeaponItem _optic;
-_unit addPrimaryWeaponItem "rhsusf_5Rnd_300winmag_xm2010";
+_unit addPrimaryWeaponItem _mag;
 _unit addPrimaryWeaponItem "rhsusf_acc_harris_bipod";
 _unit addWeapon "rhsusf_weap_m9";
 _unit addHandgunItem "rhsusf_mag_15Rnd_9x19_FMJ";
@@ -79,8 +111,8 @@ _unit addWeapon "rhsusf_bino_lrf_Vector21";
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 _unit addItemToUniform _cap;
-for "_i" from 1 to 3 do {_unit addItemToUniform "rhsusf_5Rnd_300winmag_xm2010";};
-for "_i" from 1 to 4 do {_unit addItemToVest "rhsusf_5Rnd_300winmag_xm2010";};
+for "_i" from 1 to 3 do {_unit addItemToUniform _mag;};
+for "_i" from 1 to 4 do {_unit addItemToVest _mag;};
 for "_i" from 1 to 2 do {_unit addItemToVest "rhsusf_mag_15Rnd_9x19_FMJ";};
 _unit addItemToVest "rhs_mag_an_m8hc";
 _unit addHeadgear _helmet;

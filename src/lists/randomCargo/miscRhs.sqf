@@ -13,6 +13,7 @@ if (!isServer) exitWith {};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Basic weapons
 _common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
+_rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // AKM
 _common set [AKM_KEY, [["rhs_weap_akm"], ["rhs_30Rnd_762x39mm_89"]]];
@@ -23,18 +24,43 @@ _uncommon set [M14_KEY, [["rhs_weap_m14"], ["rhsusf_20Rnd_762x51_m80_Mag"]]];
 // FAL
 _uncommon set ["fal", [["rhs_weap_l1a1_wood"], ["rhs_mag_20Rnd_762x51_m80_fnfal"]]];
 
+// SCAR-H
+_rare set [SCAR_H_KEY, [["rhs_weap_mk17_STD", "rhs_weap_mk17_CQC"], ["rhs_mag_20Rnd_SCAR_762x51_m80a1_epr"]]];
+
 Escape_Random_Cargo_Basic set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Basic set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
+Escape_Random_Cargo_Basic set [RAND_CARGO_RARE_KEY, _rare];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////// Launchers
 _common = Escape_Random_Cargo_Launcher get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Launcher get RAND_CARGO_UNCOMMON_KEY;
 
 // RPG-7
-_common set [RPG_7_KEY, [["rhs_weap_rpg7"], ["rhs_rpg7_PG7V_mag"]]];
+_weapons = ["rhs_weap_rpg7"];
+_ammo = ["rhs_rpg7_PG7V_mag"];
 
-// RPG-7
-_uncommon set [LAW_KEY, [["rhs_weap_m72a7"], []]];
+if (RPG_7_KEY in _common) then
+{
+    _temp = _common get RPG_7_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _common set [RPG_7_KEY, _temp];
+}
+else
+{
+    _common set [RPG_7_KEY, [_weapons, _ammo]];
+};
+
+// LAW
+if (LAW_KEY in _uncommon) then { /* No unique values that could be ommitted */ }
+else
+{
+    _uncommon set [LAW_KEY, [["rhs_weap_m72a7"], []]];
+};
 
 Escape_Random_Cargo_Launcher set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Launcher set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
@@ -71,7 +97,11 @@ _common set ["6P9", [["rhs_weap_pb_6p9"], ["rhs_mag_9x18_8_57N181S"]]];
 _common set ["tt33", [["rhs_weap_tt33"], ["rhs_mag_762x25_8"]]];
 
 // M1911
-_uncommon set ["m1911", [["rhsusf_weap_m1911a1"], ["rhsusf_mag_7x45acp_MHP"]]];
+if (M1911_KEY in _uncommon) then { /* No unique values that could be ommitted */ }
+else
+{
+    _uncommon set [M1911_KEY, [["rhsusf_weap_m1911a1"], ["rhsusf_mag_7x45acp_MHP"]]];
+};
 
 // Scorpion
 if (SCORPION_KEY in _uncommon) then { /* No unique values that could be ommitted */ }
