@@ -79,6 +79,7 @@ switch true do
 	case (_factionVal == 5 && Escape_Use_Rhs):	{ PLAYER_SIDE = west; PLAYER_FACTION = US_MARINES_KEY; }; //
 	case (_factionVal == 6 && Escape_Use_Rhs):	{ PLAYER_SIDE = east; PLAYER_FACTION = RU_KEY; };         //
 	case (_factionVal == 7 && Escape_Use_Rhs):	{ PLAYER_SIDE = independent; PLAYER_FACTION = CDF_KEY; }; //
+	case (_factionVal == 8 && Escape_Use_Rhs):	{ PLAYER_SIDE = independent; PLAYER_FACTION = SAF_KEY; }; //
 	default
 	{
 		PLAYER_SIDE = selectRandom [west, east, independent];
