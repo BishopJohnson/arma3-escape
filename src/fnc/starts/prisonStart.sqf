@@ -133,7 +133,7 @@ prisonGuards = [
 ] call compile preprocessFile "src\fnc\garrison\perimeterPatrol.sqf";
 
 // Set search chopper to arrive when all guards are dead
-_trg = createTrigger ["EmptyDetector", _pos];
+_trg = createTrigger ["EmptyDetector", [0,0,0]];
 _trg setTriggerStatements
 [
 	"{alive _x} count prisonGuards == 0",

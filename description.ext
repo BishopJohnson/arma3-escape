@@ -44,6 +44,13 @@ class Params
 		function = "BIS_fnc_paramDaytime"; // Function called when player joins
 		isGlobal = 1; // Function locally for every player who joins
 	};
+	class StartType
+	{
+		title = "Start Type";
+		texts[] = {"Random","Prison","Crashed Helicopter"};
+		values[] = {0,1,2};
+		default = 0;
+	};
 	class IncludeHelicopters
 	{
         title = "Include Helicopters DLC assets";
