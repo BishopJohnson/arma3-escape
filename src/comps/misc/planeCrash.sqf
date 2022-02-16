@@ -130,8 +130,7 @@ _comp append _veh;
 
 [_position, random 360, _comp] call BIS_fnc_ObjectsMapper;
 
-
-// DEBUG CODE
+/* // DEBUG CODE
 private _marker = createMarker ["plane_crash", _position];
 _marker setMarkerType "hd_unknown";
-_marker setMarkerColor "ColorBlack";
+_marker setMarkerColor "ColorBlack"; */
