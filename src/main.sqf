@@ -22,7 +22,7 @@ if (!isServer) exitWith {};
 /*
 {
 	if (!hasInterface) exitWith {};
-	
+
 	onPreloadFinished
 	{
 		disableUserInput true;

@@ -8,7 +8,7 @@
 
 #define MAGAZINE_COUNT 3
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith { hint "Does not have an interface in 'prisonLoadout.sqf'" };
 
 // Removes all player gear
 removeAllWeapons player;

@@ -57,30 +57,9 @@ private _i = 0;
 } forEach nearestObjects [_pos, _spawnObjects, _radius];
 
 // Assign player loadouts
-private _typeWeights =
-[
-    UNIT_CLASS_RIFLEMEN, 0.6,
-    UNIT_CLASS_AT, 0.1,
-    UNIT_CLASS_AUTORIFLEMEN, 0.2,
-    UNIT_CLASS_MARKSMEN, 0.1
-];
-
-// Assign player loadouts
-private _loadoutFnc = compile preprocessFile "src\fnc\units\getUnitEntryFromDict.sqf";
 {
-    private _loadoutEntry = [PLAYER_SIDE, PLAYER_FACTION,
-    [
-        UNIT_CLASS_RIFLEMEN, 0.7,
-        UNIT_CLASS_AT, 0.1,
-        UNIT_CLASS_AUTORIFLEMEN, 0.1,
-        UNIT_CLASS_MARKSMEN, 0.1
-    ]] call _loadoutFnc;
-
-    _loadout = _loadoutEntry select 1;
-    [_x] call _loadout;
-
-    _x unlinkItem "ItemMap";
-} forEach _players;
+	[] execVM "src\fnc\loadouts\crashedHelicopterLoadout.sqf";
+} remoteExec ["bis_fnc_call", _players];
 
 // The crash site's map marker
 private _marker = createMarker ["start", _pos];

@@ -162,6 +162,14 @@ else
 	};
 };
 
+publicVariable "PLAYER_SIDE";
+publicVariable "PLAYER_FACTION";
+publicVariable "FRIENDLY_FACTIONS";
+publicVariable "ENEMY_FACTIONS";
+
+playerGroup = createGroup PLAYER_SIDE;
+(call BIS_fnc_listPlayers) joinSilent playerGroup;
+
 Escape_fnc_GetFactionSide = {
 	params
 	[
@@ -225,14 +233,6 @@ Escape_fnc_GetRandomEnemyFaction = {
 
 	_enemyFaction;
 };
-
-publicVariable "PLAYER_SIDE";
-publicVariable "PLAYER_FACTION";
-publicVariable "FRIENDLY_FACTIONS";
-publicVariable "ENEMY_FACTIONS";
-
-playerGroup = createGroup PLAYER_SIDE;
-(call BIS_fnc_listPlayers) joinSilent playerGroup;
 
 private _listsHandler = [] execVM "src\lists\listsInit.sqf";
 private _compsHandler = [] execVM "src\comps\compsInit.sqf";
