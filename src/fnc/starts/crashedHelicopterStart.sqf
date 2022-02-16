@@ -65,13 +65,14 @@ private _typeWeights =
     UNIT_CLASS_MARKSMEN, 0.1
 ];
 
+// Assign player loadouts
 private _loadoutFnc = compile preprocessFile "src\fnc\units\getUnitEntryFromDict.sqf";
 {
     private _loadoutEntry = [PLAYER_SIDE, PLAYER_FACTION,
     [
-        UNIT_CLASS_RIFLEMEN, 0.6,
+        UNIT_CLASS_RIFLEMEN, 0.7,
         UNIT_CLASS_AT, 0.1,
-        UNIT_CLASS_AUTORIFLEMEN, 0.2,
+        UNIT_CLASS_AUTORIFLEMEN, 0.1,
         UNIT_CLASS_MARKSMEN, 0.1
     ]] call _loadoutFnc;
 
