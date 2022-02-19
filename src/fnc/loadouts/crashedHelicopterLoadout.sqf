@@ -288,7 +288,7 @@ switch (PLAYER_FACTION) do
             };
         };
     };
-    /* case CDF_KEY:
+    case CDF_KEY:
     {
         switch (_type) do
         {
@@ -296,32 +296,29 @@ switch (PLAYER_FACTION) do
             {
                 _fncArray =
                 [
-                    ""
+                    "src\lists\units\cdf\rifleman.sqf",
+                    "src\lists\units\cdf\grenadier.sqf",
+                    "src\lists\units\cdf\riflemanLight.sqf"
                 ];
             };
             case UNIT_CLASS_AT:
             {
                 _fncArray =
                 [
-                    ""
+                    "src\lists\units\cdf\riflemanAt.sqf",
+                    "src\lists\units\cdf\missileScpAt.sqf"
                 ];
             };
             case UNIT_CLASS_AUTORIFLEMEN:
             {
-                _fncArray =
-                [
-                    ""
-                ];
+                _fncArray = ["src\lists\units\cdf\autorifleman.sqf"];
             };
             case UNIT_CLASS_MARKSMEN:
             {
-                _fncArray =
-                [
-                    ""
-                ];
+                _fncArray = ["src\lists\units\cdf\marksman.sqf"];
             };
         };
-    }; */
+    };
 };
 
 if (isNil "_fncArray") exitWith

@@ -18,54 +18,52 @@ private _dict = createHashMap;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Leaders
 _units = createHashMap;
 
-_units set ["squadLeader", ["rhsgref_cdf_reg_squadleader", true]];
+_units set ["squadLeader", ["rhsgref_cdf_reg_squadleader", compile preprocessFile "src\lists\units\cdf\squadLeader.sqf"]];
 
 _dict set [UNIT_CLASS_LEADER, _units];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Riflemen
 _units = createHashMap;
 
-_units set ["riflemanAk74", ["rhsgref_cdf_reg_rifleman", true]];
-_units set ["riflemanAkm", ["rhsgref_cdf_reg_rifleman_akm", true]];
-_units set ["riflemanAks74", ["rhsgref_cdf_reg_rifleman_aks74", true]];
-_units set ["grenadier", ["rhsgref_cdf_reg_grenadier", true]];
-_units set ["riflemanLight", ["rhsgref_cdf_reg_rifleman_lite", true]];
+_units set ["rifleman", ["rhsgref_cdf_reg_rifleman", compile preprocessFile "src\lists\units\cdf\rifleman.sqf"]];
+_units set ["grenadier", ["rhsgref_cdf_reg_grenadier", compile preprocessFile "src\lists\units\cdf\grenadier.sqf"]];
+_units set ["riflemanLight", ["rhsgref_cdf_reg_rifleman_lite", compile preprocessFile "src\lists\units\cdf\riflemanLight.sqf"]];
 
 _dict set [UNIT_CLASS_RIFLEMEN, _units];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// AT
 _units = createHashMap;
 
-_units set ["lightAt", ["rhsgref_cdf_reg_rifleman_rpg75", true]];
-_units set ["heavyAt", ["rhsgref_cdf_reg_grenadier_rpg", true]];
+_units set ["riflemanAt", ["rhsgref_cdf_reg_rifleman_rpg75", compile preprocessFile "src\lists\units\cdf\riflemanAt.sqf"]];
+_units set ["heavyAt", ["rhsgref_cdf_reg_grenadier_rpg", compile preprocessFile "src\lists\units\cdf\missileScpAt.sqf"]];
 
 _dict set [UNIT_CLASS_AT, _units];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// AA
 _units = createHashMap;
 
-_units set ["iglaAa", ["rhsgref_cdf_reg_specialist_aa", true]];
+_units set ["iglaAa", ["rhsgref_cdf_reg_specialist_aa", compile preprocessFile "src\lists\units\cdf\missileScpAa.sqf"]];
 
 _dict set [UNIT_CLASS_AA, _units];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Autoriflemen
 _units = createHashMap;
 
-_units set ["autorifleman", ["rhsgref_cdf_reg_arifleman_rpk", true]];
+_units set ["autorifleman", ["rhsgref_cdf_reg_arifleman_rpk", compile preprocessFile "src\lists\units\cdf\autorifleman.sqf"]];
 
 _dict set [UNIT_CLASS_AUTORIFLEMEN, _units];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Marksmen
 _units = createHashMap;
 
-_units set ["marksman", ["rhsgref_cdf_reg_marksman", true]];
+_units set ["marksman", ["rhsgref_cdf_reg_marksman", compile preprocessFile "src\lists\units\cdf\marksman.sqf"]];
 
 _dict set [UNIT_CLASS_MARKSMEN, _units];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Heavy gunner
 _units = createHashMap;
 
-_units set ["machineGunner", ["rhsgref_cdf_reg_machinegunner", true]];
+_units set ["machineGunner", ["rhsgref_cdf_reg_machinegunner", compile preprocessFile "src\lists\units\cdf\machineGunner.sqf"]];
 
 _dict set [UNIT_CLASS_HEAVY_GUNNER, _units];
 
@@ -76,8 +74,8 @@ _dict set [UNIT_CLASS_AMMO, _units];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Support
 _units = createHashMap;
 
-_units set ["cls", ["rhsgref_cdf_reg_medic", true]];
-_units set ["engineer", ["rhsgref_cdf_reg_engineer", true]];
+_units set ["cls", ["rhsgref_cdf_reg_medic", compile preprocessFile "src\lists\units\cdf\cls.sqf"]];
+_units set ["engineer", ["rhsgref_cdf_reg_engineer", compile preprocessFile "src\lists\units\cdf\engineer.sqf"]];
 
 _dict set [UNIT_CLASS_SUPPORT, _units];
 

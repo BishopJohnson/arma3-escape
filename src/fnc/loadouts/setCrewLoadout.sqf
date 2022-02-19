@@ -60,7 +60,7 @@ switch (_side) do
             };
             case CDF_KEY:
             {
-                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCdf.sqf"; */
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCdf.sqf";
             };
         };
     };
