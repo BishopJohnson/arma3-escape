@@ -42,7 +42,7 @@ switch (_side) do
             };
             case RU_KEY:
             {
-                /* [_crew] execVM "src\fnc\loadouts\setCrewLoadoutRu.sqf"; */
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutRu.sqf";
             };
         };
     };

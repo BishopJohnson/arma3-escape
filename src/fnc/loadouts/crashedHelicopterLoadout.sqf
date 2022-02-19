@@ -188,7 +188,7 @@ switch (PLAYER_FACTION) do
             };
         };
     };
-    /* case RU_KEY:
+    case RU_KEY:
     {
         switch (_type) do
         {
@@ -196,32 +196,30 @@ switch (PLAYER_FACTION) do
             {
                 _fncArray =
                 [
-                    ""
+                    "src\lists\units\ru\rifleman.sqf",
+                    "src\lists\units\ru\grenadier.sqf"
                 ];
             };
             case UNIT_CLASS_AT:
             {
                 _fncArray =
                 [
-                    ""
+                    "src\lists\units\ru\riflemanAt.sqf",
+                    "src\lists\units\ru\riflemanAtLight.sqf",
+                    "src\lists\units\ru\riflemanAtGrenadier.sqf",
+                    "src\lists\units\ru\missileSpcAt.sqf"
                 ];
             };
             case UNIT_CLASS_AUTORIFLEMEN:
             {
-                _fncArray =
-                [
-                    ""
-                ];
+                _fncArray = ["src\lists\units\ru\autorifleman.sqf"];
             };
             case UNIT_CLASS_MARKSMEN:
             {
-                _fncArray =
-                [
-                    ""
-                ];
+                _fncArray = ["src\lists\units\ru\marksman.sqf"];
             };
         };
-    }; */
+    };
     case AAF_KEY:
     {
         switch (_type) do
