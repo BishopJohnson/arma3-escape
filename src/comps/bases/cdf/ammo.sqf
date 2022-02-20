@@ -91,7 +91,7 @@ private _carEntries =
 private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["rhsgref_cdf_b_ural",[16.8213,0.189941,-0.0321689],5.random [0.2, 0.5, 0.7],1,0,[0,0],"","",true,false]
+	["rhsgref_cdf_ural",[16.8213,0.189941,0],0,random [0.2, 0.5, 0.7],0,[0,0],"","",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 {

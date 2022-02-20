@@ -40,12 +40,15 @@ _blacklist =
 	"Flag_CSAT_F",
 	"Flag_AAF_F",
     "Flag_US_F",
-	"rhs_Flag_Russia_F",
-	"FlagCarrierCDF",
 	"Land_SandbagBarricade_01_F",
 	"Land_SandbagBarricade_01_hole_F",
 	"Land_SandbagBarricade_01_half_F",
-	"Land_DataTerminal_01_F"
+	"Land_DataTerminal_01_F",
+
+    // RHS/CUP
+    "Land_Fort_Watchtower_EP1",
+    "rhs_Flag_Russia_F",
+	"FlagCarrierCDF"
 ];
 
 _result = true; //assumed object is not on the blacklist
