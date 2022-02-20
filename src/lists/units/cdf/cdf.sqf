@@ -19,6 +19,7 @@ private _dict = createHashMap;
 _units = createHashMap;
 
 _units set ["squadLeader", ["rhsgref_cdf_reg_squadleader", compile preprocessFile "src\lists\units\cdf\squadLeader.sqf"]];
+/* Do not include officer unit */
 
 _dict set [UNIT_CLASS_LEADER, _units];
 

@@ -16,6 +16,10 @@ if (!isServer) exitWith {};
         {
             [_x] execVM "src\lists\units\cdf\rifleman.sqf";
         };
+        case "rhsgref_cdf_reg_officer":
+        {
+            [_x] execVM "src\lists\units\cdf\officer.sqf";
+        };
         case "rhsgref_cdf_reg_crew";
         case "rhsgref_cdf_para_crew":
         {

@@ -21,6 +21,14 @@ if (!isServer) exitWith {};
         {
             [_x] execVM "src\lists\units\ru\grenadier.sqf";
         };
+        case "rhs_msv_sergeant":
+        {
+            [_x] execVM "src\lists\units\ru\sergeant.sqf";
+        };
+        case "rhs_msv_machinegunner":
+        {
+            [_x] execVM "src\lists\units\ru\machineGunner.sqf";
+        };
         case "rhs_msv_driver":
         {
             [_x] execVM "src\lists\units\ru\driver.sqf";
