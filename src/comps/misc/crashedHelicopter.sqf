@@ -16,19 +16,19 @@ if (!isServer) exitWith {};
 private _comp =
 [
 	[
-        ["CraterLong",[-9.67334,3.77588,0],0,1,0,[0,0],"","",true,false],
-        ["CraterLong_small",[-9.79297,-2.54883,0],0,1,0,[0,0],"","",true,false],
-        ["CraterLong_small",[-9.82031,-7.55078,0],0,1,0,[0,0],"","",true,false],
+		["CraterLong",[-14.9006,4.17627,0],0,1,0,[0,0],"","",true,false],
+		["CraterLong_small",[-15.0203,-2.14844,0],0,1,0,[0,0],"","",true,false],
+		["CraterLong_small",[-15.0476,-7.15039,0],0,1,0,[0,0],"","",true,false],
 
 		// Spawn positions
-        ["Sign_Arrow_Direction_Yellow_F",[6.39355,0.0839844,0],272.124,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[6.06519,-3.62939,0],282.297,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[6.11621,3.65576,0],266.735,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[5.77954,7.58398,0],251.185,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[5.51221,-7.80615,0],298.982,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[11.0491,-0.153809,0],273.306,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[10.8555,-4.20117,0],279.203,1,0,[0,0],"","",true,false],
-    	["Sign_Arrow_Direction_Yellow_F",[11.0496,4.54102,0],258.599,1,0,[0,0],"","",true,false]
+		["Sign_Arrow_Direction_Yellow_F",[14.5649,-4.17676,0],279.203,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[14.759,4.56543,0],258.599,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[10.103,0.108398,0],272.124,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[9.77466,-3.60498,0],282.297,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[9.82568,3.68018,0],266.735,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[9.22168,-7.78174,0],298.982,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[9.48901,7.6084,0],251.185,1,0,[0,0],"","",true,false],
+		["Sign_Arrow_Direction_Yellow_F",[14.7585,-0.129395,0],273.306,1,0,[0,0],"","",true,false]
 	],
 	25, // Radius of spawn area
 	["Sign_Arrow_Direction_Yellow_F"] // Spawn object(s) type
@@ -37,7 +37,7 @@ private _comp =
 private _veh =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-    ["B_Heli_Transport_01_F",[-7.36182,-1.48096,0.774214],0,1,1,[0.370795,15.9475],"","",true,false]
+    ["B_Heli_Transport_01_F",[-14.9929,3.27002,0.547379],8.19366,0.94658,1,[-4.12218,7.049],"","",true,false]
 ];
 
 switch (PLAYER_FACTION) do
