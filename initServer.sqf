@@ -87,7 +87,7 @@ switch true do
 		{
 			case west:
 			{
-				if (Escape_Use_Rhs) then { PLAYER_FACTION = selectRandom [US_ARMY_KEY, US_MARINES_KEY] }
+				if (Escape_Use_Rhs) then { PLAYER_FACTION = US_ARMY_KEY }
 				else { PLAYER_FACTION = NATO_KEY };
 			};
 			case east:
