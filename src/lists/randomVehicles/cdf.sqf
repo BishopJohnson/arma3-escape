@@ -45,7 +45,7 @@ _dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // GAZ
-_vehicles set ["gaz", ["rhsgref_cdf_gaz66", true, true]];
+_vehicles set ["gaz", [["rhsgref_cdf_gaz66"], true, true]];
 
 // Ural
 _vehicles set ["ural", [
@@ -55,7 +55,7 @@ _vehicles set ["ural", [
 ]];
 
 // ZiL
-_vehicles set ["zil", ["rhsgref_cdf_zil131", true, true]];
+_vehicles set ["zil", [["rhsgref_cdf_zil131"], true, true]];
 
 _dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 
@@ -67,7 +67,7 @@ _dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // GAZ
-_vehicles set ["gaz", ["rhsgref_cdf_gaz66_ammo", true, true]];
+_vehicles set ["gaz", [["rhsgref_cdf_gaz66_ammo"], true, true]];
 
 // Ural
 _vehicles set ["ural", [
@@ -82,7 +82,7 @@ _dict set [RAND_VEH_UTIL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // BRDM
-_vehicles set ["brdm", ["rhsgref_BRDM2UM", true, true]];
+_vehicles set ["brdm", [["rhsgref_BRDM2UM"], true, true]];
 
 _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 
@@ -175,7 +175,7 @@ _dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Ural
-_vehicles set ["ural", ["rhsgref_cdf_reg_BM21", true, true]];
+_vehicles set ["ural", [["rhsgref_cdf_reg_BM21"], true, true]];
 
 // 2S1
 _vehicles set ["ural", [
@@ -190,13 +190,13 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // GAZ
-_vehicles set ["gaz", ["rhsgref_cdf_gaz66_zu23", true, true]];
+_vehicles set ["gaz", [["rhsgref_cdf_gaz66_zu23"], true, true]];
 
 // Ural
-_vehicles set ["ural", ["rhsgref_cdf_ural_Zu23", true, true]];
+_vehicles set ["ural", [["rhsgref_cdf_ural_Zu23"], true, true]];
 
 // ZSU
-_vehicles set ["zsu", ["rhsgref_cdf_zsu234", true, true]];
+_vehicles set ["zsu", [["rhsgref_cdf_zsu234"], true, true]];
 
 _dict set [RAND_VEH_AA_KEY, _vehicles];
 
@@ -204,7 +204,7 @@ _dict set [RAND_VEH_AA_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Mi-8
-_vehicles set ["mi8", ["rhsgref_cdf_reg_Mi8amt", true, true]];
+_vehicles set ["mi8", [["rhsgref_cdf_reg_Mi8amt"], true, true]];
 
 _dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 
@@ -212,7 +212,7 @@ _dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Mi-8
-_vehicles set ["mi8", ["rhsgref_cdf_reg_Mi17Sh", true, true]];
+_vehicles set ["mi8", [["rhsgref_cdf_reg_Mi17Sh"], true, true]];
 
 _dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 
@@ -236,7 +236,7 @@ _dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Frogfoot
-_vehicles set ["frogfoot", ["rhsgref_cdf_su25", true, true]];
+_vehicles set ["frogfoot", [["rhsgref_cdf_su25"], true, true]];
 
 // L-39/L-159
 _vehicles set ["albatros", [
@@ -246,7 +246,7 @@ _vehicles set ["albatros", [
 ]];
 
 // Fulcrum (MiG-29)
-_vehicles set ["fulcrum", ["rhsgref_cdf_mig29s", true, true]];
+_vehicles set ["fulcrum", [["rhsgref_cdf_mig29s"], true, true]];
 
 _dict set [RAND_VEH_PLANE_KEY, _vehicles];
 

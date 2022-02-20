@@ -21,13 +21,13 @@ _dict set [RAND_VEH_QUADBIKE_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // MRZR
-_vehicles set ["mrzr", ["rhsusf_mrzr4_d", ["mud"], true]];
+_vehicles set ["mrzr", [["rhsusf_mrzr4_d"], ["mud"], true]];
 
 // Humvee
-_vehicles set ["m1043", ["rhsusf_m1043_d", true, true]];
+_vehicles set ["m1043", [["rhsusf_m1043_d"], true, true]];
 
 // Humvee (enhanced variant)
-_vehicles set ["m1151", ["rhsusf_m1151_usarmy_d", true, true]];
+_vehicles set ["m1151", [["rhsusf_m1151_usarmy_d"], true, true]];
 
 _dict set [RAND_VEH_CAR_UNARMED_KEY, _vehicles];
 
@@ -58,10 +58,10 @@ _dict set [RAND_VEH_CAR_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M1083
-_vehicles set ["m1083", ["rhsusf_M1083A1P2_B_D_fmtv_usarmy", true, true]];
+_vehicles set ["m1083", [["rhsusf_M1083A1P2_B_D_fmtv_usarmy"], true, true]];
 
 // HEMTT
-_vehicles set ["m977", ["rhsusf_M977A4_usarmy_d", true, true]];
+_vehicles set ["m977", [["rhsusf_M977A4_usarmy_d"], true, true]];
 
 _dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 
@@ -69,10 +69,10 @@ _dict set [RAND_VEH_TRUCK_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M1083
-_vehicles set ["m1085", ["rhsusf_M1083A1P2_B_M2_D_fmtv_usarmy", true, true]];
+_vehicles set ["m1085", [["rhsusf_M1083A1P2_B_M2_D_fmtv_usarmy"], true, true]];
 
 // HEMTT
-_vehicles set ["hemtt", ["rhsusf_M977A4_BKIT_M2_usarmy_d", true, true]];
+_vehicles set ["hemtt", [["rhsusf_M977A4_BKIT_M2_usarmy_d"], true, true]];
 
 _dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 
@@ -80,7 +80,7 @@ _dict set [RAND_VEH_TRUCK_ARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M1085
-_vehicles set ["m1083", ["rhsusf_MA085A1P2_B_D_Medical_fmtv_usarmy", true, true]];
+_vehicles set ["m1083", [["rhsusf_MA085A1P2_B_D_Medical_fmtv_usarmy"], true, true]];
 
 // HEMTT
 _vehicles set ["hemtt", [
@@ -95,13 +95,13 @@ _dict set [RAND_VEH_UTIL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M1220
-_vehicles set ["m1220", ["rhsusf_M1220_usarmy_d", true, true]];
+_vehicles set ["m1220", [["rhsusf_M1220_usarmy_d"], true, true]];
 
 // M1232
-_vehicles set ["m1232", ["rhsusf_M1232_usarmy_d", true, true]];
+_vehicles set ["m1232", [["rhsusf_M1232_usarmy_d"], true, true]];
 
 // M1240
-_vehicles set ["m1240", ["rhsusf_M1240a1_usarmy_d", true, true]];
+_vehicles set ["m1240", [["rhsusf_M1240a1_usarmy_d"], true, true]];
 
 _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 
@@ -109,7 +109,7 @@ _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M1117
-_vehicles set ["m1117", ["rhsusf_M1117_D", true, true]];
+_vehicles set ["m1117", [["rhsusf_M1117_D"], true, true]];
 
 // M1220
 _vehicles set ["m1220", [
@@ -216,10 +216,10 @@ _dict set [RAND_VEH_TANK_SPECIAL_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // M142
-_vehicles set ["m142", ["rhsusf_M142_usarmy_D", true, true]];
+_vehicles set ["m142", [["rhsusf_M142_usarmy_D"], true, true]];
 
 // M109
-_vehicles set ["m109", ["rhsusf_m109d_usarmy", true, true]];
+_vehicles set ["m109", [["rhsusf_m109d_usarmy"], true, true]];
 
 _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 
@@ -227,7 +227,7 @@ _dict set [RAND_VEH_ARTY_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Bradley
-_vehicles set ["bradley", ["RHS_M6", true, true]];
+_vehicles set ["bradley", [["RHS_M6"], true, true]];
 
 _dict set [RAND_VEH_AA_KEY, _vehicles];
 
@@ -235,10 +235,10 @@ _dict set [RAND_VEH_AA_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Blackhawk
-_vehicles set ["blackHawk", ["RHS_UH60M_d", true, true]];
+_vehicles set ["blackHawk", [["RHS_UH60M_d"], true, true]];
 
 // Chinook
-_vehicles set ["chinook", ["RHS_CH_47F_10", true, true]];
+_vehicles set ["chinook", [["RHS_CH_47F_10"], true, true]];
 
 _dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 
@@ -246,13 +246,13 @@ _dict set [RAND_VEH_HELI_T_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Little Bird
-_vehicles set ["littleBird", ["RHS_MELB_AH6M", true, true]];
+_vehicles set ["littleBird", [["RHS_MELB_AH6M"], true, true]];
 
 // Black Hawk
-_vehicles set ["blackHawk", ["RHS_UH60M_d", true, true]];
+_vehicles set ["blackHawk", [["RHS_UH60M_d"], true, true]];
 
 // Chinook
-_vehicles set ["chinook", ["RHS_CH_47F_10", true, true]];
+_vehicles set ["chinook", [["RHS_CH_47F_10"], true, true]];
 
 _dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 
@@ -260,7 +260,7 @@ _dict set [RAND_VEH_HELI_L_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Apache
-_vehicles set ["apache", ["RHS_AH64D", true, true]];
+_vehicles set ["apache", [["RHS_AH64D"], true, true]];
 
 _dict set [RAND_VEH_HELI_H_KEY, _vehicles];
 
@@ -272,10 +272,10 @@ _dict set [RAND_VEH_HELI_UAV_KEY, _vehicles];
 _vehicles = createHashMap;
 
 // Warthog
-_vehicles set ["warthog", ["RHS_A10", true, true]];
+_vehicles set ["warthog", [["RHS_A10"], true, true]];
 
 // Raptor
-_vehicles set ["raptor", ["rhsusf_f22", true, true]];
+_vehicles set ["raptor", [["rhsusf_f22"], true, true]];
 
 _dict set [RAND_VEH_PLANE_KEY, _vehicles];
 
