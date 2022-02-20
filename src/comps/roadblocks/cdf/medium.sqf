@@ -25,57 +25,42 @@ private _basicBoxInit = format
 private _comp =
 [
 	[
-		["Land_BagFence_End_F",[-6.88135,5.52637,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Corner_F",[-8.7804,5.56445,0],180,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[0.476196,-9.93262,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[-2.79504,-10.0073,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-7.79895,-4.75146,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Short_F",[-8.79358,7.01074,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_End_F",[-7.2312,8.72656,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Corner_F",[-8.78052,8.78516,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[7.20496,-10.0073,0],0,1,0,[0,0],"","",true,false],
-		["CamoNet_INDP_open_F",[1.59229,13.9014,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[-6.81799,15.1138,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[11.182,15.1138,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[-4.02368,22.8037,0],135,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[8.401,22.7715,0],45,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_3_F",[1.09106,24.9771,0],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_End_F",[-2.24005,-4.52295,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Corner_F",[-3.78931,-4.46436,-0.000999928],270,1,0,[0,0],"","",true,false],
+		["Land_BagFence_End_F",[-2.08624,5.52637,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Corner_F",[-3.98523,5.56445,-0.000999928],180,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Short_F",[-3.80237,-6.23877,-0.000999928],90,1,0,[0,-0],"","",true,false],
+		["Land_BagFence_End_F",[-1.89008,-7.25049,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Short_F",[-3.99854,7.01074,-0.000999928],90,1,0,[0,-0],"","",true,false],
+		["Land_BagFence_Corner_F",[-3.78906,-7.68506,-0.000999928],180,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Corner_F",[-3.98547,8.78516,-0.000999928],270,1,0,[0,0],"","",true,false],
+		["Land_BagFence_End_F",[-2.43622,8.72656,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_Razorwire_F",[-0.118469,-9.93262,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_1_F",[-3.38965,-10.0073,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_1_F",[6.44434,-10.0073,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[-2.02301,15.1138,0],90,1,0,[0,-0],"","",true,false],
+		["Land_Razorwire_F",[9.59564,-9.93262,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+		["Land_CamoNetVar_EAST_EP1",[7.17279,16.1821,0],0,1,0,[0,0],"","",true,false],
+		["Land_WaterTank_F",[4.6073,18.271,-1.28746e-005],180,1,0,[-0.000945832,0.000219793],"","",true,false],
+		["Land_HBarrier_1_F",[16.3245,-10.0073,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[15.977,15.1138,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_3_F",[0.771423,22.8037,0],135,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_3_F",[5.88605,24.9771,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[13.1961,22.7715,0],45,1,0,[0,0],"","",true,false],
+
+		// Vehicles
+		["rhsgref_cdf_reg_uaz_open",[9.99261,16.7646,0],180,1,0,[0,0],"","",true,false],
+
+		// Turrets
+		["rhsgref_cdf_DSHKM",[-2.05237,-5.70801,0],270,1,0,[0,0],"","",true,false],
+		["rhsgref_cdf_DSHKM",[-2.24835,7.54053,0],270,1,0,[0,0],"","",true,false],
 
 		// Item crates
-		["Box_IND_Wps_F",[2.20496,18,0],90,1,0,[0,-0],"",_basicBoxInit,true,false],
-		["Box_IND_Ammo_F",[2.20496,16,0],0,1,0,[0,0],"",_ammoBoxInit,true,false]
+		["Box_NATO_Wps_F",[5.56152,16.2954,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
+		["Box_NATO_Ammo_F",[3.81812,16.2603,0],90,1,0,[0,0],"",_ammoBoxInit,true,false]
 	],
 	30, // Radius of composition area
 	_faction
 ];
-
-// Setup cars
-private _carEntries =
-[
-	_side,
-	_faction,
-	[RAND_VEH_CAR_UNARMED_KEY]
-] call compile preprocessFile "src\comps\getVehicles.sqf";
-
-private _cars =
-[
-/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["I_Quadbike_01_F",[2.20496,12,0.200709],270,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false]
-];
-for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
-{
-	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
-
-	private _arr =
-	[
-		_cars select _i,
-		_veh,
-		_variant,
-		_loadout
-	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
-
-	_cars set [_i, _arr];
-};
-(_comp select 0) append _cars;
 
 _comp

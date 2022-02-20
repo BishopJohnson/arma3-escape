@@ -38,29 +38,28 @@ private _supportBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_SUPPOR
 private _comp =
 [
 	[
-		["CamoNet_OPFOR_F",[-0.0847168,5.14551,0],0,1,0,[0,0],"","",true,false],
-		["Land_WaterBarrel_F",[7.64185,-0.999023,0],0,1,0,[0,0],"","",true,false],
-		["Land_WaterBarrel_F",[7.63818,1.03369,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-2.24854,9.99658,0],0,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-9.93237,1.72949,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[10.0676,1.72949,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-10.0073,-4.67236,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[9.99268,-4.67236,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-10.0073,4.83154,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[9.99268,4.83154,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[-1.72852,12.0679,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[-4.81274,11.9932,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[4.82617,11.9932,0],0,1,0,[0,0],"","",true,false],
+		["Land_CamoNet_EAST_EP1",[-0.0852051,5.14502,0],0,1,0,[0,0],"","",true,false],
+		["Land_WaterBarrel_F",[7.6416,-0.999512,3.8147e-006],359.995,1,0,[0.000683415,0.000431982],"","",true,false],
+		["Land_WaterBarrel_F",[7.63794,1.0332,4.29153e-006],359.999,1,0,[0.000440797,0.000478374],"","",true,false],
+		["Land_HBarrier_5_F",[-2.24878,9.99609,0],0,1,0,[0,0],"","",true,false],
+		["Land_Razorwire_F",[10.0674,1.729,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+		["Land_Razorwire_F",[-9.93262,1.729,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[9.99243,-4.67285,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[-10.0076,-4.67285,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[-10.0076,4.83105,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_1_F",[9.99243,4.83105,0],90,1,0,[0,-0],"","",true,false],
+		["Land_Razorwire_F",[-1.72876,12.0674,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_1_F",[-4.81299,11.9927,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_1_F",[4.82593,11.9927,0],0,1,0,[0,0],"","",true,false],
 
-		// Item crates
-		["Box_East_Ammo_F",[2.00024,6.00049,0],90,1,0,[0,-0],"",_ammoBoxInit,true,false],
-		["Box_East_Wps_F",[4.00024,6.00049,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
-		["Box_East_WpsSpecial_F",[2.00024,4.00049,0],0,1,0,[0,0],"",_specialBoxInit,true,false],
-		["Box_East_WpsLaunch_F",[-1.99976,4.00049,0],0,1,0,[0,0],"",_launcherBoxInit,true,false],
-		["Box_East_Grenades_F",[-1.99976,6.00049,0],90,1,0,[0,-0],"",_grenadeBoxInit,true,false],
-		["Box_East_AmmoOrd_F",[0.000244141,6.00049,0],90,1,0,[0,-0],"",_explosiveBoxInit,true,false],
-		["Box_East_Support_F",[-3.99976,6.00049,0],90,1,0,[0,-0],"",_supportBoxInit,true,false],
-		["Box_East_AmmoVeh_F",[-7.38867,0.0117188,0],0,1,0,[0,0],"","",true,false]
+		["Box_NATO_Ammo_F",[2,6,2.86102e-006],89.9929,1,0,[-0.000462344,-0.00165836],"",_ammoBoxInit,true,false],
+		["Box_NATO_Wps_F",[4,6,-1.43051e-006],0.00020547,1,0,[0.000127121,-6.92237e-005],"",_basicBoxInit,true,false],
+		["Box_NATO_WpsSpecial_F",[2,4,-1.43051e-006],2.23227e-005,1,0,[0.000227999,3.83659e-006],"",_specialBoxInit,true,false],
+		["Box_NATO_WpsLaunch_F",[-2,4,4.29153e-006],359.998,1,0,[-0.0033009,-4.07657e-005],"",_launcherBoxInit,true,false],
+		["Box_NATO_Grenades_F",[-2,6,2.86102e-006],89.9929,1,0,[-0.000459345,-0.00165867],"",_grenadeBoxInit,true,false],
+		["Box_NATO_AmmoOrd_F",[0,6,1.90735e-006],89.9934,1,0,[-0.000348133,-0.00128004],"",_explosiveBoxInit,true,false],
+		["Box_NATO_Support_F",[-4,6,1.90735e-006],89.9934,1,0,[-0.000345081,-0.00128015],"",_supportBoxInit,true,false],
+		["Box_NATO_AmmoVeh_F",[-7.38892,0.0112305,0.0305414],2.31495e-005,1,0,[-3.48695e-006,1.07482e-006],"","",true,false]
 	],
 	"o_Ordnance", // Marker type
 	20,           // Radius of composition area
@@ -79,7 +78,7 @@ private _carEntries =
 private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_Truck_03_covered_F",[15.8298,0.165527,0.114967],0,random [0.2, 0.5, 0.7],0,[0,0],"","",true,false]
+	["RHS_Ural_VDV_01",[15.8303,0.165039,-0.0312862],0,random [0.2, 0.5, 0.7],0,[0,0],"","",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 {

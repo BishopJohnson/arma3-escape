@@ -25,65 +25,43 @@ private _basicBoxInit = format
 private _comp =
 [
 	[
-		["Land_HBarrier_3_F",[-1.11426,-9.02246,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-12.032,3.07959,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-11.9688,-3.27881,0],180,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-11.9688,6.72119,0],180,1,0,[0,0],"","",true,false],
-		["CamoNet_BLUFOR_open_F",[4.09839,12.3877,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-12.032,-6.92041,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Round_F",[-13.7211,-4.96777,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_Round_F",[-13.7211,5.03223,0],90,1,0,[0,-0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[5.99963,-12.9995,0],0,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[-7.00037,-12.9995,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_End_F",[-10.0365,10.9272,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_3_F",[11.8857,-9.02246,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Corner_F",[-11.9856,10.9653,0],180,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Long_F",[-11.9849,13.0044,0],90,1,0,[0,-0],"","",true,false],
-		["Land_BagFence_End_F",[-10.3365,15.377,0],0,1,0,[0,0],"","",true,false],
-		["Land_BagFence_Corner_F",[-11.9858,15.3857,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-2.24915,19.9966,0],0,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[-0.000366211,-19.9995,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[5.75085,19.9966,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-10.2491,19.9966,0],0,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[12.9996,-19.9995,0],0,1,0,[0,0],"","",true,false],
-		["Land_CzechHedgehog_01_new_F",[19.9996,-12.9995,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[13.5509,19.9966,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[-1.11389,-10.2949,0],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Round_F",[-12.0316,4.12744,-0.00130129],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Round_F",[-11.9684,-4.55127,-0.00130129],180,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Round_F",[-11.9684,7.76904,-0.00130129],180,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Round_F",[-12.0316,-8.19287,-0.00130129],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Round_F",[-13.7207,6.08008,-0.00130129],90,1,0,[0,-0],"","",true,false],
+		["Land_CamoNetVar_NATO_EP1",[8.07874,12.5083,0],0,1,0,[0,0],"","",true,false],
+		["Land_CzechHedgehog_01_new_F",[6,-14.272,4.76837e-007],359.999,1,0,[-5.1232e-005,4.66848e-005],"","",true,false],
+		["Land_WaterTank_F",[5.52332,14.4756,-4.29153e-006],180,1,0,[-8.70069e-006,0.000282909],"","",true,false],
+		["Land_CzechHedgehog_01_new_F",[-7,-14.272,0],0.000316922,1,0,[-2.65645e-005,-1.67272e-005],"","",true,false],
+		["Land_BagFence_End_F",[-10.0361,11.9751,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_3_F",[11.8861,-10.2949,0],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Corner_F",[-11.9852,12.0132,-0.000999928],180,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Long_F",[-11.9845,14.0522,-0.000999928],90,1,0,[0,-0],"","",true,false],
+		["Land_BagFence_End_F",[-10.3362,16.4248,-0.000999928],0,1,0,[0,0],"","",true,false],
+		["Land_BagFence_Corner_F",[-11.9855,16.4336,-0.000999928],270,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[-2.24878,21.0444,0],0,1,0,[0,0],"","",true,false],
+		["Land_CzechHedgehog_01_new_F",[0,-21.272,9.53674e-007],359.999,1,0,[-3.22022e-005,0.000109634],"","",true,false],
+		["Land_HBarrier_5_F",[-10.2488,21.0444,0],0,1,0,[0,0],"","",true,false],
+		["Land_HBarrier_5_F",[5.75122,21.0444,0],0,1,0,[0,0],"","",true,false],
+		["Land_CzechHedgehog_01_new_F",[20,-14.272,9.53674e-007],359.999,1,0,[-3.22022e-005,0.000109634],"","",true,false],
+		["Land_CzechHedgehog_01_new_F",[13,-21.272,4.76837e-007],359.999,1,0,[-5.1232e-005,4.66848e-005],"","",true,false],
+		["Land_HBarrier_5_F",[13.5513,21.0444,0],0,1,0,[0,0],"","",true,false],
 
-		// Item crate
-		["Box_NATO_Wps_F",[7.99963,13.0005,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
-		["Box_NATO_Ammo_F",[5.99963,13.0005,0],90,1,0,[0,-0],"",_ammoBoxInit,true,false]
+		// Vehicles
+		["rhsusf_mrzr4_d",[11.3217,13.2114,0],180,1,0,[0,0],"","",true,false],
+
+		// Turrets
+		["RHS_TOW_TriPod_D",[-11.9015,-6.30273,-0.0800705],269.999,1,0,[-0.127972,5.63962e-005],"","",true,false],
+		["RHS_M2StaticMG_D",[-11.9479,6.39014,-0.0654278],269.997,1,0,[4.79135e-005,-0.00345287],"","",true,false],
+
+		// Item crates
+		["Box_NATO_Wps_F",[6.34363,12.5479,0],360,1,0,[0,0],"",_basicBoxInit,true,false],
+		["Box_NATO_Ammo_F",[4.7074,12.4419,0],89.9995,1,0,[0,0],"",_ammoBoxInit,true,false]
 	],
 	30, // Radius of composition area
 	_faction
 ];
-
-// Setup cars
-private _carEntries =
-[
-	_side,
-	_faction,
-	[RAND_VEH_QUADBIKE_KEY, RAND_VEH_CAR_UNARMED_KEY]
-] call compile preprocessFile "src\comps\getVehicles.sqf";
-
-private _cars =
-[
-/*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["B_Quadbike_01_F",[1.99963,13.0005,0.200709],180,random [0.2, 0.4, 0.6],0,[0,0],"","",true,false]
-];
-for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
-{
-	(selectRandom _carEntries) params ["_veh", "_variant", "_loadout"];
-
-	private _arr =
-	[
-		_cars select _i,
-		_veh,
-		_variant,
-		_loadout
-	] call compile preprocessFile "src\comps\updateVehicleEntry.sqf";
-
-	_cars set [_i, _arr];
-};
-(_comp select 0) append _cars;
 
 _comp

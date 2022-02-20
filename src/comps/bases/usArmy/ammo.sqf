@@ -38,22 +38,22 @@ private _supportBoxInit = format ["[this, '%1', '%2'] execVM '%3'", CARGO_SUPPOR
 private _comp =
 [
 	[
-		["CamoNet_BLUFOR_F",[0.407959,6.70068,0],0,1,0,[0,0],"","",true,false],
-		["Land_WaterBarrel_F",[7.9292,-0.999023,0],0,1,0,[0,0],"","",true,false],
-		["Land_WaterBarrel_F",[7.92554,1.03369,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[9.99561,2.24902,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-10.0044,2.24902,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-2.24927,10.9966,0],0,1,0,[0,0],"","",true,false],
+		["Land_CamoNet_NATO_EP1",[0.407959,6.7002,0.192083],0,1,0,[0,0],"","",true,false],
+		["Land_WaterBarrel_F",[7.92969,-0.999512,4.76837e-006],359.997,1,0,[0.000813641,0.000309166],"","",true,false],
+		["Land_WaterBarrel_F",[7.92603,1.0332,4.76837e-006],359.997,1,0,[0.000812206,0.000308602],"","",true,false],
+		["Land_HBarrier_5_F",[-10.0039,2.24854,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[9.99609,2.24854,0],90,1,0,[0,-0],"","",true,false],
+		["Land_HBarrier_5_F",[-2.24878,10.9961,0],0,1,0,[0,0],"","",true,false],
 
 		// Item crates
-		["Box_NATO_Ammo_F",[1.99951,6.00049,0],90,1,0,[0,-0],"",_ammoBoxInit,true,false],
-		["Box_NATO_Wps_F",[3.99951,6.00049,0],0,1,0,[0,0],"",_basicBoxInit,true,false],
-		["Box_NATO_WpsSpecial_F",[1.99951,4.00049,0],0,1,0,[0,0],"",_specialBoxInit,true,false],
-		["Box_NATO_WpsLaunch_F",[-2.00049,4.00049,0],0,1,0,[0,0],"",_launcherBoxInit,true,false],
-		["Box_NATO_Grenades_F",[-2.00049,6.00049,0],90,1,0,[0,-0],"",_grenadeBoxInit,true,false],
-		["Box_NATO_AmmoOrd_F",[-0.000488281,6.00049,0],90,1,0,[0,-0],"",_explosiveBoxInit,true,false],
-		["Box_NATO_Support_F",[-4.00049,6.00049,0],90,1,0,[0,-0],"",_supportBoxInit,true,false],
-		["Box_NATO_AmmoVeh_F",[-7.10132,0.0117188,0],0,1,0,[0,0],"","",true,false]
+		["Box_NATO_Ammo_F",[2,6,2.86102e-006],89.9929,1,0,[-0.000462344,-0.00165836],"",_ammoBoxInit,true,false],
+		["Box_NATO_Wps_F",[4,6,-1.43051e-006],0.00020547,1,0,[0.000127121,-6.92237e-005],"",_basicBoxInit,true,false],
+		["Box_NATO_WpsSpecial_F",[2,4,-1.43051e-006],2.23227e-005,1,0,[0.000227999,3.83659e-006],"",_specialBoxInit,true,false],
+		["Box_NATO_WpsLaunch_F",[-2,4,4.29153e-006],359.998,1,0,[-0.0032983,-4.03362e-005],"",_launcherBoxInit,true,false],
+		["Box_NATO_Grenades_F",[-2,6,2.86102e-006],89.9929,1,0,[-0.000462344,-0.00165836],"",_grenadeBoxInit,true,false],
+		["Box_NATO_AmmoOrd_F",[0,6,1.90735e-006],89.9934,1,0,[-0.000348133,-0.00128004],"",_explosiveBoxInit,true,false],
+		["Box_NATO_Support_F",[-4,6,1.90735e-006],89.9934,1,0,[-0.000348133,-0.00128004],"",_supportBoxInit,true,false],
+		["Box_NATO_AmmoVeh_F",[-7.10083,0.0112305,0.0305414],4.78285e-005,1,0,[-2.20061e-006,-4.89893e-007],"","",true,false]
 	],
 	"b_Ordnance", // Marker type
 	20,           // Radius of composition area
@@ -72,7 +72,7 @@ private _carEntries =
 private _cars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["B_Truck_01_covered_F",[16.1875,-0.159668,0.114967],0,random [0.2, 0.5, 0.7],0,[0,0],"","",true,false]
+	["rhsusf_M1078A1P2_B_D_fmtv_usarmy",[16.1873,-0.15918,-0.0187936],0,random [0.2, 0.5, 0.7],0,[0,0],"","",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _cars }, { _i = _i + 1 }] do
 {

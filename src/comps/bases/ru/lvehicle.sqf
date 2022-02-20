@@ -16,81 +16,87 @@ private _faction = RU_KEY;
 private _comp =
 [
     [
-	    ["Land_Cargo20_sand_F",[12.3796,-5.25098,0.145],29.0115,1,0,[0,0],"","",true,false],
-		["Land_Cargo20_sand_F",[-5.40063,16.5557,0.145],183.931,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-16.3,-10.6353,0],0,1,0,[0,0],"","",true,false],
-		["ContainmentArea_01_sand_F",[-18.6338,-3.87842,0],0,1,0,[0,0],"","",true,false],
-		["StorageBladder_01_fuel_sand_F",[-18.5776,-3.93994,0.038],180,1,0,[0,0],"","",true,false],
-		["Land_TTowerSmall_1_F",[16.012,-10.0186,0],90,1,0,[0,-0],"","",true,false],
-		["WaterPump_01_sand_F",[19.5923,-1.51465,0],206.363,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[-6.30176,19.8042,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_3_F",[-19.6626,-10.6333,0],0,1,0,[0,0],"","",true,false],
-		["CamoNet_OPFOR_big_F",[19.626,13.9727,0],90,1,0,[0,-0],"","",true,false],
-		["rhs_Flag_Russia_F",[16.1033,-18.6108,0],180,1,0,[0,0],"","",true,false],
-		["Land_Cargo_Patrol_V3_F",[6.73364,25.041,0],180,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-2.4126,25.2681,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-25.2546,-10.6099,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[5.63721,-24.8291,0],0,1,0,[0,0],"","",true,false],
-		["CamoNet_OPFOR_big_F",[-22.0713,12.104,0],270,1,0,[0,0],"","",true,false],
-		["Land_FieldToilet_F",[-22.1787,-13.0117,0.0307484],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-8.09521,25.2905,0],0,1,0,[0,0],"","",true,false],
-		["StorageBladder_02_water_sand_F",[25.9307,-1.53613,0.031],180,1,0,[0,0],"","",true,false],
-		["Land_Cargo_HQ_V3_F",[22.229,-13.4624,0],0,1,0,[0,0],"","",true,false],
-		["ContainmentArea_02_sand_F",[26.0352,-1.42969,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[6.84619,25.2705,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall4_F",[12.9749,-23.1919,0],180,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-26.6028,2.59131,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_3_F",[-26.5952,-2.97314,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-13.7329,25.3101,0],0,1,0,[0,0],"","",true,false],
-		["Land_FieldToilet_F",[-24.5413,-13.0874,0.0307484],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[-26.5872,-6.31152,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Cargo_Patrol_V3_F",[-15.4644,-24.2739,0],0,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-2.77197,28.2417,-2.38419e-006],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[3.78271,28.167,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[-5.8562,28.167,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[-15.6829,-24.6841,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[15.407,25.4321,0],0,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-12.4021,28.2417,-2.38419e-006],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[14.2825,-26.5601,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[16.3616,-24.5522,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[-18.731,25.1753,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[-15.4863,28.167,0],0,1,0,[0,0],"","",true,false],
-		["Land_Cargo_Patrol_V3_F",[-33.1104,-1.21436,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrierWall6_F",[33.2515,4.87744,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[17.3667,-26.4854,-2.38419e-006],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[-33.4829,-1.11182,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[33.416,-3.95654,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[-33.7214,7.4082,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-33.4197,-6.18604,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[22.0391,-24.5479,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[-24.2339,-24.9082,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall4_F",[-31.8684,-13.8296,0],270,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_Big_F",[23.9817,25.4604,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_5_F",[33.5598,-8.82666,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[33.0579,12.9277,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-35.4385,-4.37549,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[35.2712,-5.59131,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[23.9126,-26.5601,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall6_F",[-27.5078,24.8735,0],0,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-35.3635,-7.47754,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[35.3462,-8.69336,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrierWall4_F",[31.6628,19.7954,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_Big_F",[-33.8999,16.0732,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[33.5798,-14.5361,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-35.4385,-14.0791,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[35.2712,-15.2949,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[-33.2258,-17.1934,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[27.6995,-24.5083,0],0,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[26.9968,-26.4854,-2.38419e-006],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall_corner_F",[-31.1731,-23.8569,0],180,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall_corner_F",[31.1123,24.2852,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrierWall_corner_F",[-32.822,23.0151,0],270,1,0,[0,0],"","",true,false],
-		["Land_Razorwire_F",[-35.3635,-17.1812,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_5_F",[33.5554,-20.2056,0],90,1,0,[0,-0],"","",true,false],
-		["Land_Razorwire_F",[35.3462,-18.397,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[-35.4385,-23.583,0],90,1,0,[0,-0],"","",true,false],
-		["Land_HBarrier_1_F",[33.5515,-26.5601,0],0,1,0,[0,0],"","",true,false],
-		["Land_HBarrier_1_F",[35.2712,-24.7988,0],90,1,0,[0,-0],"","",true,false]
+        ["Land_HBarrier_3_F",[-13.2351,8.31592,0],358.394,1,0,[0,0],"","",true,false],
+        ["Land_CncBarrierMedium4_F",[16.1775,-1.31689,0],90.9947,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_3_F",[13.7297,9.2334,0],69.0108,1,0,[0,0],"","",true,false],
+        ["Land_Cargo20_sand_F",[-5.40088,16.5552,0],183.931,1,0,[8.4211e-006,7.98492e-007],"","",true,false],
+        ["Land_HBarrier_5_F",[-16.3003,-10.6357,0],0,1,0,[0,0],"","",true,false],
+        ["ContainmentArea_01_sand_F",[-18.634,-3.88037,-0.0735335],0,1,0,[0,0],"","",true,false],
+        ["StorageBladder_01_fuel_sand_F",[-18.5779,-3.94043,8.10623e-005],180,1,0,[0,0],"","",true,false],
+        ["WaterPump_01_sand_F",[19.592,-1.51514,0.000850201],206.362,1,0,[-9.14772e-005,-0.000335442],"","",true,false],
+        ["Land_HBarrier_3_F",[-19.2651,6.53516,0],326.822,1,0,[0,0],"","",true,false],
+        ["Land_CncBarrierMedium4_F",[6.91089,19.5869,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-6.302,19.8037,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_3_F",[18.4736,7.54688,0],350.498,1,0,[0,0],"","",true,false],
+        ["Land_TTowerSmall_2_F",[16.2654,-10.9087,0],270,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_3_F",[-19.6628,-10.6338,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_3_F",[-23.6125,5.9248,0],359.57,1,0,[0,0],"","",true,false],
+        ["Land_CamoNetB_EAST_EP1",[19.6255,13.9722,0],90,1,0,[0,-0],"","",true,false],
+        ["rhs_Flag_Russia_F",[16.103,-18.6113,0],180,1,0,[0,0],"","",true,false],
+        ["Land_Cargo_Patrol_V3_F",[6.73364,25.0405,0],180,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_5_F",[-2.41284,25.2676,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_5_F",[-25.2549,-10.6104,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[5.63696,-24.8296,0],0,1,0,[0,0],"","",true,false],
+        ["Land_CamoNetB_EAST_EP1",[-22.0715,12.1035,0],270,1,0,[0,0],"","",true,false],
+        ["Land_FieldToilet_F",[-22.179,-13.0122,1.09673e-005],0.000312054,1,0,[-0.000626696,-0.000132843],"","",true,false],
+        ["Land_HBarrier_5_F",[-8.09546,25.29,0],0,1,0,[0,0],"","",true,false],
+        ["StorageBladder_02_water_sand_F",[25.9304,-1.53662,-3.62396e-005],180,1,0,[0,0],"","",true,false],
+        ["Land_Cargo_HQ_V3_F",[22.229,-13.4624,0],0,1,0,[0,0],"","",true,false],
+        ["ContainmentArea_02_sand_F",[26.0288,-1.42627,-0.066534],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[6.84595,25.27,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall4_F",[12.9746,-23.1924,0],180,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_5_F",[-26.603,2.59082,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_3_F",[-26.5955,-2.97363,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[-13.7332,25.3096,0],0,1,0,[0,0],"","",true,false],
+        ["Land_FieldToilet_F",[-24.5415,-13.0879,1.43051e-006],360,1,0,[-7.40738e-005,-1.78524e-005],"","",true,false],
+        ["Land_HBarrier_5_F",[-26.5874,-6.31201,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_Cargo_Patrol_V3_F",[-15.4646,-24.2744,0],0,1,0,[0,0],"","",true,false],
+        ["Land_Razorwire_F",[-2.77222,28.2412,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_1_F",[3.78247,28.1665,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_1_F",[-5.85645,28.1665,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-15.6831,-24.6846,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[15.4067,25.4316,0],0,1,0,[0,0],"","",true,false],
+        ["Land_Razorwire_F",[-12.4023,28.2412,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_1_F",[14.2822,-26.5605,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_5_F",[16.3613,-24.5527,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-18.7312,25.1748,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_1_F",[-15.4866,28.1665,0],0,1,0,[0,0],"","",true,false],
+        ["Land_Cargo_Patrol_V3_F",[-33.1108,-1.21484,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrierWall6_F",[33.2512,4.87695,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_Razorwire_F",[17.3665,-26.4858,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-33.4832,-1.1123,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_Big_F",[33.4158,-3.95703,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-33.7217,7.40771,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[-33.4199,-6.18652,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[22.0388,-24.5483,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-24.2341,-24.9087,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall4_F",[-31.8687,-13.8301,0],270,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_Big_F",[23.9814,25.46,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_5_F",[33.5596,-8.82715,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_Big_F",[33.0576,12.9272,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[-35.4387,-4.37598,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[35.271,-5.5918,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[23.9124,-26.5605,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall6_F",[-27.5081,24.873,0],0,1,0,[0,0],"","",true,false],
+        ["Land_Razorwire_F",[-35.3638,-7.47803,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+        ["Land_Razorwire_F",[35.3459,-8.69385,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrierWall4_F",[31.6626,19.7949,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_Big_F",[-33.9001,16.0728,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[33.5796,-14.5366,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[-35.4387,-14.0796,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[35.271,-15.2954,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[-33.2261,-17.1938,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[27.6992,-24.5088,0],0,1,0,[0,0],"","",true,false],
+        ["Land_Razorwire_F",[26.9966,-26.4858,-2.38419e-006],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall_corner_F",[-31.1733,-23.8574,0],180,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall_corner_F",[31.1121,24.2847,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrierWall_corner_F",[-32.8223,23.0146,0],270,1,0,[0,0],"","",true,false],
+        ["Land_Razorwire_F",[-35.3638,-17.1816,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_5_F",[33.5552,-20.2061,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_Razorwire_F",[35.3459,-18.3975,-2.38419e-006],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[-35.4387,-23.5835,0],90,1,0,[0,-0],"","",true,false],
+        ["Land_HBarrier_1_F",[33.5513,-26.5605,0],0,1,0,[0,0],"","",true,false],
+        ["Land_HBarrier_1_F",[35.271,-24.7993,0],90,1,0,[0,-0],"","",true,false]
     ],
     "o_motor_inf", // Marker type
 	45,            // Radius of composition area
@@ -109,7 +115,7 @@ private _utilEntries =
 private _utilCars =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_Truck_03_repair_F",[7.44751,-19.2725,0.114967],270,random [0.25, 0.5, 1],0,[0,0],"","",true,false]
+    ["RHS_Ural_Repair_VDV_01",[7.09546,-18.4355,-0.0310216],270,random [0.25, 0.5, 1],0,[0,0],"","",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _utilCars }, { _i = _i + 1 }] do
 {
@@ -132,13 +138,13 @@ private _vehEntries =
 [
     _side,
     _faction,
-	[RAND_VEH_CAR_UNARMED_KEY, RAND_VEH_CAR_ARMED_KEY, RAND_VEH_MRAP_UNARMED_KEY, RAND_VEH_MRAP_ARMED_KEY]
+	[RAND_VEH_CAR_UNARMED_KEY, RAND_VEH_CAR_ARMED_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _vehPort1 =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_MRAP_02_hmg_F",[-20.3137,12.146,0.148828],90,random [0.25, 0.45, 0.9],random [0, 0.1, 0.3],[0,-0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+    ["rhs_tigr_sts_3camo_vdv",[-20.3176,12.1504,0.032794],90,random [0.25, 0.45, 0.9],random [0, 0.1, 0.3],[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _vehPort1 }, { _i = _i + 1 }] do
 {
@@ -161,13 +167,13 @@ private _vehEntries =
 [
     _side,
     _faction,
-	[RAND_VEH_CAR_ARMED_KEY, RAND_VEH_MRAP_ARMED_KEY, RAND_VEH_IFV_KEY]
+	[RAND_VEH_CAR_ARMED_KEY, RAND_VEH_MRAP_ARMED_KEY, RAND_VEH_APC_KEY]
 ] call compile preprocessFile "src\comps\getVehicles.sqf";
 
 private _vehPort2 =
 [
 /*  [object, position, azimuth, fuel, damage, orientation, varName, init, simulated, asl] */
-	["O_APC_Wheeled_02_rcws_v2_F",[17.8669,13.8052,0.112128],270,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
+    ["rhs_btr80a_vdv",[17.8687,13.8052,0.0323625],270,random [0.15, 0.4, 0.7],random [0.6, 0.65, 0.7],[0,0],"","this setVehicleAmmo random [0.2, 0.5, 1];",true,false]
 ];
 for  [{ private _i = 0 }, { _i < count _vehPort2 }, { _i = _i + 1 }] do
 {
