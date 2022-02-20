@@ -175,28 +175,134 @@ _weapons = [];
 _mags = [];
 _items =
 [
-    ["rhs_6b5_ttsko", 2],
-    ["rhs_6b5_rifleman_ttsko", 2],
-    ["rhs_6b5_officer_ttsko", 2],
-    ["rhs_6b5_medic_ttsko", 2],
-    ["rhs_6b5_khaki", 2],
-    ["rhs_6b5_rifleman_khaki", 2],
     ["rhs_vest_commander", 2],
-
-    ["rhsgref_6b27m_ttsko_mountain", 2],
-    ["rhsgref_fieldcap_ttsko_mountain", 2],
     ["rhs_tsh4", 2],
     ["rhs_tsh4_ess", 2],
     ["rhs_zsh7a_mike", 2]
 ];
-_backpacks = [["rhsgref_ttsko_alicepack", 2], ["rhs_rpg_empty", 2]];
+_backpacks = [["rhs_rpg_empty", 2]];
+
+if (Escape_Cdf_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _items append
+            [
+                ["rhs_6b5", 2],
+                ["rhs_6b5_rifleman", 2],
+                ["rhs_6b5_officer", 2],
+                ["rhs_6b5_medic", 2],
+                ["rhs_6b5_sniper", 2],
+
+                ["rhsgref_6b27m_ttsko_forest", 2],
+                ["rhsgref_fieldcap_ttsko_forest", 2]
+            ];
+            _backpacks append
+            [
+                ["rhsgref_wdl_alicepack", 2],
+                ["B_Carryall_oli", 2]
+            ];
+        };
+        case TAKISTAN_KEY;
+        case ZARGABAD_KEY:
+        {
+            _items append
+            [
+                ["rhs_6b5_khaki", 2],
+                ["rhs_6b5_rifleman_khaki", 2],
+                ["rhs_6b5_officer_khaki", 2],
+                ["rhs_6b5_medic_khaki", 2],
+                ["rhs_6b5_sniper_khaki", 2],
+
+                ["rhsgref_helmet_pasgt_3color_desert", 4]
+            ];
+            _backpacks append
+            [
+                ["rhsgref_hidf_alicepack", 2],
+                ["B_Carryall_cbr", 2]
+            ];
+        };
+        default
+        {
+            _items append
+            [
+                ["rhs_6b5_ttsko", 2],
+                ["rhs_6b5_rifleman_ttsko", 2],
+                ["rhs_6b5_officer_ttsko", 2],
+                ["rhs_6b5_medic_ttsko", 2],
+                ["rhs_6b5_sniper_ttsko", 2],
+
+                ["rhsgref_6b27m_ttsko_mountain", 2],
+                ["rhsgref_fieldcap_ttsko_mountain", 2]
+            ];
+            _backpacks append
+            [
+                ["rhsgref_ttsko_alicepack", 2],
+                ["B_Carryall_oli", 2]
+            ];
+        };
+    };
+}
+else
+{
+    _items append
+    [
+        ["rhs_6b5_ttsko", 2],
+        ["rhs_6b5_rifleman_ttsko", 2],
+        ["rhs_6b5_officer_ttsko", 2],
+        ["rhs_6b5_medic_ttsko", 2],
+        ["rhs_6b5_sniper_ttsko", 2],
+
+        ["rhsgref_6b27m_ttsko_mountain", 2],
+        ["rhsgref_fieldcap_ttsko_mountain", 2]
+    ];
+    _backpacks append
+    [
+        ["rhsgref_ttsko_alicepack", 2],
+        ["B_Carryall_oli", 2]
+    ];
+};
 
 (Escape_Static_Cargo get CARGO_EQUIPMENT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Uniforms box
 _weapons = [];
 _mags = [];
-_items = [["rhsgref_uniform_ttsko_mountain", 4]];
+_items = [];
 _backpacks = [];
+
+if (Escape_Cdf_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _items append [["rhsgref_uniform_ttsko_forest", 4]];
+        };
+        case TAKISTAN_KEY;
+        case ZARGABAD_KEY:
+        {
+            _items append [["rhsgref_uniform_3color_desert", 4]];
+        };
+        default
+        {
+            _items append [["rhsgref_uniform_ttsko_mountain", 4]];
+        };
+    };
+}
+else
+{
+    _items append [["rhsgref_uniform_ttsko_mountain", 4]];
+};
 
 (Escape_Static_Cargo get CARGO_UNIFORMS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];

@@ -216,41 +216,140 @@ _weapons = [];
 _mags = [];
 _items =
 [
-    ["rhs_6b45_grn", 2],
-    ["rhs_6b45_off", 2],
-    ["rhs_6b45_holster", 2],
-    ["rhs_6b45_rifleman", 2],
-    ["rhs_6b45_rifleman_2", 2],
-    ["rhs_6b23_digi_medic", 2],
-    ["rhs_6sh117_rifleman", 2],
-
-    ["rhs_vkpo_cap", 2],
-    ["rhs_6b47_emr_1", 2],
-    ["rhs_6b48", 2],
     ["rhs_zsh7a_mike_green", 2],
     ["rhs_zsh7a", 2]
 ];
 _backpacks =
 [
     ["rhs_sidor", 2],
-    ["rhs_rk_sht_30_emr", 2],
-    ["rhs_tortila_emr", 2],
     ["rhs_rpg_empty", 2]
 ];
+
+if (Escape_Ru_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case LIVONIA_KEY:
+        {
+            _items append
+            [
+                ["rhs_6b45_grn", 2],
+                ["rhs_6b45_off", 2],
+                ["rhs_6b45_holster", 2],
+                ["rhs_6b45_rifleman", 2],
+                ["rhs_6b45_rifleman_2", 2],
+                ["rhs_6b23_digi_medic", 2],
+                ["rhs_6sh117_rifleman", 2],
+
+                ["rhs_vkpo_cap", 2],
+                ["rhs_6b47_emr_1", 2],
+                ["rhs_6b48", 2]
+            ];
+            _backpacks append [["rhs_rk_sht_30_emr", 2]];
+        };
+        case TAKISTAN_KEY;
+        case ZARGABAD_KEY:
+        {
+            _items append
+            [
+                ["rhs_6b5_khaki", 2],
+                ["rhs_6b5_rifleman_khaki", 2],
+                ["rhs_6b5_sniper_khaki", 2],
+                ["rhs_6b5_officer_khaki", 2],
+                ["rhs_6b5_medic_khaki", 2],
+
+                ["rhs_fieldcap_khk", 2],
+                ["rhs_6b27m_green", 2],
+                ["rhs_tsh4_ess", 2]
+            ];
+            _backpacks append [["rhs_assault_umbts", 2]];
+        };
+        default
+        {
+            _items append
+            [
+                ["rhs_6b23", 2],
+                ["rhs_6b23_6sh92", 2],
+                ["rhs_6b23_6sh92_vog", 2],
+                ["rhs_6b23_6sh92_radio", 2],
+                ["rhs_6b23_6sh92_headset_mapcase", 2],
+                ["rhs_6b23_crew", 2],
+                ["rhs_6b23_crewofficer", 2],
+                ["rhs_6b23_medic", 2],
+
+                ["rhs_fieldcap_vsr", 2],
+                ["rhs_6b26", 2],
+                ["rhs_tsh4_ess", 2]
+            ];
+            _backpacks append [["rhs_assault_umbts", 2]];
+        };
+    };
+}
+else
+{
+    _items append
+    [
+        ["rhs_6b45_grn", 2],
+        ["rhs_6b45_off", 2],
+        ["rhs_6b45_holster", 2],
+        ["rhs_6b45_rifleman", 2],
+        ["rhs_6b45_rifleman_2", 2],
+        ["rhs_6b23_digi_medic", 2],
+        ["rhs_6sh117_rifleman", 2],
+
+        ["rhs_vkpo_cap", 2],
+        ["rhs_6b47_emr_1", 2],
+        ["rhs_6b48", 2]
+    ];
+    _backpacks append [["rhs_rk_sht_30_emr", 2]];
+};
 
 (Escape_Static_Cargo get CARGO_EQUIPMENT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////// Uniforms box
 _weapons = [];
 _mags = [];
-_items =
-[
-    ["rhs_uniform_vkpo", 4],
-    ["rhs_uniform_vkpo_alt", 4],
-    ["rhs_uniform_vkpo_gloves", 4],
-    ["rhs_uniform_vkpo_gloves_alt", 4],
-    ["rhs_uniform_df15", 4]
-];
+_items = [["rhs_uniform_df15", 4]];
 _backpacks = [];
+
+if (Escape_Ru_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case LIVONIA_KEY:
+        {
+            _items append [["rhs_uniform_flora", 4]];
+        };
+        case TAKISTAN_KEY;
+        case ZARGABAD_KEY:
+        {
+            _items append [["rhs_uniform_emr_des_patchless", 4]];
+        };
+        default
+        {
+            _items append
+            [
+                ["rhs_uniform_vkpo", 4],
+                ["rhs_uniform_vkpo_alt", 4],
+                ["rhs_uniform_vkpo_gloves", 4],
+                ["rhs_uniform_vkpo_gloves_alt", 4]
+            ];
+        };
+    };
+}
+else
+{
+    _items append
+    [
+        ["rhs_uniform_vkpo", 4],
+        ["rhs_uniform_vkpo_alt", 4],
+        ["rhs_uniform_vkpo_gloves", 4],
+        ["rhs_uniform_vkpo_gloves_alt", 4]
+    ];
+};
 
 (Escape_Static_Cargo get CARGO_UNIFORMS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
