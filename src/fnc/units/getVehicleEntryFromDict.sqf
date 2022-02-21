@@ -32,7 +32,7 @@ params
             RAND_VEH_APC_KEY,           0.075,
 
             // Tank (total = 6%)
-            RAND_VEH_TANK_KEY,          0.08,
+            RAND_VEH_TANK_KEY,          0.06,
 
             // Tank special (total = 2%)
             RAND_VEH_TANK_KEY,          0.02,

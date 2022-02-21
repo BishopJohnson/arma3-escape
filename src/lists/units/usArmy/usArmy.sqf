@@ -27,7 +27,7 @@ _dict set [UNIT_CLASS_LEADER, _units];
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// Riflemen
 _units = createHashMap;
 
-_units set ["riflemanM4", ["rhsusf_army_ocp_rifleman", compile preprocessFile "src\lists\units\usArmy\rifleman.sqf"]];
+_units set ["rifleman", ["rhsusf_army_ocp_rifleman", compile preprocessFile "src\lists\units\usArmy\rifleman.sqf"]];
 _units set ["grenadier", ["rhsusf_army_ocp_grenadier", compile preprocessFile "src\lists\units\usArmy\grenadier.sqf"]];
 _units set ["riflemanLight", ["rhsusf_army_ocp_riflemanl", compile preprocessFile "src\lists\units\usArmy\riflemanLight.sqf"]];
 

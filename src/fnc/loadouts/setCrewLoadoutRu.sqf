@@ -34,13 +34,16 @@ if (!isServer) exitWith {};
             [_x] execVM "src\lists\units\ru\driver.sqf";
         };
         case "rhs_msv_crew";
+        case "rhs_msv_emr_crew";
         case "rhs_vdv_crew";
         case "rhs_msv_armoredcrew";
+        case "rhs_msv_emr_armoredcrew";
         case "rhs_vdv_armoredcrew":
         {
             [_x] execVM "src\lists\units\ru\crew.sqf";
         };
         case "rhs_msv_crew_commander";
+        case "rhs_msv_emr_crew_commander";
         case "rhs_vdv_crew_commander":
         {
             [_x] execVM "src\lists\units\ru\crewCommander.sqf";

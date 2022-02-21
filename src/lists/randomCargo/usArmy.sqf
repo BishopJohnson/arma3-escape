@@ -13,6 +13,8 @@ if (!isServer) exitWith {};
 private _include = "IncludeUsArmy" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
+private _map = worldName;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Basic weapons
 _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
@@ -149,7 +151,7 @@ _common = Escape_Random_Cargo_Special get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Special get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Special get RAND_CARGO_RARE_KEY;
 
-// M240
+// M590
 if (M590_KEY in _common) then { /* No unique values that could be ommitted */ }
 else
 {
@@ -160,10 +162,56 @@ else
 _uncommon set ["m14Ebr", [["rhs_weap_m14ebrri"], ["rhsusf_20Rnd_762x51_m118_special_Mag"]]];
 
 // M24
-_uncommon set ["m24", [["rhs_weap_m24sws"], ["rhsusf_5Rnd_762x51_m993_Mag"]]];
+if (Escape_Us_Army_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _weapons = ["rhs_weap_m24sws_wd"];
+        };
+        default
+        {
+            _weapons = ["rhs_weap_m24sws_d"];
+        };
+    };
+}
+else
+{
+    _weapons = ["rhs_weap_m24sws"];
+};
+
+_uncommon set ["m24", [_weapons, ["rhsusf_5Rnd_762x51_m993_Mag"]]];
 
 // M2010
-_uncommon set ["m2010", [["rhs_weap_XM2010"], ["rhsusf_5Rnd_300winmag_xm2010"]]];
+if (Escape_Us_Army_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _weapons = ["rhs_weap_XM2010_wd"];
+        };
+        default
+        {
+            _weapons = ["rhs_weap_XM2010_d"];
+        };
+    };
+}
+else
+{
+    _weapons = ["rhs_weap_XM2010"];
+};
+
+_uncommon set ["m2010", [_weapons, ["rhsusf_5Rnd_300winmag_xm2010"]]];
 
 // M240
 if (M240_KEY in _rare) then { /* No unique values that could be ommitted */ }
@@ -173,10 +221,33 @@ else
 };
 
 // M107
+if (Escape_Us_Army_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _weapons = ["rhs_weap_M107_w"];
+        };
+        default
+        {
+            _weapons = ["rhs_weap_M107_d"];
+        };
+    };
+}
+else
+{
+    _weapons = ["rhs_weap_M107"];
+};
+
 if (M107_KEY in _rare) then { /* No unique values that could be ommitted */ }
 else
 {
-    _rare set [M107_KEY, [["rhs_weap_M107"], ["rhsusf_mag_10Rnd_STD_50BMG_M33"]]];
+    _rare set [M107_KEY, [_weapons, ["rhsusf_mag_10Rnd_STD_50BMG_M33"]]];
 };
 
 // M32

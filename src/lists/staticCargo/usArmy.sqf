@@ -73,9 +73,6 @@ _weapons =
 [
     ["rhs_weap_m240B", 1],
     ["rhs_weap_m14ebrri", 1],
-    ["rhs_weap_XM2010", 1],
-    ["rhs_weap_m24sws", 1],
-    ["rhs_weap_M107", 1],
     ["rhs_weap_M590_8RD", 1],
     ["rhs_weap_m32", 1]
 ];
@@ -97,10 +94,62 @@ _items =
     ["rhsusf_acc_ACOG", 1],
     ["rhsusf_acc_ACOG2", 1],
     ["rhsusf_acc_ELCAN_ard", 1],
-    ["rhsusf_acc_LEUPOLDMK4", 2],
-    ["rhsusf_acc_LEUPOLDMK4_2", 2]
+    ["rhsusf_acc_LEUPOLDMK4", 1]
 ];
 _backpacks = [];
+
+if (Escape_Us_Army_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _weapons append
+            [
+                ["rhs_weap_XM2010_wd", 1],
+                ["rhs_weap_m24sws_wd", 1],
+                ["rhs_weap_M107_w", 1]
+            ];
+            _weapons append
+            [
+                ["rhsusf_acc_LEUPOLDMK4_wd", 1],
+                ["rhsusf_acc_LEUPOLDMK4_2", 2]
+            ];
+        };
+        default
+        {
+            _weapons append
+            [
+                ["rhs_weap_XM2010_d", 1],
+                ["rhs_weap_m24sws_d", 1],
+                ["rhs_weap_M107_d", 1]
+            ];
+            _items append
+            [
+                ["rhsusf_acc_LEUPOLDMK4_d", 1],
+                ["rhsusf_acc_LEUPOLDMK4_2_d", 2]
+            ];
+        };
+    };
+}
+else
+{
+    _weapons append
+    [
+        ["rhs_weap_XM2010", 1],
+        ["rhs_weap_m24sws", 1],
+        ["rhs_weap_M107", 1]
+    ];
+    _items append
+    [
+        ["rhsusf_acc_LEUPOLDMK4", 1],
+        ["rhsusf_acc_LEUPOLDMK4_2", 2]
+    ];
+};
 
 (Escape_Static_Cargo get CARGO_SPECIAL_WEAPONS_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
@@ -185,8 +234,6 @@ _items =
     ["rhsusf_acc_rotex5_grey", 5],
     ["rhsusf_acc_SF3P556", 5],
     ["rhsusf_acc_SFMB556", 5],
-    ["rhsusf_acc_m24_muzzlehider_black", 5],
-    ["rhsusf_acc_m24_silencer_black", 5],
     ["rhsusf_acc_aac_762sd_silencer", 5],
     ["rhsusf_acc_omega9k", 5],
     ["rhsusf_acc_rotex_mp7", 5],
@@ -203,11 +250,7 @@ _items =
     ["rhsusf_acc_kac_grip_saw_bipod", 2],
     ["rhsusf_acc_grip_m203_blk", 2],
 
-    ["rhsusf_acc_anpeq15side", 5],
-    ["rhsusf_acc_anpeq15_top", 5],
-    ["rhsusf_acc_anpeq15_wmx", 5],
-    ["rhsusf_acc_anpeq15_wmx_light", 5],
-    ["rhsusf_acc_wmx_bk", 5],
+    ["rhsusf_acc_M952V", 5],
     ["acc_flashlight_pistol", 5],
 
     ["Binocular", 1],
@@ -222,6 +265,56 @@ _items =
 ];
 _backpacks = [];
 
+if (Escape_Us_Army_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _items append
+            [
+                ["rhsusf_acc_m24_muzzlehider_wd", 5],
+                ["rhsusf_acc_m24_silencer_wd", 5],
+
+                ["rhsusf_acc_anpeq15side_bk", 5],
+                ["rhsusf_acc_anpeq15_bk_top", 5],
+                ["rhsusf_acc_anpeq15_bk", 5],
+                ["rhsusf_acc_anpeq15_bk_light", 5]
+            ];
+        };
+        default
+        {
+            _items append
+            [
+                ["rhsusf_acc_m24_muzzlehider_d", 5],
+                ["rhsusf_acc_m24_silencer_d", 5],
+
+                ["rhsusf_acc_anpeq15side", 5],
+                ["rhsusf_acc_anpeq15_top", 5],
+                ["rhsusf_acc_anpeq15", 5],
+                ["rhsusf_acc_anpeq15_light", 5]
+            ];
+        };
+    };
+}
+else
+{
+    _items append
+    [
+        ["rhsusf_acc_m24_muzzlehider_black", 5],
+        ["rhsusf_acc_m24_silencer_black", 5],
+
+        ["rhsusf_acc_anpeq15side", 5],
+        ["rhsusf_acc_anpeq15_top", 5],
+        ["rhsusf_acc_anpeq15", 5],
+        ["rhsusf_acc_anpeq15_light", 5]
+    ];
+};
+
 (Escape_Static_Cargo get CARGO_SUPPORT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Equipment box
@@ -230,12 +323,34 @@ _mags = [];
 _items =
 [
     ["H_Cap_headphones", 2],
-    ["rhsusf_cvc_green_ess", 2],
     ["rhsusf_hgu56p_mask", 2],
     ["rhsusf_hgu56p", 2],
     ["RHS_jetpilot_usaf", 2]
 ];
 _backpacks = [["rhsusf_falconii", 2]];
+
+if (Escape_Us_Marines_Use_Camo) then
+{
+    switch (_map) do
+    {
+        case BYSTRICA_KEY;
+        case CHERNARUS_KEY;
+        case CHERNARUS_SUMMER_KEY;
+        case LIVONIA_KEY;
+        case TANOA_KEY:
+        {
+            _items append [["rhsusf_cvc_green_ess", 2]];
+        };
+        default
+        {
+            _items append [["rhsusf_cvc_ess", 2]];
+        };
+    };
+}
+else
+{
+    _items append [["rhsusf_cvc_ess", 2]];
+};
 
 if (Escape_Us_Army_Use_Ucp) then
 {
