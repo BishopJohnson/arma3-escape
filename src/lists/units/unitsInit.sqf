@@ -14,6 +14,7 @@ Escape_Units set [str independent, createHashMap];
 if (Escape_Use_Rhs) then
 {
     call compile preprocessFile "src\lists\units\usArmy\usArmy.sqf";
+    call compile preprocessFile "src\lists\units\usMarines\usMarines.sqf";
     call compile preprocessFile "src\lists\units\ru\ru.sqf";
     call compile preprocessFile "src\lists\units\cdf\cdf.sqf";
 }

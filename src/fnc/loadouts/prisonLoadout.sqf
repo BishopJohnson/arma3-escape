@@ -113,7 +113,28 @@ switch (PLAYER_FACTION) do
     };
     case US_MARINES_KEY:
     {
-        _uniform = "rhs_uniform_FROG01_d";
+        if (Escape_Us_Marines_Use_Camo) then
+        {
+            switch (_map) do
+            {
+                case BYSTRICA_KEY;
+                case CHERNARUS_KEY;
+                case CHERNARUS_SUMMER_KEY;
+                case LIVONIA_KEY;
+                case TANOA_KEY:
+                {
+                    _uniform = "rhs_uniform_FROG01_wd";
+                };
+                default
+                {
+                    _uniform = "rhs_uniform_FROG01_d";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "rhs_uniform_FROG01_d";
+        };
     };
     case RU_KEY:
     {

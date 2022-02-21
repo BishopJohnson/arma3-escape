@@ -43,9 +43,25 @@ switch (_sideStr) do
 
         switch (_faction) do
         {
-            case NATO_KEY:      { _vehEntry = [_side, NATO_KEY] call _fnc };
-            case US_ARMY_KEY:   { _vehEntry = [_side, US_ARMY_KEY] call _fnc };
-            default             { hint "No faction was selected for bluFor vehicle." };
+            case NATO_KEY:          { _vehEntry = [_side, NATO_KEY] call _fnc };
+            case US_ARMY_KEY:       { _vehEntry = [_side, US_ARMY_KEY] call _fnc };
+            case US_MARINES_KEY:
+            {
+                _vehEntry = [_side, US_MARINES_KEY,
+                [
+                    // Car (total = 50%)
+                    RAND_VEH_CAR_UNARMED_KEY,   0.25,
+                    RAND_VEH_CAR_ARMED_KEY,     0.25,
+
+                    // MRAP (total = 45%)
+                    RAND_VEH_MRAP_UNARMED_KEY,  0.225,
+                    RAND_VEH_MRAP_ARMED_KEY,    0.225,
+
+                    // Tank (total = 5%)
+                    RAND_VEH_TANK_KEY,          0.05
+                ]] call _fnc;
+            };
+            default                 { hint "No faction was selected for bluFor vehicle." };
         };
     };
     case str east:

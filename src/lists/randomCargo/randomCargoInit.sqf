@@ -31,6 +31,7 @@ Escape_Random_Cargo_Prison set [RAND_CARGO_RARE_KEY, createHashMap];
 if (Escape_Use_Rhs) then
 {
     call compile preprocessFile "src\lists\randomCargo\usArmy.sqf";
+    call compile preprocessFile "src\lists\randomCargo\usMarines.sqf";
     call compile preprocessFile "src\lists\randomCargo\ru.sqf";
     call compile preprocessFile "src\lists\randomCargo\cdf.sqf";
     call compile preprocessFile "src\lists\randomCargo\miscRhs.sqf";

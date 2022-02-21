@@ -90,6 +90,43 @@ switch (PLAYER_FACTION) do
             };
         };
     };
+    case US_MARINES_KEY:
+    {
+        switch (_type) do
+        {
+            case UNIT_CLASS_RIFLEMEN:
+            {
+                _fncArray =
+                [
+                    "src\lists\units\usMarines\rifleman.sqf",
+                    "src\lists\units\usMarines\grenadier.sqf",
+                    "src\lists\units\usMarines\riflemanLight.sqf"
+                ];
+            };
+            case UNIT_CLASS_AT:
+            {
+                _fncArray =
+                [
+                    "src\lists\units\usMarines\riflemanAt.sqf",
+                    "src\lists\units\usMarines\riflemanAtLight.sqf",
+                    "src\lists\units\usMarines\riflemanAtHeavy.sqf",
+                    "src\lists\units\usMarines\missileSpcAt.sqf"
+                ];
+            };
+            case UNIT_CLASS_AUTORIFLEMEN:
+            {
+                _fncArray = ["src\lists\units\usMarines\autorifleman.sqf"];
+            };
+            case UNIT_CLASS_MARKSMEN:
+            {
+                _fncArray =
+                [
+                    "src\lists\units\usMarines\marksman.sqf",
+                    "src\lists\units\usMarines\sniper.sqf"
+                ];
+            };
+        };
+    };
     case CSAT_KEY:
     {
         switch (_type) do

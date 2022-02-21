@@ -47,6 +47,10 @@ switch (_side) do
             {
                 _fnc = compile preprocessFile "src\fnc\units\getUsArmyUnitEntry.sqf";
             };
+            case US_MARINES_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getUsMarinesUnitEntry.sqf";
+            };
         };
     };
     case str east:

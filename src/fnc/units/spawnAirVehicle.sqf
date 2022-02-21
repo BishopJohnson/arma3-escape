@@ -53,7 +53,16 @@ switch (_sideStr) do
                     RAND_VEH_HELI_H_KEY,    0.2,
 
                     // Plane (total = 20%)
-                    RAND_VEH_PLANE_KEY,     0.20
+                    RAND_VEH_PLANE_KEY,     0.2
+        		]] call _fnc;
+            };
+            case US_MARINES_KEY:
+            {
+                _vehEntry = [_side, US_MARINES_KEY,
+                [
+                    // Helicopter (total = 100%)
+                    RAND_VEH_HELI_L_KEY,    0.7,
+                    RAND_VEH_HELI_H_KEY,    0.3
         		]] call _fnc;
             };
             default             { hint "No faction was selected for bluFor vehicle." };
@@ -83,7 +92,7 @@ switch (_sideStr) do
                     RAND_VEH_HELI_H_KEY,    0.2,
 
                     // Plane (total = 20%)
-                    RAND_VEH_PLANE_KEY,     0.20
+                    RAND_VEH_PLANE_KEY,     0.2
         		]] call _fnc;
             };
             default             { hint "No faction was selected for opFor vehicle." };
@@ -124,7 +133,7 @@ switch (_sideStr) do
                     RAND_VEH_HELI_H_KEY,    0.2,
 
                     // Plane (total = 20%)
-                    RAND_VEH_PLANE_KEY,     0.20
+                    RAND_VEH_PLANE_KEY,     0.2
         		]] call _fnc;
             };
             default         { hint "No faction was selected for independent vehicle." };

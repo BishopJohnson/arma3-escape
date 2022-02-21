@@ -17,6 +17,7 @@ Escape_Random_Vehicles set [str civilian, createHashMap];
 if (Escape_Use_Rhs) then
 {
     call compile preprocessFile "src\lists\randomVehicles\usArmy.sqf";
+    call compile preprocessFile "src\lists\randomVehicles\usMarines.sqf";
     call compile preprocessFile "src\lists\randomVehicles\ru.sqf";
     call compile preprocessFile "src\lists\randomVehicles\cdf.sqf";
 }

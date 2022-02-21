@@ -26,6 +26,10 @@ switch (_side) do
             {
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutUsArmy.sqf";
             };
+            case US_MARINES_KEY:
+            {
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutUsMarines.sqf";
+            };
         };
     };
     case str east:

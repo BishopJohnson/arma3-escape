@@ -48,7 +48,7 @@ switch (PLAYER_FACTION) do
 	case AAF_KEY:          { _veh select 0 set [0, "I_Heli_light_03_unarmed_F"] };
 	case LDF_KEY:          { _veh select 0 set [0, "I_E_Heli_light_03_unarmed_F"] };
 	case US_ARMY_KEY:      { _veh select 0 set [0, "RHS_UH60M_d"] };
-	case US_MARINES_KEY:   { _veh select 0 set [0, "RHS_UH1Y_FFAR_d"] };
+	case US_MARINES_KEY:   { _veh select 0 set [0, "RHS_UH1Y_UNARMED_d"] };
 	case RU_KEY:           { _veh select 0 set [0, "rhs_ka60_c"] };
 	case CDF_KEY:          { _veh select 0 set [0, "rhsgref_cdf_reg_Mi8amt"] };
     case SAF_KEY:          { _veh select 0 set [0, "rhssaf_airforce_ht40"] };

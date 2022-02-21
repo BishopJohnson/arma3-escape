@@ -21,7 +21,7 @@ class Params
 	class Faction
 	{
 		title = "Player Faction";
-		values[] = {0,1,2,3,4/*,5*/,6,7/*,8*/};
+		values[] = {0,1,2,3,4,5,6,7/*,8*/};
 		texts[] =
 		{
 			"Random",						// 0
@@ -29,7 +29,7 @@ class Params
 			"CSAT",							// 2
 			"AAF",							// 3
 			"US Army (RHS)",				// 4
-			/* "US Marines (RHS)",				// 5 */
+			"US Marines (RHS)",				// 5
 			"Russian Federation (RHS)",		// 6
 			"CDF (RHS)"						// 7
 			/* "SAF (RHS)"						// 8 */
