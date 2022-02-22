@@ -52,6 +52,10 @@ if (!isServer) exitWith {};
         {
             [_x] execVM "src\lists\units\usArmy\heliPilot.sqf";
         };
+        case "rhsusf_airforce_jetpilot":
+        {
+            // Do nothing
+        };
         default
         {
             hint format ["Unhandled unit type %1 for US Army crew loadout.", _type];

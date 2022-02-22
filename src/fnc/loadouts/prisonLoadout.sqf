@@ -138,11 +138,61 @@ switch (PLAYER_FACTION) do
     };
     case RU_KEY:
     {
-        _uniform = "rhs_uniform_vkpo_gloves_alt";
+        if (Escape_Ru_Use_Camo) then
+        {
+            switch (_map) do
+            {
+                case BYSTRICA_KEY;
+                case CHERNARUS_KEY;
+                case LIVONIA_KEY:
+                {
+                    _uniform = "rhs_uniform_vkpo_gloves_alt";
+                };
+                case TAKISTAN_KEY;
+                case ZARGABAD_KEY:
+                {
+                    _uniform = "rhs_uniform_emr_des_patchless";
+                };
+                default
+                {
+                    _uniform = "rhs_uniform_flora";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "rhs_uniform_vkpo_gloves_alt";
+        };
     };
     case CDF_KEY:
     {
-        _uniform = "rhsgref_uniform_ttsko_mountain";
+        if (Escape_Cdf_Use_Camo) then
+        {
+            switch (_map) do
+            {
+                case BYSTRICA_KEY;
+                case CHERNARUS_KEY;
+                case CHERNARUS_SUMMER_KEY;
+                case LIVONIA_KEY;
+                case TANOA_KEY:
+                {
+                    _uniform = "rhsgref_uniform_ttsko_forest";
+                };
+                case TAKISTAN_KEY;
+                case ZARGABAD_KEY:
+                {
+                    _uniform = "rhsgref_uniform_3color_desert";
+                };
+                default
+                {
+                    _uniform = "rhsgref_uniform_ttsko_mountain";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "rhsgref_uniform_ttsko_mountain";
+        };
     };
 };
 
