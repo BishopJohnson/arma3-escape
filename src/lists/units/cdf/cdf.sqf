@@ -36,14 +36,14 @@ _dict set [UNIT_CLASS_RIFLEMEN, _units];
 _units = createHashMap;
 
 _units set ["riflemanAt", ["rhsgref_cdf_reg_rifleman_rpg75", compile preprocessFile "src\lists\units\cdf\riflemanAt.sqf"]];
-_units set ["heavyAt", ["rhsgref_cdf_reg_grenadier_rpg", compile preprocessFile "src\lists\units\cdf\missileScpAt.sqf"]];
+_units set ["heavyAt", ["rhsgref_cdf_reg_grenadier_rpg", compile preprocessFile "src\lists\units\cdf\missileSpcAt.sqf"]];
 
 _dict set [UNIT_CLASS_AT, _units];
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// AA
 _units = createHashMap;
 
-_units set ["iglaAa", ["rhsgref_cdf_reg_specialist_aa", compile preprocessFile "src\lists\units\cdf\missileScpAa.sqf"]];
+_units set ["iglaAa", ["rhsgref_cdf_reg_specialist_aa", compile preprocessFile "src\lists\units\cdf\missileSpcAa.sqf"]];
 
 _dict set [UNIT_CLASS_AA, _units];
 

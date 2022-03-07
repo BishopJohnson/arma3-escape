@@ -25,7 +25,24 @@ _uncommon set [M14_KEY, [["rhs_weap_m14"], ["rhsusf_20Rnd_762x51_m80_Mag"]]];
 _uncommon set ["fal", [["rhs_weap_l1a1_wood"], ["rhs_mag_20Rnd_762x51_m80_fnfal"]]];
 
 // SCAR-H
-_rare set [SCAR_H_KEY, [["rhs_weap_mk17_STD", "rhs_weap_mk17_CQC"], ["rhs_mag_20Rnd_SCAR_762x51_m80a1_epr"]]];
+_weapons = ["rhs_weap_mk17_STD", "rhs_weap_mk17_CQC"];
+_ammo = ["rhs_mag_20Rnd_SCAR_762x51_m80a1_epr"];
+
+if (SCAR_H_KEY in _rare) then
+{
+    _temp = _rare get SCAR_H_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _rare set [SCAR_H_KEY, _temp];
+}
+else
+{
+    _rare set [SCAR_H_KEY, [_weapons, _ammo]];
+};
 
 Escape_Random_Cargo_Basic set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Basic set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
@@ -84,8 +101,12 @@ _common = Escape_Random_Cargo_Prison get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Prison get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Prison get RAND_CARGO_RARE_KEY;
 
-// PM 9
-_common set ["cz99", [["rhs_weap_cz99"], ["rhssaf_mag_15Rnd_9x19_FMJ"]]];
+// CZ99
+if (CZ99_KEY in _common) then { /* No unique values that could be ommitted */ }
+else
+{
+    _common set [CZ99_KEY, [["rhs_weap_cz99"], ["rhssaf_mag_15Rnd_9x19_FMJ"]]];
+};
 
 // 6P53
 _common set ["6P53", [["rhs_weap_6p53"], ["rhs_18rnd_9x21mm_7N28"]]];

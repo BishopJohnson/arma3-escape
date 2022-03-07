@@ -14,42 +14,72 @@ private _include = "IncludeCdf" call BIS_fnc_getParamValue;
 if (_include == 0) exitWith {};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// Basic weapons
+_common = Escape_Random_Cargo_Basic get RAND_CARGO_COMMON_KEY;
 _uncommon = Escape_Random_Cargo_Basic get RAND_CARGO_UNCOMMON_KEY;
 _rare = Escape_Random_Cargo_Basic get RAND_CARGO_RARE_KEY;
 
 // AK-74
-_uncommon set ["ak74", [
+_common set ["ak74", [
     ["rhs_weap_aks74", "rhs_weap_aks74u"],
     ["rhs_30Rnd_545x39_7N6M_AK"]
 ]];
 
 // AK-74 GL
-_uncommon set ["ak74Gl", [
+_common set ["ak74Gl", [
     ["rhs_weap_ak74_gp25"],
-    [
-        "rhs_30Rnd_545x39_7N6M_AK",
-        "rhs_VOG25", "rhs_GRD40_White"
-    ]
+    ["rhs_30Rnd_545x39_7N6M_AK", "rhs_VOG25"]
 ]];
 
 // RPK-74M
 _weapons = ["rhs_weap_rpk74m"];
 _ammo = ["rhs_45Rnd_545X39_7N6M_AK"];
 
-if (RPK_74M_KEY in _rare) then
+if (RPK_74M_KEY in _uncommon) then
 {
-    _temp = _rare get RPK_74M_KEY;
+    _temp = _uncommon get RPK_74M_KEY;
     {
         _temp select 0 pushBackUnique _x;
     } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
     } forEach (_ammo);
-    _rare set [RPK_74M_KEY, _temp];
+    _uncommon set [RPK_74M_KEY, _temp];
 }
 else
 {
-    _rare set [RPK_74M_KEY, [_weapons, _ammo]];
+    _uncommon set [RPK_74M_KEY, [_weapons, _ammo]];
+};
+
+// VHS
+_rare set ["vhs", [
+    ["rhs_weap_vhsd2", "rhs_weap_vhsd2_ct15x", "rhs_weap_vhsk2"],
+    ["rhsgref_30rnd_556x45_vhs2"]
+]];
+
+// VHS GL
+_rare set ["vhsGl", [
+    ["rhs_weap_vhsd2_bg", "rhs_weap_vhsd2_bg_ct15x"],
+    ["rhsgref_30rnd_556x45_vhs2", "rhs_mag_M441_HE"]
+]];
+
+// M249
+_weapons = ["rhs_weap_m249_pip_L_para"];
+_ammo = ["rhsusf_100Rnd_556x45_soft_pouch"];
+
+if (M249_KEY in _rare) then
+{
+    _temp = _rare get M249_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _rare set [M249_KEY, _temp];
+}
+else
+{
+    _rare set [M249_KEY, [_weapons, _ammo]];
 };
 
 // Scorpion
@@ -59,6 +89,7 @@ else
     _rare set [SCORPION_KEY, [["rhs_weap_scorpion"], ["rhsgref_20rnd_765x17_vz61"]]];
 };
 
+Escape_Random_Cargo_Basic set [RAND_CARGO_COMMON_KEY, _common];
 Escape_Random_Cargo_Basic set [RAND_CARGO_UNCOMMON_KEY, _uncommon];
 Escape_Random_Cargo_Basic set [RAND_CARGO_RARE_KEY, _rare];
 
@@ -128,6 +159,26 @@ if (M76_KEY in _rare) then { /* No unique values that could be ommitted */ }
 else
 {
     _rare set [M76_KEY, [["rhs_weap_m76"], ["rhsgref_10Rnd_792x57_m76"]]];
+};
+
+// M240
+_weapons = ["rhs_weap_m240G"];
+_ammo = ["rhsusf_100Rnd_762x51"];
+
+if (M240_KEY in _rare) then
+{
+    _temp = _rare get M240_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _rare set [M240_KEY, _temp];
+}
+else
+{
+    _rare set [M240_KEY, [_weapons, _ammo]];
 };
 
 Escape_Random_Cargo_Special set [RAND_CARGO_UNCOMMON_KEY, _uncommon];

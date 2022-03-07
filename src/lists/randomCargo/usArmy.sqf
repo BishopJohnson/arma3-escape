@@ -214,10 +214,23 @@ else
 _uncommon set ["m2010", [_weapons, ["rhsusf_5Rnd_300winmag_xm2010"]]];
 
 // M240
-if (M240_KEY in _rare) then { /* No unique values that could be ommitted */ }
+_weapons = ["rhs_weap_m240B"];
+_ammo = ["rhsusf_50Rnd_762x51"];
+
+if (M240_KEY in _rare) then
+{
+    _temp = _rare get M240_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _rare set [M240_KEY, _temp];
+}
 else
 {
-    _rare set [M240_KEY, [["rhs_weap_m240B"], ["rhsusf_50Rnd_762x51"]]];
+    _rare set [M240_KEY, [_weapons, _ammo]];
 };
 
 // M107

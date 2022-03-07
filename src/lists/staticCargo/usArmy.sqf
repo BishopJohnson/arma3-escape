@@ -254,11 +254,11 @@ _items =
     ["acc_flashlight_pistol", 5],
 
     ["Binocular", 1],
+    ["Rangefinder", 1],
     ["FirstAidKit", 10],
     ["ItemGPS", 5],
     ["Medikit", 1],
     ["MineDetector", 1],
-    ["rhsusf_bino_lrf_Vector21", 1],
     ["ToolKit", 1],
     ["rhsusf_ANPVS_14", 4],
     ["rhsusf_ANPVS_15", 4]

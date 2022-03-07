@@ -26,7 +26,7 @@ if (!isServer) exitWith {};
         case "rhsusf_usmc_marpat_d_crewman";
         case "rhsusf_usmc_marpat_d_combatcrewman":
         {
-            [_x] execVM "src\lists\units\usMarines\crewman.sqf";
+            [_x] execVM "src\lists\units\usMarines\crew.sqf";
         };
         case "rhsusf_usmc_marpat_d_helicrew":
         {

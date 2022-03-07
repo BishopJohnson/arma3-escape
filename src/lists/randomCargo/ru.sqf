@@ -26,30 +26,27 @@ _uncommon set ["ak74M", [
 // AK-74M GL
 _uncommon set ["ak74MGl", [
     ["rhs_weap_ak74m_gp25"],
-    [
-        "rhs_30Rnd_545x39_7N10_AK",
-        "rhs_VOG25", "rhs_GRD40_White"
-    ]
+    ["rhs_30Rnd_545x39_7N10_AK", "rhs_VOG25"]
 ]];
 
 // RPK-74M
 _weapons = ["rhs_weap_rpk74m"];
 _ammo = ["rhs_45Rnd_545X39_7N10_AK"];
 
-if (RPK_74M_KEY in _rare) then
+if (RPK_74M_KEY in _uncommon) then
 {
-    _temp = _rare get RPK_74M_KEY;
+    _temp = _uncommon get RPK_74M_KEY;
     {
         _temp select 0 pushBackUnique _x;
     } forEach (_weapons);
     {
         _temp select 1 pushBackUnique _x;
     } forEach (_ammo);
-    _rare set [RPK_74M_KEY, _temp];
+    _uncommon set [RPK_74M_KEY, _temp];
 }
 else
 {
-    _rare set [RPK_74M_KEY, [_weapons, _ammo]];
+    _uncommon set [RPK_74M_KEY, [_weapons, _ammo]];
 };
 
 // PP-2000

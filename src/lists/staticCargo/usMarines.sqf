@@ -230,6 +230,7 @@ _items =
     ["rhsusf_acc_anpeq16a_top", 5],
 
     ["Binocular", 1],
+    ["Rangefinder", 1],
     ["FirstAidKit", 10],
     ["ItemGPS", 5],
     ["Medikit", 1],
@@ -250,29 +251,17 @@ if (Escape_Us_Marines_Use_Camo) then
         case LIVONIA_KEY;
         case TANOA_KEY:
         {
-            _items append
-            [
-                ["rhsusf_acc_SR25S_wd", 1],
-                ["rhsusf_bino_lerca_1200_black", 1]
-            ];
+            _items append [["rhsusf_acc_SR25S_wd", 1]];
         };
         default
         {
-            _items append
-            [
-                ["rhsusf_acc_SR25S_d", 1],
-                ["rhsusf_bino_lerca_1200_tan", 1]
-            ];
+            _items append [["rhsusf_acc_SR25S_d", 1]];
         };
     };
 }
 else
 {
-    _items append
-    [
-        ["rhsusf_acc_SR25S", 1],
-        ["rhsusf_bino_lerca_1200_black", 1]
-    ];
+    _items append [["rhsusf_acc_SR25S", 1]];
 };
 
 (Escape_Static_Cargo get CARGO_SUPPORT_KEY) set [_faction, [_weapons, _mags, _items, _backpacks]];

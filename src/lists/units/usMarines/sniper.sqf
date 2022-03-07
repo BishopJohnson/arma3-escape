@@ -22,7 +22,6 @@ if (Escape_Us_Marines_Use_Camo) then
         case TANOA_KEY:
         {
             _weaponP = "rhs_weap_m40a5_wd";
-            _binocular = "rhsusf_bino_lerca_1200_black";
             _optic = "rhsusf_acc_M8541_low_wd";
             _uniform = "rhs_uniform_FROG01_wd";
             _helmet = "rhsusf_mich_helmet_marpatwd_norotos_arc";
@@ -30,7 +29,6 @@ if (Escape_Us_Marines_Use_Camo) then
         default
         {
             _weaponP = "rhs_weap_m40a5_d";
-            _binocular = "rhsusf_bino_lerca_1200_tan";
             _optic = "rhsusf_acc_M8541_low_d";
             _uniform = "rhs_uniform_FROG01_d";
             _helmet = "rhsusf_mich_helmet_marpatd_norotos_arc";
@@ -40,7 +38,6 @@ if (Escape_Us_Marines_Use_Camo) then
 else
 {
     _weaponP = "rhs_weap_m40a5";
-    _binocular = "rhsusf_bino_lerca_1200_black";
     _optic = "rhsusf_acc_M8541_low";
     _uniform = "rhs_uniform_FROG01_d";
     _helmet = "rhsusf_mich_helmet_marpatd_norotos_arc";
@@ -68,7 +65,7 @@ _unit forceAddUniform _uniform;
 _unit addVest "rhsusf_spc_sniper";
 
 comment "Add binoculars";
-_unit addWeapon _binocular;
+_unit addWeapon "Rangefinder";
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";

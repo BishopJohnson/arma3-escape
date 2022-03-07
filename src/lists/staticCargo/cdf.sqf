@@ -122,7 +122,7 @@ _mags =
 _items = [];
 _backpacks = [];
 
-if (Escape_Ru_Use_Camo) then
+if (Escape_Cdf_Use_Camo) then
 {
     switch (_map) do
     {
@@ -153,18 +153,16 @@ _mags = [];
 _items =
 [
     ["rhs_acc_2dpZenit", 5],
-    ["rhs_acc_perst1ik", 5],
     ["rhs_acc_dtk4short", 5],
     ["rhs_acc_pbs1", 5],
     ["rhs_acc_tgpa", 5],
     ["Binocular", 1],
-    ["rhs_pdu4", 1],
+    ["Rangefinder", 1],
     ["ItemGPS", 5],
     ["FirstAidKit", 10],
     ["Medikit", 1],
     ["ToolKit", 1],
-    ["MineDetector", 1],
-    ["rhs_1PN138", 2]
+    ["MineDetector", 1]
 ];
 _backpacks = [];
 

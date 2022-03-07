@@ -199,7 +199,7 @@ _items =
     ["rhs_acc_tgpv2", 5],
     ["rhs_acc_harris_swivel", 3],
     ["Binocular", 1],
-    ["rhs_pdu4", 1],
+    ["Rangefinder", 1],
     ["ItemGPS", 5],
     ["FirstAidKit", 10],
     ["Medikit", 1],

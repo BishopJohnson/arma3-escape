@@ -87,7 +87,7 @@ switch true do
 		{
 			case west:
 			{
-				if (Escape_Use_Rhs) then { PLAYER_FACTION = [US_ARMY_KEY, US_MARINES_KEY] }
+				if (Escape_Use_Rhs) then { PLAYER_FACTION = selectRandom [US_ARMY_KEY, US_MARINES_KEY] }
 				else { PLAYER_FACTION = NATO_KEY };
 			};
 			case east:
@@ -116,18 +116,18 @@ if (Escape_Use_Rhs) then
 			FRIENDLY_FACTIONS append [US_ARMY_KEY, US_MARINES_KEY];
 			ENEMY_FACTIONS set [str west, []];
 			ENEMY_FACTIONS set [str east, [RU_KEY]];
-			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
+			ENEMY_FACTIONS set [str independent, [CDF_KEY, SAF_KEY]];
 		};
 		case east:
 		{
 			FRIENDLY_FACTIONS append [RU_KEY];
 			ENEMY_FACTIONS set [str west, [US_ARMY_KEY, US_MARINES_KEY]];
 			ENEMY_FACTIONS set [str east, []];
-			ENEMY_FACTIONS set [str independent, [CDF_KEY]];
+			ENEMY_FACTIONS set [str independent, [CDF_KEY, SAF_KEY]];
 		};
 		case independent:
 		{
-			FRIENDLY_FACTIONS append [CDF_KEY];
+			FRIENDLY_FACTIONS append [CDF_KEY, SAF_KEY];
 			ENEMY_FACTIONS set [str west, [US_ARMY_KEY, US_MARINES_KEY]];
 			ENEMY_FACTIONS set [str east, [RU_KEY]];
 			ENEMY_FACTIONS set [str independent, []];

@@ -106,7 +106,7 @@ _unit forceAddUniform _uniform;
 _unit addVest _vest;
 
 comment "Add binoculars";
-_unit addWeapon "rhsusf_bino_lrf_Vector21";
+_unit addWeapon "Rangefinder";
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";

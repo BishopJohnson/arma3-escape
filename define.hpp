@@ -82,7 +82,7 @@
 #define AS_VAL_KEY "asVal"
 #define AT4_KEY "at4"
 #define BERETTA_KEY "beretta"
-#define CZ_99_KEY "cz99"
+#define CZ99_KEY "cz99"
 #define FN_MINIMI_KEY "fnMinimi"
 #define GLOCK_KEY "glock"
 #define HK416 "hk416"

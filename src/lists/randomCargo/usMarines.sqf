@@ -132,7 +132,11 @@ else
 };
 
 // SMAW
-_uncommon set [SMAW_KEY, [["rhs_weap_smaw_green"], ["rhs_mag_smaw_HEDP", "rhs_mag_smaw_HEAA"]]];
+if (SMAW_KEY in _uncommon) then { /* No unique values that could be ommitted */ }
+else
+{
+    _uncommon set [SMAW_KEY, [["rhs_weap_smaw_green"], ["rhs_mag_smaw_HEDP", "rhs_mag_smaw_HEAA"]]];
+};
 
 // Stinger
 if (STINGER_KEY in _rare) then { /* No unique values that could be ommitted */ }
@@ -217,10 +221,23 @@ else
 _uncommon set ["m40", [_weapons, ["rhsusf_10Rnd_762x51_m118_special_Mag"]]];
 
 // M240
-if (M240_KEY in _rare) then { /* No unique values that could be ommitted */ }
+_weapons = ["rhs_weap_m240B"];
+_ammo = ["rhsusf_50Rnd_762x51"];
+
+if (M240_KEY in _rare) then
+{
+    _temp = _rare get M240_KEY;
+    {
+        _temp select 0 pushBackUnique _x;
+    } forEach (_weapons);
+    {
+        _temp select 1 pushBackUnique _x;
+    } forEach (_ammo);
+    _rare set [M240_KEY, _temp];
+}
 else
 {
-    _rare set [M240_KEY, [["rhs_weap_m240B"], ["rhsusf_50Rnd_762x51"]]];
+    _rare set [M240_KEY, [_weapons, _ammo]];
 };
 
 // M107
