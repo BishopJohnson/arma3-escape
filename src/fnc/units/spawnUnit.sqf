@@ -109,6 +109,10 @@ switch (_side) do
             {
                 _fnc = compile preprocessFile "src\fnc\units\getCdfUnitEntry.sqf";
             };
+            case SAF_KEY:
+            {
+                _fnc = compile preprocessFile "src\fnc\units\getSafUnitEntry.sqf";
+            };
         };
     };
 };

@@ -117,6 +117,23 @@ switch (_sideStr) do
                 ]] call _fnc;
             };
             case CDF_KEY:   { _vehEntry = [_side, CDF_KEY] call _fnc };
+            case SAF_KEY:
+            {
+                _vehEntry = [_side, SAF_KEY,
+                [
+                    // Car/Truck (total = 44.8%)
+                    RAND_VEH_CAR_UNARMED_KEY,   0.15,
+                    RAND_VEH_CAR_ARMED_KEY,     0.15,
+                    RAND_VEH_TRUCK_UNARMED_KEY, 0.074,
+                    RAND_VEH_UTIL_KEY,          0.074,
+
+                    // Tank (total = 5%)
+                    RAND_VEH_TANK_KEY,          0.05,
+
+                    // Artillery (total = 0.2%)
+                    RAND_VEH_ARTY_KEY,          0.002
+                ]] call _fnc;
+            };
             default         { hint "No faction was selected for independent vehicle." };
         };
     };

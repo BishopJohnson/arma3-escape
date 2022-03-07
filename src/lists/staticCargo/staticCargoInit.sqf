@@ -25,6 +25,7 @@ if (Escape_Use_Rhs) then
     call compile preprocessFile "src\lists\staticCargo\usMarines.sqf";
     call compile preprocessFile "src\lists\staticCargo\ru.sqf";
     call compile preprocessFile "src\lists\staticCargo\cdf.sqf";
+    call compile preprocessFile "src\lists\staticCargo\saf.sqf";
 }
 else
 {

@@ -52,6 +52,10 @@ switch (PLAYER_FACTION) do
 
                 if (Escape_Using_Marksmen) then { _fncArray append ["src\lists\units\nato\sharpshooter.sqf"] };
             };
+            default
+            {
+                _fncArray = ["src\lists\units\nato\rifleman.sqf"];
+            };
         };
     };
     case US_ARMY_KEY:
@@ -87,6 +91,10 @@ switch (PLAYER_FACTION) do
                     "src\lists\units\usArmy\marksman.sqf",
                     "src\lists\units\usArmy\sniper.sqf"
                 ];
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\usArmy\rifleman.sqf"];
             };
         };
     };
@@ -125,6 +133,10 @@ switch (PLAYER_FACTION) do
                     "src\lists\units\usMarines\sniper.sqf"
                 ];
             };
+            default
+            {
+                _fncArray = ["src\lists\units\usMarines\rifleman.sqf"];
+            };
         };
     };
     case CSAT_KEY:
@@ -159,6 +171,10 @@ switch (PLAYER_FACTION) do
                 _fncArray = ["src\lists\units\csat\marksman.sqf"];
 
                 if (Escape_Using_Marksmen) then { _fncArray append ["src\lists\units\csat\sharpshooter.sqf"] };
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\csat\rifleman.sqf"];
             };
         };
     };
@@ -195,6 +211,10 @@ switch (PLAYER_FACTION) do
 
                 if (Escape_Using_Marksmen) then { _fncArray append ["src\lists\units\csatP\sharpshooter.sqf"] };
             };
+            default
+            {
+                _fncArray = ["src\lists\units\csatP\rifleman.sqf"];
+            };
         };
     };
     case SPETSNAZ_KEY:
@@ -222,6 +242,10 @@ switch (PLAYER_FACTION) do
                 _fncArray = ["src\lists\units\spetsnaz\marksman.sqf"];
 
                 if (Escape_Using_Marksmen) then { _fncArray append ["src\lists\units\spetsnaz\sharpshooter.sqf"] };
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\spetsnaz\rifleman.sqf"];
             };
         };
     };
@@ -254,6 +278,10 @@ switch (PLAYER_FACTION) do
             case UNIT_CLASS_MARKSMEN:
             {
                 _fncArray = ["src\lists\units\ru\marksman.sqf"];
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\ru\rifleman.sqf"];
             };
         };
     };
@@ -288,6 +316,10 @@ switch (PLAYER_FACTION) do
             {
                 _fncArray = ["src\lists\units\aaf\marksman.sqf"];
             };
+            default
+            {
+                _fncArray = ["src\lists\units\aaf\rifleman.sqf"];
+            };
         };
     };
     case LDF_KEY:
@@ -321,6 +353,10 @@ switch (PLAYER_FACTION) do
             {
                 _fncArray = ["src\lists\units\ldf\marksman.sqf"];
             };
+            default
+            {
+                _fncArray = ["src\lists\units\ldf\rifleman.sqf"];
+            };
         };
     };
     case CDF_KEY:
@@ -351,6 +387,40 @@ switch (PLAYER_FACTION) do
             case UNIT_CLASS_MARKSMEN:
             {
                 _fncArray = ["src\lists\units\cdf\marksman.sqf"];
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\cdf\rifleman.sqf"];
+            };
+        };
+    };
+    case SAF_KEY:
+    {
+        switch (_type) do
+        {
+            case UNIT_CLASS_RIFLEMEN:
+            {
+                _fncArray =
+                [
+                    "src\lists\units\saf\rifleman.sqf",
+                    "src\lists\units\saf\grenadier.sqf"
+                ];
+            };
+            case UNIT_CLASS_AT:
+            {
+                _fncArray =
+                [
+                    "src\lists\units\saf\riflemanAt.sqf",
+                    "src\lists\units\saf\missileScpAt.sqf"
+                ];
+            };
+            case UNIT_CLASS_MARKSMEN:
+            {
+                _fncArray = ["src\lists\units\saf\marksman.sqf"];
+            };
+            default
+            {
+                _fncArray = ["src\lists\units\saf\rifleman.sqf"];
             };
         };
     };

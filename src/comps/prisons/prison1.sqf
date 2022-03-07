@@ -93,6 +93,7 @@ switch (_faction) do
 	case US_MARINES_KEY:	{ _veh select 0 set [0, "Flag_US_F"] };
 	case RU_KEY:			{ _veh select 0 set [0, "rhs_Flag_Russia_F"] };
 	case CDF_KEY:			{ _veh select 0 set [0, "FlagCarrierCDF"] };
+	case SAF_KEY:			{ _veh select 0 set [0, "rhssaf_flag_serbia"] };
 };
 
 (_comp select 0) append _veh;

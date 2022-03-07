@@ -34,6 +34,7 @@ if (Escape_Use_Rhs) then
     call compile preprocessFile "src\lists\randomCargo\usMarines.sqf";
     call compile preprocessFile "src\lists\randomCargo\ru.sqf";
     call compile preprocessFile "src\lists\randomCargo\cdf.sqf";
+    call compile preprocessFile "src\lists\randomCargo\saf.sqf";
     call compile preprocessFile "src\lists\randomCargo\miscRhs.sqf";
 }
 else

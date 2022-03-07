@@ -194,6 +194,28 @@ switch (PLAYER_FACTION) do
             _uniform = "rhsgref_uniform_ttsko_mountain";
         };
     };
+    case SAF_KEY:
+    {
+        if (Escape_Saf_Use_Camo) then
+        {
+            switch (_map) do
+            {
+                case TAKISTAN_KEY;
+                case ZARGABAD_KEY:
+                {
+                    _uniform = "rhssaf_uniform_m10_digital_desert";
+                };
+                default
+                {
+                    _uniform = "rhssaf_uniform_m10_digital_summer";
+                };
+            };
+        }
+        else
+        {
+            _uniform = "rhssaf_uniform_m10_digital_summer";
+        };
+    };
 };
 
 player forceAddUniform _uniform;

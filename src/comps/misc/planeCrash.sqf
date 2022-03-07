@@ -124,6 +124,11 @@ switch (_faction) do
 		_veh select 9 set [0, "rhsgref_cdf_air_pilot"];
 		_veh select 10 set [0, "rhsgref_cdf_air_pilot"];
 	};
+	case SAF_KEY:
+	{
+		_veh select 9 set [0, "rhssaf_airforce_pilot_mig29"];
+		_veh select 10 set [0, "rhssaf_airforce_pilot_mig29"];
+	};
 };
 
 _comp append _veh;

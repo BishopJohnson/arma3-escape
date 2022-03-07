@@ -66,6 +66,10 @@ switch (_side) do
             {
                 [_crew] execVM "src\fnc\loadouts\setCrewLoadoutCdf.sqf";
             };
+            case SAF_KEY:
+            {
+                [_crew] execVM "src\fnc\loadouts\setCrewLoadoutSaf.sqf";
+            };
         };
     };
 };

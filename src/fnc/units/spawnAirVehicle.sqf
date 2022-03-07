@@ -136,6 +136,17 @@ switch (_sideStr) do
                     RAND_VEH_PLANE_KEY,     0.2
         		]] call _fnc;
             };
+            case SAF_KEY:
+            {
+                _vehEntry = [_side, SAF_KEY,
+                [
+                    // Helicopter (total = 80%)
+                    RAND_VEH_HELI_H_KEY,    0.8,
+
+                    // Plane (total = 20%)
+                    RAND_VEH_PLANE_KEY,     0.2
+        		]] call _fnc;
+            };
             default         { hint "No faction was selected for independent vehicle." };
         };
     };
