@@ -44,7 +44,38 @@ switch (_sideStr) do
         switch (_faction) do
         {
             case NATO_KEY:          { _vehEntry = [_side, NATO_KEY] call _fnc };
-            case US_ARMY_KEY:       { _vehEntry = [_side, US_ARMY_KEY] call _fnc };
+            case US_ARMY_KEY:
+            {
+                _vehEntry = [_side, US_ARMY_KEY, [
+                    // Car (total = 40%)
+                    RAND_VEH_CAR_UNARMED_KEY,   0.2,
+                    RAND_VEH_CAR_ARMED_KEY,     0.2,
+
+                    // Trucks (total = 18%)
+                    RAND_VEH_TRUCK_UNARMED_KEY, 0.06,
+                    RAND_VEH_TRUCK_ARMED_KEY,   0.06,
+                    RAND_VEH_UTIL_KEY,          0.06,
+
+                    // MRAP (total = 17%)
+                    RAND_VEH_MRAP_UNARMED_KEY,  0.085,
+                    RAND_VEH_MRAP_ARMED_KEY,    0.085,
+
+                    // IFV (total = 12%)
+                    RAND_VEH_IFV_KEY,           0.12,
+
+                    // APC (total = 5%)
+                    RAND_VEH_APC_KEY,           0.05,
+
+                    // Tank (total = 6%)
+                    RAND_VEH_TANK_KEY,          0.06,
+
+                    // AA (total = 1.8%)
+                    RAND_VEH_AA_KEY,            0.018,
+
+                    // Artillery (total = 0.2%)
+                    RAND_VEH_ARTY_KEY,          0.002
+                ]] call _fnc;
+            };
             case US_MARINES_KEY:
             {
                 _vehEntry = [_side, US_MARINES_KEY,
@@ -79,7 +110,38 @@ switch (_sideStr) do
         {
             case CSAT_KEY:      { _vehEntry = [_side, CSAT_KEY] call _fnc };
             case CSAT_P_KEY:    { _vehEntry = [_side, CSAT_P_KEY] call _fnc };
-            case RU_KEY:        { _vehEntry = [_side, RU_KEY] call _fnc };
+            case RU_KEY:
+            {
+                _vehEntry = [_side, RU_KEY, [
+                    // Car (total = 40%)
+                    RAND_VEH_CAR_UNARMED_KEY,   0.2,
+                    RAND_VEH_CAR_ARMED_KEY,     0.2,
+
+                    // Trucks (total = 20%)
+                    RAND_VEH_TRUCK_UNARMED_KEY, 0.15,
+                    RAND_VEH_UTIL_KEY,          0.05,
+
+                    // MRAP (total = 5%)
+                    RAND_VEH_MRAP_UNARMED_KEY,  0.025,
+                    RAND_VEH_MRAP_ARMED_KEY,    0.025,
+
+                    // IFV (total = 11%)
+                    RAND_VEH_IFV_KEY,           0.11,
+
+                    // APC (total = 13%)
+                    RAND_VEH_APC_KEY,           0.13,
+
+                    // Tank (total = 9%)
+                    RAND_VEH_TANK_KEY,          0.07,
+                    RAND_VEH_TANK_SPECIAL_KEY,  0.02,
+
+                    // AA (total = 1.8%)
+                    RAND_VEH_AA_KEY,            0.018,
+
+                    // Artillery (total = 0.2%)
+                    RAND_VEH_ARTY_KEY,          0.002
+                ]] call _fnc;
+            };
             default             { hint "No faction was selected for opFor vehicle." };
         };
     };
@@ -116,7 +178,37 @@ switch (_sideStr) do
                     RAND_VEH_ARTY_KEY,          0.002
                 ]] call _fnc;
             };
-            case CDF_KEY:   { _vehEntry = [_side, CDF_KEY] call _fnc };
+            case CDF_KEY:
+            {
+                _vehEntry = [_side, CDF_KEY, [
+                    // Car (total = 40%)
+                    RAND_VEH_CAR_UNARMED_KEY,   0.2,
+                    RAND_VEH_CAR_ARMED_KEY,     0.2,
+
+                    // Trucks (total = 20%)
+                    RAND_VEH_TRUCK_UNARMED_KEY, 0.15,
+                    RAND_VEH_UTIL_KEY,          0.05,
+
+                    // MRAP (total = 5%)
+                    RAND_VEH_MRAP_UNARMED_KEY,  0.025,
+                    RAND_VEH_MRAP_ARMED_KEY,    0.025,
+
+                    // IFV (total = 11%)
+                    RAND_VEH_IFV_KEY,           0.11,
+
+                    // APC (total = 13%)
+                    RAND_VEH_APC_KEY,           0.13,
+
+                    // Tank (total = 9%)
+                    RAND_VEH_TANK_KEY,          0.09,
+
+                    // AA (total = 1.8%)
+                    RAND_VEH_AA_KEY,            0.018,
+
+                    // Artillery (total = 0.2%)
+                    RAND_VEH_ARTY_KEY,          0.002
+                ]] call _fnc;
+            };
             case SAF_KEY:
             {
                 _vehEntry = [_side, SAF_KEY,

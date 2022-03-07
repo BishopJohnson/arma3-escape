@@ -35,7 +35,7 @@ params
             RAND_VEH_TANK_KEY,          0.06,
 
             // Tank special (total = 2%)
-            RAND_VEH_TANK_KEY,          0.02,
+            RAND_VEH_TANK_SPECIAL_KEY,  0.02,
 
             // AA (total = 1.8%)
             RAND_VEH_AA_KEY,            0.018,

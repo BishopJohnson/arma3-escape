@@ -138,7 +138,7 @@ _vehicles set ["bmp", [
 ]];
 
 // BRM
-_vehicles set ["t14", [["rhs_brm1k_msv"], true, true]];
+_vehicles set ["brm", [["rhs_brm1k_msv"], true, true]];
 
 // Obyekt
 _vehicles set ["obyekt", [["rhs_Ob_681_2"], true, true]];

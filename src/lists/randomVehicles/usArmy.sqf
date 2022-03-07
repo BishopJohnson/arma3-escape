@@ -108,9 +108,6 @@ _dict set [RAND_VEH_MRAP_UNARMED_KEY, _vehicles];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////// MRAPs armed
 _vehicles = createHashMap;
 
-// M1117
-_vehicles set ["m1117", [["rhsusf_M1117_D"], true, true]];
-
 // M1220
 _vehicles set ["m1220", [
     [
@@ -189,6 +186,9 @@ _vehicles set ["m113", [
     true,
     true
 ]];
+
+// M1117
+_vehicles set ["m1117", [["rhsusf_M1117_D"], true, true]];
 
 _dict set [RAND_VEH_APC_KEY, _vehicles];
 
