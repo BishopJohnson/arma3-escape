@@ -8,7 +8,7 @@
 
 params ["_unit"];
 
-private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_cap", "_helmet", "_nvg"];
+private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_helmet", "_nvg"];
 
 private _map = worldName;
 if (Escape_Us_Army_Use_Camo) then
@@ -38,14 +38,12 @@ if (Escape_Us_Army_Use_Ucp) then
 {
     _uniform = "rhs_uniform_acu_ucp2";
     _vest = "rhsusf_iotv_ucp_Rifleman";
-    _cap = "rhsusf_patrolcap_ucp";
     _helmet = "rhsusf_ach_helmet_ucp";
 }
 else
 {
     _uniform = "rhs_uniform_acu_oefcp";
     _vest = "rhsusf_iotv_ocp_Rifleman";
-    _cap = "rhsusf_patrolcap_ocp";
     _helmet = "rhsusf_ach_helmet_ocp";
 };
 
@@ -71,7 +69,6 @@ _unit addVest _vest;
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
-_unit addItemToUniform _cap;
 for "_i" from 1 to 6 do {_unit addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 for "_i" from 1 to 2 do {_unit addItemToVest "rhs_mag_m67";};
 _unit addHeadgear _helmet;
@@ -87,8 +84,4 @@ private _dayTime = dayTime;
 if (_dayTime < 5 || _dayTime > 19) then
 {
     _unit linkItem "rhsusf_ANPVS_14";
-}
-else
-{
-    _unit addItemToUniform "rhsusf_ANPVS_14";
 };

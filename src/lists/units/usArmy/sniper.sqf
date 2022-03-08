@@ -8,7 +8,7 @@
 
 params ["_unit"];
 
-private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_cap", "_helmet", "_nvg"];
+private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_helmet", "_nvg"];
 
 private _primaryLoudout = selectRandomWeighted [true, 0.8, false, 0.2];
 
@@ -73,14 +73,12 @@ if (Escape_Us_Army_Use_Ucp) then
 {
     _uniform = "rhs_uniform_acu_ucp2";
     _vest = "rhsusf_iotv_ucp_Teamleader";
-    _cap = "rhsusf_patrolcap_ucp";
     _helmet = "rhsusf_ach_helmet_ucp";
 }
 else
 {
     _uniform = "rhs_uniform_acu_oefcp";
     _vest = "rhsusf_iotv_ocp_Teamleader";
-    _cap = "rhsusf_patrolcap_ocp";
     _helmet = "rhsusf_ach_helmet_ocp";
 };
 
@@ -110,7 +108,6 @@ _unit addWeapon "Rangefinder";
 
 comment "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
-_unit addItemToUniform _cap;
 for "_i" from 1 to 3 do {_unit addItemToUniform _mag;};
 for "_i" from 1 to 4 do {_unit addItemToVest _mag;};
 for "_i" from 1 to 2 do {_unit addItemToVest "rhsusf_mag_15Rnd_9x19_FMJ";};
@@ -128,8 +125,4 @@ private _dayTime = dayTime;
 if (_dayTime < 5 || _dayTime > 19) then
 {
     _unit linkItem "rhsusf_ANPVS_14";
-}
-else
-{
-    _unit addItemToUniform "rhsusf_ANPVS_14";
 };

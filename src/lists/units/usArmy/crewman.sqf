@@ -8,7 +8,7 @@
 
 params ["_unit"];
 
-private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_cap", "_helmet", "_nvg"];
+private ["_weaponP", "_weaponS", "_weaponL", "_muzzle", "_acc", "_optic", "_bipod", "_mag", "_tracerMag", "_uniform", "_vest", "_backpack", "_helmet", "_nvg"];
 
 private _map = worldName;
 if (Escape_Us_Army_Use_Camo) then
@@ -85,8 +85,4 @@ private _dayTime = dayTime;
 if (_dayTime < 5 || _dayTime > 19) then
 {
     _unit linkItem "rhsusf_ANPVS_14";
-}
-else
-{
-    _unit addItemToUniform "rhsusf_ANPVS_14";
 };
